@@ -37,7 +37,43 @@ public class Model {
         return Eventlist.get(index).year;
     }
 
+    public void setYear(int index, int _year) {
+        Eventlist.get(index).year = _year;
+    }
+
     public void testPrint(){
         Eventlist.get(0).printer();
+    }
+
+    public void setMonth(int index, int _month){
+        Eventlist.get(index).month = _month;
+    }
+
+    public void setDay(int index, int _day){
+        Eventlist.get(index).day = _day;
+    }
+
+    public void setHour(int index, int _hour){
+        Eventlist.get(index).hour = _hour;
+    }
+
+    public void setMinute(int index, int _minute){
+        Eventlist.get(index).minute = _minute;
+    }
+
+    public void setTitle(int index , String _title){
+        Eventlist.get(index).title = _title;
+    }
+
+    public void setDesc(int index, String _description){
+        Eventlist.get(index).description = _description;
+    }
+
+    public void setLoca(int index, String _location){
+        Eventlist.get(index).location = _location;
+    }
+
+    public void setRepe(int index, boolean _repeat){
+        Eventlist.get(index).repeat = _repeat;
     }
 }

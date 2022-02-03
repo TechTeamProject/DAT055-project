@@ -1,12 +1,15 @@
 package src;
 
 
+import java.awt.*;
 import java.time.*;
 import java.util.*;
 
 public class Model {
     private static LinkedList<Event> Eventlist = new LinkedList<Event>();
-    private String language = "SWE";
+    private String language = "SWE"; //Programmet startar med svenska.
+    private Color color = Color.WHITE; //Programmet startar med vit färg.
+
     public static class Event {
         private int year;
         private int month;
@@ -31,19 +34,29 @@ public class Model {
             System.out.println(year + "-" + month + "-" + day + " Time " + hour + ":" + minute + " Description: " + title);
         }
     }
-
+    //Skapar ett nytt Event och lägger den på sista platsen i LinkedListen EventList.
     public void addEvent(int year, int month, int day, int hour, int minute, String title) {
         this.Eventlist.add(new Event(year,month,day,hour, minute, title));
     }
 
+    //Printar ut lite info om eventet på index 0 i EventList. Används bara för att testa.
     public void testPrint(){
         Eventlist.get(0).printer();
     }
 
+    //Enkel funktion som bara kan göra ett ljud hittils. Är meningen att den ska kunna göra flera ljud.
+    public void playSound(String type){
+        if(type.compareTo("ERROR") == 0){
+            Toolkit.getDefaultToolkit().beep();
+        }
+    }
+
+    //Tar in år och månad och returnerar antal dagar i den månaden.
     public int getMaxDays(int year, int month){
         return YearMonth.of(year, month).lengthOfMonth();
     }
 
+    //Tar in månadens siffra och returnerar namnet på måndaden. Tar hänsyn till vilket språk man har satt på.
     public String getMonthName(int month){
         if(language.compareTo("SWE") == 0){
             switch (month) {
@@ -82,6 +95,9 @@ public class Model {
         return "Invalid language";
     }
 
+
+    //Setters och getters här nedanför för.
+
     public String getLanguage(){
         if(language.compareTo("SWE") == 0){
             return "Svenska";
@@ -91,6 +107,12 @@ public class Model {
         }
         return "Unknown";
     }
+
+    public void setLanguage(String _language){ language = _language; }
+
+    public Color getColor(){ return color; }
+
+    public void setColor(Color _color){ color = _color; }
 
     public int getYear(int index) { return Eventlist.get(index).year; }
 

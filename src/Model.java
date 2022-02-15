@@ -6,34 +6,11 @@ import java.time.*;
 import java.util.*;
 
 public class Model {
-    private static LinkedList<Event> Eventlist = new LinkedList<Event>();
+    private LinkedList<Event> Eventlist = new LinkedList<Event>();
     private String language = "SWE"; //Programmet startar med svenska.
     private Color color = Color.WHITE; //Programmet startar med vit färg.
 
-    public static class Event {
-        private int year;
-        private int month;
-        private int day;
-        private int hour;
-        private int minute;
-        private String title;
-        private String description;
-        private String location;
-        private boolean repeat;
 
-        public Event(int const_year, int const_month, int const_day, int const_hour, int const_minute, String const_title){
-            year = const_year;
-            month = const_month;
-            day = const_day;
-            hour = const_hour;
-            minute = const_minute;
-            title = const_title;
-        }
-
-        public void printer(){
-            System.out.println(year + "-" + month + "-" + day + " Time " + hour + ":" + minute + " Description: " + title);
-        }
-    }
     //Skapar ett nytt Event och lägger den på sista platsen i LinkedListen EventList.
     public void addEvent(int year, int month, int day, int hour, int minute, String title) {
         this.Eventlist.add(new Event(year,month,day,hour, minute, title));
@@ -108,6 +85,8 @@ public class Model {
         return "Unknown";
     }
 
+
+    /*
     public void setLanguage(String _language){ language = _language; }
 
     public Color getColor(){ return color; }
@@ -149,5 +128,5 @@ public class Model {
     public boolean getRepe(int index) { return Eventlist.get(index).repeat; }
 
     public void setRepe(int index, boolean _repeat){ Eventlist.get(index).repeat = _repeat; }
-
+*/
 }

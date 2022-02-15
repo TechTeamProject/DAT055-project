@@ -6,6 +6,7 @@ public class Application extends JFrame {
 
     public static void main(String [] args){
         new Application();
+
     }
 
     public Application() {

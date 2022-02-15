@@ -19,6 +19,8 @@ public class StartView extends Popup{
     private JButton schedule_3;
     private JButton schedule_4;
 
+    private JButton toDO;
+
 
 
     public StartView(){
@@ -43,12 +45,15 @@ public class StartView extends Popup{
         schedule_2 = new JButton("Schema 2");
         schedule_3 = new JButton("Schema 3");
         schedule_4 = new JButton("Schema 4");
+        toDO = new JButton("Todo");
 
         schedulePanel.add(newButton);
         schedulePanel.add(schedule_1);
         schedulePanel.add(schedule_2);
         schedulePanel.add(schedule_3);
         schedulePanel.add(schedule_4);
+        schedulePanel.add(toDO);
+
 
         add(schedulePanel, BorderLayout.CENTER);
 

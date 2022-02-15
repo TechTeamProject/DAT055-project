@@ -5,7 +5,7 @@ import java.awt.*;
 import java.time.*;
 import java.util.*;
 
-public class Model {
+public class Calender {
     private LinkedList<Event> Eventlist = new LinkedList<Event>();
     private String language = "SWE"; //Programmet startar med svenska.
     private Color color = Color.WHITE; //Programmet startar med vit färg.
@@ -21,18 +21,17 @@ public class Model {
         Eventlist.get(0).printer();
     }
 
-    //Enkel funktion som bara kan göra ett ljud hittils. Är meningen att den ska kunna göra flera ljud.
-    public void playSound(String type){
-        if(type.compareTo("ERROR") == 0){
-            Toolkit.getDefaultToolkit().beep();
-        }
-    }
 
     //Tar in år och månad och returnerar antal dagar i den månaden.
     public int getMaxDays(int year, int month){
         return YearMonth.of(year, month).lengthOfMonth();
     }
 
+    /**
+     * --------------------------------------------------------------------------------------------------------
+     * Språk & ljud-metoder nedan från innan UML
+     * --------------------------------------------------------------------------------------------------------
+     */
     //Tar in månadens siffra och returnerar namnet på måndaden. Tar hänsyn till vilket språk man har satt på.
     public String getMonthName(int month){
         if(language.compareTo("SWE") == 0){
@@ -85,7 +84,12 @@ public class Model {
         return "Unknown";
     }
 
-
+    //Enkel funktion som bara kan göra ett ljud hittils. Är meningen att den ska kunna göra flera ljud.
+    public void playSound(String type){
+        if(type.compareTo("ERROR") == 0){
+            Toolkit.getDefaultToolkit().beep();
+        }
+    }
     /*
     public void setLanguage(String _language){ language = _language; }
 

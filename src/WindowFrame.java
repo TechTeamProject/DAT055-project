@@ -20,11 +20,11 @@ public class WindowFrame extends JFrame {
 
     public WindowFrame(){
 
-        weekView = new WeekView();
+        //weekView = new WeekView();
         startView = new StartView();
 
         this.setTitle("Calender");
-        this.getContentPane().add(weekView);
+        this.getContentPane().add(startView);
 
         this.setSize(1000, 650);
         this.setLocation(400, 250);

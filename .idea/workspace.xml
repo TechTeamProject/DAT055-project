@@ -4,10 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4b89b8c8-4e75-454b-8fad-b69ac190600f" name="Changes" comment="WindowFrame">
-      <change afterPath="$PROJECT_DIR$/src/Popup.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/WeekView.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    <list default="true" id="4b89b8c8-4e75-454b-8fad-b69ac190600f" name="Changes" comment="popup">
       <change beforePath="$PROJECT_DIR$/src/WindowFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/WindowFrame.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -90,7 +87,14 @@
       <option name="project" value="LOCAL" />
       <updated>1644930737134</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="popup">
+      <created>1644935324138</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1644935324138</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -109,6 +113,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Ny eventklass" />
-    <option name="LAST_COMMIT_MESSAGE" value="Ny eventklass" />
+    <MESSAGE value="popup" />
+    <option name="LAST_COMMIT_MESSAGE" value="popup" />
   </component>
 </project>

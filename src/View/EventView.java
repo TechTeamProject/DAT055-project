@@ -43,3 +43,4 @@ public class EventView extends JPanel {
         this.add(p1);
     }
 }
+

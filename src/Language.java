@@ -170,6 +170,16 @@ public class Language {
         return "Invalid language";
     }
 
+    public String getLanguage(String language){
+        if(language.compareTo("ENG") == 0){
+            return "English";
+        }
+        else if(language.compareTo("SWE") == 0){
+            return "Svenska";
+        }
+        return "Unknown";
+    }
+
     //Tar in månadens siffra och returnerar namnet på måndaden. Tar hänsyn till vilket språk man har satt på.
     public String langMonthName(int month, String language){
         if(language.compareTo("SWE") == 0){

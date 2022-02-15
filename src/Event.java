@@ -1,26 +1,38 @@
 package src;
 
+
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+
 public class Event {
-    private int year;
-    private int month;
-    private int day;
-    private int hour;
-    private int minute;
-    private String title;
     private String description;
     private String location;
     private boolean repeat;
+    private LocalDateTime starttime;
+    private LocalDateTime endtime;
+    private DateTimeFormatter format = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss");
+    private String formattedStart;
+    private String formattedEnd;
 
-    public Event(int const_year, int const_month, int const_day, int const_hour, int const_minute, String const_title){
-        year = const_year;
-        month = const_month;
-        day = const_day;
-        hour = const_hour;
-        minute = const_minute;
-        title = const_title;
+
+    /**
+     * Constructor
+     * @param start - When the event is started
+     * @param end - When the event is ended
+     * @param title - name of event
+     * formattedStart/End used to format to more convinient date
+     */
+    public Event(LocalDateTime start, LocalDateTime end, String title){
+        this.starttime = start;
+        this.endtime = end;
+        this.description = title;
+        formattedStart = start.format(format);
+        formattedEnd = end.format(format);
     }
 
+
     public void printer(){
-        System.out.println(year + "-" + month + "-" + day + " Time " + hour + ":" + minute + " Description: " + title);
+       //System.out.println(year + "-" + month + "-" + day + " Time " + hour + ":" + minute + " Description: " + title);
+        System.out.println("Starttime " + formattedStart + " Endtime: " + formattedEnd + " Description: " + description);
     }
 }

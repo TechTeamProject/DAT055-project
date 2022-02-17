@@ -3,6 +3,8 @@ import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.EtchedBorder;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class StartView extends Popup{
 
@@ -57,8 +59,18 @@ public class StartView extends Popup{
 
         add(schedulePanel, BorderLayout.CENTER);
 
-
+        toDO.addActionListener(new Listener());
     }
-
+    private class Listener extends JPanel implements ActionListener {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            String str = e.getActionCommand();
+            if(str.compareTo("newButton") == 0){
+                System.out.println("Test");
+            }
+            System.out.println("Tester");
+            ToDoView abc = new ToDoView();
+        }
+    }
 
 }

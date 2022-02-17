@@ -1,4 +1,6 @@
-package src;
+package src.View;
+import src.Popup;
+
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.EtchedBorder;
@@ -6,7 +8,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class StartView extends Popup{
+public class StartView extends Popup {
 
 
     private JPanel titlePanel;

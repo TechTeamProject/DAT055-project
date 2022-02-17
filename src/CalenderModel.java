@@ -4,22 +4,40 @@ package src;
 import java.awt.*;
 import java.time.*;
 import java.util.*;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
-public class Calender {
+public class CalenderModel {
     private LinkedList<Event> Eventlist = new LinkedList<Event>();
     private String language = "SWE"; //Programmet startar med svenska.
     private Color color = Color.WHITE; //Programmet startar med vit färg.
+    private LocalDateTime now = LocalDateTime.now();
+
+
+    public CalenderModel() {
+
+    }
 
 
     //Skapar ett nytt Event och lägger den på sista platsen i LinkedListen EventList.
     public void addEvent(int year, int month, int day, int hour, int minute, String title) {
-        this.Eventlist.add(new Event(year,month,day,hour, minute, title));
+       // this.Eventlist.add(new Event(year,month,day,hour, minute, title));
+    }
+
+    /**
+     * @param start - Where the event starts
+     * @param end - Where the event ends
+     * @param title - The title of the event
+     */
+    public void addEvent2(LocalDateTime start, LocalDateTime end, String title) {
+        this.Eventlist.add(new Event(start, end, title));
     }
 
     //Printar ut lite info om eventet på index 0 i EventList. Används bara för att testa.
     public void testPrint(){
         Eventlist.get(0).printer();
     }
+
 
 
     //Tar in år och månad och returnerar antal dagar i den månaden.
@@ -29,60 +47,10 @@ public class Calender {
 
     /**
      * --------------------------------------------------------------------------------------------------------
-     * Språk & ljud-metoder nedan från innan UML
+     * Metoder nedan från innan UML
      * --------------------------------------------------------------------------------------------------------
      */
-    //Tar in månadens siffra och returnerar namnet på måndaden. Tar hänsyn till vilket språk man har satt på.
-    public String getMonthName(int month){
-        if(language.compareTo("SWE") == 0){
-            switch (month) {
-                case 1:  return "Januari";
-                case 2:  return "Februari";
-                case 3:  return "Mars";
-                case 4:  return "April";
-                case 5:  return "Maj";
-                case 6:  return "Juni";
-                case 7:  return "Juli";
-                case 8:  return "Augusti";
-                case 9:  return "September";
-                case 10: return "Oktober";
-                case 11: return "November";
-                case 12: return "December";
-                default: return "Invalid month";
-            }
-        }
-        else if(language.compareTo("ENG") == 0){
-            switch (month) {
-                case 1:  return "January";
-                case 2:  return "February";
-                case 3:  return "March";
-                case 4:  return "April";
-                case 5:  return "May";
-                case 6:  return "June";
-                case 7:  return "July";
-                case 8:  return "August";
-                case 9:  return "September";
-                case 10: return "October";
-                case 11: return "November";
-                case 12: return "December";
-                default: return "Invalid month";
-            }
-        }
-        return "Invalid language";
-    }
 
-
-    //Setters och getters här nedanför för.
-
-    public String getLanguage(){
-        if(language.compareTo("SWE") == 0){
-            return "Svenska";
-        }
-        else if(language.compareTo("ENG") == 0){
-            return "English";
-        }
-        return "Unknown";
-    }
 
     //Enkel funktion som bara kan göra ett ljud hittils. Är meningen att den ska kunna göra flera ljud.
     public void playSound(String type){

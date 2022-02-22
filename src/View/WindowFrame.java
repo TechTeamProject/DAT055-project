@@ -13,7 +13,7 @@ public class WindowFrame extends JFrame {
     YearView yearView;
     OptionView optionView;
     EventView eventView;
-    ToDoView todoView;
+    //ToDoView todoView;
     //MonthView monthView;
     LoginView loginView;
     private CardLayout c1;
@@ -30,7 +30,7 @@ public class WindowFrame extends JFrame {
         optionView = new OptionView();
         yearView = new YearView();
         eventView = new EventView();
-        todoView = new ToDoView();
+        //todoView = new ToDoView();
         //monthView = new MonthView();
         loginView = new LoginView();
 

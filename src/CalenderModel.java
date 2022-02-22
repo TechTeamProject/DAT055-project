@@ -12,7 +12,9 @@ public class CalenderModel {
     private String language = "SWE"; //Programmet startar med svenska.
     private Color color = Color.WHITE; //Programmet startar med vit färg.
     private LocalDateTime now = LocalDateTime.now();
-
+    private YearMonth yearMonthObject = YearMonth.of(2022, 2);
+    private int daysInMonth = yearMonthObject.lengthOfMonth(); //28
+    private LocalDateTime viewdate = LocalDateTime.now(); //viewdate är det aktuella objektet man ser i View.
 
     public CalenderModel() {
 
@@ -43,6 +45,107 @@ public class CalenderModel {
     //Tar in år och månad och returnerar antal dagar i den månaden.
     public int getMaxDays(int year, int month){
         return YearMonth.of(year, month).lengthOfMonth();
+    }
+
+    /**
+     * Returnerar time som view tittar på just nu
+     * @return LocalDateTime objekt
+     */
+    public LocalDateTime getViewTime() {
+        return viewdate;
+    }
+
+    /**
+     * Returnerar verklig tid just nu
+     * @return
+     */
+    public LocalDateTime getRealTime() {
+        return now;
+    }
+
+    /**
+     * Skriv in ett LocalDateTime objekt och returnera en int.
+     * @param date object
+     * @return an int
+     */
+    public int getDaysInMonth2(LocalDateTime date) {
+        int year = date.getYear();
+        Month month = date.getMonth();
+        yearMonthObject = YearMonth.of(year, month);
+        return yearMonthObject.lengthOfMonth();
+    }
+
+    /**
+     * Metod för att få antal dagar i månaden
+     * @return int (antal dagar)
+     */
+    public int getDaysInMonth() {
+        int year = viewdate.getYear();
+        Month month = viewdate.getMonth();
+        yearMonthObject = YearMonth.of(year, month);
+        return yearMonthObject.lengthOfMonth();
+    }
+    /**
+     * Metod för att returnera årtal
+     * @return int (årtal)
+     */
+    public int getYear() {
+        return viewdate.getYear();
+    }
+
+    /**
+     * Setter för årtal. positivt tal för frammåt och minustal för bakåt.
+     * @param y (antal år framåt)
+     */
+    public void setYear(int y) {
+        if (y > 0) {
+            viewdate = viewdate.plusYears(y);
+        }
+        else if (y < 0) {
+            y = y*-1;
+            viewdate = viewdate.minusYears(y);
+        }
+    }
+    /**
+     * Metod för att returnera månad
+     * @return Month (månader)
+     */
+    public Month getMonth() {
+        return viewdate.getMonth();
+    }
+    /**
+     * Setter för månad
+     * @param y (antal månader framåt)
+     */
+    public void setMonth(int y) {
+        if (y > 0) {
+           viewdate = viewdate.plusMonths(y);
+        }
+        else if (y < 0) {
+            y = y*-1;
+           viewdate = viewdate.minusMonths(y);
+        }
+    }
+    /**
+     * Metod för att returnera dag
+     * @return int (dag)
+     */
+    public int getDay() {
+        return viewdate.getDayOfMonth();
+    }
+
+    /**
+     * Setter för dagar. d>0 för framåt, d<0 för bakåt.
+     * @param d (dagar)
+     */
+    public void setDay(int d) {
+        if (d > 0) {
+           viewdate = viewdate.plusDays(d);
+        }
+        else if (d < 0) {
+            d = d*-1;
+           viewdate = viewdate.minusDays(d);
+        }
     }
 
     /**

@@ -1,10 +1,18 @@
 package src.View;
 
+import src.Lighthouse;
+import src.Ships;
 import javax.swing.*;
 import java.awt.*;
+import java.beans.PropertyChangeListener;
 
-public class OptionView extends JPanel {
+public class OptionView extends JPanel implements Ships {
+    private Lighthouse bean = new Lighthouse();
 
+    @Override
+    public void setupShip() {
+      //  bean.addPropertyChangeListener();
+    }
     public OptionView(){
 
         JLabel label = new JLabel("Setting",SwingConstants.CENTER);

@@ -1,5 +1,7 @@
 package src.View;
 
+import src.Lighthouse;
+
 import javax.swing.*;
 import javax.swing.border.EtchedBorder;
 import java.awt.*;
@@ -8,6 +10,8 @@ public class WeekView extends TopBar {
 
     private JPanel contentPane;
     private String [] weekDays =  new String[]{"MON" , "TUE", "WED", "THU", "FRI", "SAT", "SUN"};
+
+
 
 
 
@@ -42,4 +46,5 @@ public class WeekView extends TopBar {
 
 
     }
+
 }

@@ -71,7 +71,7 @@ public class StartView extends Popup {
                 System.out.println("Test");
             }
             System.out.println("Tester");
-            ToDoView abc = new ToDoView();
+            //ToDoView abc = new ToDoView();
         }
     }
 

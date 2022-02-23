@@ -38,7 +38,7 @@ public class WindowFrame extends JFrame {
         loginView = new LoginView();
         bookView = new BookingView(m.getEvents());
         bookingView = new JScrollPane(bookView);
-        bookingView.setPreferredSize(new Dimension(600,450));
+        bookingView.setPreferredSize(new Dimension(600,400));
 
         JPanel p = new JPanel();
 

@@ -14,7 +14,10 @@ public class BookingView extends JPanel {
     private void update(LinkedList<Event> list){
         this.removeAll();
         this.setLayout(new GridLayout(list.size()+1, 1, 5, 5)); //Sätter antal rader till antal events + titel
-        JLabel header = new JLabel("Bookings");
+        JLabel header = new JLabel();
+        if(list.size()>0){
+            header.setText("Bookings");
+        } else{ header.setText("No bookings"); }
         this.add(header);
         for(Event e : list){//Lägger till en panel för varje event med tid+plats och edit knapp
             JPanel p = new JPanel(new GridLayout(2,2,10,10));

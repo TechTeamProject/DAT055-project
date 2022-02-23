@@ -10,13 +10,10 @@ public class WeekView extends TopBar {
     private JPanel contentPane;
     private String [] weekDays =  new String[]{"MON" , "TUE", "WED", "THU", "FRI", "SAT", "SUN"};
 
-
-
-
-
     public WeekView(){
 
         contentPane = new JPanel(new GridLayout(1,7));
+        contentPane.setPreferredSize(new Dimension(1000,400));
         add(contentPane);
 
         for(int i=0; i<weekDays.length; ++i){
@@ -42,8 +39,5 @@ public class WeekView extends TopBar {
 
             contentPane.add(dayBox);
         }
-
-
     }
-
 }

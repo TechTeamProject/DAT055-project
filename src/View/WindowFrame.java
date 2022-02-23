@@ -5,11 +5,6 @@ import src.CalenderModel;
 import java.awt.*;
 import javax.swing.*;
 import java.awt.event.*;
-import java.time.LocalDateTime;
-import java.util.function.ToDoubleBiFunction;
-
-import static javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER;
-import static javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS;
 
 
 public class WindowFrame extends JFrame {

@@ -16,18 +16,18 @@ public class BookingView extends JPanel {
         this.setLayout(new GridLayout(list.size()+1, 1, 5, 5)); //Sätter antal rader till antal events + titel
         JLabel header = new JLabel("Bookings");
         this.add(header);
-        for(Event e : list){//Lägger till en panel för varje event med
+        for(Event e : list){//Lägger till en panel för varje event med tid+plats och edit knapp
             JPanel p = new JPanel(new GridLayout(2,2,10,10));
-            //String title_ = e.getTitle();
-            //JLabel title = new JLabel(title_);
-            //String time_ = e.getTime();
-            //JLabel time = new JLabel(time_);
-            //String location_ = e.getLocation();
-            //JLabel location = new JLabel(location_);
+            String title_ = e.getDescription();
+            JLabel title = new JLabel(title_);
+            String time_ = e.getFormattedStart();
+            JLabel time = new JLabel(time_);
+            String location_ = e.getLocation();
+            JLabel location = new JLabel(location_);
             JButton edit = new JButton("EDIT");
-            //p.add(title);
-            //p.add(time);
-            //p.add(location);
+            p.add(title);
+            p.add(time);
+            p.add(location);
             p.add(edit);
             this.add(p);
         }

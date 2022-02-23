@@ -45,5 +45,4 @@ public class WeekView extends TopBar {
 
 
     }
-
 }

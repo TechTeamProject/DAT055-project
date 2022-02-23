@@ -1,9 +1,15 @@
 
 package src.View;
+import src.CalenderModel;
+
 import java.awt.*;
 import javax.swing.*;
 import java.awt.event.*;
+import java.time.LocalDateTime;
 import java.util.function.ToDoubleBiFunction;
+
+import static javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER;
+import static javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS;
 
 
 public class WindowFrame extends JFrame {
@@ -16,6 +22,8 @@ public class WindowFrame extends JFrame {
     //ToDoView todoView;
     MonthView monthView;
     LoginView loginView;
+    BookingView bookView;
+    JScrollPane bookingView;///////////////////
     private CardLayout c1;
     private int currentCard = 1;
 
@@ -24,7 +32,7 @@ public class WindowFrame extends JFrame {
     }
 
     public WindowFrame(){
-
+        CalenderModel m = new CalenderModel();
         weekView = new WeekView();
         startView = new StartView();
         optionView = new OptionView();
@@ -33,12 +41,15 @@ public class WindowFrame extends JFrame {
         //todoView = new ToDoView();
         monthView = new MonthView();
         loginView = new LoginView();
+        bookView = new BookingView(m.getEvents());
+        bookingView = new JScrollPane(bookView);
+        bookingView.setPreferredSize(new Dimension(600,450));
 
         JPanel p = new JPanel();
 
         JButton b1 = new JButton("Start");
-        JButton b2 = new JButton("Setting");
-        JButton b3 = new JButton("Booking");
+        JButton b2 = new JButton("Settings");
+        JButton b3 = new JButton("Bookings");
         //JButton b4 = new JButton("Todo");
         JButton b5 = new JButton("Week");
         JButton b7 = new JButton("Year");
@@ -61,7 +72,7 @@ public class WindowFrame extends JFrame {
 
         start.add(startView);
         setting.add(optionView);
-        //booking.add(BookingView);
+        booking.add(bookingView);
         //todo.add(todoView);
         week.add(weekView);
         year.add(yearView);

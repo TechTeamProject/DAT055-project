@@ -7,7 +7,7 @@ import java.util.*;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
-public class CalenderModel {
+public class CalenderModel extends Lighthouse {
     private LinkedList<Event> Eventlist = new LinkedList<Event>();
     private String language = "SWE"; //Programmet startar med svenska.
     private Color color = Color.WHITE; //Programmet startar med vit färg.
@@ -20,18 +20,12 @@ public class CalenderModel {
 
     }
 
-
-    //Skapar ett nytt Event och lägger den på sista platsen i LinkedListen EventList.
-    public void addEvent(int year, int month, int day, int hour, int minute, String title) {
-       // this.Eventlist.add(new Event(year,month,day,hour, minute, title));
-    }
-
     /**
      * @param start - Where the event starts
      * @param end - Where the event ends
      * @param title - The title of the event
      */
-    public void addEvent2(LocalDateTime start, LocalDateTime end, String title) {
+    public void addEvent(LocalDateTime start, LocalDateTime end, String title) {
         this.Eventlist.add(new Event(start, end, title));
     }
 
@@ -153,7 +147,6 @@ public class CalenderModel {
      * Metoder nedan från innan UML
      * --------------------------------------------------------------------------------------------------------
      */
-
 
     //Enkel funktion som bara kan göra ett ljud hittils. Är meningen att den ska kunna göra flera ljud.
     public void playSound(String type){

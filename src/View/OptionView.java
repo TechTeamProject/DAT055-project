@@ -12,6 +12,8 @@ public class OptionView extends JPanel implements Ships {
     @Override
     public void setupShip() {
       //  bean.addPropertyChangeListener();
+      //  bean.addPropertyChangeListener(e ->
+        //        label.setText((String) e.getNewValue())
     }
     public OptionView(){
 
@@ -31,6 +33,9 @@ public class OptionView extends JPanel implements Ships {
         p.add(button3);
         p.add(button4);
         this.add(p);
+
+
+        bean.addPropertyChangeListener(e -> button1.getActionCommand());
     }
 
 }

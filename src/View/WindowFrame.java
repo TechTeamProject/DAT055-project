@@ -14,7 +14,7 @@ public class WindowFrame extends JFrame {
     OptionView optionView;
     EventView eventView;
     //ToDoView todoView;
-    //MonthView monthView;
+    MonthView monthView;
     LoginView loginView;
     private CardLayout c1;
     private int currentCard = 1;
@@ -31,7 +31,7 @@ public class WindowFrame extends JFrame {
         yearView = new YearView();
         eventView = new EventView();
         //todoView = new ToDoView();
-        //monthView = new MonthView();
+        monthView = new MonthView();
         loginView = new LoginView();
 
         JPanel p = new JPanel();
@@ -65,7 +65,7 @@ public class WindowFrame extends JFrame {
         //todo.add(todoView);
         week.add(weekView);
         year.add(yearView);
-        //month.add(monthView);
+        month.add(monthView);
         login.add(loginView);
 
         p.add(start, "panel1");

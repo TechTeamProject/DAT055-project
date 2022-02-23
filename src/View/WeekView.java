@@ -1,6 +1,5 @@
 package src.View;
 
-import src.Lighthouse;
 
 import javax.swing.*;
 import javax.swing.border.EtchedBorder;

@@ -17,7 +17,7 @@ public class OptionView extends JPanel implements Ships {
     }
     public OptionView(){
 
-        JLabel label = new JLabel("Setting",SwingConstants.CENTER);
+        JLabel label = new JLabel("Settings",SwingConstants.CENTER);
         label.setFont(new Font("Arial", Font.PLAIN, 30));
 
         JPanel p = new JPanel(new GridLayout(5,1,10,10));

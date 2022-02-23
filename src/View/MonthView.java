@@ -26,7 +26,7 @@ public class MonthView extends JPanel {
         this.add(next);
         this.add(dc);
         this.setBackground(Color.darkGray);
-        this.setPreferredSize(new Dimension( 600, 280 ));
+        this.setPreferredSize(new Dimension( 1000, 400 ));
 
         next.addActionListener(new ActionListener() {
             @Override
@@ -205,6 +205,6 @@ class CalendarPanel extends JPanel {
 
     @Override
     public Dimension getPreferredSize() {
-        return new Dimension(500, 200);
+        return new Dimension(1000, 360);
     }
 }

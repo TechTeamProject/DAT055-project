@@ -5,7 +5,6 @@ import java.awt.*;
 import java.time.*;
 import java.util.*;
 import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 
 public class CalenderModel extends Lighthouse {
     private LinkedList<Event> Eventlist = new LinkedList<Event>();
@@ -25,8 +24,12 @@ public class CalenderModel extends Lighthouse {
      * @param end - Where the event ends
      * @param title - The title of the event
      */
-    public void addEvent(LocalDateTime start, LocalDateTime end, String title) {
-        this.Eventlist.add(new Event(start, end, title));
+    public void addEvent(LocalDateTime start, LocalDateTime end, String title, String location) {
+        this.Eventlist.add(new Event(start, end, title, location));
+    }
+
+    public LinkedList<Event> getEvents(){
+        return this.Eventlist;
     }
 
     //Printar ut lite info om eventet på index 0 i EventList. Används bara för att testa.

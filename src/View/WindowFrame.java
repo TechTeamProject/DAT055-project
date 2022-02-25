@@ -32,11 +32,11 @@ public class WindowFrame extends JFrame {
         startView = new StartView();
         optionView = new OptionView();
         yearView = new YearView();
-        eventView = new EventView();
+        eventView = new EventView(m);
         //todoView = new ToDoView();
         monthView = new MonthView();
         loginView = new LoginView();
-        bookView = new BookingView(m.getEvents());
+        bookView = new BookingView(m);
         bookingView = new JScrollPane(bookView);
         bookingView.setPreferredSize(new Dimension(600, 400));
 

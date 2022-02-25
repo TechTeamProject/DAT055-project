@@ -1,10 +1,12 @@
 package src.View;
+import src.CalenderModel;
+
 import java.awt.*;
 import javax.swing.*;
 
 public class EventView extends JPanel {
 
-    public EventView(){
+    public EventView(CalenderModel m){
 
         JPanel p = new JPanel(); //Panel för event info
         p.setLayout(new GridLayout(6,2, 10,5));

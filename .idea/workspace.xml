@@ -4,9 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4b89b8c8-4e75-454b-8fad-b69ac190600f" name="Changes" comment="test">
+    <list default="true" id="4b89b8c8-4e75-454b-8fad-b69ac190600f" name="Changes" comment="create event knapp i windowframe">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/View/BookingView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/BookingView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/View/EventView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/EventView.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/View/WindowFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/WindowFrame.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -126,7 +127,13 @@
       <option name="presentableId" value="LOCAL−00007" />
       <updated>1645801400876</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL−00008" summary="create event knapp i windowframe">
+      <created>1645803996054</created>
+      <option name="number" value="LOCAL−00008" />
+      <option name="presentableId" value="LOCAL−00008" />
+      <updated>1645803996054</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -149,6 +156,7 @@
     <MESSAGE value="bookingview, event upd" />
     <MESSAGE value="lite ändringar" />
     <MESSAGE value="test" />
-    <option name="LAST_COMMIT_MESSAGE" value="test" />
+    <MESSAGE value="create event knapp i windowframe" />
+    <option name="LAST_COMMIT_MESSAGE" value="create event knapp i windowframe" />
   </component>
 </project>

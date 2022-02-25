@@ -1,4 +1,5 @@
 package src.View;
+import src.CalenderModel;
 import src.Event;
 
 import javax.swing.*;
@@ -8,11 +9,9 @@ import java.awt.event.ActionListener;
 import java.util.LinkedList;
 
 public class BookingView extends JPanel implements ActionListener{
-    public BookingView(LinkedList<Event> list){
-        update(list);
-    }
-    private void update(LinkedList<Event> list){
-        this.removeAll();
+
+    public BookingView(CalenderModel m){
+        LinkedList<Event> list = m.getEvents();
         this.setLayout(new GridLayout(list.size()+1, 1, 5, 5)); //Sätter antal rader till antal events + titel
 
         JLabel header = new JLabel();
@@ -29,14 +28,20 @@ public class BookingView extends JPanel implements ActionListener{
             JLabel time = new JLabel(time_);
             String location_ = e.getLocation();
             JLabel location = new JLabel(location_);
-            JButton edit = new JButton("EDIT");
-            edit.addActionListener(this);
+            JButton remove = new JButton("REMOVE");
+            remove.addActionListener(this);
             p.add(title);
             p.add(time);
             p.add(location);
-            p.add(edit);
+            p.add(remove);
             this.add(p);
         }
+        update();
+    }
+
+    private void update(){
+        //this.removeAll();
+        //new BookingView(m);
     }
 
     @Override

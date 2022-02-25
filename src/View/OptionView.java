@@ -35,7 +35,7 @@ public class OptionView extends JPanel implements Ships {
         this.add(p);
 
 
-        //bean.addPropertyChangeListener(e -> button1.getActionCommand());
+        bean.addPropertyChangeListener(e -> button1.getActionCommand());
     }
 
 }

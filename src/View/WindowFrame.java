@@ -18,7 +18,7 @@ public class WindowFrame extends JFrame {
     MonthView monthView;
     LoginView loginView;
     BookingView bookView;
-    JScrollPane bookingView;///////////////////
+    JScrollPane bookingView;
     private CardLayout c1;
     private int currentCard = 1;
 
@@ -26,7 +26,7 @@ public class WindowFrame extends JFrame {
         WindowFrame windowFrame = new WindowFrame();
     }
 
-    public WindowFrame(){
+    public WindowFrame() {
         CalenderModel m = new CalenderModel();
         weekView = new WeekView();
         startView = new StartView();
@@ -38,7 +38,7 @@ public class WindowFrame extends JFrame {
         loginView = new LoginView();
         bookView = new BookingView(m.getEvents());
         bookingView = new JScrollPane(bookView);
-        bookingView.setPreferredSize(new Dimension(600,400));
+        bookingView.setPreferredSize(new Dimension(600, 400));
 
         JPanel p = new JPanel();
 
@@ -50,6 +50,7 @@ public class WindowFrame extends JFrame {
         JButton b7 = new JButton("Year");
         JButton b6 = new JButton("Month");
         JButton b8 = new JButton("Login");
+        JButton b9 = new JButton("Create Event");
 
 
         c1 = new CardLayout();
@@ -64,6 +65,7 @@ public class WindowFrame extends JFrame {
         JPanel year = new JPanel();
         JPanel month = new JPanel();
         JPanel login = new JPanel();
+        JPanel event = new JPanel();
 
         start.add(startView);
         setting.add(optionView);
@@ -73,6 +75,7 @@ public class WindowFrame extends JFrame {
         year.add(yearView);
         month.add(monthView);
         login.add(loginView);
+        event.add(eventView);
 
         p.add(start, "panel1");
         p.add(setting, "panel2");
@@ -80,8 +83,9 @@ public class WindowFrame extends JFrame {
         p.add(todo, "panel4");
         p.add(week, "panel5");
         p.add(year, "panel7");
-        p.add(month,"panel6");
-        p.add(login,"panel8");
+        p.add(month, "panel6");
+        p.add(login, "panel8");
+        p.add(event, "panel9");
 
         JPanel buttonPanel = new JPanel();
         buttonPanel.add(b1);
@@ -92,6 +96,7 @@ public class WindowFrame extends JFrame {
         buttonPanel.add(b6);
         buttonPanel.add(b7);
         buttonPanel.add(b8);
+        buttonPanel.add(b9);
 
         JMenuBar menubar = new JMenuBar();
         this.setJMenuBar(menubar);
@@ -103,7 +108,8 @@ public class WindowFrame extends JFrame {
         menubar.add(b6);
         menubar.add(b7);
         menubar.add(b8);
-        b1.addActionListener(new ActionListener(){
+        menubar.add(b9);
+        b1.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
 
@@ -139,26 +145,30 @@ public class WindowFrame extends JFrame {
         b5.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                c1.show(p,"panel5");
+                c1.show(p, "panel5");
             }
         });
         b6.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                c1.show(p,"panel6");
+                c1.show(p, "panel6");
             }
         });
         b7.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                c1.show(p,"panel7");
+                c1.show(p, "panel7");
             }
         });
         b8.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                c1.show(p,"panel8");
+                c1.show(p, "panel8");
             }
+        });
+        b9.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) { c1.show(p, "panel9"); }
         });
 
         getContentPane().add(p, BorderLayout.CENTER);

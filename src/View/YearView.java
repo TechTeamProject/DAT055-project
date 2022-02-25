@@ -14,12 +14,14 @@ public class YearView extends JPanel{
 
     private int currentYear;
     private int previousYear;
+    final int n = 10;
+    final int i = 1;
     public  YearView(){
 
         JPanel p = new JPanel(new GridLayout(4,4,20,20));
         JButton button1 = new JButton("January");
         JButton button2 = new JButton("February");
-        JButton button3 = new JButton("Mars");
+        JButton button3 = new JButton("March");
         JButton button4 = new JButton("April");
         JButton button5 = new JButton("May");
         JButton button6 = new JButton("June");
@@ -29,10 +31,14 @@ public class YearView extends JPanel{
         JButton button10 = new JButton("October");
         JButton button11 = new JButton("November");
         JButton button12 = new JButton("December");
+        setPreferredSize( new Dimension( 600, 400 ) );
+
+
+
+
 
         JButton previous = new JButton("<");
         JButton next = new JButton(">");
-
         JPanel panel = new JPanel();
         JPanel p1 = new JPanel();
         currentYear = Year.now().getValue();
@@ -58,24 +64,26 @@ public class YearView extends JPanel{
         this.add(p1, BorderLayout.NORTH);
         this.add(p, BorderLayout.CENTER);
 
-        next.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-
-            }
-        });
-
+            next.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    if( i< n){
+                        currentYear = currentYear+1;
+                        header.setText(String.valueOf(currentYear));
+                    }
+                }
+            });
         previous.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
+                if( i< n){
+                    currentYear = currentYear-1;
+                    header.setText(String.valueOf(currentYear));
+                }
             }
         });
     }
-
-
 }
-
 
 
 

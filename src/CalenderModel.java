@@ -16,7 +16,7 @@ public class CalenderModel extends Lighthouse {
     private LocalDateTime viewdate = LocalDateTime.now(); //viewdate är det aktuella objektet man ser i View.
 
     public CalenderModel() {
-
+        //constructor
     }
 
     /**

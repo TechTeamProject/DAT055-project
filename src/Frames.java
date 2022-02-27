@@ -1,9 +1,9 @@
 package src;
 
 import src.View.ChatView;
-
 import javax.swing.*;
 
+//Test klass för Chatten.
 public class Frames {
     private static ChatView View;
     private static ChatControl Control;

@@ -25,7 +25,6 @@ public class ChatServer implements  Runnable{
         while (true) {
             try {
                 Socket socket = serverSocket.accept();
-                System.out.println("accepts : " + socket.getRemoteSocketAddress());
                 ClientThread client = new ClientThread(this, socket);
                 ClientServerInfo clienters = new ClientServerInfo(socket);
                 Thread thread = new Thread(client);

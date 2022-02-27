@@ -30,14 +30,16 @@ public class ChatControl {
         public void keyPressed(KeyEvent ke){
             if(ke.getKeyCode()==KeyEvent.VK_ENTER){
 
-                if (c.getFieldText().compareTo("") != 0 && t.Alive()) {
-                    t.addNextMessage(c.getFieldText());
-                    c.setFieldText("");
-                } else {
-                    c.printText("You are not connected to a server!");
+                if (c.getFieldText().compareTo("") != 0) {
+                    if(t.Alive()){
+                        t.addNextMessage(c.getFieldText());
+                        c.setFieldText("");
+                    }
+                    else{
+                        c.printText("You are not connected to a server!");
+                    }
+
                 }
-
-
             }
         }
         public void keyTyped(KeyEvent e) {}

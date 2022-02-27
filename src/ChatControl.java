@@ -1,4 +1,5 @@
 package src;
+import src.Server.ChatServer;
 import src.View.ChatView;
 
 import java.awt.event.ActionEvent;

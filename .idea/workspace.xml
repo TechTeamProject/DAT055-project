@@ -4,15 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4b89b8c8-4e75-454b-8fad-b69ac190600f" name="Changes" comment="lite ändringar">
+    <list default="true" id="4b89b8c8-4e75-454b-8fad-b69ac190600f" name="Changes" comment="Observer interface fungerar och är inlagt på alla views">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/CalenderModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/CalenderModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Lighthouse.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/View/MonthView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/MonthView.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/View/OptionView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/OptionView.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/View/WeekView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/WeekView.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/View/WindowFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/WindowFrame.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/View/YearView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/YearView.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -143,7 +138,14 @@
       <option name="presentableId" value="LOCAL−00009" />
       <updated>1645806102352</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="Observer interface fungerar och är inlagt på alla views">
+      <created>1646079379796</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1646079379796</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -167,6 +169,7 @@
     <MESSAGE value="test" />
     <MESSAGE value="create event knapp i windowframe" />
     <MESSAGE value="lite ändringar" />
-    <option name="LAST_COMMIT_MESSAGE" value="lite ändringar" />
+    <MESSAGE value="Observer interface fungerar och är inlagt på alla views" />
+    <option name="LAST_COMMIT_MESSAGE" value="Observer interface fungerar och är inlagt på alla views" />
   </component>
 </project>

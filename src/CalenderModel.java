@@ -33,9 +33,11 @@ public class CalenderModel {
      * @param start - Where the event starts
      * @param end - Where the event ends
      * @param title - The title of the event
+     * firePropertyChange alerts listener. It sends the starting time as oldvalue and endtime as newvalue
      */
     public void addEvent(LocalDateTime start, LocalDateTime end, String title, String location) {
         this.Eventlist.add(new Event(start, end, title, location));
+        support.firePropertyChange("NewEvent", start, end);
     }
 
     public void removeEvent(int index){
@@ -50,8 +52,6 @@ public class CalenderModel {
     public void testPrint(){
         Eventlist.get(0).printer();
     }
-
-
 
     //Tar in år och månad och returnerar antal dagar i den månaden.
     public int getMaxDays(int year, int month){

@@ -22,7 +22,7 @@ public class WindowFrame extends JFrame {
     JScrollPane bookingView;
     private CardLayout c1;
     private int currentCard = 1;
-    private boolean test = false; //För testning av observerinterface
+    private boolean test = true; //För testning av observerinterface
 
     public static void main(String [] args){
         WindowFrame windowFrame = new WindowFrame();
@@ -192,10 +192,17 @@ public class WindowFrame extends JFrame {
         this.setVisible(true);
         this.add(p);
 
+        /**
+         * test för observerinterface
+         */
         if (test) {
             m.setDay(1);
             m.setMonth(1);
             m.setYear(1);
+
+            LocalDateTime now = LocalDateTime.now();
+            LocalDateTime then = now.plusHours(1);
+            m.addEvent(now, then, "Nytt Event", "Location");
         }
 
 

@@ -8,35 +8,39 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
 public class ChatControl {
-    private static ChatView c;
-    private ServerThread t;
+    private static ChatView chatView;
+    private ServerThread serverThread;
     private ChatServer server;
+    private Sound sound;
     public ChatControl(ChatView v){
-        c = v;
+        sound = new Sound();
+        chatView = v;
 
-        c.addChatFieldListener(new chatListener());
-        c.addIpFieldListener(new ipListener());
-        c.addTopButtonsListener(new topButtonsListener());
+        chatView.addChatFieldListener(new chatListener());
+        chatView.addIpFieldListener(new ipListener());
+        chatView.addTopButtonsListener(new topButtonsListener());
+
     }
     public ChatControl(boolean fake){
         //Fake initializer for static values
     }
 
     public void printText(String text){
-        c.printText(text);
+        chatView.printText(text);
     }
 
     private class chatListener implements KeyListener {
         public void keyPressed(KeyEvent ke){
             if(ke.getKeyCode()==KeyEvent.VK_ENTER){
 
-                if (c.getFieldText().compareTo("") != 0) {
-                    if(t.Alive()){
-                        t.addNextMessage(c.getFieldText());
-                        c.setFieldText("");
+                if (chatView.getFieldText().compareTo("") != 0) {
+                    if(serverThread.Alive()){
+                        serverThread.addNextMessage(chatView.getFieldText());
+                        chatView.setFieldText("");
                     }
                     else{
-                        c.printText("You are not connected to a server!");
+                        chatView.printText("You are not connected to a server!");
+                        sound.playErrorSound();
                     }
 
                 }
@@ -48,14 +52,15 @@ public class ChatControl {
     private class ipListener implements KeyListener{
         public void keyPressed(KeyEvent ke) {
             if (ke.getKeyCode() == KeyEvent.VK_ENTER) {
-                if (c.getIpText().compareTo("") != 0) {
-                    if(!t.Alive()){
-                        t = new ServerThread("AddUserClass", c.getIpText(), 23476);
-                        c.switchMiddlePanel("ChatArea");
+                if (chatView.getIpText().compareTo("") != 0) {
+                    if(!serverThread.Alive()){
+                        serverThread = new ServerThread("AddUserClass", chatView.getIpText(), 23476);
+                        chatView.switchMiddlePanel("ChatArea");
                     }
                     else{
-                        c.switchMiddlePanel("ChatArea");
-                        c.printText("Already connected");
+                        chatView.switchMiddlePanel("ChatArea");
+                        chatView.printText("Already connected");
+                        sound.playErrorSound();
                     }
 
                 }
@@ -70,16 +75,16 @@ public class ChatControl {
             String str = e.getActionCommand();
             switch (str) {
                 case "Host server":
-                    c.switchMiddlePanel("ChatArea");
+                    chatView.switchMiddlePanel("ChatArea");
                     server = new ChatServer(23476);
                     Thread serverT = new Thread(server);
                     serverT.start();
                     break;
                 case "Connect to server":
-                    c.switchMiddlePanel("IpArea");
+                    chatView.switchMiddlePanel("IpArea");
                     break;
                 case "Chat":
-                    c.switchMiddlePanel("ChatArea");
+                    chatView.switchMiddlePanel("ChatArea");
                     break;
             }
 

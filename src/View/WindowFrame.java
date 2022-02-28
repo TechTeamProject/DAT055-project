@@ -22,7 +22,7 @@ public class WindowFrame extends JFrame {
     JScrollPane bookingView;
     private CardLayout c1;
     private int currentCard = 1;
-    private boolean test = true; //För testning av observerinterface
+    private boolean test = false; //För testning av observerinterface
 
     public static void main(String [] args){
         WindowFrame windowFrame = new WindowFrame();

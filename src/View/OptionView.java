@@ -1,20 +1,12 @@
 package src.View;
 
-import src.Lighthouse;
-import src.Ships;
 import javax.swing.*;
 import java.awt.*;
+import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 
-public class OptionView extends JPanel implements Ships {
-    private Lighthouse bean = new Lighthouse();
+public class OptionView extends JPanel implements PropertyChangeListener {
 
-    @Override
-    public void setupShip() {
-      //  bean.addPropertyChangeListener();
-      //  bean.addPropertyChangeListener(e ->
-        //        label.setText((String) e.getNewValue())
-    }
     public OptionView(){
 
         JLabel label = new JLabel("Settings",SwingConstants.CENTER);
@@ -34,8 +26,9 @@ public class OptionView extends JPanel implements Ships {
         p.add(button4);
         this.add(p);
 
-
-        bean.addPropertyChangeListener(e -> button1.getActionCommand());
     }
-
+    @Override
+    public void propertyChange(PropertyChangeEvent evt) {
+        System.out.println("TEST: Observer interface works. In the event this is what it says:" + evt);
+    }
 }

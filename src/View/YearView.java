@@ -3,6 +3,8 @@ package src.View;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.beans.PropertyChangeEvent;
+import java.beans.PropertyChangeListener;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 import javax.swing.*;
@@ -10,7 +12,7 @@ import javax.swing.border.EmptyBorder;
 import java.time.Year;
 
 
-public class YearView extends JPanel implements ActionListener{
+public class YearView extends JPanel implements ActionListener, PropertyChangeListener {
 
     private int currentYear;
     private int previousYear;
@@ -109,6 +111,11 @@ public class YearView extends JPanel implements ActionListener{
         String cmd = e.getActionCommand();
         int month = Integer.parseInt(cmd);
         //visa monthView med datum month/currentYear
+    }
+
+    @Override
+    public void propertyChange(PropertyChangeEvent evt) {
+        System.out.println("TEST: Observer interface works. In the event this is what it says:" + evt);
     }
 }
 

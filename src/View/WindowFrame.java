@@ -22,6 +22,7 @@ public class WindowFrame extends JFrame {
     JScrollPane bookingView;
     private CardLayout c1;
     private int currentCard = 1;
+    private boolean test = false; //För testning av observerinterface
 
     public static void main(String [] args){
         WindowFrame windowFrame = new WindowFrame();
@@ -110,6 +111,14 @@ public class WindowFrame extends JFrame {
         menubar.add(b7);
         menubar.add(b8);
         menubar.add(b9);
+
+        //Listeners added to Observable here
+        m.addPropertyChangeListener(optionView);
+        m.addPropertyChangeListener(weekView);
+        m.addPropertyChangeListener(monthView);
+        m.addPropertyChangeListener(yearView);
+
+
         b1.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -182,6 +191,16 @@ public class WindowFrame extends JFrame {
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setVisible(true);
         this.add(p);
+
+        if (test) {
+            m.setDay(1);
+            m.setMonth(1);
+            m.setYear(1);
+        }
+
+
+
+
     }
 
 

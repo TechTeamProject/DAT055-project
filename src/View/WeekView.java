@@ -4,8 +4,10 @@ package src.View;
 import javax.swing.*;
 import javax.swing.border.EtchedBorder;
 import java.awt.*;
+import java.beans.PropertyChangeEvent;
+import java.beans.PropertyChangeListener;
 
-public class WeekView extends TopBar {
+public class WeekView extends TopBar implements PropertyChangeListener {
 
     private JPanel contentPane;
     private String [] weekDays =  new String[]{"MON" , "TUE", "WED", "THU", "FRI", "SAT", "SUN"};
@@ -39,5 +41,10 @@ public class WeekView extends TopBar {
 
             contentPane.add(dayBox);
         }
+    }
+
+    @Override
+    public void propertyChange(PropertyChangeEvent evt) {
+        System.out.println("TEST: Observer interface works. In the event this is what it says:" + evt);
     }
 }

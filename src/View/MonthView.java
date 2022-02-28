@@ -5,12 +5,14 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.GridLayout;
+import java.beans.PropertyChangeEvent;
+import java.beans.PropertyChangeListener;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 import javax.swing.border.Border;
 import javax.swing.border.LineBorder;
 
-public class MonthView extends JPanel {
+public class MonthView extends JPanel implements PropertyChangeListener {
 
     Calendar cal1 = new GregorianCalendar();
     Calendar cal2 = new GregorianCalendar(
@@ -49,6 +51,11 @@ public class MonthView extends JPanel {
                 revalidate();
             }
         });
+    }
+
+    @Override
+    public void propertyChange(PropertyChangeEvent evt) {
+        System.out.println("TEST: Observer interface works. In the event this is what it says:" + evt);
     }
 }
 

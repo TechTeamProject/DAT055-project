@@ -2,11 +2,13 @@ package src;
 
 
 import java.awt.*;
+import java.beans.PropertyChangeListener;
+import java.beans.PropertyChangeSupport;
 import java.time.*;
 import java.util.*;
 import java.time.LocalDateTime;
 
-public class CalenderModel extends Lighthouse {
+public class CalenderModel {
     private LinkedList<Event> Eventlist = new LinkedList<Event>();
     private String language = "SWE"; //Programmet startar med svenska.
     private Color color = Color.WHITE; //Programmet startar med vit färg.
@@ -15,10 +17,18 @@ public class CalenderModel extends Lighthouse {
     private int daysInMonth = yearMonthObject.lengthOfMonth(); //28
     private LocalDateTime viewdate = LocalDateTime.now(); //viewdate är det aktuella objektet man ser i View.
 
+    private final PropertyChangeSupport support = new PropertyChangeSupport(this);
+
+    public void addPropertyChangeListener(PropertyChangeListener listener) {
+        support.addPropertyChangeListener(listener);
+    }
+
     public CalenderModel() {
 
     }
-
+    public void removePropertyChangeListener(PropertyChangeListener listener) {
+        support.removePropertyChangeListener(listener);
+    }
     /**
      * @param start - Where the event starts
      * @param end - Where the event ends
@@ -96,9 +106,11 @@ public class CalenderModel extends Lighthouse {
 
     /**
      * Setter för årtal. positivt tal för frammåt och minustal för bakåt.
+     * support.firePropertyChange triggar propertyChange i aktuell view
      * @param y (antal år framåt)
      */
     public void setYear(int y) {
+        int oldValue = viewdate.getYear();
         if (y > 0) {
             viewdate = viewdate.plusYears(y);
         }
@@ -106,6 +118,9 @@ public class CalenderModel extends Lighthouse {
             y = y*-1;
             viewdate = viewdate.minusYears(y);
         }
+        int newValue = viewdate.getYear();
+
+        support.firePropertyChange("YearChange", oldValue, newValue);
     }
     /**
      * Metod för att returnera månad
@@ -116,9 +131,11 @@ public class CalenderModel extends Lighthouse {
     }
     /**
      * Setter för månad
+     * support.firePropertyChange triggar propertyChange i aktuell view
      * @param y (antal månader framåt)
      */
     public void setMonth(int y) {
+        int oldValue = viewdate.getMonthValue();
         if (y > 0) {
            viewdate = viewdate.plusMonths(y);
         }
@@ -126,6 +143,8 @@ public class CalenderModel extends Lighthouse {
             y = y*-1;
            viewdate = viewdate.minusMonths(y);
         }
+        int newValue = viewdate.getMonthValue();
+        support.firePropertyChange("MonthChange", oldValue, newValue);
     }
     /**
      * Metod för att returnera dag
@@ -137,9 +156,11 @@ public class CalenderModel extends Lighthouse {
 
     /**
      * Setter för dagar. d>0 för framåt, d<0 för bakåt.
+     * support.firePropertyChange triggar propertyChange i aktuell view
      * @param d (dagar)
      */
     public void setDay(int d) {
+        int oldValue = viewdate.getDayOfMonth();
         if (d > 0) {
            viewdate = viewdate.plusDays(d);
         }
@@ -147,6 +168,8 @@ public class CalenderModel extends Lighthouse {
             d = d*-1;
            viewdate = viewdate.minusDays(d);
         }
+        int newValue = viewdate.getDayOfMonth();
+        support.firePropertyChange("DayChange", oldValue, newValue);
     }
 
     /**

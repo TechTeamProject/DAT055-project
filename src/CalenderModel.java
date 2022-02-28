@@ -28,6 +28,10 @@ public class CalenderModel extends Lighthouse {
         this.Eventlist.add(new Event(start, end, title, location));
     }
 
+    public void removeEvent(int index){
+        Eventlist.remove(index);
+    }
+
     public LinkedList<Event> getEvents(){
         return this.Eventlist;
     }

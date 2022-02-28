@@ -40,7 +40,7 @@ public class ChatControl {
                     }
                     else{
                         chatView.printText("You are not connected to a server!");
-                        sound.playErrorSound();
+                        sound.playError();
                     }
 
                 }
@@ -56,11 +56,12 @@ public class ChatControl {
                     if(!serverThread.Alive()){
                         serverThread = new ServerThread("AddUserClass", chatView.getIpText(), 23476);
                         chatView.switchMiddlePanel("ChatArea");
+                        sound.playConnected();
                     }
                     else{
                         chatView.switchMiddlePanel("ChatArea");
                         chatView.printText("Already connected");
-                        sound.playErrorSound();
+                        sound.playError();
                     }
 
                 }
@@ -79,6 +80,7 @@ public class ChatControl {
                     server = new ChatServer(23476);
                     Thread serverT = new Thread(server);
                     serverT.start();
+                    sound.playStartHost();
                     break;
                 case "Connect to server":
                     chatView.switchMiddlePanel("IpArea");

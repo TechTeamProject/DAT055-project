@@ -34,9 +34,9 @@ public class ChatView extends JPanel{
         middlePanel = new JPanel();
         topPanel = new JPanel();
 
-        ipField = new JTextField("", 16);
+        ipField = new JTextField("", 32);
         field = new JTextField();
-        area = new JTextArea();
+        area = new JTextArea(20,32);
         label = new JLabel("Enter the Ip Adress:");
         scrollPane = new JScrollPane(area);
 

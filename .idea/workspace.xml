@@ -4,10 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4b89b8c8-4e75-454b-8fad-b69ac190600f" name="Changes" comment="addEvent tillagd till observable">
-      <change beforePath="$PROJECT_DIR$/src/View/OptionView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/OptionView.java" afterDir="false" />
+    <list default="true" id="4b89b8c8-4e75-454b-8fad-b69ac190600f" name="Changes" comment="Propertychange - not working yet">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Popup.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/PopUp.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/View/StartView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/StartView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/View/TopBar.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/TopBar.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/View/WeekView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/WeekView.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/View/WindowFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/WindowFrame.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/View/YearView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/YearView.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -65,6 +68,10 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <list>
+      <item itemvalue="Application.WindowFrame" />
+      <item itemvalue="Application.test" />
+    </list>
     <recent_temporary>
       <list>
         <item itemvalue="Application.WindowFrame" />

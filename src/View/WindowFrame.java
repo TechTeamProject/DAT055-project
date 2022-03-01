@@ -221,12 +221,5 @@ public class WindowFrame extends JFrame {
             LocalDateTime then = now.plusHours(1);
             m.addEvent(now, then, "Nytt Event", "Location");
         }
-
-
-
-
     }
-
-
-
 }

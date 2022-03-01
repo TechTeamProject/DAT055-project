@@ -15,7 +15,6 @@ import java.time.Year;
 public class YearView extends JPanel implements PropertyChangeListener {
 
     private int currentYear;
-    private int previousYear;
     final int n = 10;
     final int i = 1;
     public  YearView(){
@@ -34,12 +33,12 @@ public class YearView extends JPanel implements PropertyChangeListener {
         JButton button11 = new JButton("November");
         JButton button12 = new JButton("December");
         setPreferredSize( new Dimension( 600, 400 ) );
+
         JButton previous = new JButton("<");
         JButton next = new JButton(">");
         JPanel panel = new JPanel();
         JPanel p1 = new JPanel();
         currentYear = Year.now().getValue();
-        previousYear = currentYear -1;
         JLabel header = new JLabel((currentYear) +"");
         p1.add(previous, BorderLayout.NORTH);
         p1.add(header);
@@ -86,8 +85,3 @@ public class YearView extends JPanel implements PropertyChangeListener {
         System.out.println("TEST: Observer interface works. In the event this is what it says:" + evt);
     }
 }
-
-
-
-
-

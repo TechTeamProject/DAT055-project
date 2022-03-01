@@ -9,6 +9,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.LinkedList;
 
 public class BookingView extends JPanel implements ActionListener, PropertyChangeListener {
@@ -30,7 +32,9 @@ public class BookingView extends JPanel implements ActionListener, PropertyChang
             p.setBorder(new EtchedBorder());
             String title_ = e.getDescription();
             JLabel title = new JLabel(title_);
-            String time_ = e.getFormattedStart();
+            LocalDateTime datetime = e.getStarttime();
+            DateTimeFormatter format_ = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm");
+            String time_ = datetime.format(format_);
             JLabel time = new JLabel(time_);
             String location_ = e.getLocation();
             JLabel location = new JLabel(location_);
@@ -72,7 +76,9 @@ public class BookingView extends JPanel implements ActionListener, PropertyChang
             p.setBorder(new EtchedBorder());
             String title_ = e.getDescription();
             JLabel title = new JLabel(title_);
-            String time_ = e.getFormattedStart();
+            LocalDateTime datetime = e.getStarttime();
+            DateTimeFormatter format_ = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm");
+            String time_ = datetime.format(format_);
             JLabel time = new JLabel(time_);
             String location_ = e.getLocation();
             JLabel location = new JLabel(location_);

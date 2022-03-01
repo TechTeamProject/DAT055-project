@@ -1,18 +1,15 @@
 package src;
 
 
+import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
-public class Event {
+public class Event implements Serializable {
     private String description;
     private String location;
-    private boolean repeat;
     private LocalDateTime starttime;
     private LocalDateTime endtime;
-    private DateTimeFormatter format = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss");
-    private String formattedStart;
-    private String formattedEnd;
 
 
     /**
@@ -27,8 +24,6 @@ public class Event {
         this.endtime = end;
         this.description = title;
         this.location = loc;
-        formattedStart = start.format(format);
-        formattedEnd = end.format(format);
     }
 
     public String getDescription(){
@@ -39,15 +34,5 @@ public class Event {
         return location;
     }
 
-    public String getFormattedStart(){
-        return formattedStart;
-    }
-    public String getFormattedEnd(){
-        return formattedEnd;
-    }
-
-    public void printer(){
-       //System.out.println(year + "-" + month + "-" + day + " Time " + hour + ":" + minute + " Description: " + title);
-        System.out.println("Starttime " + formattedStart + " Endtime: " + formattedEnd + " Description: " + description);
-    }
+    public LocalDateTime getStarttime(){ return starttime; }
 }

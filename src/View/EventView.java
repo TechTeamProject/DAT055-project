@@ -19,10 +19,6 @@ public class EventView extends JPanel implements ActionListener {
 
     JTextField text4;
 
-    JTextField text5;
-
-    JTextField text6;
-
     public EventView(CalenderModel m){
         this.model=m;
         JPanel p = new JPanel(); //Panel för event info
@@ -43,15 +39,9 @@ public class EventView extends JPanel implements ActionListener {
         text3 = new JTextField("yyyy-MM-dd HH:mm");
         text3.addActionListener(this);
 
-        JLabel alarm = new JLabel(" Alarm: ");
-        text4 = new JTextField("");
-
-        JLabel repeat = new JLabel(" Repeat: ");
-        text5 = new JTextField("");
-
         JLabel location = new JLabel(" Location: ");
-        text6 = new JTextField("");
-        text6.addActionListener(this);
+        text4 = new JTextField("");
+        text4.addActionListener(this);
 
         JButton button = new JButton("Save");
         button.addActionListener(this);
@@ -65,12 +55,8 @@ public class EventView extends JPanel implements ActionListener {
         p.add(text2);
         p.add(until);
         p.add(text3);
-        p.add(alarm);
-        p.add(text4);
-        p.add(repeat);
-        p.add(text5);
         p.add(location);
-        p.add(text6);
+        p.add(text4);
         p1.add(p, BorderLayout.CENTER);
         p1.add(p2, BorderLayout.SOUTH);
         this.add(p1);
@@ -78,24 +64,25 @@ public class EventView extends JPanel implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
+        String str=e.getActionCommand();
+        if(str.equals("save")){
         String title = text1.getText();
         String fromtime = text2.getText();
         String untiltime = text3.getText();
-        String loc = text6.getText();
-
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
-        LocalDateTime fromdatetime = LocalDateTime.parse(fromtime, formatter);
-        LocalDateTime untildatetime = LocalDateTime.parse(untiltime, formatter);
-
-        String str=e.getActionCommand();
-        if(str.equals("save")){
+        String loc = text4.getText();
+        try{
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
+            LocalDateTime fromdatetime = LocalDateTime.parse(fromtime, formatter);
+            LocalDateTime untildatetime = LocalDateTime.parse(untiltime, formatter);
             model.addEvent(fromdatetime,untildatetime,title,loc);
             text1.setText("");
             text2.setText("");
             text3.setText("");
             text4.setText("");
-            text5.setText("");
-            text6.setText("");
+        }
+        catch(Exception ex){
+            JOptionPane.showMessageDialog(null, "Wrong date/time format", "Error", JOptionPane.ERROR_MESSAGE);
+        }
         }
     }
 }

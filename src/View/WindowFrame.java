@@ -117,6 +117,7 @@ public class WindowFrame extends JFrame {
         m.addPropertyChangeListener(weekView);
         m.addPropertyChangeListener(monthView);
         m.addPropertyChangeListener(yearView);
+        m.addPropertyChangeListener(bookView);
 
 
         b1.addActionListener(new ActionListener() {

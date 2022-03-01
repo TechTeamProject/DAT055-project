@@ -110,7 +110,6 @@ public class YearView extends JPanel implements ActionListener, PropertyChangeLi
     public void actionPerformed(ActionEvent e) {
         String cmd = e.getActionCommand();
         int month = Integer.parseInt(cmd);
-        //visa monthView med datum month/currentYear
     }
 
     @Override

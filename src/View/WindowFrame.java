@@ -35,7 +35,7 @@ public class WindowFrame extends JFrame {
         CalenderModel m = new CalenderModel();
         weekView = new WeekView();
         startView = new StartView();
-        optionView = new OptionView();
+        optionView = new OptionView(m);
         yearView = new YearView();
         eventView = new EventView(m);
         //todoView = new ToDoView();

@@ -1,12 +1,15 @@
 package src;
 
 
+import javax.swing.*;
 import java.awt.*;
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
+import java.io.*;
 import java.time.*;
 import java.util.*;
 import java.time.LocalDateTime;
+import java.util.Locale.Builder;
 
 public class CalenderModel {
     private LinkedList<Event> Eventlist = new LinkedList<Event>();
@@ -16,7 +19,8 @@ public class CalenderModel {
     private YearMonth yearMonthObject = YearMonth.of(2022, 2);
     private int daysInMonth = yearMonthObject.lengthOfMonth(); //28
     private LocalDateTime viewdate = LocalDateTime.now(); //viewdate är det aktuella objektet man ser i View.
-
+    Locale swe;
+    Locale eng = new Locale("en");
     private final PropertyChangeSupport support = new PropertyChangeSupport(this);
 
     public void addPropertyChangeListener(PropertyChangeListener listener) {
@@ -185,8 +189,40 @@ public class CalenderModel {
             Toolkit.getDefaultToolkit().beep();
         }
     }
-    /*
-    public void setLanguage(String _language){ language = _language; }
+
+    public void save() {
+        String filename;
+        filename = JOptionPane.showInputDialog("Give a file name:");
+        filename = filename.concat(".txt");
+        try {
+            FileOutputStream output = new FileOutputStream(filename);
+            ObjectOutputStream objectOutputStream = new ObjectOutputStream(output);
+            objectOutputStream.writeObject(this);
+            objectOutputStream.flush();
+            objectOutputStream.close();
+        } catch (IOException e) {
+            System.out.println("Save failed");
+        }
+
+
+    }
+    public void load(){
+        String filename;
+        filename = JOptionPane.showInputDialog("Give a file name:");
+        filename = filename.concat(".txt");
+        try{
+            FileInputStream input = new FileInputStream(filename);
+            ObjectInputStream objectInputStream = new ObjectInputStream(input);
+            CalenderModel m2 = (CalenderModel) objectInputStream.readObject();
+            objectInputStream.close();
+            this.Eventlist= m2.getEvents();
+
+        }
+        catch(Exception e){
+            System.out.println("Read failed");
+        }
+    }
+    /*public void setLanguage(String _language){ language = _language; }
 
     public Color getColor(){ return color; }
 

@@ -24,6 +24,7 @@ public class MonthView extends JPanel implements PropertyChangeListener {
 
 
     MonthView() {
+      
         this.add(previous);
         this.add(next);
         this.add(dc);

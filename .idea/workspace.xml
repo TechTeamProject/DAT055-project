@@ -4,11 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4b89b8c8-4e75-454b-8fad-b69ac190600f" name="Changes" comment="kan ta bort events i bookingview">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/CalenderModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/CalenderModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/View/BookingView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/BookingView.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/View/EventView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/EventView.java" afterDir="false" />
+    <list default="true" id="4b89b8c8-4e75-454b-8fad-b69ac190600f" name="Changes" comment="addEvent tillagd till observable">
+      <change beforePath="$PROJECT_DIR$/src/View/OptionView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/OptionView.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/View/WindowFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/WindowFrame.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/View/YearView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/YearView.java" afterDir="false" />
     </list>
@@ -141,17 +138,19 @@
       <option name="presentableId" value="LOCAL−00009" />
       <updated>1645806102352</updated>
     </task>
-    <task id="LOCAL−00010" summary="kan spara event i eventview">
-      <created>1646059838416</created>
-      <option name="number" value="LOCAL−00010" />
-      <option name="presentableId" value="LOCAL−00010" />
-      <updated>1646059838416</updated>
+    <task id="LOCAL-00010" summary="Observer interface fungerar och är inlagt på alla views">
+      <created>1646079379796</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1646079379796</updated>
     </task>
-    <task id="LOCAL−00011" summary="kan ta bort events i bookingview">
-      <created>1646064344696</created>
-      <option name="number" value="LOCAL−00011" />
-      <option name="presentableId" value="LOCAL−00011" />
-      <updated>1646064344696</updated>
+    <task id="LOCAL-00011" summary="addEvent tillagd till observable">
+      <created>1646080389254</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1646080389254</updated>
     </task>
     <option name="localTasksCounter" value="12" />
     <servers />
@@ -177,8 +176,13 @@
     <MESSAGE value="test" />
     <MESSAGE value="create event knapp i windowframe" />
     <MESSAGE value="lite ändringar" />
-    <MESSAGE value="kan spara event i eventview" />
-    <MESSAGE value="kan ta bort events i bookingview" />
-    <option name="LAST_COMMIT_MESSAGE" value="kan ta bort events i bookingview" />
+    <MESSAGE value="Observer interface fungerar och är inlagt på alla views" />
+    <MESSAGE value="addEvent tillagd till observable" />
+    <option name="LAST_COMMIT_MESSAGE" value="addEvent tillagd till observable" />
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/DAT055_project$WindowFrame.ic" NAME="WindowFrame Coverage Results" MODIFIED="1645656862873" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>src.View.*</FILTER>
+    </SUITE>
   </component>
 </project>

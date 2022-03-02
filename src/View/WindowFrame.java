@@ -16,7 +16,7 @@ public class WindowFrame extends JFrame {
     OptionView optionView;
     EventView eventView;
     MonthView monthView;
-    LoginView loginView;
+    //LoginView loginView;
     BookingView bookView;
     JScrollPane bookingView;
     private static ChatView chatView;
@@ -36,7 +36,7 @@ public class WindowFrame extends JFrame {
         yearView = new YearView();
         eventView = new EventView(m);
         monthView = new MonthView();
-        loginView = new LoginView();
+        //loginView = new LoginView();
         bookView = new BookingView(m);
         bookingView = new JScrollPane(bookView);
         bookingView.setPreferredSize(new Dimension(600, 400));
@@ -50,7 +50,7 @@ public class WindowFrame extends JFrame {
         JButton bWeek = new JButton("Week");
         JButton bYear = new JButton("Year");
         JButton bMonth = new JButton("Month");
-        JButton bLogin = new JButton("Login");
+        //JButton bLogin = new JButton("Login");
         JButton bEvent = new JButton("Create Event");
         JButton bChat = new JButton("Chat");
 
@@ -72,7 +72,7 @@ public class WindowFrame extends JFrame {
         week.add(weekView);
         year.add(yearView);
         month.add(monthView);
-        login.add(loginView);
+        //login.add(loginView);
         event.add(eventView);
         chat.add(chatView);
 
@@ -92,7 +92,7 @@ public class WindowFrame extends JFrame {
         buttonPanel.add(bMonth);
         buttonPanel.add(bYear);
         buttonPanel.add(bEvent);
-        buttonPanel.add(bLogin);
+        //buttonPanel.add(bLogin);
         buttonPanel.add(bChat);
 
         JMenuBar menubar = new JMenuBar();
@@ -104,7 +104,7 @@ public class WindowFrame extends JFrame {
         menubar.add(bMonth);
         menubar.add(bYear);
         menubar.add(bEvent);
-        menubar.add(bLogin);
+        //menubar.add(bLogin);
         menubar.add(bChat);
 
 
@@ -146,11 +146,11 @@ public class WindowFrame extends JFrame {
                 c1.show(p, "event");
             }
         });
-        bLogin.addActionListener(new ActionListener() {
+        /*bLogin.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 c1.show(p, "login"); }
-        });
+        });*/
         bChat.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {

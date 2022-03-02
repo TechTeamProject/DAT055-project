@@ -192,8 +192,10 @@ public class CalenderModel {
             objectOutputStream.writeObject(this.Eventlist);
             objectOutputStream.flush();
             objectOutputStream.close();
-        } catch (IOException e) {
+        } catch (FileNotFoundException e) {
             JOptionPane.showMessageDialog(null,"No such file or directory: " + filename, "Error", JOptionPane.ERROR_MESSAGE);
+        } catch (IOException e){
+            JOptionPane.showMessageDialog(null,"Something went wrong", "Error", JOptionPane.ERROR_MESSAGE);
         }
     }
 

@@ -1,6 +1,6 @@
 package src;
 import src.Server.ChatServer;
-import src.View.ChatView;
+import src.View.*;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -8,17 +8,40 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
 public class ChatControl {
+    private CalenderModel m;
     private static ChatView chatView;
     private ServerThread serverThread;
     private ChatServer server;
     private Sound sound;
-    public ChatControl(ChatView v){
+    private static YearView yearView;
+    private static OptionView optionView;
+    private static WeekView weekView;
+    private static MonthView monthView;
+    private static BookingView bookingView;
+    public ChatControl(ChatView c, YearView y, OptionView o, WeekView w, MonthView mv, BookingView b){
+        m = new CalenderModel();
         sound = new Sound();
-        chatView = v;
+        chatView = c;
+        yearView = y;
+        optionView = o;
+        weekView = w;
+        monthView = mv;
+        bookingView = b;
 
         chatView.addChatFieldListener(new chatListener());
         chatView.addTopButtonsListener(new topButtonsListener());
+        yearView.addYearViewListener(new yearViewListener());
+        optionView.addOptionViewListener(new optionViewListener());
+        weekView.addWeekViewListener(new weekViewListener());
+        monthView.addMonthViewListener(new monthViewListener());
+        bookingView.addBookingViewListener(new bookingViewListener());
 
+        //Listeners added to Observable here
+        m.addPropertyChangeListener(optionView);
+        m.addPropertyChangeListener(weekView);
+        m.addPropertyChangeListener(monthView);
+        m.addPropertyChangeListener(yearView);
+        m.addPropertyChangeListener(bookingView);
     }
     public ChatControl(boolean fake){
         //Fake initializer for static values
@@ -104,6 +127,74 @@ public class ChatControl {
                     break;
             }
 
+        }
+    }
+    private class yearViewListener implements ActionListener{
+        public void actionPerformed(ActionEvent e) {
+            String str = e.getActionCommand();
+            switch (str) {
+                case "prev":
+                    m.setYear(-1);
+                    break;
+                case "next":
+                    m.setYear(1);
+                    break;
+            }
+        }
+    }
+    private class optionViewListener implements ActionListener{
+        public void actionPerformed(ActionEvent e) {
+            String str = e.getActionCommand();
+            switch (str) {
+                case "Appearance":
+
+                    break;
+                case "Save":
+
+                    break;
+                case "Load":
+
+                    break;
+            }
+        }
+    }
+    private class weekViewListener implements ActionListener{
+        public void actionPerformed(ActionEvent e) {
+            String str = e.getActionCommand();
+            switch (str) {
+                case "f":
+
+                    break;
+                case "t":
+
+                    break;
+            }
+        }
+    }
+    private class monthViewListener implements ActionListener{
+        public void actionPerformed(ActionEvent e) {
+            String str = e.getActionCommand();
+            switch (str) {
+                case "o":
+
+                    break;
+                case "p":
+
+                    break;
+            }
+        }
+    }
+    private class bookingViewListener implements ActionListener{
+        public void actionPerformed(ActionEvent e) {
+            String str = e.getActionCommand();
+            switch (str) {
+                case "i":
+
+                    break;
+                case "l":
+
+                    break;
+            }
         }
     }
 }

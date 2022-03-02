@@ -54,6 +54,10 @@ public class MonthView extends JPanel implements PropertyChangeListener {
         });
     }
 
+    public void addMonthViewListener(ActionListener a){
+
+    }
+
     @Override
     public void propertyChange(PropertyChangeEvent evt) {
         System.out.println("TEST: Observer interface works. In the event this is what it says:" + evt);

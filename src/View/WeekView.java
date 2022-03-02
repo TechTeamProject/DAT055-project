@@ -4,6 +4,7 @@ package src.View;
 import javax.swing.*;
 import javax.swing.border.EtchedBorder;
 import java.awt.*;
+import java.awt.event.ActionListener;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 
@@ -41,6 +42,10 @@ public class WeekView extends TopBar implements PropertyChangeListener {
 
             contentPane.add(dayBox);
         }
+    }
+
+    public void addWeekViewListener(ActionListener a){
+
     }
 
     @Override

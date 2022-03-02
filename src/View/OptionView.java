@@ -15,6 +15,9 @@ import java.io.IOException;
 
 public class OptionView extends JPanel implements ActionListener, PropertyChangeListener {
     CalenderModel m;
+    JButton button1 = new JButton("Appearance");
+    JButton button2 = new JButton("Save");
+    JButton button3 = new JButton("Load");
 
     public OptionView(CalenderModel m) {
         this.setBackground(Color.BLACK);
@@ -24,17 +27,17 @@ public class OptionView extends JPanel implements ActionListener, PropertyChange
 
         JPanel p = new JPanel(new GridLayout(5, 1, 10, 10));
 
-        JButton button1 = new JButton("Appearance");
-        JButton button3 = new JButton("Save");
-        button3.addActionListener(this);
-        JButton button4 = new JButton("Load");
-        button4.addActionListener(this);
-
         p.add(label);
         p.add(button1);
+        p.add(button2);
         p.add(button3);
-        p.add(button4);
         this.add(p);
+    }
+
+    public void addOptionViewListener(ActionListener a){
+        button1.addActionListener(a);
+        button2.addActionListener(a);
+        button3.addActionListener(a);
     }
 
     @Override

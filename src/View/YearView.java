@@ -1,22 +1,17 @@
 
 package src.View;
 import java.awt.*;
-import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
-import java.util.Calendar;
-import java.util.GregorianCalendar;
 import javax.swing.*;
-import javax.swing.border.EmptyBorder;
 import java.time.Year;
 
 
 public class YearView extends JPanel implements PropertyChangeListener {
-
-    private int currentYear;
-    final int n = 10;
-    final int i = 1;
+    private JLabel header = new JLabel();
+    private JButton previous = new JButton("<");
+    private JButton next = new JButton(">");
     public  YearView(){
 
         JPanel p = new JPanel(new GridLayout(4,4,20,20));
@@ -34,12 +29,10 @@ public class YearView extends JPanel implements PropertyChangeListener {
         JButton button12 = new JButton("December");
         setPreferredSize( new Dimension( 600, 400 ) );
 
-        JButton previous = new JButton("<");
-        JButton next = new JButton(">");
-        JPanel panel = new JPanel();
+        previous.setActionCommand("prev");
+        next.setActionCommand("next");
         JPanel p1 = new JPanel();
-        currentYear = Year.now().getValue();
-        JLabel header = new JLabel((currentYear) +"");
+        header.setText(String.valueOf(Year.now().getValue()));
         p1.add(previous, BorderLayout.NORTH);
         p1.add(header);
         p1.add(next);
@@ -59,29 +52,17 @@ public class YearView extends JPanel implements PropertyChangeListener {
         this.setLayout(new BorderLayout());
         this.add(p1, BorderLayout.NORTH);
         this.add(p, BorderLayout.CENTER);
+    }
 
-            next.addActionListener(new ActionListener() {
-                @Override
-                public void actionPerformed(ActionEvent e) {
-                    if( i< n){
-                        currentYear = currentYear+1;
-                        header.setText(String.valueOf(currentYear));
-                    }
-                }
-            });
-        previous.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                if( i< n){
-                    currentYear = currentYear-1;
-                    header.setText(String.valueOf(currentYear));
-                }
-            }
-        });
+    public void addYearViewListener(ActionListener a){
+        previous.addActionListener(a);
+        next.addActionListener(a);
     }
 
     @Override
     public void propertyChange(PropertyChangeEvent evt) {
-        System.out.println("TEST: Observer interface works. In the event this is what it says:" + evt);
+        if(evt.getPropertyName().equals("YearChange")){
+            header.setText(String.valueOf(evt.getNewValue()));
+        }
     }
 }

@@ -9,7 +9,6 @@ import java.io.*;
 import java.time.*;
 import java.util.*;
 import java.time.LocalDateTime;
-import java.util.Locale.Builder;
 
 public class CalenderModel {
     private LinkedList<Event> Eventlist = new LinkedList<Event>();
@@ -18,7 +17,7 @@ public class CalenderModel {
     private LocalDateTime now = LocalDateTime.now();
     private YearMonth yearMonthObject = YearMonth.of(2022, 2);
     private int daysInMonth = yearMonthObject.lengthOfMonth(); //28
-    private LocalDateTime viewdate = LocalDateTime.now(); //viewdate är det aktuella objektet man ser i View.
+    private LocalDateTime viewdate; //viewdate är det aktuella objektet man ser i View.
     Locale swe;
     Locale eng = new Locale("en");
     private final PropertyChangeSupport support = new PropertyChangeSupport(this);
@@ -28,7 +27,7 @@ public class CalenderModel {
     }
 
     public CalenderModel() {
-
+        viewdate = LocalDateTime.now();
     }
 
     public void removePropertyChangeListener(PropertyChangeListener listener) {
@@ -108,7 +107,7 @@ public class CalenderModel {
      *
      * @return int (årtal)
      */
-    public int getYear() {
+    public int getViewdateYear() {
         return viewdate.getYear();
     }
 

@@ -50,6 +50,10 @@ public class BookingView extends JPanel implements ActionListener, PropertyChang
         }
     }
 
+    public void addBookingViewListener(ActionListener a){
+
+    }
+
     @Override
     public void actionPerformed(ActionEvent e) {
         String cmd = e.getActionCommand();

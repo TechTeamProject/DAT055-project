@@ -41,7 +41,7 @@ public class WindowFrame extends JFrame {
         bookingView = new JScrollPane(bookView);
         bookingView.setPreferredSize(new Dimension(600, 400));
         chatView = new ChatView();
-        chatControl = new ChatControl(chatView);
+        chatControl = new ChatControl(chatView, yearView, optionView, weekView, monthView, bookView);
 
         JPanel p = new JPanel();
 
@@ -107,12 +107,7 @@ public class WindowFrame extends JFrame {
         menubar.add(bLogin);
         menubar.add(bChat);
 
-        //Listeners added to Observable here
-        m.addPropertyChangeListener(optionView);
-        m.addPropertyChangeListener(weekView);
-        m.addPropertyChangeListener(monthView);
-        m.addPropertyChangeListener(yearView);
-        m.addPropertyChangeListener(bookView);
+
 
 
         bOptions.addActionListener(new ActionListener() {

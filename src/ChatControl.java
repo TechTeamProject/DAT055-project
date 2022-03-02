@@ -17,7 +17,6 @@ public class ChatControl {
         chatView = v;
 
         chatView.addChatFieldListener(new chatListener());
-        chatView.addIpFieldListener(new ipListener());
         chatView.addTopButtonsListener(new topButtonsListener());
 
     }
@@ -85,8 +84,23 @@ public class ChatControl {
                 case "Connect to server":
                     chatView.switchMiddlePanel("IpArea");
                     break;
-                case "Chat":
+                case "Go back":
                     chatView.switchMiddlePanel("ChatArea");
+                    break;
+                case "Confirm":
+                    if (chatView.getIpText().compareTo("") != 0 && chatView.getNameText().compareTo("") != 0) {
+                        if(!serverThread.Alive()){
+                            serverThread = new ServerThread(chatView.getNameText(), chatView.getIpText(), 23476);
+                            chatView.switchMiddlePanel("ChatArea");
+                            sound.playConnected();
+                        }
+                        else{
+                            chatView.switchMiddlePanel("ChatArea");
+                            chatView.printText("Already connected");
+                            sound.playError();
+                        }
+
+                    }
                     break;
             }
 

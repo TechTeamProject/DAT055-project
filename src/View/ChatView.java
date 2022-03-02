@@ -1,6 +1,7 @@
 package src.View;
 
 import javax.swing.*;
+import javax.swing.border.Border;
 import java.awt.*;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyListener;
@@ -15,15 +16,19 @@ public class ChatView extends JPanel{
     private JPanel topPanel;
     private JPanel ipPanel;
     private JPanel middlePanel;
+    private JPanel chatPanel;
     private JScrollPane scrollPane;
-    private JLabel label;
+    private JButton goBackButton;
+    private JButton confirmButton;
+    private JLabel ipLabel;
+    private JLabel nameLabel;
     private static JTextField ipField;
+    private static JTextField nameField;
     private static JTextField field;
     private static JTextArea area;
     private CardLayout cardLayout;
     private JButton hostButton;
     private JButton connectButton;
-    private JButton chatButton;
 
     /**
      * Constructor method for the ChatView class.
@@ -33,33 +38,44 @@ public class ChatView extends JPanel{
         ipPanel = new JPanel();
         middlePanel = new JPanel();
         topPanel = new JPanel();
+        chatPanel = new JPanel();
 
-        ipField = new JTextField("", 32);
         field = new JTextField();
         area = new JTextArea(20,32);
-        label = new JLabel("Enter the Ip Adress:");
-        scrollPane = new JScrollPane(area);
+
+        ipLabel = new JLabel("Enter the Ip Adress:");
+        ipField = new JTextField("", 32);
+        nameLabel = new JLabel("Choose your user name:");
+        nameField = new JTextField("", 32);
+        confirmButton = new JButton("Confirm");
+        goBackButton = new JButton("Go back");
 
         hostButton = new JButton("Host server");
         connectButton = new JButton("Connect to server");
-        chatButton = new JButton("Chat");
 
-        topPanel.setLayout(new GridLayout());
+        topPanel.setLayout(new GridLayout(1,2));
         topPanel.add(hostButton);
         topPanel.add(connectButton);
-        topPanel.add(chatButton);
+
+        ipPanel.setLayout(new GridLayout(3, 2));
+        ipPanel.add(ipLabel);
+        ipPanel.add(ipField);
+        ipPanel.add(nameLabel);
+        ipPanel.add(nameField);
+        ipPanel.add(goBackButton);
+        ipPanel.add(confirmButton);
 
         area.setEditable(false);
-        ipPanel.add(label);
-        ipPanel.add(ipField);
-
+        scrollPane = new JScrollPane(area);
+        chatPanel.setLayout(new BorderLayout());
+        chatPanel.add(scrollPane, BorderLayout.CENTER);
+        chatPanel.add(field, BorderLayout.SOUTH);
         middlePanel.setLayout(cardLayout);
-        middlePanel.add(scrollPane, "ChatArea");
+        middlePanel.add(chatPanel, "ChatArea");
         middlePanel.add(ipPanel, "IpArea");
 
         setLayout(new BorderLayout());
         add(topPanel, BorderLayout.NORTH);
-        add(field, BorderLayout.SOUTH);
         add(middlePanel, BorderLayout.CENTER);
     }
 
@@ -91,19 +107,17 @@ public class ChatView extends JPanel{
     public String getIpText(){ return ipField.getText(); }
 
     /**
+     * Getter method to retrieve the name written into the name field.
+     * @return
+     */
+    public String getNameText(){ return  nameField.getText(); }
+
+    /**
      * A method that switches the current middle panel.
      * @param panel The panel that it switches to.
      */
     public void switchMiddlePanel(String panel){
         cardLayout.show(middlePanel, panel);
-    }
-
-    /**
-     * A method that adds a KeyListener to the ipField.
-     * @param k The KeyListener that is added.
-     */
-    public void addIpFieldListener(KeyListener k){
-        ipField.addKeyListener(k);
     }
 
     /**
@@ -121,7 +135,8 @@ public class ChatView extends JPanel{
     public void addTopButtonsListener(ActionListener a){
         hostButton.addActionListener(a);
         connectButton.addActionListener(a);
-        chatButton.addActionListener(a);
+        goBackButton.addActionListener(a);
+        confirmButton.addActionListener(a);
     }
 }
 

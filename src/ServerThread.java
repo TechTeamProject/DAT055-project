@@ -4,11 +4,17 @@ import java.io.*;
 import java.net.Socket;
 import java.util.LinkedList;
 import java.util.Scanner;
-
+/**
+ * The thread used by the client to send messages to the server.
+ *
+ * @author  Oliver Brottare
+ * @version 1.0
+ * @since   2022-03-02
+ */
 public class ServerThread implements Runnable {
     private static Socket socket;
-    private static LinkedList<String> messagesToSend = new LinkedList<>();
-    private static boolean hasMessages = false;
+    private LinkedList<String> messagesToSend = new LinkedList<>();
+    private boolean hasMessages = false;
     private Client client;
 
     private static ChatControl chatControl;
@@ -32,7 +38,7 @@ public class ServerThread implements Runnable {
         }
     }
 
-    public static void addNextMessage(String message){
+    public void addNextMessage(String message){
         synchronized (messagesToSend){
             hasMessages = true;
             messagesToSend.push(message);

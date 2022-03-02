@@ -13,11 +13,18 @@ import java.util.Scanner;
  */
 public class ServerThread implements Runnable {
     private static Socket socket;
-    private LinkedList<String> messagesToSend = new LinkedList<>();
+    private LinkedList<String> messagesToSend;
     private boolean hasMessages = false;
     private Client client;
 
     private static ChatControl chatControl;
+
+    /**
+     * Constructor for ServerThread. Tries to connect to the server using the parameters.
+     * @param userName The name of the client.
+     * @param host  The host adress of the server.
+     * @param portNumber The port of the server.
+     */
     public ServerThread(String userName, String host, int portNumber){
         client = new Client(userName, host, portNumber);
         messagesToSend = new LinkedList<>();
@@ -26,7 +33,7 @@ public class ServerThread implements Runnable {
         try{
             socket = new Socket(client.getServerHost(), client.getServerPort());
 
-            Thread.sleep(1000); // Waiting for network communicating.
+            Thread.sleep(1000); //Wait for the network to communicate
 
             Thread serverAccessThread = new Thread(this);
             serverAccessThread.start();
@@ -38,6 +45,10 @@ public class ServerThread implements Runnable {
         }
     }
 
+    /**
+     * A method used to add a message to the LinkedList that sends messages to the server.
+     * @param message The message being added to the list.
+     */
     public void addNextMessage(String message){
         synchronized (messagesToSend){
             hasMessages = true;
@@ -45,6 +56,11 @@ public class ServerThread implements Runnable {
         }
     }
 
+    /**
+     * A method used to see whether the socket is open or closed.
+     * If the socket is null then it will catch the NullPointerException and return false.
+     * @return boolean To describe if the socket is open or closed.
+     */
     public static boolean Alive(){
         try {
             return !socket.isClosed();
@@ -54,6 +70,10 @@ public class ServerThread implements Runnable {
 
     }
 
+    /**
+     * The method is used when ServerThread is made into a thread and starts running.
+     * Send messages to the server and prints the texts it receives from the server.
+     */
     @Override
     public void run(){
         try{

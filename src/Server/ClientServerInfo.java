@@ -21,7 +21,7 @@ public class ClientServerInfo {
      */
     public ClientServerInfo(Socket socket) throws IOException {
         this.socket = socket;
-        clientOut = new PrintWriter(socket.getOutputStream(), false);
+        clientOut = new PrintWriter(this.socket.getOutputStream(), false);
     }
 
     /**

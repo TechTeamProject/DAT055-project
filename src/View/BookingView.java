@@ -63,7 +63,8 @@ public class BookingView extends JPanel implements ActionListener, PropertyChang
 
     @Override
     public void propertyChange(PropertyChangeEvent evt) {
-        if(evt.getPropertyName().equals("NewEvent") | evt.getPropertyName().equals("LoadedEvents")){
+        System.out.println("Före if sats");
+        if(evt.getPropertyName().equals("NewEvent") | evt.getPropertyName().equals("LoadedEvents") | evt.getPropertyName().equals("RemoveEvent")){
         this.removeAll();
 
         LinkedList<Event> list = model.getEvents();
@@ -97,6 +98,9 @@ public class BookingView extends JPanel implements ActionListener, PropertyChang
             this.add(p);
             i++;
         }
+        this.revalidate();
+        this.repaint();
+        System.out.println("Test");
     }
     }
 }

@@ -48,7 +48,7 @@ public class CalenderModel {
 
     public void removeEvent(int index) {
         Eventlist.remove(index);
-        support.firePropertyChange("OldEvent", 1, 0);
+        support.firePropertyChange("RemoveEvent", 1, 0);
     }
 
     public LinkedList<Event> getEvents() {

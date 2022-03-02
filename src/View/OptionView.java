@@ -11,11 +11,13 @@ import java.awt.event.ActionListener;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import java.io.File;
+import java.io.IOException;
 
 public class OptionView extends JPanel implements ActionListener, PropertyChangeListener {
     CalenderModel m;
 
     public OptionView(CalenderModel m) {
+        this.setBackground(Color.BLACK);
         this.m = m;
         JLabel label = new JLabel("Settings", SwingConstants.CENTER);
         label.setFont(new Font("Arial", Font.PLAIN, 30));
@@ -45,9 +47,6 @@ public class OptionView extends JPanel implements ActionListener, PropertyChange
     public void actionPerformed(ActionEvent e) {
         String cmd = e.getActionCommand();
         if (cmd.equals("Save")) {
-            String str = JOptionPane.showInputDialog("Give a file name:");
-            m.save(str + ".dat");
-            /*
             JFileChooser fc = new JFileChooser();
             FileNameExtensionFilter filter = new FileNameExtensionFilter(
                     "DAT files", "dat");
@@ -55,9 +54,16 @@ public class OptionView extends JPanel implements ActionListener, PropertyChange
             int returnVal = fc.showSaveDialog(this);
             if (returnVal == JFileChooser.APPROVE_OPTION) {
                 File file = fc.getSelectedFile();
-                m.save(file.getName() + ".dat");
+                try {
+                    String filename = file.getCanonicalPath();
+                    if (!file.getName().endsWith(".dat")) {
+                        file = new File(filename+".dat");
+                    }
+                } catch (IOException ex) {
+                    ex.printStackTrace();
+                }
+                m.save(file.getAbsolutePath());
             }
-             */
         } else if (cmd.equals("Load")) {
             JFileChooser fc = new JFileChooser();
             FileNameExtensionFilter filter = new FileNameExtensionFilter(
@@ -66,7 +72,7 @@ public class OptionView extends JPanel implements ActionListener, PropertyChange
             int returnVal = fc.showOpenDialog(this);
             if (returnVal == JFileChooser.APPROVE_OPTION) {
                 File file = fc.getSelectedFile();
-                m.load(file.getName());
+                m.load(file.getAbsolutePath());
             }
         }
     }

@@ -2,6 +2,7 @@ package src;
 
 
 import javax.swing.*;
+import javax.swing.filechooser.FileNameExtensionFilter;
 import java.awt.*;
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
@@ -184,29 +185,55 @@ public class CalenderModel {
         support.firePropertyChange("DayChange", oldValue, newValue);
     }
 
-    public void save(String filename) {
+    public void save() {
+        JFileChooser fc = new JFileChooser();
+        FileNameExtensionFilter filter = new FileNameExtensionFilter("DAT files", "dat");
+        fc.setFileFilter(filter);
+        int returnVal = fc.showSaveDialog(null);
+        String filepath = null;
+        if (returnVal == JFileChooser.APPROVE_OPTION) {
+            File file = fc.getSelectedFile();
+            try {
+                String filename = file.getCanonicalPath();
+                if (!file.getName().endsWith(".dat")) {
+                    file = new File(filename + ".dat");
+                }
+            } catch (IOException ex) {
+                ex.printStackTrace();
+            }
+            filepath = file.getAbsolutePath();
+        }
         try {
-            FileOutputStream output = new FileOutputStream(filename);
+            FileOutputStream output = new FileOutputStream(filepath);
             ObjectOutputStream objectOutputStream = new ObjectOutputStream(output);
             objectOutputStream.writeObject(this.Eventlist);
             objectOutputStream.flush();
             objectOutputStream.close();
         } catch (FileNotFoundException e) {
-            JOptionPane.showMessageDialog(null,"No such file or directory: " + filename, "Error", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null,"No such file or directory: " + filepath, "Error", JOptionPane.ERROR_MESSAGE);
         } catch (IOException e){
             JOptionPane.showMessageDialog(null,"Something went wrong", "Error", JOptionPane.ERROR_MESSAGE);
         }
     }
 
-    public void load(String filename) {
+    public void load() {
+        JFileChooser fc = new JFileChooser();
+        FileNameExtensionFilter filter = new FileNameExtensionFilter("DAT files", "dat");
+        fc.setFileFilter(filter);
+        int returnVal = fc.showOpenDialog(null);
+        String filepath = null;
+        if (returnVal == JFileChooser.APPROVE_OPTION) {
+            File file = fc.getSelectedFile();
+            filepath = file.getAbsolutePath();
+        }
         try {
-            FileInputStream input = new FileInputStream(filename);
+            FileInputStream input = new FileInputStream(filepath);
             ObjectInputStream objectInputStream = new ObjectInputStream(input);
             LinkedList<Event> list = (LinkedList<Event>) objectInputStream.readObject();
             objectInputStream.close();
             this.Eventlist = list;
         } catch (FileNotFoundException e) {
-            JOptionPane.showMessageDialog(null, "No such file or directory", "Load failed", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "No such file or directory"+filepath, "Load failed", JOptionPane.ERROR_MESSAGE);
         }
         catch (IOException | ClassNotFoundException e){
             JOptionPane.showMessageDialog(null, "Something went wrong", "Error", JOptionPane.ERROR_MESSAGE);

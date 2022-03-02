@@ -15,9 +15,9 @@ import java.util.List;
  * @since   2022-03-02
  */
 public class ChatServer implements  Runnable{
-    private int portNumber;
+    private final int portNumber;
     private List<ClientServerInfo> ClientServerList;
-    private static ChatControl cc = new ChatControl(false);
+    private static ChatControl chatControl = new ChatControl(false);
 
     /**
      *  The constructor for ChatServer. Uses its parameter to choose the port number.
@@ -44,10 +44,10 @@ public class ChatServer implements  Runnable{
             try {
                 Socket socket = serverSocket.accept();
                 ClientThread client = new ClientThread(this, socket);
-                ClientServerInfo clienters = new ClientServerInfo(socket);
+                ClientServerInfo clientServerInfo = new ClientServerInfo(socket);
                 Thread thread = new Thread(client);
                 thread.start();
-                ClientServerList.add(clienters);
+                ClientServerList.add(clientServerInfo);
             } catch (IOException ex) {
                 System.out.println("Accept failed on : " + portNumber);
             }
@@ -60,14 +60,14 @@ public class ChatServer implements  Runnable{
      */
     @Override
     public void run() {
-        ClientServerList = new ArrayList<ClientServerInfo>();
+        ClientServerList = new ArrayList<>();
         ServerSocket serverSocket;
         try {
             serverSocket = new ServerSocket(portNumber);
-            cc.printText("Server successfully started on port " + portNumber);
+            chatControl.printText("Server successfully started on port " + portNumber);
             acceptClients(serverSocket);
         } catch (IOException e) {
-            cc.printText("Could not listen on port " + portNumber);
+            chatControl.printText("Could not listen on port " + portNumber);
 
         }
     }

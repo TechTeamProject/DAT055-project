@@ -12,8 +12,8 @@ import java.util.Scanner;
  * @since   2022-03-02
  */
 public class ClientThread implements Runnable {
-    private Socket socket;
-    private ChatServer server;
+    private final Socket socket;
+    private final ChatServer server;
 
     /**
      * Constructor method for the ClientThread class.

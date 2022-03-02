@@ -4,8 +4,19 @@ import java.net.URI;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
-
+/**
+ * This class is used to request the weather from visualcrossing.com.
+ *
+ * @author  Oliver Brottare
+ * @version 1.0
+ * @since   2022-03-02
+ */
 public class Weather {
+
+    /**
+     * A method used to request and return the current temperature in Gothenburg in Celsius.
+     * @return String The temperature in Gothenburg.
+     */
     public String getWeather() {
         HttpResponse<String> response;
         try {

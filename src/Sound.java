@@ -3,11 +3,23 @@ package src;
 import javax.sound.sampled.*;
 
 import static java.lang.Thread.sleep;
-
+/**
+ * This class is used to create sound for the chat.
+ *
+ * @author  Oliver Brottare
+ * @version 1.0
+ * @since   2022-03-02
+ */
 public class Sound {
-
     public float Sample = 8000f;
 
+    /**
+     * Used to play a tone. The parameters are used to create different tones.
+     * @param hz The hz of the tone.
+     * @param msecs The amount of milliseconds that the tone is played.
+     * @param vol The volume of the tone played.
+     * @throws LineUnavailableException This error can be thrown if the line is already in used.
+     */
     public void playTone(int hz, int msecs, double vol)
             throws LineUnavailableException
     {
@@ -32,6 +44,9 @@ public class Sound {
         sdl.close();
     }
 
+    /**
+     * A method with a pre-made set of tones. Used to simulate a hosting server sound.
+     */
     public void playStartHost(){
         try{
             playTone(13000,100, 1);
@@ -45,6 +60,9 @@ public class Sound {
 
     }
 
+    /**
+     * A method with a pre-made set of tones. Used to simulate a successful connection sound.
+     */
     public void playConnected(){
         try{
             playTone(200,100, 1);
@@ -58,6 +76,9 @@ public class Sound {
         }
     }
 
+    /**
+     * A method with a pre-made set of tones. Used to simulate an error occurring.
+     */
     public void playError(){
         try{
             playTone(300,100, 1);

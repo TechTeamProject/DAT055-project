@@ -10,7 +10,7 @@ import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 
 public class OptionView extends JPanel implements PropertyChangeListener {
-    CalenderModel m;
+    private static CalenderModel m;
     JButton button1 = new JButton("Appearance");
     JButton button2 = new JButton("Save");
     JButton button3 = new JButton("Load");

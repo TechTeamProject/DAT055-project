@@ -14,7 +14,7 @@ import java.time.format.DateTimeFormatter;
 import java.util.LinkedList;
 
 public class BookingView extends JPanel implements ActionListener, PropertyChangeListener {
-    CalenderModel model;
+    private static CalenderModel model;
     public BookingView(CalenderModel m){
         this.model = m;
         LinkedList<Event> list = m.getEvents();
@@ -63,6 +63,7 @@ public class BookingView extends JPanel implements ActionListener, PropertyChang
 
     @Override
     public void propertyChange(PropertyChangeEvent evt) {
+        if(evt.getPropertyName().equals("NewEvent") | evt.getPropertyName().equals("LoadedEvents")){
         this.removeAll();
 
         LinkedList<Event> list = model.getEvents();
@@ -96,5 +97,6 @@ public class BookingView extends JPanel implements ActionListener, PropertyChang
             this.add(p);
             i++;
         }
+    }
     }
 }

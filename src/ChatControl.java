@@ -12,7 +12,7 @@ import java.io.File;
 import java.io.IOException;
 
 public class ChatControl {
-    private CalenderModel m;
+    private CalenderModel model;
     private static ChatView chatView;
     private ServerThread serverThread;
     private ChatServer server;
@@ -22,8 +22,8 @@ public class ChatControl {
     private static WeekView weekView;
     private static MonthView monthView;
     private static BookingView bookingView;
-    public ChatControl(ChatView c, YearView y, OptionView o, WeekView w, MonthView mv, BookingView b){
-        m = new CalenderModel();
+    public ChatControl(CalenderModel m, ChatView c, YearView y, OptionView o, WeekView w, MonthView mv, BookingView b){
+        model = m;
         sound = new Sound();
         chatView = c;
         yearView = y;
@@ -138,10 +138,10 @@ public class ChatControl {
             String str = e.getActionCommand();
             switch (str) {
                 case "prev":
-                    m.setYear(-1);
+                    model.setYear(-1);
                     break;
                 case "next":
-                    m.setYear(1);
+                    model.setYear(1);
                     break;
             }
         }
@@ -154,10 +154,10 @@ public class ChatControl {
 
                     break;
                 case "Save":
-                    m.save();
+                    model.save();
                     break;
                 case "Load":
-                    m.load();
+                    model.load();
                     break;
             }
         }

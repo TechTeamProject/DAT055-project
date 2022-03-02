@@ -12,7 +12,7 @@ import java.util.*;
 import java.time.LocalDateTime;
 
 public class CalenderModel {
-    private LinkedList<Event> Eventlist = new LinkedList<Event>();
+    private static LinkedList<Event> Eventlist = new LinkedList<Event>();
     private String language = "SWE"; //Programmet startar med svenska.
     private Color color = Color.WHITE; //Programmet startar med vit färg.
     private LocalDateTime now = LocalDateTime.now();

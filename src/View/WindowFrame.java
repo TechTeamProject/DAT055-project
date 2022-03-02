@@ -11,13 +11,13 @@ import java.time.LocalDateTime;
 
 public class WindowFrame extends JFrame {
 
-    WeekView weekView;
-    YearView yearView;
-    OptionView optionView;
-    EventView eventView;
-    MonthView monthView;
+    private static WeekView weekView;
+    private static YearView yearView;
+    private static OptionView optionView;
+    private static EventView eventView;
+    private static MonthView monthView;
     //LoginView loginView;
-    BookingView bookView;
+    private static BookingView bookView;
     JScrollPane bookingView;
     private static ChatView chatView;
     private static ChatControl chatControl;
@@ -41,7 +41,7 @@ public class WindowFrame extends JFrame {
         bookingView = new JScrollPane(bookView);
         bookingView.setPreferredSize(new Dimension(600, 400));
         chatView = new ChatView();
-        chatControl = new ChatControl(chatView, yearView, optionView, weekView, monthView, bookView);
+        chatControl = new ChatControl(m, chatView, yearView, optionView, weekView, monthView, bookView);
 
         JPanel p = new JPanel();
 

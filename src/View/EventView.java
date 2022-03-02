@@ -76,8 +76,8 @@ public class EventView extends JPanel implements ActionListener {
             LocalDateTime untildatetime = LocalDateTime.parse(untiltime, formatter);
             model.addEvent(fromdatetime,untildatetime,title,loc);
             text1.setText("");
-            text2.setText("");
-            text3.setText("");
+            text2.setText("yyyy-MM-dd HH:mm");
+            text3.setText("yyyy-MM-dd HH:mm");
             text4.setText("");
         }
         catch(Exception ex){

@@ -52,9 +52,7 @@ public class Sound {
             playTone(13000,100, 1);
             playTone(1000,100, 1);
             sleep(100);
-        }catch(LineUnavailableException ex){
-
-        }catch(InterruptedException ex){
+        }catch(LineUnavailableException | InterruptedException ignored){
 
         }
 
@@ -69,9 +67,7 @@ public class Sound {
             playTone(400,100, 1);
             playTone(200,100, 1);
             sleep(100);
-        }catch(LineUnavailableException ex){
-
-        }catch(InterruptedException ex){
+        }catch(LineUnavailableException | InterruptedException ignored){
 
         }
     }
@@ -84,9 +80,7 @@ public class Sound {
             playTone(300,100, 1);
             playTone(300,100, 1);
             sleep(100);
-        }catch(LineUnavailableException ex){
-
-        }catch(InterruptedException ex){
+        }catch(LineUnavailableException | InterruptedException ignored){
 
         }
     }

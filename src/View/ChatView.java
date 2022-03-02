@@ -12,39 +12,33 @@ import java.awt.event.KeyListener;
  * @since   2022-03-02
  */
 public class ChatView extends JPanel{
-    private JPanel topPanel;
-    private JPanel ipPanel;
-    private JPanel middlePanel;
-    private JPanel chatPanel;
-    private JScrollPane scrollPane;
-    private JButton goBackButton;
-    private JButton confirmButton;
-    private JLabel ipLabel;
-    private JLabel nameLabel;
+    private final JPanel middlePanel;
+    private final JButton goBackButton;
+    private final JButton confirmButton;
     private static JTextField ipField;
     private static JTextField nameField;
     private static JTextField field;
     private static JTextArea area;
-    private CardLayout cardLayout;
-    private JButton hostButton;
-    private JButton connectButton;
+    private final CardLayout cardLayout;
+    private final JButton hostButton;
+    private final JButton connectButton;
 
     /**
      * Constructor method for the ChatView class.
      */
     public ChatView(){
         cardLayout = new CardLayout();
-        ipPanel = new JPanel();
+        JPanel ipPanel = new JPanel();
         middlePanel = new JPanel();
-        topPanel = new JPanel();
-        chatPanel = new JPanel();
+        JPanel topPanel = new JPanel();
+        JPanel chatPanel = new JPanel();
 
         field = new JTextField();
         area = new JTextArea(20,32);
 
-        ipLabel = new JLabel("Enter the Ip Adress:");
+        JLabel ipLabel = new JLabel("Enter the Ip Adress:");
         ipField = new JTextField("", 32);
-        nameLabel = new JLabel("Choose your user name:");
+        JLabel nameLabel = new JLabel("Choose your user name:");
         nameField = new JTextField("", 32);
         confirmButton = new JButton("Confirm");
         goBackButton = new JButton("Go back");
@@ -65,7 +59,7 @@ public class ChatView extends JPanel{
         ipPanel.add(confirmButton);
 
         area.setEditable(false);
-        scrollPane = new JScrollPane(area);
+        JScrollPane scrollPane = new JScrollPane(area);
         chatPanel.setLayout(new BorderLayout());
         chatPanel.add(scrollPane, BorderLayout.CENTER);
         chatPanel.add(field, BorderLayout.SOUTH);
@@ -89,7 +83,7 @@ public class ChatView extends JPanel{
 
     /**
      * Getter method used the retrieve the text written in the chat field.
-     * @return String The the written in the chat field.
+     * @return String The written in the chat field.
      */
     public String getFieldText(){ return field.getText(); }
 
@@ -107,7 +101,7 @@ public class ChatView extends JPanel{
 
     /**
      * Getter method to retrieve the name written into the name field.
-     * @return
+     * @return String The text in the nameField
      */
     public String getNameText(){ return  nameField.getText(); }
 

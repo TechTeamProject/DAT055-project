@@ -11,12 +11,10 @@ import java.time.LocalDateTime;
 
 public class WindowFrame extends JFrame {
 
-    StartView startView;
     WeekView weekView;
     YearView yearView;
     OptionView optionView;
     EventView eventView;
-    //ToDoView todoView;
     MonthView monthView;
     LoginView loginView;
     BookingView bookView;
@@ -34,11 +32,9 @@ public class WindowFrame extends JFrame {
     public WindowFrame() {
         CalenderModel m = new CalenderModel();
         weekView = new WeekView();
-        startView = new StartView();
         optionView = new OptionView(m);
         yearView = new YearView();
         eventView = new EventView(m);
-        //todoView = new ToDoView();
         monthView = new MonthView();
         loginView = new LoginView();
         bookView = new BookingView(m);
@@ -49,25 +45,21 @@ public class WindowFrame extends JFrame {
 
         JPanel p = new JPanel();
 
-        JButton b1 = new JButton("Start");
-        JButton b2 = new JButton("Settings");
-        JButton b3 = new JButton("Bookings");
-        //JButton b4 = new JButton("Todo");
-        JButton b5 = new JButton("Week");
-        JButton b7 = new JButton("Year");
-        JButton b6 = new JButton("Month");
-        JButton b8 = new JButton("Login");
-        JButton b9 = new JButton("Create Event");
-        JButton b10 = new JButton("Chat");
+        JButton bOptions = new JButton("Options");
+        JButton bBookings = new JButton("Bookings");
+        JButton bWeek = new JButton("Week");
+        JButton bYear = new JButton("Year");
+        JButton bMonth = new JButton("Month");
+        JButton bLogin = new JButton("Login");
+        JButton bEvent = new JButton("Create Event");
+        JButton bChat = new JButton("Chat");
 
         c1 = new CardLayout();
 
         p.setLayout(c1);
 
-        JPanel start = new JPanel();
-        JPanel setting = new JPanel();
+        JPanel options = new JPanel();
         JPanel booking = new JPanel();
-        JPanel todo = new JPanel();
         JPanel week = new JPanel();
         JPanel year = new JPanel();
         JPanel month = new JPanel();
@@ -75,10 +67,8 @@ public class WindowFrame extends JFrame {
         JPanel event = new JPanel();
         JPanel chat = new JPanel();
 
-        start.add(startView);
-        setting.add(optionView);
+        options.add(optionView);
         booking.add(bookingView);
-        //todo.add(todoView);
         week.add(weekView);
         year.add(yearView);
         month.add(monthView);
@@ -86,41 +76,36 @@ public class WindowFrame extends JFrame {
         event.add(eventView);
         chat.add(chatView);
 
-        p.add(start, "panel1");
-        p.add(setting, "panel2");
-        p.add(booking, "panel3");
-        p.add(todo, "panel4");
-        p.add(week, "panel5");
-        p.add(year, "panel7");
-        p.add(month, "panel6");
-        p.add(login, "panel8");
-        p.add(event, "panel9");
-        p.add(chat, "panel10");
+        p.add(options, "options");
+        p.add(booking, "bookings");
+        p.add(week, "week");
+        p.add(year, "year");
+        p.add(month, "month");
+        p.add(login, "login");
+        p.add(event, "event");
+        p.add(chat, "chat");
 
         JPanel buttonPanel = new JPanel();
-        buttonPanel.add(b1);
-        buttonPanel.add(b2);
-        buttonPanel.add(b3);
-        //buttonPanel.add(b4);
-        buttonPanel.add(b5);
-        buttonPanel.add(b6);
-        buttonPanel.add(b7);
-        buttonPanel.add(b8);
-        buttonPanel.add(b9);
-        buttonPanel.add(b10);
+        buttonPanel.add(bOptions);
+        buttonPanel.add(bBookings);
+        buttonPanel.add(bWeek);
+        buttonPanel.add(bMonth);
+        buttonPanel.add(bYear);
+        buttonPanel.add(bEvent);
+        buttonPanel.add(bLogin);
+        buttonPanel.add(bChat);
 
         JMenuBar menubar = new JMenuBar();
         this.setJMenuBar(menubar);
 
-        menubar.add(b1);
-        menubar.add(b2);
-        menubar.add(b3);
-        menubar.add(b5);
-        menubar.add(b6);
-        menubar.add(b7);
-        menubar.add(b8);
-        menubar.add(b9);
-        menubar.add(b10);
+        menubar.add(bOptions);
+        menubar.add(bBookings);
+        menubar.add(bWeek);
+        menubar.add(bMonth);
+        menubar.add(bYear);
+        menubar.add(bEvent);
+        menubar.add(bLogin);
+        menubar.add(bChat);
 
         //Listeners added to Observable here
         m.addPropertyChangeListener(optionView);
@@ -130,71 +115,51 @@ public class WindowFrame extends JFrame {
         m.addPropertyChangeListener(bookView);
 
 
-        b1.addActionListener(new ActionListener() {
+        bOptions.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
-                c1.show(p, "panel1");
-                currentCard = 1;
+                c1.show(p, "options");
             }
         });
-        b2.addActionListener(new ActionListener() {
+        bBookings.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                c1.show(p, "panel2");
+                c1.show(p, "bookings");
             }
         });
-        b3.addActionListener(new ActionListener() {
+        bWeek.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
-                c1.show(p, "panel3");
-
-
+                c1.show(p, "week");
             }
         });
-
-
-        /*b4.addActionListener(new ActionListener() {
+        bMonth.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                c1.show(p, "panel4");
-            }
-        });*/
-
-
-        b5.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                c1.show(p, "panel5");
+                c1.show(p, "month");
             }
         });
-        b6.addActionListener(new ActionListener() {
+        bYear.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                c1.show(p, "panel6");
+                c1.show(p, "year");
             }
         });
-        b7.addActionListener(new ActionListener() {
+        bEvent.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                c1.show(p, "panel7");
+                c1.show(p, "event");
             }
         });
-        b8.addActionListener(new ActionListener() {
+        bLogin.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                c1.show(p, "panel8");
-            }
+                c1.show(p, "login"); }
         });
-        b9.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) { c1.show(p, "panel9"); }
-        });
-        b10.addActionListener(new ActionListener() {
+        bChat.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                c1.show(p, "panel10");
+                c1.show(p, "chat");
             }
         });
 
@@ -208,18 +173,6 @@ public class WindowFrame extends JFrame {
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setVisible(true);
         this.add(p);
-
-        /**
-         * test för observerinterface
-         */
-        if (test) {
-            m.setDay(1);
-            m.setMonth(1);
-            m.setYear(1);
-
-            LocalDateTime now = LocalDateTime.now();
-            LocalDateTime then = now.plusHours(1);
-            m.addEvent(now, then, "Nytt Event", "Location");
-        }
+        c1.show(p, "week");
     }
 }

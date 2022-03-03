@@ -177,6 +177,16 @@ public class CalenderModel {
         return viewdate.getDayOfMonth();
     }
 
+    public int[] getWeekDays(){
+        int[] days = new int[7];
+        LocalDateTime monday = viewdate.minusDays(viewdate.getDayOfWeek().getValue()-1);
+        for(int i=0;i<7;i++){
+            int dayVal = monday.plusDays(i).getDayOfMonth();
+            days[i] = dayVal;
+        }
+        return days;
+    }
+
     /**
      * Setter för dagar. d>0 för framåt, d<0 för bakåt.
      * support.firePropertyChange triggar propertyChange i aktuell view

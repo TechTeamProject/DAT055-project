@@ -48,7 +48,9 @@ public class ChatControl {
         m.addPropertyChangeListener(monthView);
         m.addPropertyChangeListener(yearView);
         m.addPropertyChangeListener(bookingView);
+
         weekView.setWeek(model.getWeek());
+        weekView.setDays(model.getWeekDays());
     }
     public ChatControl(boolean fake){
         //Fake initializer for static values
@@ -172,12 +174,12 @@ public class ChatControl {
                 case "<":
                     model.setDay(-7);
                     weekView.setWeek(model.getWeek());
-
+                    weekView.setDays(model.getWeekDays());
                     break;
                 case ">":
                     model.setDay(7);
                     weekView.setWeek(model.getWeek());
-
+                    weekView.setDays(model.getWeekDays());
                     break;
             }
         }
@@ -198,14 +200,8 @@ public class ChatControl {
     private class bookingViewListener implements ActionListener{
         public void actionPerformed(ActionEvent e) {
             String str = e.getActionCommand();
-            switch (str) {
-                case "i":
-
-                    break;
-                case "l":
-
-                    break;
-            }
+            int index = Integer.parseInt(str);
+            model.removeEvent(index);
         }
     }
 }

@@ -7,16 +7,25 @@ import java.awt.*;
 import java.awt.event.ActionListener;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
+import java.time.DayOfWeek;
 
 public class WeekView extends JPanel implements PropertyChangeListener {
 
     private JPanel contentPane;
+    private JButton previous;
+    private JButton next;
+    private JLabel weekLabel;
     private String [] weekDays =  new String[]{"MON" , "TUE", "WED", "THU", "FRI", "SAT", "SUN"};
     private JPanel topbar;
-    private JButton previous, next;
-    private JLabel weekLabel;
+    private JLabel mon = new JLabel();
+    private JLabel tue = new JLabel();
+    private JLabel wed = new JLabel();
+    private JLabel thu = new JLabel();
+    private JLabel fri = new JLabel();
+    private JLabel sat = new JLabel();
+    private JLabel sun = new JLabel();
+    private JLabel dayLabel[] = {mon,tue,wed,thu,fri,sat,sun};
     public WeekView(){
-
         topbar = new JPanel();
         contentPane = new JPanel(new GridLayout(1,7));
         contentPane.setPreferredSize(new Dimension(1000,400));
@@ -52,7 +61,7 @@ public class WeekView extends JPanel implements PropertyChangeListener {
 
             //lower half of the titleBox
             JPanel titelBoxDown = new JPanel();
-            titelBoxDown.add(new JLabel("?"));
+            titelBoxDown.add(dayLabel[i]);
             titleBox.add(titelBoxDown);
 
             contentPane.add(dayBox);
@@ -65,6 +74,11 @@ public class WeekView extends JPanel implements PropertyChangeListener {
     }
     public void setWeek(int w){
         weekLabel.setText("Week: " + String.valueOf(w));
+    }
+    public void setDays(int[] days){
+        for(int i=0;i<7;i++){
+            dayLabel[i].setText(String.valueOf(days[i]));
+        }
     }
 
     @Override

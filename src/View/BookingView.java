@@ -14,7 +14,7 @@ import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.LinkedList;
 
-public class BookingView extends JPanel implements PropertyChangeListener {
+public class BookingView extends JPanel implements ActionListener, PropertyChangeListener {
     private static CalenderModel model;
     private ArrayList<JButton> buttonArr = new ArrayList<>();
     public BookingView(CalenderModel m){
@@ -29,6 +29,12 @@ public class BookingView extends JPanel implements PropertyChangeListener {
         for(JButton b : buttonArr){
             b.addActionListener(a);
         }
+    }
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        String cmd = e.getActionCommand();
+        int index = Integer.parseInt(cmd);
+        model.removeEvent(index);
     }
 
     @Override

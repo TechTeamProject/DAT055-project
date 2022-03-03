@@ -6,8 +6,10 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.beans.PropertyChangeEvent;
+import java.beans.PropertyChangeListener;
 
-public class ChatControl {
+public class ChatControl implements PropertyChangeListener {
     private CalenderModel model;
     private static ChatView chatView;
     private ClientThread serverThread;
@@ -39,11 +41,12 @@ public class ChatControl {
 
 
         //Listeners added to Observable here
-        m.addPropertyChangeListener(optionView);
-        m.addPropertyChangeListener(weekView);
-        m.addPropertyChangeListener(monthView);
-        m.addPropertyChangeListener(yearView);
-        m.addPropertyChangeListener(bookingView);
+        model.addPropertyChangeListener(optionView);
+        model.addPropertyChangeListener(weekView);
+        model.addPropertyChangeListener(monthView);
+        model.addPropertyChangeListener(yearView);
+        model.addPropertyChangeListener(bookingView);
+        model.addPropertyChangeListener(this);
 
         weekView.setWeek(model.getWeek());
         weekView.setDays(model.getWeekDays());
@@ -54,6 +57,13 @@ public class ChatControl {
 
     public void printText(String text){
         chatView.printText(text);
+    }
+
+    @Override
+    public void propertyChange(PropertyChangeEvent evt) {
+        if(evt.getPropertyName().equals("NewEvent") | evt.getPropertyName().equals("LoadedEvents") | evt.getPropertyName().equals("RemoveEvent")){
+            bookingView.addBookingViewListener(new bookingViewListener());
+        }
     }
 
     private class chatListener implements KeyListener {

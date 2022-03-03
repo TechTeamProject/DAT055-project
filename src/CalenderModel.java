@@ -251,7 +251,7 @@ public class CalenderModel {
             ObjectInputStream objectInputStream = new ObjectInputStream(input);
             LinkedList<Event> list = (LinkedList<Event>) objectInputStream.readObject();
             objectInputStream.close();
-            this.Eventlist = list;
+            Eventlist = list;
         } catch (FileNotFoundException e) {
             JOptionPane.showMessageDialog(null, "No such file or directory"+filepath, "Load failed", JOptionPane.ERROR_MESSAGE);
         }

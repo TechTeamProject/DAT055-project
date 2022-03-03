@@ -14,7 +14,7 @@ import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.LinkedList;
 
-public class BookingView extends JPanel implements ActionListener, PropertyChangeListener {
+public class BookingView extends JPanel implements PropertyChangeListener {
     private static CalenderModel model;
     private ArrayList<JButton> buttonArr = new ArrayList<>();
     public BookingView(CalenderModel m){
@@ -29,12 +29,6 @@ public class BookingView extends JPanel implements ActionListener, PropertyChang
         for(JButton b : buttonArr){
             b.addActionListener(a);
         }
-    }
-    @Override
-    public void actionPerformed(ActionEvent e) {
-        String cmd = e.getActionCommand();
-        int index = Integer.parseInt(cmd);
-        model.removeEvent(index);
     }
 
     @Override
@@ -58,10 +52,16 @@ public class BookingView extends JPanel implements ActionListener, PropertyChang
             p.setBorder(new EtchedBorder());
             String title_ = e.getDescription();
             JLabel title = new JLabel(title_);
-            LocalDateTime datetime = e.getStarttime();
+            LocalDateTime startdatetime = e.getStartTime();
+            LocalDateTime enddatetime = e.getEndTime();
             DateTimeFormatter format_ = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm");
-            String time_ = datetime.format(format_);
-            JLabel time = new JLabel(time_);
+            String starttime_ = startdatetime.format(format_);
+            String endtime_ = enddatetime.format(format_);
+            JLabel starttime = new JLabel("From: "+starttime_);
+            JLabel endtime = new JLabel("Until: "+ endtime_);
+            JPanel time = new JPanel(new GridLayout(2,1));
+            time.add(starttime);
+            time.add(endtime);
             String location_ = e.getLocation();
             JLabel location = new JLabel(location_);
             JButton remove = new JButton("REMOVE");

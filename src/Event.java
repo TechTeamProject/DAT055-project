@@ -3,7 +3,6 @@ package src;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 
 public class Event implements Serializable {
     private String description;
@@ -34,5 +33,7 @@ public class Event implements Serializable {
         return location;
     }
 
-    public LocalDateTime getStarttime(){ return starttime; }
+    public LocalDateTime getStartTime(){ return starttime; }
+
+    public LocalDateTime getEndTime(){ return endtime; }
 }

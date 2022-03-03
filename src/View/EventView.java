@@ -65,24 +65,27 @@ public class EventView extends JPanel implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         String str=e.getActionCommand();
-        if(str.equals("save")){
-        String title = text1.getText();
-        String fromtime = text2.getText();
-        String untiltime = text3.getText();
-        String loc = text4.getText();
-        try{
-            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
-            LocalDateTime fromdatetime = LocalDateTime.parse(fromtime, formatter);
-            LocalDateTime untildatetime = LocalDateTime.parse(untiltime, formatter);
-            model.addEvent(fromdatetime,untildatetime,title,loc);
-            text1.setText("");
-            text2.setText("yyyy-MM-dd HH:mm");
-            text3.setText("yyyy-MM-dd HH:mm");
-            text4.setText("");
-        }
-        catch(Exception ex){
-            JOptionPane.showMessageDialog(null, "Wrong date/time format", "Error", JOptionPane.ERROR_MESSAGE);
-        }
+        if(str.equals("save")) {
+            String title = text1.getText();
+            String fromtime = text2.getText();
+            String untiltime = text3.getText();
+            String loc = text4.getText();
+            if (title.isBlank()) {
+                JOptionPane.showMessageDialog(null, "No title", "Error", JOptionPane.ERROR_MESSAGE);
+            } else {
+                try {
+                    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
+                    LocalDateTime fromdatetime = LocalDateTime.parse(fromtime, formatter);
+                    LocalDateTime untildatetime = LocalDateTime.parse(untiltime, formatter);
+                    model.addEvent(fromdatetime, untildatetime, title, loc);
+                    text1.setText("");
+                    text2.setText("yyyy-MM-dd HH:mm");
+                    text3.setText("yyyy-MM-dd HH:mm");
+                    text4.setText("");
+                } catch (Exception ex) {
+                    JOptionPane.showMessageDialog(null, "Wrong date/time format", "Error", JOptionPane.ERROR_MESSAGE);
+                }
+            }
         }
     }
 }

@@ -13,7 +13,7 @@ import java.time.temporal.WeekFields;
 import java.util.*;
 import java.time.LocalDateTime;
 
-public class CalenderModel {
+public class CalenderModel implements Serializable {
     private static LinkedList<Event> Eventlist = new LinkedList<Event>();
     private String language = "SWE"; //Programmet startar med svenska.
     private Color color = Color.WHITE; //Programmet startar med vit färg.
@@ -69,6 +69,7 @@ public class CalenderModel {
      * @return LocalDateTime objekt
      */
     public LocalDateTime getViewTime() {
+        support.firePropertyChange("currentTime", null, viewdate);
         return viewdate;
     }
 
@@ -190,6 +191,7 @@ public class CalenderModel {
     /**
      * Setter för dagar. d>0 för framåt, d<0 för bakåt.
      * support.firePropertyChange triggar propertyChange i aktuell view
+     * Den första uppdaterar view om aktuell tid. Den andra uppdaterar vilken förändring som skett.
      *
      * @param d (dagar)
      */
@@ -197,12 +199,15 @@ public class CalenderModel {
         int oldValue = viewdate.getDayOfMonth();
         if (d > 0) {
             viewdate = viewdate.plusDays(d);
+            int newValue = viewdate.getDayOfMonth();
+            support.firePropertyChange("DayChangePlus", oldValue, newValue);
         } else if (d < 0) {
             d = d * -1;
             viewdate = viewdate.minusDays(d);
+            int newValue = viewdate.getDayOfMonth();
+            support.firePropertyChange("DayChangeMin", oldValue, newValue);
         }
-        int newValue = viewdate.getDayOfMonth();
-        support.firePropertyChange("DayChange", oldValue, newValue);
+
     }
 
     public void save() {

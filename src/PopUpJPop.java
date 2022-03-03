@@ -25,9 +25,10 @@ public class PopUpJPop extends JPopupMenu{
                 public void actionPerformed(ActionEvent e) {
                     System.out.println("Event Created");
                     //TODO send info to controller to change panel to eventpanel
-
                 }
             });
+
+
             popupRemove.addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
@@ -37,5 +38,9 @@ public class PopUpJPop extends JPopupMenu{
             });
         }
 
+    }
+
+    public void addRClickListener(ActionListener a) {
+        popup.addActionListener(a);
     }
 }

@@ -4,12 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4b89b8c8-4e75-454b-8fad-b69ac190600f" name="Changes" comment="save/load från vald directory">
+    <list default="true" id="4b89b8c8-4e75-454b-8fad-b69ac190600f" name="Changes" comment="rightclick i weekview">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/CalenderModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/CalenderModel.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/ChatControl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ChatControl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/PopUp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/PopUp.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/PopUpJPop.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/PopUpJPop.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/View/MonthView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/MonthView.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/View/TopBar.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/View/StartView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/StartView.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/View/WeekView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/WeekView.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -76,6 +78,10 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <list>
+      <item itemvalue="Application.WindowFrame" />
+      <item itemvalue="Application.test" />
+    </list>
     <recent_temporary>
       <list>
         <item itemvalue="Application.WindowFrame" />

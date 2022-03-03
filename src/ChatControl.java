@@ -2,10 +2,7 @@ package src;
 import src.Server.ChatServer;
 import src.View.*;
 
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
+import java.awt.event.*;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 
@@ -36,6 +33,7 @@ public class ChatControl implements PropertyChangeListener {
         yearView.addYearViewListener(new yearViewListener());
         optionView.addOptionViewListener(new optionViewListener());
         weekView.addWeekViewListener(new weekViewListener());
+        weekView.addWeekViewActionListener(new weekViewListener());
         monthView.addMonthViewListener(new monthViewListener());
         bookingView.addBookingViewListener(new bookingViewListener());
 
@@ -48,8 +46,12 @@ public class ChatControl implements PropertyChangeListener {
         model.addPropertyChangeListener(bookingView);
         model.addPropertyChangeListener(this);
 
-        weekView.setWeek(model.getWeek());
-        weekView.setDays(model.getWeekDays());
+        //Updates in Model to set all the views.
+        m.getViewTime();
+
+
+        // weekView.setWeek(model.getWeek());
+       // weekView.setDays(model.getWeekDays());
     }
     public ChatControl(boolean fake){
         //Fake initializer for static values
@@ -173,21 +175,44 @@ public class ChatControl implements PropertyChangeListener {
             }
         }
     }
-    private class weekViewListener implements ActionListener{
+    private class weekViewListener implements MouseListener, ActionListener{
         public void actionPerformed(ActionEvent e) {
             String str = e.getActionCommand();
             switch (str) {
                 case "<":
                     model.setDay(-7);
-                    weekView.setWeek(model.getWeek());
-                    weekView.setDays(model.getWeekDays());
                     break;
                 case ">":
                     model.setDay(7);
-                    weekView.setWeek(model.getWeek());
-                    weekView.setDays(model.getWeekDays());
+
                     break;
             }
+        }
+
+        @Override
+        public void mouseClicked(MouseEvent e) {
+
+        }
+
+        @Override
+        public void mousePressed(MouseEvent e) {
+
+        }
+
+        @Override
+        public void mouseReleased(MouseEvent e) {
+            PopUpJPop menu = new PopUpJPop("week");
+            menu.show(e.getComponent(), e.getX(), e.getY());
+        }
+
+        @Override
+        public void mouseEntered(MouseEvent e) {
+
+        }
+
+        @Override
+        public void mouseExited(MouseEvent e) {
+
         }
     }
     private class monthViewListener implements ActionListener{

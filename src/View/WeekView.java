@@ -8,16 +8,31 @@ import java.awt.event.ActionListener;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 
-public class WeekView extends TopBar implements PropertyChangeListener {
+public class WeekView extends JPanel implements PropertyChangeListener {
 
     private JPanel contentPane;
     private String [] weekDays =  new String[]{"MON" , "TUE", "WED", "THU", "FRI", "SAT", "SUN"};
-
+    private JPanel topbar;
+    private JButton previous, next;
+    private JLabel weekLabel;
     public WeekView(){
 
+        topbar = new JPanel();
         contentPane = new JPanel(new GridLayout(1,7));
         contentPane.setPreferredSize(new Dimension(1000,400));
-        add(contentPane);
+        previous = new JButton("<");
+        next = new JButton(">");
+        weekLabel = new JLabel();
+
+
+        this.setLayout(new BorderLayout());
+        topbar.add(previous);
+        topbar.add(weekLabel);
+        topbar.add(next);
+        this.add(topbar, BorderLayout.PAGE_START);
+        this.add(contentPane, BorderLayout.CENTER);
+
+
 
         for(int i=0; i<weekDays.length; ++i){
 
@@ -45,7 +60,11 @@ public class WeekView extends TopBar implements PropertyChangeListener {
     }
 
     public void addWeekViewListener(ActionListener a){
-
+        previous.addActionListener(a);
+        next.addActionListener(a);
+    }
+    public void setWeek(int w){
+        weekLabel.setText("Week: " + String.valueOf(w));
     }
 
     @Override

@@ -8,6 +8,8 @@ import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
 import java.io.*;
 import java.time.*;
+import java.time.temporal.TemporalField;
+import java.time.temporal.WeekFields;
 import java.util.*;
 import java.time.LocalDateTime;
 
@@ -19,6 +21,7 @@ public class CalenderModel {
     private YearMonth yearMonthObject = YearMonth.of(2022, 2);
     private int daysInMonth = yearMonthObject.lengthOfMonth(); //28
     private LocalDateTime viewdate; //viewdate är det aktuella objektet man ser i View.
+    private Calendar viewweek;
     Locale swe;
     Locale eng = new Locale("en");
     private final PropertyChangeSupport support = new PropertyChangeSupport(this);
@@ -150,12 +153,19 @@ public class CalenderModel {
         int oldValue = viewdate.getMonthValue();
         if (y > 0) {
             viewdate = viewdate.plusMonths(y);
+
         } else if (y < 0) {
             y = y * -1;
             viewdate = viewdate.minusMonths(y);
         }
         int newValue = viewdate.getMonthValue();
         support.firePropertyChange("MonthChange", oldValue, newValue);
+    }
+
+    public int getWeek(){
+        TemporalField woy = WeekFields.of(Locale.getDefault()).weekOfWeekBasedYear();
+        int weekNumber = viewdate.get(woy);
+        return weekNumber;
     }
 
     /**

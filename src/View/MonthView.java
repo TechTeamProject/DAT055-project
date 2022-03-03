@@ -24,7 +24,6 @@ public class MonthView extends JPanel implements PropertyChangeListener {
 
 
     MonthView() {
-      
         this.add(previous);
         this.add(next);
         this.add(dc);
@@ -63,7 +62,6 @@ public class MonthView extends JPanel implements PropertyChangeListener {
         System.out.println("TEST: Observer interface works. In the event this is what it says:" + evt);
     }
 }
-
 class CalendarPanel extends JPanel {
 
     public Calendar calendar;
@@ -124,13 +122,13 @@ class CalendarPanel extends JPanel {
             previousMonthDayToDisplay++;
         }
 
-        for (int j = 1 ; j <= numOfDaysInMonth; j++, i++) {
+        for (int j = 1; j <= numOfDaysInMonth; j++, i++) {
             JButton b = new JButton(j + "");
             b.setHorizontalAlignment(JButton.RIGHT);
             panel.add(b);
         }
 
-        for (int j = 1 ; i <= 42; j++, i++) {
+        for (int j = 1; i <= 42; j++, i++) {
             JButton b = new JButton(j + "");
             b.setHorizontalAlignment(JLabel.RIGHT);
             b.setForeground(Color.LIGHT_GRAY);
@@ -217,6 +215,6 @@ class CalendarPanel extends JPanel {
 
     @Override
     public Dimension getPreferredSize() {
-        return new Dimension(1000, 360);
+        return new Dimension(900, 360);
     }
 }

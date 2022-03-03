@@ -22,6 +22,7 @@ public class ChatControl {
     private static WeekView weekView;
     private static MonthView monthView;
     private static BookingView bookingView;
+
     public ChatControl(CalenderModel m, ChatView c, YearView y, OptionView o, WeekView w, MonthView mv, BookingView b){
         model = m;
         sound = new Sound();
@@ -40,12 +41,14 @@ public class ChatControl {
         monthView.addMonthViewListener(new monthViewListener());
         bookingView.addBookingViewListener(new bookingViewListener());
 
+
         //Listeners added to Observable here
         m.addPropertyChangeListener(optionView);
         m.addPropertyChangeListener(weekView);
         m.addPropertyChangeListener(monthView);
         m.addPropertyChangeListener(yearView);
         m.addPropertyChangeListener(bookingView);
+        weekView.setWeek(model.getWeek());
     }
     public ChatControl(boolean fake){
         //Fake initializer for static values
@@ -166,10 +169,14 @@ public class ChatControl {
         public void actionPerformed(ActionEvent e) {
             String str = e.getActionCommand();
             switch (str) {
-                case "f":
+                case "<":
+                    model.setDay(-7);
+                    weekView.setWeek(model.getWeek());
 
                     break;
-                case "t":
+                case ">":
+                    model.setDay(7);
+                    weekView.setWeek(model.getWeek());
 
                     break;
             }

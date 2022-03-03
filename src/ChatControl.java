@@ -2,19 +2,15 @@ package src;
 import src.Server.ChatServer;
 import src.View.*;
 
-import javax.swing.*;
-import javax.swing.filechooser.FileNameExtensionFilter;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
-import java.io.File;
-import java.io.IOException;
 
 public class ChatControl {
     private CalenderModel model;
     private static ChatView chatView;
-    private ServerThread serverThread;
+    private ClientThread serverThread;
     private ChatServer server;
     private Sound sound;
     private static YearView yearView;
@@ -83,7 +79,7 @@ public class ChatControl {
             if (ke.getKeyCode() == KeyEvent.VK_ENTER) {
                 if (chatView.getIpText().compareTo("") != 0) {
                     if(!serverThread.Alive()){
-                        serverThread = new ServerThread("AddUserClass", chatView.getIpText(), 23476);
+                        serverThread = new ClientThread("AddUserClass", chatView.getIpText(), 23476);
                         chatView.switchMiddlePanel("ChatArea");
                         sound.playConnected();
                     }
@@ -120,7 +116,7 @@ public class ChatControl {
                 case "Confirm":
                     if (chatView.getIpText().compareTo("") != 0 && chatView.getNameText().compareTo("") != 0) {
                         if(!serverThread.Alive()){
-                            serverThread = new ServerThread(chatView.getNameText(), chatView.getIpText(), 23476);
+                            serverThread = new ClientThread(chatView.getNameText(), chatView.getIpText(), 23476);
                             chatView.switchMiddlePanel("ChatArea");
                             sound.playConnected();
                         }

@@ -11,7 +11,7 @@ import java.util.Scanner;
  * @version 1.0
  * @since   2022-03-02
  */
-public class ServerThread implements Runnable {
+public class ClientThread implements Runnable {
     private static Socket socket;
     private LinkedList<String> messagesToSend;
     private boolean hasMessages = false;
@@ -25,7 +25,7 @@ public class ServerThread implements Runnable {
      * @param host  The host adress of the server.
      * @param portNumber The port of the server.
      */
-    public ServerThread(String userName, String host, int portNumber){
+    public ClientThread(String userName, String host, int portNumber){
         client = new Client(userName, host, portNumber);
         messagesToSend = new LinkedList<>();
 

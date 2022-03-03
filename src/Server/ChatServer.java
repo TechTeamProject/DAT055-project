@@ -43,7 +43,7 @@ public class ChatServer implements  Runnable{
         while (true) {
             try {
                 Socket socket = serverSocket.accept();
-                ClientThread client = new ClientThread(this, socket);
+                ServerThread client = new ServerThread(this, socket);
                 ClientServerInfo clientServerInfo = new ClientServerInfo(socket);
                 Thread thread = new Thread(client);
                 thread.start();

@@ -11,7 +11,7 @@ import java.util.Scanner;
  * @version 1.0
  * @since   2022-03-02
  */
-public class ClientThread implements Runnable {
+public class ServerThread implements Runnable {
     private final Socket socket;
     private final ChatServer server;
 
@@ -21,7 +21,7 @@ public class ClientThread implements Runnable {
      * @param server The server used for the ClientThread.
      * @param socket The socket used for the ClientThread.
      */
-    public ClientThread(ChatServer server, Socket socket){
+    public ServerThread(ChatServer server, Socket socket){
         this.server = server;
         this.socket = socket;
     }

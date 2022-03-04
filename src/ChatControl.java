@@ -301,6 +301,10 @@ public class  ChatControl implements PropertyChangeListener, Serializable {
         }
     }
 
+    /**
+     * Simple getmethod to retrieve eventlist
+     * @return LinkedList</Event>
+     */
     public static LinkedList<Event> getCalenderEvents() {
             return Eventlist = model.getEvents();
     }

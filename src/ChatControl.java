@@ -9,6 +9,7 @@ import java.beans.PropertyChangeListener;
 import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.InputMismatchException;
 import java.util.LinkedList;
 
 import static java.awt.event.MouseEvent.BUTTON3;
@@ -286,7 +287,7 @@ public class  ChatControl implements PropertyChangeListener, Serializable {
                         eventView.setStartTime("yyyy-MM-dd HH:mm");
                         eventView.setEndTime("yyyy-MM-dd HH:mm");
                         eventView.setLoc("");
-                    } catch (Exception ex) {
+                    } catch (InputMismatchException ex) {
                         JOptionPane.showMessageDialog(null, "Wrong date/time format", "Error", JOptionPane.ERROR_MESSAGE);
                     }
                 }

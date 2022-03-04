@@ -88,44 +88,23 @@ public class WeekView extends JPanel implements PropertyChangeListener, Serializ
 
             dayBox.getLast().add(dateBox, c);
 
-            //lower half of the titleBox
+            //Panel with week dates.
             JPanel titelBoxDown = new JPanel();
             String stringdate = Integer.toString(weektime.getDayOfMonth() + i);
             title.add(new JLabel(stringdate));
             title.getLast().setVerticalAlignment(JLabel.TOP);
+
             titelBoxDown.add(title.getLast());
 
-            //The titleboxes combined
+            //Weekdatepanel added to each dayBox
             c.gridx = 0;
             c.gridy = 1;
             c.weighty = 0.1;
             c.weightx = 0.5;
             c.fill = GridBagConstraints.BOTH;
             c.anchor = FIRST_LINE_END;
+
             dayBox.getLast().add(titelBoxDown, c);
-
-
-            JButton test = new JButton("Test1");
-            c.gridx = 0;
-            c.gridy = 2;
-            c.fill = GridBagConstraints.BOTH;
-            c.weighty = 0.5;
-            c.weightx = 0.5;
-            c.anchor = FIRST_LINE_START;
-
-           // dayBox.getLast().add(test, c);
-
-            JButton test2 = new JButton("Test2");
-            c.gridx = 0;
-            c.gridy = 3;
-            c.fill = GridBagConstraints.BOTH;
-            c.weighty = 0.5;
-            c.weightx = 0.5;
-            c.ipady = 30;
-            c.anchor = FIRST_LINE_START;
-            c.insets = inset;
-
-           // dayBox.getLast().add(test2, c);
 
             JButton test3 = new JButton("Test3");
             c.gridx = 0;
@@ -218,8 +197,18 @@ public class WeekView extends JPanel implements PropertyChangeListener, Serializ
      */
     private void loadEvent() {
         Collections.sort(eventlist);
+
+        //In all 7 dayBoxes, delete every component except first one (dateBox)
+        for (int i=0; i < 7; i++) {
+            for (int y=2; y < dayBox.get(i).getComponentCount(); y++ ) {
+                dayBox.get(i).remove(y);
+            }
+        }
+
+
          for (int i=0; i<7; i++) {
              for (int y = 0; y < eventlist.size(); y++) {
+
                  LocalDateTime eventtime = eventlist.get(y).getStartTime();
                  if (weektime.plusDays(i).getDayOfMonth() == eventtime.getDayOfMonth() && weektime.plusDays(i).getMonth() == eventtime.getMonth() && weektime.plusDays(i).getYear() == eventtime.getYear()) {
                      GridBagConstraints c = new GridBagConstraints();

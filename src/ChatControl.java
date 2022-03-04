@@ -24,10 +24,11 @@ public class  ChatControl implements PropertyChangeListener, Serializable {
     private static WeekView weekView;
     private static MonthView monthView;
     private static BookingView bookingView;
+    private static EventView eventView;
     private DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
     private static LinkedList<Event> Eventlist = new LinkedList<Event>();
 
-    public ChatControl(CalenderModel m, ChatView c, YearView y, OptionView o, WeekView w, MonthView mv, BookingView b){
+    public ChatControl(CalenderModel m, ChatView c, YearView y, OptionView o, WeekView w, MonthView mv, BookingView b, EventView e){
         model = m;
         sound = new Sound();
         chatView = c;
@@ -36,6 +37,7 @@ public class  ChatControl implements PropertyChangeListener, Serializable {
         weekView = w;
         monthView = mv;
         bookingView = b;
+        eventView = e;
 
         chatView.addChatFieldListener(new chatListener());
         chatView.addTopButtonsListener(new topButtonsListener());
@@ -45,6 +47,7 @@ public class  ChatControl implements PropertyChangeListener, Serializable {
         weekView.addWeekViewActionListener(new weekViewListener());
         monthView.addMonthViewListener(new monthViewListener());
         bookingView.addBookingViewListener(new bookingViewListener());
+        eventView.addEventViewListener(new eventViewListener());
 
 
         //Listeners added to Observable here
@@ -260,6 +263,33 @@ public class  ChatControl implements PropertyChangeListener, Serializable {
                 case "p":
 
                     break;
+            }
+        }
+    }
+    private class eventViewListener implements ActionListener{
+        public void actionPerformed(ActionEvent e) {
+            String str = e.getActionCommand();
+            if(str.equals("Save")){
+                String title = eventView.getTitle();
+                String fromtime = eventView.getStartTime();
+                String untiltime = eventView.getEndTime();
+                String loc = eventView.getLoc();
+                if (title.isBlank()) {
+                    JOptionPane.showMessageDialog(null, "No title", "Error", JOptionPane.ERROR_MESSAGE);
+                } else {
+                    try {
+                        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
+                        LocalDateTime fromdatetime = LocalDateTime.parse(fromtime, formatter);
+                        LocalDateTime untildatetime = LocalDateTime.parse(untiltime, formatter);
+                        model.addEvent(fromdatetime, untildatetime, title, loc);
+                        eventView.setTitle("");
+                        eventView.setStartTime("yyyy-MM-dd HH:mm");
+                        eventView.setEndTime("yyyy-MM-dd HH:mm");
+                        eventView.setLoc("");
+                    } catch (Exception ex) {
+                        JOptionPane.showMessageDialog(null, "Wrong date/time format", "Error", JOptionPane.ERROR_MESSAGE);
+                    }
+                }
             }
         }
     }

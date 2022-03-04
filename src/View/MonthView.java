@@ -115,6 +115,7 @@ class CalendarPanel extends JPanel {
         int numOfDaysInPreviousMonth = getMaximum(previousMonth);
         int previousMonthDayToDisplay = numOfDaysInPreviousMonth - starDay + 2;
 
+        //Buttons för dagar från previous month
         for (i = 1; i < starDay; i++) {
             JButton b = new JButton(previousMonthDayToDisplay + "");
             b.setHorizontalAlignment(JButton.RIGHT);
@@ -123,12 +124,14 @@ class CalendarPanel extends JPanel {
             previousMonthDayToDisplay++;
         }
 
+        //Buttons för dagar från current month
         for (int j = 1; j <= numOfDaysInMonth; j++, i++) {
             JButton b = new JButton(j + "");
             b.setHorizontalAlignment(JButton.RIGHT);
             panel.add(b);
         }
 
+        //Buttons för dagar från next month
         for (int j = 1; i <= 42; j++, i++) {
             JButton b = new JButton(j + "");
             b.setHorizontalAlignment(JLabel.RIGHT);

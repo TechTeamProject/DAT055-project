@@ -43,7 +43,7 @@ public class WindowFrame extends JFrame {
         bookingView = new JScrollPane(bookView);
         bookingView.setPreferredSize(new Dimension(600, 400));
         chatView = new ChatView();
-        chatControl = new ChatControl(m, chatView, yearView, optionView, weekView, monthView, bookView);
+        chatControl = new ChatControl(m, chatView, yearView, optionView, weekView, monthView, bookView, eventView);
 
         p = new JPanel();
 

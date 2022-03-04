@@ -16,6 +16,9 @@ import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import java.io.Serializable;
 import java.time.LocalDateTime;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.LinkedList;
 
 import static java.awt.GridBagConstraints.*;
@@ -42,7 +45,7 @@ public class WeekView extends JPanel implements PropertyChangeListener, Serializ
 
         header = new JPanel(new GridLayout(1,3));
         monthTitlePanel = new JPanel();
-        monthTitle = new JLabel("JANUARI 2022");
+        monthTitle = new JLabel();
         previousButton = new JButton("<");
         nextButton = new JButton(">");
         monthTitlePanel.add(previousButton);
@@ -149,6 +152,21 @@ public class WeekView extends JPanel implements PropertyChangeListener, Serializ
 
         }
     }
+
+    public void addobjects(Component componente, Container yourcontainer, GridBagLayout layout, GridBagConstraints gbc, int gridx, int gridy, int gridwidth, int gridheigth, int ipady){
+
+        gbc.gridx = gridx;
+        gbc.gridy = gridy;
+
+        gbc.gridwidth = gridwidth;
+        gbc.gridheight = gridheigth;
+
+        gbc.ipady = ipady;
+
+        layout.setConstraints(componente, gbc);
+        yourcontainer.add(componente);
+    }
+
     @Override
     public void propertyChange(PropertyChangeEvent evt) {
 
@@ -199,6 +217,7 @@ public class WeekView extends JPanel implements PropertyChangeListener, Serializ
      * //TODO fixa så att det laddas in på nytt vid ny vecka
      */
     private void loadEvent() {
+        Collections.sort(eventlist);
          for (int i=0; i<7; i++) {
              for (int y = 0; y < eventlist.size(); y++) {
                  LocalDateTime eventtime = eventlist.get(y).getStartTime();
@@ -214,7 +233,7 @@ public class WeekView extends JPanel implements PropertyChangeListener, Serializ
                      c.weightx = 0.5;
                      c.ipady = 0;
                      c.anchor = FIRST_LINE_START;
-                     dayBox.get(i).add(new JButton(), c);
+                     dayBox.get(i).add(new JButton(eventlist.get(y).getDescription()), c);
 
                  }
              }

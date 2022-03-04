@@ -6,13 +6,15 @@ import javax.swing.*;
 import java.awt.event.*;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
+import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.LinkedList;
 
 import static java.awt.event.MouseEvent.BUTTON3;
 
-public class  ChatControl implements PropertyChangeListener {
-    private CalenderModel model;
+public class  ChatControl implements PropertyChangeListener, Serializable {
+    private static CalenderModel model;
     private static ChatView chatView;
     private ClientThread serverThread;
     private ChatServer server;
@@ -23,6 +25,7 @@ public class  ChatControl implements PropertyChangeListener {
     private static MonthView monthView;
     private static BookingView bookingView;
     private DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
+    private static LinkedList<Event> Eventlist = new LinkedList<Event>();
 
     public ChatControl(CalenderModel m, ChatView c, YearView y, OptionView o, WeekView w, MonthView mv, BookingView b){
         model = m;
@@ -235,7 +238,6 @@ public class  ChatControl implements PropertyChangeListener {
                 String formatedtime = eventtime.format(formatter);
                 EventView.setEventTime(formatedtime);
             }
-
         }
 
         @Override
@@ -268,4 +270,11 @@ public class  ChatControl implements PropertyChangeListener {
             model.removeEvent(index);
         }
     }
+
+    public static LinkedList<Event> getCalenderEvents() {
+            return Eventlist = model.getEvents();
+    }
+
+
+
 }

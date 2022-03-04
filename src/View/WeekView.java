@@ -1,6 +1,9 @@
 package src.View;
 
 
+import src.ChatControl;
+import src.Event;
+
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.EtchedBorder;
@@ -11,12 +14,13 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
+import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.LinkedList;
 
 import static java.awt.GridBagConstraints.*;
 
-public class WeekView extends JPanel implements PropertyChangeListener {
+public class WeekView extends JPanel implements PropertyChangeListener, Serializable {
 
     private JPanel contentPane;
     private String [] weekDays =  new String[]{"MON" , "TUE", "WED", "THU", "FRI", "SAT", "SUN"};
@@ -29,6 +33,7 @@ public class WeekView extends JPanel implements PropertyChangeListener {
     private JButton nextButton;
     private LocalDateTime weektime = LocalDateTime.now();
     private LinkedList<JLabel> title = new LinkedList<>();
+    private LinkedList<Event> eventlist = new LinkedList<Event>();
     //private LinkedList<>
 
     public WeekView() {
@@ -164,15 +169,22 @@ public class WeekView extends JPanel implements PropertyChangeListener {
         //Sets the monthtitle
         monthTitle.setText(weektime.getMonth().toString());
 
+
+
         //Sets days
         for (int i=0; i<7; i++) {
-            title.get(i).setText(Integer.toString(weektime.getDayOfMonth() + i));
+            title.get(i).setText(Integer.toString(weektime.plusDays(i).getDayOfMonth()));
         }
 
         //For testing
         System.out.println("TEST in WEEK: Observer sees this:" + evt);
 
         if (evt.getPropertyName().equals("NewEvent")) {
+                eventlist = ChatControl.getCalenderEvents();
+
+            for (Event event : eventlist) {
+                System.out.println("Nytt Event " + event.getDescription());
+            }
 
         }
     }

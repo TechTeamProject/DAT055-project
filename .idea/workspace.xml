@@ -4,9 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4b89b8c8-4e75-454b-8fad-b69ac190600f" name="Changes" comment="time now saved to eventtime from where you rightclicked">
+    <list default="true" id="4b89b8c8-4e75-454b-8fad-b69ac190600f" name="Changes" comment="removed some unused things">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/CalenderModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/CalenderModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ChatControl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ChatControl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/View/WeekView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/WeekView.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -197,7 +197,14 @@
       <option name="project" value="LOCAL" />
       <updated>1646391492932</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="removed some unused things">
+      <created>1646392574475</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1646392574475</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -228,7 +235,8 @@
     <MESSAGE value="Lagt till dynamisk datetime i week" />
     <MESSAGE value="createevent changes panel to create event" />
     <MESSAGE value="time now saved to eventtime from where you rightclicked" />
-    <option name="LAST_COMMIT_MESSAGE" value="time now saved to eventtime from where you rightclicked" />
+    <MESSAGE value="removed some unused things" />
+    <option name="LAST_COMMIT_MESSAGE" value="removed some unused things" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/DAT055_project$WindowFrame.ic" NAME="WindowFrame Coverage Results" MODIFIED="1645656862873" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">

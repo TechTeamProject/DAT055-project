@@ -182,6 +182,7 @@ public class WeekView extends JPanel implements PropertyChangeListener, Serializ
         if (evt.getPropertyName().equals("NewEvent")) {
                 eventlist = ChatControl.getCalenderEvents();
 
+
             for (Event event : eventlist) {
                 System.out.println("Nytt Event " + event.getDescription());
             }

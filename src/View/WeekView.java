@@ -181,10 +181,12 @@ public class WeekView extends JPanel implements PropertyChangeListener, Serializ
         //For testing
         System.out.println("TEST in WEEK: Observer sees this:" + evt);
 
+        //Vid nytt event uppdateras weekview
         if (evt.getPropertyName().equals("NewEvent")) {
                 eventlist = ChatControl.getCalenderEvents();
                 loadEvent();
 
+            //För testning
             for (Event event : eventlist) {
                 System.out.println("Nytt Event " + event.getDescription());
             }
@@ -192,6 +194,10 @@ public class WeekView extends JPanel implements PropertyChangeListener, Serializ
         }
     }
 
+    /**
+     * En metod som kollar igenom de 7 aktuella dagarna, kollar om något event ligger och lägger ut.
+     * //TODO fixa så att det laddas in på nytt vid ny vecka
+     */
     private void loadEvent() {
          for (int i=0; i<7; i++) {
              for (int y = 0; y < eventlist.size(); y++) {
@@ -199,7 +205,7 @@ public class WeekView extends JPanel implements PropertyChangeListener, Serializ
                  if (weektime.plusDays(i).getDayOfMonth() == eventtime.getDayOfMonth() && weektime.plusDays(i).getMonth() == eventtime.getMonth() && weektime.plusDays(i).getYear() == eventtime.getYear()) {
                      GridBagConstraints c = new GridBagConstraints();
                      int hour = eventtime.getHour();
-
+                        //TODO Lägga in i vilken ordning events under samma dag hamnar mha c.gridy
                      c.gridx = 0;
                      c.gridy = gridycount;
                      gridycount++;

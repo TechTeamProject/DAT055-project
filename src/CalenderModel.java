@@ -13,7 +13,7 @@ import java.time.temporal.WeekFields;
 import java.util.*;
 import java.time.LocalDateTime;
 
-public class CalenderModel implements Serializable {
+public class CalenderModel {
     private static LinkedList<Event> Eventlist = new LinkedList<Event>();
     private String language = "SWE"; //Programmet startar med svenska.
     private Color color = Color.WHITE; //Programmet startar med vit färg.
@@ -52,6 +52,12 @@ public class CalenderModel implements Serializable {
     public void removeEvent(int index) {
         Eventlist.remove(index);
         support.firePropertyChange("RemoveEvent", 1, 0);
+    }
+
+    //A way to trigger switch to eventview without
+    public void updateEvent() {
+        System.out.println("Update check");
+        support.firePropertyChange("gotoEvent",0,0);
     }
 
     public LinkedList<Event> getEvents() {

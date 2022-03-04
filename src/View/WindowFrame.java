@@ -6,6 +6,8 @@ import src.ChatControl;
 import java.awt.*;
 import javax.swing.*;
 import java.awt.event.*;
+import java.beans.PropertyChangeEvent;
+import java.beans.PropertyChangeListener;
 import java.time.LocalDateTime;
 
 
@@ -21,9 +23,9 @@ public class WindowFrame extends JFrame {
     JScrollPane bookingView;
     private static ChatView chatView;
     private static ChatControl chatControl;
-    private CardLayout c1;
+    private static CardLayout c1;
     private int currentCard = 1;
-    private boolean test = false; //För testning av observerinterface
+    private static JPanel p = new JPanel();
 
     public static void main(String [] args){
         WindowFrame windowFrame = new WindowFrame();
@@ -43,7 +45,7 @@ public class WindowFrame extends JFrame {
         chatView = new ChatView();
         chatControl = new ChatControl(m, chatView, yearView, optionView, weekView, monthView, bookView);
 
-        JPanel p = new JPanel();
+        p = new JPanel();
 
         JButton bOptions = new JButton("Options");
         JButton bBookings = new JButton("Bookings");
@@ -169,5 +171,10 @@ public class WindowFrame extends JFrame {
         this.setVisible(true);
         this.add(p);
         c1.show(p, "week");
+    }
+
+    public static void changePanel() {
+        c1.show(p,"event");
+        System.out.println("Det borde bytas till Event nu");
     }
 }

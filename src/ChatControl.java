@@ -2,6 +2,7 @@ package src;
 import src.Server.ChatServer;
 import src.View.*;
 
+import javax.swing.*;
 import java.awt.event.*;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
@@ -62,6 +63,7 @@ public class  ChatControl implements PropertyChangeListener {
     public void printText(String text){
         chatView.printText(text);
     }
+
 
     @Override
     public void propertyChange(PropertyChangeEvent evt) {
@@ -166,7 +168,6 @@ public class  ChatControl implements PropertyChangeListener {
             String str = e.getActionCommand();
             switch (str) {
                 case "Appearance":
-
                     break;
                 case "Save":
                     model.save();
@@ -177,7 +178,9 @@ public class  ChatControl implements PropertyChangeListener {
             }
         }
     }
-    private class weekViewListener implements MouseListener, ActionListener{
+    private class weekViewListener extends JPopupMenu implements MouseListener, ActionListener{
+
+
         public void actionPerformed(ActionEvent e) {
             String str = e.getActionCommand();
             switch (str) {
@@ -190,7 +193,6 @@ public class  ChatControl implements PropertyChangeListener {
                     break;
             }
         }
-
         @Override
         public void mouseClicked(MouseEvent e) {
 

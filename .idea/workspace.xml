@@ -4,11 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4b89b8c8-4e75-454b-8fad-b69ac190600f" name="Changes" comment="rightclick i weekview">
+    <list default="true" id="4b89b8c8-4e75-454b-8fad-b69ac190600f" name="Changes" comment="Lagt till dynamisk datetime i week">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/CalenderModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/CalenderModel.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/ChatControl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ChatControl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/View/MonthView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/MonthView.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/View/WeekView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/WeekView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/PopUpJPop.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/PopUpJPop.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/View/WindowFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/WindowFrame.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -177,7 +178,14 @@
       <option name="presentableId" value="LOCAL−00013" />
       <updated>1646226516504</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="Lagt till dynamisk datetime i week">
+      <created>1646355896577</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1646355896577</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -205,7 +213,8 @@
     <MESSAGE value="addEvent tillagd till observable" />
     <MESSAGE value="save/load" />
     <MESSAGE value="save/load från vald directory" />
-    <option name="LAST_COMMIT_MESSAGE" value="save/load från vald directory" />
+    <MESSAGE value="Lagt till dynamisk datetime i week" />
+    <option name="LAST_COMMIT_MESSAGE" value="Lagt till dynamisk datetime i week" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/DAT055_project$WindowFrame.ic" NAME="WindowFrame Coverage Results" MODIFIED="1645656862873" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">

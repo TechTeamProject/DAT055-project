@@ -54,12 +54,6 @@ public class CalenderModel {
         support.firePropertyChange("RemoveEvent", 1, 0);
     }
 
-    //A way to trigger switch to eventview without
-    public void updateEvent() {
-        System.out.println("Update check");
-        support.firePropertyChange("gotoEvent",0,0);
-    }
-
     public LinkedList<Event> getEvents() {
         return this.Eventlist;
     }

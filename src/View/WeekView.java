@@ -29,6 +29,7 @@ public class WeekView extends JPanel implements PropertyChangeListener {
     private JButton nextButton;
     private LocalDateTime weektime = LocalDateTime.now();
     private LinkedList<JLabel> title = new LinkedList<>();
+    //private LinkedList<>
 
     public WeekView() {
 
@@ -73,6 +74,7 @@ public class WeekView extends JPanel implements PropertyChangeListener {
             c.weighty = 0.1;
             c.weightx = 0.5;
             Insets inset = new Insets(10, 0, 0, 0);
+            Insets noinset = new Insets(0,0,0,0);
 
             dayBox.add(dateBox, c);
 
@@ -109,7 +111,9 @@ public class WeekView extends JPanel implements PropertyChangeListener {
             c.fill = GridBagConstraints.BOTH;
             c.weighty = 0.5;
             c.weightx = 0.5;
+            c.ipady = 30;
             c.anchor = FIRST_LINE_START;
+            c.insets = inset;
 
             dayBox.add(test2, c);
 
@@ -119,7 +123,9 @@ public class WeekView extends JPanel implements PropertyChangeListener {
             c.fill = GridBagConstraints.BOTH;
             c.weighty = 0.5;
             c.weightx = 0.5;
+            c.ipady = 0;
             c.anchor = FIRST_LINE_START;
+            c.insets = noinset;
 
             dayBox.add(test3, c);
 
@@ -165,6 +171,10 @@ public class WeekView extends JPanel implements PropertyChangeListener {
 
         //For testing
         System.out.println("TEST in WEEK: Observer sees this:" + evt);
+
+        if (evt.getPropertyName().equals("NewEvent")) {
+
+        }
     }
 
     public void addWeekViewListener(MouseListener a) {

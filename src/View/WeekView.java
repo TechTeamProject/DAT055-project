@@ -27,7 +27,8 @@ public class WeekView extends JPanel implements PropertyChangeListener {
     private JPanel body;
     private JButton previousButton;
     private JButton nextButton;
-    private LocalDateTime weektime;
+    private LocalDateTime weektime = LocalDateTime.now();
+    private LinkedList<JLabel> title = new LinkedList<>();
 
     public WeekView() {
 
@@ -64,8 +65,6 @@ public class WeekView extends JPanel implements PropertyChangeListener {
 
             //upper half of the titleBox
             JPanel dateBox = new JPanel();
-            dateBox.setBackground(Color.RED);
-
             dateBox.add(new JLabel(weekDays[i]));
             c.gridx = 0;
             c.gridy = 0;
@@ -74,18 +73,17 @@ public class WeekView extends JPanel implements PropertyChangeListener {
             c.weighty = 0.1;
             c.weightx = 0.5;
             Insets inset = new Insets(10, 0, 0, 0);
-            //   c.insets = inset;
 
             dayBox.add(dateBox, c);
 
-
             //lower half of the titleBox
             JPanel titelBoxDown = new JPanel();
-            JLabel title = new JLabel("?");
-            title.setVerticalAlignment(JLabel.TOP);
+            String stringdate = Integer.toString(weektime.getDayOfMonth() + i);
+            title.add(new JLabel(stringdate));
+            title.getLast().setVerticalAlignment(JLabel.TOP);
+            titelBoxDown.add(title.getLast());
 
-            titelBoxDown.add(title);
-
+            //The titleboxes combined
             c.gridx = 0;
             c.gridy = 1;
             c.weighty = 0.1;
@@ -134,19 +132,6 @@ public class WeekView extends JPanel implements PropertyChangeListener {
             c.anchor = FIRST_LINE_START;
 
             dayBox.add(test4, c);
-
-            /*
-            LinkedList<JPanel> filler = new LinkedList<>();
-            for (int y=0; y<40; y++) {
-                filler.add(y,new JPanel());
-                c.gridy=6+y;
-                c.fill = GridBagConstraints.BOTH;
-                c.weighty = 0.5;
-                c.weightx = 0.5;
-                c.anchor = FIRST_LINE_START;
-                dayBox.add(filler.get(y),c);
-            }
-            */
             contentPane.add(dayBox);
 
         }
@@ -164,15 +149,21 @@ public class WeekView extends JPanel implements PropertyChangeListener {
             System.out.println(evt.getNewValue());
             int newday = evt.getNewValue().hashCode();
             System.out.println("HASHCODE "+ newday);
-
                 weektime = weektime.plusDays(7);
         }
         else if (evt.getPropertyName().equals("DayChangeMin") && (weektime.minusDays(7).getDayOfMonth() == evt.getNewValue().hashCode())) {
             weektime = weektime.minusDays(7);
             System.out.println("Minus, Day= " + weektime.getDayOfMonth());
         }
+        //Sets the monthtitle
+        monthTitle.setText(weektime.getMonth().toString());
 
+        //Sets days
+        for (int i=0; i<7; i++) {
+            title.get(i).setText(Integer.toString(weektime.getDayOfMonth() + i));
+        }
 
+        //For testing
         System.out.println("TEST in WEEK: Observer sees this:" + evt);
     }
 

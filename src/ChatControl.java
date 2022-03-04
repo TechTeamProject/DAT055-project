@@ -6,7 +6,9 @@ import java.awt.event.*;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 
-public class ChatControl implements PropertyChangeListener {
+import static java.awt.event.MouseEvent.BUTTON3;
+
+public class  ChatControl implements PropertyChangeListener {
     private CalenderModel model;
     private static ChatView chatView;
     private ClientThread serverThread;
@@ -201,8 +203,11 @@ public class ChatControl implements PropertyChangeListener {
 
         @Override
         public void mouseReleased(MouseEvent e) {
-            PopUpJPop menu = new PopUpJPop("week");
-            menu.show(e.getComponent(), e.getX(), e.getY());
+            if (e.getButton() == BUTTON3) {
+                PopUpJPop menu = new PopUpJPop("week");
+                menu.show(e.getComponent(), e.getX(), e.getY());
+            }
+
         }
 
         @Override

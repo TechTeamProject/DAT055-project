@@ -30,6 +30,7 @@ public class MonthView extends JPanel implements PropertyChangeListener {
         this.setBackground(Color.darkGray);
         this.setPreferredSize(new Dimension( 1000, 400 ));
 
+
         next.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {

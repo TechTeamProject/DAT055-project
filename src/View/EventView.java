@@ -11,13 +11,13 @@ import javax.swing.*;
 public class EventView extends JPanel implements ActionListener {
     CalenderModel model;
 
-    JTextField text1;
+    private JTextField text1;
 
-    JTextField text2;
+    private static JTextField text2;
 
-    JTextField text3;
+   private static JTextField text3;
 
-    JTextField text4;
+    private JTextField text4;
 
     public EventView(CalenderModel m){
         this.model=m;
@@ -87,6 +87,11 @@ public class EventView extends JPanel implements ActionListener {
                 }
             }
         }
+    }
+
+    public static void setEventTime(String s) {
+        text2.setText(s);
+        text3.setText(s);
     }
 }
 

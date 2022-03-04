@@ -6,6 +6,8 @@ import javax.swing.*;
 import java.awt.event.*;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 import static java.awt.event.MouseEvent.BUTTON3;
 
@@ -20,6 +22,7 @@ public class  ChatControl implements PropertyChangeListener {
     private static WeekView weekView;
     private static MonthView monthView;
     private static BookingView bookingView;
+    private DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
 
     public ChatControl(CalenderModel m, ChatView c, YearView y, OptionView o, WeekView w, MonthView mv, BookingView b){
         model = m;
@@ -180,7 +183,6 @@ public class  ChatControl implements PropertyChangeListener {
     }
     private class weekViewListener extends JPopupMenu implements MouseListener, ActionListener{
 
-
         public void actionPerformed(ActionEvent e) {
             String str = e.getActionCommand();
             switch (str) {
@@ -205,9 +207,33 @@ public class  ChatControl implements PropertyChangeListener {
 
         @Override
         public void mouseReleased(MouseEvent e) {
+            //If mouse released and BUTTON3 = RightClick has been used
             if (e.getButton() == BUTTON3) {
                 PopUpJPop menu = new PopUpJPop("week");
                 menu.show(e.getComponent(), e.getX(), e.getY());
+
+                //A block to save x coordinates of rightclick in weekview to add to eventview the current time
+                LocalDateTime eventtime = model.getViewTime();
+                if (e.getX() > 145 && e.getX() < 285)  {
+                    eventtime = eventtime.plusDays(1);
+                }
+                else if (e.getX() > 285 && e.getX() < 428){
+                    eventtime = eventtime.plusDays(2);
+                }
+                else if (e.getX() > 428 && e.getX() < 570) {
+                    eventtime = eventtime.plusDays(3);
+                }
+                else if (e.getX() > 570 && e.getX() < 712) {
+                    eventtime = eventtime.plusDays(4);
+                }
+                else if (e.getX() > 712 && e.getX() < 854) {
+                    eventtime = eventtime.plusDays(5);
+                }
+                else if (e.getX() > 854 && e.getX() < 1000) {
+                    eventtime = eventtime.plusDays(6);
+                }
+                String formatedtime = eventtime.format(formatter);
+                EventView.setEventTime(formatedtime);
             }
 
         }

@@ -175,6 +175,5 @@ public class WindowFrame extends JFrame {
 
     public static void changePanel() {
         c1.show(p,"event");
-        System.out.println("Det borde bytas till Event nu");
     }
 }

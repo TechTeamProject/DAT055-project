@@ -237,11 +237,6 @@ public class WeekView extends JPanel implements PropertyChangeListener, Serializ
                      c.weightx = 0.5;
                      c.ipady = 0;
                      c.anchor = FIRST_LINE_START;
-                     String eventStartHour = String.valueOf(eventlist.get(y).getStartTime().getHour());
-                     String eventEndHour = String.valueOf(eventlist.get(y).getEndTime().getHour());
-                     String eventStartMinute = String.valueOf(eventlist.get(y).getStartTime().getMinute());
-                     String eventEndMinute = String.valueOf(eventlist.get(y).getEndTime().getMinute());
-
 
                      dayBox.get(i).add(new JButton(eventlist.get(y).getDescription() + " " +
                      getEventTime(eventlist.get(y))), c);

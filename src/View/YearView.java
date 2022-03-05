@@ -7,14 +7,22 @@ import java.beans.PropertyChangeListener;
 import javax.swing.*;
 import java.time.LocalDateTime;
 import java.time.Year;
-
+/**
+ * This class is used as the view for all months of the year.
+ *
+ * @author  Hanna Pham, Elias Carlsson
+ * @version 1.0
+ * @since   2022-03-05
+ */
 
 public class YearView extends JPanel implements PropertyChangeListener {
     private JLabel header = new JLabel();
     private JButton previous = new JButton("<");
     private JButton next = new JButton(">");
     private LocalDateTime monthtime = LocalDateTime.now();
-
+    /**
+     * Constructor method for the YearView class.
+     */
     public  YearView(){
 
         JPanel p = new JPanel(new GridLayout(4,4,20,20));
@@ -56,12 +64,19 @@ public class YearView extends JPanel implements PropertyChangeListener {
         this.add(p1, BorderLayout.NORTH);
         this.add(p, BorderLayout.CENTER);
     }
-
+    /**
+     * A method that adds a ActionListener to the previous, next buttons
+     * @param a The ActionListener that is added.
+     */
     public void addYearViewListener(ActionListener a){
         previous.addActionListener(a);
         next.addActionListener(a);
     }
-
+    /**
+     * Fires when an observable changes an observed property.
+     * Sets year with setText() method.
+     * @param evt - information about the property change
+     */
     @Override
     public void propertyChange(PropertyChangeEvent evt) {
         if(evt.getPropertyName().equals("YearChange")){

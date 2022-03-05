@@ -13,6 +13,7 @@ import java.util.InputMismatchException;
 import java.util.LinkedList;
 
 import static java.awt.event.MouseEvent.BUTTON3;
+import static javax.swing.SwingUtilities.isRightMouseButton;
 
 public class  ChatControl implements PropertyChangeListener, Serializable {
     private static CalenderModel model;
@@ -215,7 +216,7 @@ public class  ChatControl implements PropertyChangeListener, Serializable {
         @Override
         public void mouseReleased(MouseEvent e) {
             //If mouse released and BUTTON3 = RightClick has been used
-            if (e.getButton() == BUTTON3) {
+            if (isRightMouseButton(e)) {
                 PopUpJPop menu = new PopUpJPop("week");
                 menu.show(e.getComponent(), e.getX(), e.getY());
 
@@ -241,6 +242,9 @@ public class  ChatControl implements PropertyChangeListener, Serializable {
                 }
                 String formatedtime = eventtime.format(formatter);
                 EventView.setEventTime(formatedtime);
+            }
+            else if (isRightMouseButton(e)) {
+
             }
         }
 

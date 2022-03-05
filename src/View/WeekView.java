@@ -10,6 +10,7 @@ import javax.swing.border.EtchedBorder;
 import javax.swing.text.StyledEditorKit;
 import java.awt.*;
 import java.awt.event.ActionListener;
+import java.awt.event.ItemListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.beans.PropertyChangeEvent;
@@ -43,6 +44,7 @@ public class WeekView extends JPanel implements PropertyChangeListener, Serializ
     GridBagConstraints con = new GridBagConstraints();
     private LocalDateTime eventtime;
     private int hour;
+    private Color lightgreen = new Color(229,255,204);
 
     /**
      * WeekView, hämtar eventlista från controller samt får aktuell tid genom observerinterface från model
@@ -165,6 +167,7 @@ public class WeekView extends JPanel implements PropertyChangeListener, Serializ
     }
 
 
+
     /**
      * En metod som konverterar en events start respektive sluttid till en sträng
      * @param e den aktuella eventet vars start samt sluttid ska beräknas
@@ -227,7 +230,7 @@ public class WeekView extends JPanel implements PropertyChangeListener, Serializ
                      if (hour < eventtime.getHour()) {
 
                          // om senare starttid, lägg in med gridx lägre än tidigare
-                         int hour = eventtime.getHour();
+                         hour = eventtime.getHour();
                      }
 
                         //TODO Lägga in i vilken ordning events under samma dag hamnar mha c.gridy
@@ -238,15 +241,22 @@ public class WeekView extends JPanel implements PropertyChangeListener, Serializ
                      c.weighty = 0.5;
                      c.weightx = 0.5;
                      c.ipady = 0;
-                     c.anchor = FIRST_LINE_START;
+                     c.anchor = CENTER;
 
-                     dayBox.get(i).add(new JButton("<html>" + eventlist.get(y).getDescription() + " <br/>" + "\n" +
-                     getEventTime(eventlist.get(y)) + "</html>"), c);
+
+                     JLabel eventlabel = new JLabel("<html>" + eventlist.get(y).getDescription() + " <br/>" +
+                             getEventTime(eventlist.get(y)) + "</html>", SwingConstants.CENTER);
+                     eventlabel.setBackground(lightgreen);
+                     eventlabel.setOpaque(true);
+                     eventlabel.setBorder(BorderFactory.createLineBorder(Color.GRAY, 1));
+
+                     dayBox.get(i).add(eventlabel, c);
 
                  }
              }
          }
     }
+
 
     private void setConstraint(LocalDateTime time) {
             //How many events that day

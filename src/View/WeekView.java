@@ -15,6 +15,7 @@ import java.awt.event.MouseListener;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import java.io.Serializable;
+import java.time.Duration;
 import java.time.LocalDateTime;
 import java.util.Collection;
 import java.util.Collections;
@@ -171,7 +172,7 @@ public class WeekView extends JPanel implements PropertyChangeListener, Serializ
 
 
     /**
-     * En metod som konverterar en events s
+     * En metod som konverterar en events start respektive sluttid till en sträng
      * @param e den aktuella eventet vars start samt sluttid ska beräknas
      * @return returnerar start respektive sluttid i HH:mm eller H:mm format beroende på om timmarna är ensiffriga
      * samt lägger till en 0 i slutet av start samt slutminuterna ifall de är ensiffriga så att de alltid skrivs i mm format
@@ -182,15 +183,22 @@ public class WeekView extends JPanel implements PropertyChangeListener, Serializ
         String eventEndHour = String.valueOf(e.getEndTime().getHour());
         String eventStartMinute = String.valueOf(e.getStartTime().getMinute());
         String eventEndMinute = String.valueOf(e.getEndTime().getMinute());
-        if(Integer.toString(e.getStartTime().getMinute()).trim().length() == 1)
-            eventStartMinute += "0";
-
-        if(Integer.toString(e.getEndTime().getMinute()).trim().length() == 1)
-            eventEndMinute += "0";
 
         return eventStartHour + ":" + eventStartMinute + "-" + eventEndHour + ":" + eventEndMinute;
 
     }
+
+    /**
+     * En hjälpmedtod som beräknar hur lång en event är, som sedan ska användas för att bestämma längden på eventen.
+     * @param e
+     * @return
+     */
+
+    private long timeDiff(Event e){
+        Duration diffDuration = Duration.between(e.getEndTime(), e.getStartTime());
+        return diffDuration.toMinutes();
+    }
+
 
     /**
      * En metod som kollar igenom de 7 aktuella dagarna, kollar om något event ligger och lägger ut.

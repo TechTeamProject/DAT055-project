@@ -99,7 +99,11 @@ public class MonthView extends JPanel implements PropertyChangeListener {
             b.setActionCommand("day");
         }
     }
-
+    /**
+     * Fires when an observable changes an observed property.
+     * Sets text with setText() method.
+     * @param evt - information about the property change
+     */
     @Override
     public void propertyChange(PropertyChangeEvent evt) {
 

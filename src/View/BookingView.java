@@ -15,11 +15,10 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 
 public class BookingView extends JPanel implements PropertyChangeListener {
-    private static CalenderModel model;
     private ArrayList<JButton> buttonArr = new ArrayList<>();
+    CalenderModel model;
     public BookingView(CalenderModel m){
-        this.model = m;
-
+        model=m;
         JLabel header = new JLabel();
         header.setText("No bookings");
         this.add(header);

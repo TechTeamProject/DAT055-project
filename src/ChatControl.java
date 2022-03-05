@@ -3,6 +3,8 @@ import src.Server.ChatServer;
 import src.View.*;
 
 import javax.swing.*;
+import javax.swing.event.PopupMenuEvent;
+import javax.swing.event.PopupMenuListener;
 import java.awt.event.*;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
@@ -27,10 +29,11 @@ public class  ChatControl implements PropertyChangeListener, Serializable {
     private static MonthView monthView;
     private static BookingView bookingView;
     private static EventView eventView;
+    private PopUp popup;
     private DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
     private static LinkedList<Event> Eventlist = new LinkedList<Event>();
 
-    public ChatControl(CalenderModel m, ChatView c, YearView y, OptionView o, WeekView w, MonthView mv, BookingView b, EventView e){
+    public ChatControl(CalenderModel m, ChatView c, YearView y, OptionView o, WeekView w, MonthView mv, BookingView b, EventView e, PopUp p){
         model = m;
         sound = new Sound();
         chatView = c;
@@ -40,6 +43,7 @@ public class  ChatControl implements PropertyChangeListener, Serializable {
         monthView = mv;
         bookingView = b;
         eventView = e;
+        popup = p;
 
         chatView.addChatFieldListener(new chatListener());
         chatView.addTopButtonsListener(new topButtonsListener());
@@ -50,6 +54,7 @@ public class  ChatControl implements PropertyChangeListener, Serializable {
         monthView.addMonthViewListener(new monthViewListener());
         bookingView.addBookingViewListener(new bookingViewListener());
         eventView.addEventViewListener(new eventViewListener());
+        popup.addPopupListener(new popupListener());
 
 
         //Listeners added to Observable here
@@ -211,8 +216,8 @@ public class  ChatControl implements PropertyChangeListener, Serializable {
         public void mouseReleased(MouseEvent e) {
             //If mouse released and BUTTON3 = RightClick has been used
             if (isRightMouseButton(e)) {
-                PopUpJPop menu = new PopUpJPop("week");
-                menu.show(e.getComponent(), e.getX(), e.getY());
+                //popup
+                popup.show(e.getComponent(), e.getX(), e.getY());
 
                 //A block to save x coordinates of rightclick in weekview to add to eventview the current time
                 LocalDateTime eventtime = model.getViewTime();
@@ -276,6 +281,7 @@ public class  ChatControl implements PropertyChangeListener, Serializable {
                 String fromtime = eventView.getStartTime();
                 String untiltime = eventView.getEndTime();
                 String loc = eventView.getLoc();
+
                 if (title.isBlank()) {
                     JOptionPane.showMessageDialog(null, "No title", "Error", JOptionPane.ERROR_MESSAGE);
                 } else {
@@ -303,6 +309,25 @@ public class  ChatControl implements PropertyChangeListener, Serializable {
         }
     }
 
+    private class popupListener implements ActionListener {
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            String str = e.getActionCommand();
+            switch (str) {
+                case "Create Event":
+                    WindowFrame.changePanel();
+                    System.out.println("Panel should be switched");
+                    break;
+                case "Remove Event":
+                   // model.removeEvent(model.getEvents().getLast().hashCode());
+                    model.removeEvent(0);
+                    System.out.println("Event should be removed");
+                    break;
+            }
+        }
+    }
+
     /**
      * Simple getmethod to retrieve eventlist
      * @return LinkedList</Event>
@@ -310,6 +335,7 @@ public class  ChatControl implements PropertyChangeListener, Serializable {
     public static LinkedList<Event> getCalenderEvents() {
             return Eventlist = model.getEvents();
     }
+
 
 
 

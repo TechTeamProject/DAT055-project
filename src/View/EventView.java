@@ -12,7 +12,7 @@ public class EventView extends JPanel {
 
     private static JTextField text2;
 
-   private static JTextField text3;
+    private static JTextField text3;
 
     private JTextField text4;
 

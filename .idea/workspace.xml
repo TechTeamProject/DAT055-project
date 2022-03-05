@@ -4,13 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4b89b8c8-4e75-454b-8fad-b69ac190600f" name="Changes" comment="bytte från JButtons till JLabels i weekview så att man kan högerklicka">
+    <list default="true" id="4b89b8c8-4e75-454b-8fad-b69ac190600f" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ChatControl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ChatControl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/PopUpJPop.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/PopUpJPop.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/View/EventView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/EventView.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/View/WeekView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/WeekView.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/View/WindowFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/WindowFrame.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -319,7 +315,8 @@
     <MESSAGE value="Nu kan man se events efter att man laddat in fil" />
     <MESSAGE value="Laddafil + remove från bookview syns i weekview" />
     <MESSAGE value="bytte från JButtons till JLabels i weekview så att man kan högerklicka" />
-    <option name="LAST_COMMIT_MESSAGE" value="bytte från JButtons till JLabels i weekview så att man kan högerklicka" />
+    <MESSAGE value="Javadoc kommentar" />
+    <option name="LAST_COMMIT_MESSAGE" value="Javadoc kommentar" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/DAT055_project$WindowFrame.ic" NAME="WindowFrame Coverage Results" MODIFIED="1645656862873" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">

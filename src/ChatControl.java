@@ -257,11 +257,12 @@ public class  ChatControl implements PropertyChangeListener, Serializable {
         public void actionPerformed(ActionEvent e) {
             String str = e.getActionCommand();
             switch (str) {
-                case "o":
+                case "<":
+                        model.setMonth(-1);
 
                     break;
-                case "p":
-
+                case ">":
+                    model.setMonth(+1);
                     break;
             }
         }

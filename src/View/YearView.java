@@ -5,6 +5,7 @@ import java.awt.event.ActionListener;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import javax.swing.*;
+import java.time.LocalDateTime;
 import java.time.Year;
 
 
@@ -12,6 +13,8 @@ public class YearView extends JPanel implements PropertyChangeListener {
     private JLabel header = new JLabel();
     private JButton previous = new JButton("<");
     private JButton next = new JButton(">");
+    private LocalDateTime monthtime = LocalDateTime.now();
+
     public  YearView(){
 
         JPanel p = new JPanel(new GridLayout(4,4,20,20));

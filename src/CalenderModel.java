@@ -7,6 +7,7 @@ import java.awt.*;
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
 import java.io.*;
+import java.security.PublicKey;
 import java.time.*;
 import java.time.temporal.TemporalField;
 import java.time.temporal.WeekFields;
@@ -107,6 +108,7 @@ public class CalenderModel {
         return yearMonthObject.lengthOfMonth();
     }
 
+
     /**
      * Metod för att returnera årtal
      *
@@ -135,6 +137,7 @@ public class CalenderModel {
         support.firePropertyChange("YearChange", oldValue, newValue);
     }
 
+
     /**
      * Metod för att returnera månad
      *
@@ -154,20 +157,29 @@ public class CalenderModel {
         int oldValue = viewdate.getMonthValue();
         if (y > 0) {
             viewdate = viewdate.plusMonths(y);
+            int newValue = viewdate.getMonthValue();
+            support.firePropertyChange("MonthChangePlus", oldValue, newValue);
 
         } else if (y < 0) {
             y = y * -1;
             viewdate = viewdate.minusMonths(y);
+            int newValue = viewdate.getMonthValue();
+            support.firePropertyChange("MonthChangeMin", oldValue, newValue);
         }
-        int newValue = viewdate.getMonthValue();
-        support.firePropertyChange("MonthChange", oldValue, newValue);
+       /* int newValue = viewdate.getMonthValue();
+        support.firePropertyChange("MonthChange", oldValue, newValue);*/
     }
+
+
 
     public int getWeek(){
         TemporalField woy = WeekFields.of(Locale.getDefault()).weekOfWeekBasedYear();
         int weekNumber = viewdate.get(woy);
         return weekNumber;
     }
+
+
+
 
     /**
      * Metod för att returnera dag
@@ -187,6 +199,8 @@ public class CalenderModel {
         }
         return days;
     }
+
+
 
     /**
      * Setter för dagar. d>0 för framåt, d<0 för bakåt.
@@ -265,4 +279,5 @@ public class CalenderModel {
         }
         support.firePropertyChange("LoadedEvents", 1, 0);
     }
+
 }

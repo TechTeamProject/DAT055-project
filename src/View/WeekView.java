@@ -169,6 +169,29 @@ public class WeekView extends JPanel implements PropertyChangeListener, Serializ
         }
     }
 
+
+    /**
+     * En metod som konverterar en events s
+     * @param e den aktuella eventet vars start samt sluttid ska beräknas
+     * @return returnerar start respektive sluttid i HH:mm eller H:mm format beroende på om timmarna är ensiffriga
+     * samt lägger till en 0 i slutet av start samt slutminuterna ifall de är ensiffriga så att de alltid skrivs i mm format
+     */
+
+    private String getEventTime(Event e){
+        String eventStartHour = String.valueOf(e.getStartTime().getHour());
+        String eventEndHour = String.valueOf(e.getEndTime().getHour());
+        String eventStartMinute = String.valueOf(e.getStartTime().getMinute());
+        String eventEndMinute = String.valueOf(e.getEndTime().getMinute());
+        if(Integer.toString(e.getStartTime().getMinute()).trim().length() == 1)
+            eventStartMinute += "0";
+
+        if(Integer.toString(e.getEndTime().getMinute()).trim().length() == 1)
+            eventEndMinute += "0";
+
+        return eventStartHour + ":" + eventStartMinute + "-" + eventEndHour + ":" + eventEndMinute;
+
+    }
+
     /**
      * En metod som kollar igenom de 7 aktuella dagarna, kollar om något event ligger och lägger ut.
      * Metoden raderar först allt innan det läggs ut på nytt så att man kan bläddra mellan veckorna.
@@ -214,7 +237,15 @@ public class WeekView extends JPanel implements PropertyChangeListener, Serializ
                      c.weightx = 0.5;
                      c.ipady = 0;
                      c.anchor = FIRST_LINE_START;
-                     dayBox.get(i).add(new JButton(eventlist.get(y).getDescription()), c);
+                     String eventStartHour = String.valueOf(eventlist.get(y).getStartTime().getHour());
+                     String eventEndHour = String.valueOf(eventlist.get(y).getEndTime().getHour());
+                     String eventStartMinute = String.valueOf(eventlist.get(y).getStartTime().getMinute());
+                     String eventEndMinute = String.valueOf(eventlist.get(y).getEndTime().getMinute());
+
+
+                     dayBox.get(i).add(new JButton(eventlist.get(y).getDescription() + " " +
+                     getEventTime(eventlist.get(y))), c);
+
                  }
              }
          }

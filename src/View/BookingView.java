@@ -13,7 +13,13 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.LinkedList;
-
+/**
+ * This class is a JPanel that displays all user booked events.
+ *
+ * @author  Elias Carlsson, Hanna Pham
+ * @version 1.0
+ * @since   2022-03-05
+ */
 public class BookingView extends JPanel implements PropertyChangeListener {
     private ArrayList<JButton> buttonArr = new ArrayList<>();
     CalenderModel model;
@@ -30,6 +36,11 @@ public class BookingView extends JPanel implements PropertyChangeListener {
         }
     }
 
+    /**
+     * Fires when an observable changes an observed property.
+     * Remakes the JPanel with new event list.
+     * @param evt - information about the property change
+     */
     @Override
     public void propertyChange(PropertyChangeEvent evt) {
         if(evt.getPropertyName().equals("NewEvent") | evt.getPropertyName().equals("LoadedEvents") | evt.getPropertyName().equals("RemoveEvent")){

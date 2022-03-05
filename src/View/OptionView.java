@@ -10,14 +10,12 @@ import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 
 public class OptionView extends JPanel implements PropertyChangeListener {
-    private static CalenderModel m;
     JButton button1 = new JButton("Appearance");
     JButton button2 = new JButton("Save");
     JButton button3 = new JButton("Load");
 
-    public OptionView(CalenderModel m) {
+    public OptionView() {
         this.setBackground(Color.BLACK);
-        this.m = m;
         JLabel label = new JLabel("Settings", SwingConstants.CENTER);
         label.setFont(new Font("Arial", Font.PLAIN, 30));
 

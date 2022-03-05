@@ -6,7 +6,6 @@ import java.awt.event.ActionListener;
 import javax.swing.*;
 
 public class EventView extends JPanel {
-    CalenderModel model;
 
     private JTextField text1;
 
@@ -18,8 +17,7 @@ public class EventView extends JPanel {
 
     JButton button = new JButton("Save");
 
-    public EventView(CalenderModel m){
-        this.model=m;
+    public EventView(){
         JPanel p = new JPanel(); //Panel för event info
         p.setLayout(new GridLayout(6,2, 10,5));
         JPanel p1 = new JPanel();//Panel för event info och save knapp

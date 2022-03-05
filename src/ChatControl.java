@@ -62,10 +62,6 @@ public class  ChatControl implements PropertyChangeListener, Serializable {
 
         //Updates in Model to set all the views.
         m.getViewTime();
-
-
-        // weekView.setWeek(model.getWeek());
-       // weekView.setDays(model.getWeekDays());
     }
     public ChatControl(boolean fake){
         //Fake initializer for static values
@@ -158,7 +154,6 @@ public class  ChatControl implements PropertyChangeListener, Serializable {
                     }
                     break;
             }
-
         }
     }
     private class yearViewListener implements ActionListener{
@@ -199,7 +194,6 @@ public class  ChatControl implements PropertyChangeListener, Serializable {
                     break;
                 case ">":
                     model.setDay(7);
-
                     break;
             }
         }
@@ -263,11 +257,13 @@ public class  ChatControl implements PropertyChangeListener, Serializable {
             String str = e.getActionCommand();
             switch (str) {
                 case "<":
-                        model.setMonth(-1);
-
+                    model.setMonth(-1);
                     break;
                 case ">":
                     model.setMonth(+1);
+                    break;
+                case "day":
+                    //todo: switch to weekview
                     break;
             }
         }

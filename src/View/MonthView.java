@@ -30,8 +30,8 @@ public class MonthView extends JPanel implements PropertyChangeListener {
     private JButton next = new JButton(">");
     private JLabel monthLabel, mon, tue, wed, thu, fri, sat, sun;
     private LocalDateTime monthtime;
-    JButton b1 = new JButton()
-            ,b2 = new JButton(),
+    JButton b1 = new JButton(),
+            b2 = new JButton(),
             b3= new JButton(),
             b4= new JButton(),
             b5= new JButton(),
@@ -107,7 +107,6 @@ public class MonthView extends JPanel implements PropertyChangeListener {
         daypanel.add(sun);
 
         for(JButton b : buttons){
-
             monthpanel.add(b);
         }
 
@@ -116,8 +115,11 @@ public class MonthView extends JPanel implements PropertyChangeListener {
         topbar.add(monthLabel);
         topbar.add(next);
 
+        JPanel panel = new JPanel(new BorderLayout());
         this.add(topbar, BorderLayout.PAGE_START);
-        this.add(monthpanel, BorderLayout.CENTER);
+        panel.add(daypanel,BorderLayout.PAGE_START);
+        panel.add(monthpanel, BorderLayout.CENTER);
+        this.add(panel, BorderLayout.CENTER);
         this.setBackground(Color.darkGray);
         this.setPreferredSize(new Dimension(1000, 400));
 
@@ -128,6 +130,7 @@ public class MonthView extends JPanel implements PropertyChangeListener {
         next.addActionListener(a);
         for(JButton b: buttons){
             b.addActionListener(a);
+            b.setActionCommand("day");
         }
     }
 
@@ -135,73 +138,45 @@ public class MonthView extends JPanel implements PropertyChangeListener {
     public void propertyChange(PropertyChangeEvent evt) {
 
         if(evt.getPropertyName().equals("currentTime")) {
-
             String time = evt.getNewValue().toString();
             monthtime = LocalDateTime.parse(time);
             System.out.println("Current time " + monthtime);
-            int dayofmonth = monthtime.getDayOfMonth();
-            int firstdayofmonth = monthtime.minusDays(dayofmonth - 1).getDayOfWeek().getValue();
-
-            int i = 0;
-            for (int p = 0; p < firstdayofmonth - 1; p++) {
-                buttons[p].setText("");
-                i++;
-            }
-            for (int k = 1; k <= getMaximum(monthtime.getMonthValue()-1); k++) {
-                buttons[i].setText(String.valueOf(k));
-                i++;
-            }
-            for (int o = 1; i < 42; o++) {
-                buttons[i].setText(String.valueOf(o));
-                buttons[i].setForeground(Color.lightGray);
-                i++;
-            }
-            monthLabel.setText(monthtime.getMonth().getDisplayName(TextStyle.SHORT,Locale.ENGLISH));
-
+            setTexts();
         }
-            if (evt.getPropertyName().equals("MonthChangePlus")) {
-                monthtime=monthtime.plusMonths(1);
-                int dayofmonth = monthtime.getDayOfMonth();
-                int firstdayofmonth = monthtime.minusDays(dayofmonth - 1).getDayOfWeek().getValue();
-
-                int i = 0;
-                for (int p = 0; p < firstdayofmonth - 1; p++) {
-                    buttons[p].setText("");
-                    i++;
-                }
-                for (int k = 1; k <= getMaximum(monthtime.getMonthValue()-1); k++) {
-                    buttons[i].setText(String.valueOf(k));
-                    i++;
-                }
-                for (int o = 1; i < 42; o++) {
-                    buttons[i].setText(String.valueOf(o));
-                    buttons[i].setForeground(Color.lightGray);
-                    i++;
-                }
-                monthLabel.setText(monthtime.getMonth().getDisplayName(TextStyle.SHORT,Locale.ENGLISH));
+        if (evt.getPropertyName().equals("MonthChangePlus")) {
+            monthtime = monthtime.plusMonths(1);
+            setTexts();
         }
-            if(evt.getPropertyName().equals("MonthChangeMin")){
-                monthtime=monthtime.minusMonths(1);
-                int dayofmonth = monthtime.getDayOfMonth();
-                int firstdayofmonth = monthtime.minusDays(dayofmonth - 1).getDayOfWeek().getValue();
-
-                int i = 0;
-                for (int p = 0; p < firstdayofmonth - 1; p++) {
-                    buttons[p].setText("");
-                    i++;
-                }
-                for (int k = 1; k <= getMaximum(monthtime.getMonthValue()-1); k++) {
-                    buttons[i].setText(String.valueOf(k));
-                    i++;
-                }
-                for (int o = 1; i < 42; o++) {
-                    buttons[i].setText(String.valueOf(o));
-                    buttons[i].setForeground(Color.lightGray);
-                    i++;
-                }
-                monthLabel.setText(monthtime.getMonth().getDisplayName(TextStyle.SHORT,Locale.ENGLISH));
-            }
+        if(evt.getPropertyName().equals("MonthChangeMin")){
+            monthtime = monthtime.minusMonths(1);
+            setTexts();
+        }
     }
+
+    private void setTexts(){
+        int dayofmonth = monthtime.getDayOfMonth();
+        int firstdayofmonth = monthtime.minusDays(dayofmonth - 1).getDayOfWeek().getValue();
+        int daysinprevmonth = getMaximum(monthtime.minusMonths(1).getMonthValue()-1);
+
+        int i = 0;
+        for (int p = 0; p < firstdayofmonth - 1; p++) {
+            buttons[p].setText(String.valueOf(daysinprevmonth-(firstdayofmonth-2)+p));
+            buttons[p].setForeground(Color.lightGray);
+            i++;
+        }
+        for (int k = 1; k <= getMaximum(monthtime.getMonthValue()-1); k++) {
+            buttons[i].setText(String.valueOf(k));
+            buttons[i].setForeground(Color.BLACK);
+            i++;
+        }
+        for (int o = 1; i < 42; o++) {
+            buttons[i].setText(String.valueOf(o));
+            buttons[i].setForeground(Color.lightGray);
+            i++;
+        }
+        monthLabel.setText(monthtime.getMonth().getDisplayName(TextStyle.SHORT,Locale.ENGLISH)+" "+String.valueOf(monthtime.getYear()));
+    }
+
     private int getMaximum(int month) {
         int maximum = 0;
         switch (month) {
@@ -209,8 +184,8 @@ public class MonthView extends JPanel implements PropertyChangeListener {
                 maximum = 31;
                 break;
             case 1:
-                if (isLeap())
-                    maximum = 29;
+                if(isLeap())
+                maximum = 29;
                 else
                     maximum = 28;
                 break;
@@ -248,8 +223,7 @@ public class MonthView extends JPanel implements PropertyChangeListener {
 
         return maximum;
     }
-    private boolean isLeap() {
-        return (monthtime.getYear() % 4 == 0 && monthtime.getYear() % 100 != 0) ||
-                monthtime.getYear() % 400 == 0;
+    private boolean isLeap(){
+        return ((monthtime.getYear() % 4 == 0) && (monthtime.getYear() % 100 != 0)) || (monthtime.getYear() % 400 == 0);
     }
 }

@@ -139,13 +139,8 @@ public class WeekView extends JPanel implements PropertyChangeListener, Serializ
             weektime = LocalDateTime.parse(time);
             System.out.println("Current time " + weektime);
         }
-        //Used to load events
-        else if (evt.getPropertyName().equals("LoadedEvents")){
-            eventlist = ChatControl.getCalenderEvents();
-            loadEvent();
-        }
 
-
+        //Checks if 7 days have been added to current time in model, if so, reload the weekview. Same with minus 7 days.
         if (evt.getPropertyName().equals("DayChangePlus") && (weektime.plusDays(7).getDayOfMonth() == evt.getNewValue().hashCode()) )  {
             weektime = weektime.plusDays(7);
             loadEvent();
@@ -163,7 +158,7 @@ public class WeekView extends JPanel implements PropertyChangeListener, Serializ
         }
 
         //Vid nytt event uppdateras weekview
-        if (evt.getPropertyName().equals("NewEvent")) {
+        if ((evt.getPropertyName().equals("NewEvent")) || (evt.getPropertyName().equals("RemoveEvent")) || (evt.getPropertyName().equals("LoadedEvents"))) {
                 eventlist = ChatControl.getCalenderEvents();
                 loadEvent();
         }

@@ -60,7 +60,7 @@ public class MonthView extends JPanel implements PropertyChangeListener {
 
     @Override
     public void propertyChange(PropertyChangeEvent evt) {
-        System.out.println("TEST: MONTH In the event this is what it says:" + evt);
+       // System.out.println("TEST: MONTH In the event this is what it says:" + evt);
     }
 }
 class CalendarPanel extends JPanel {

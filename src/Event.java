@@ -4,7 +4,7 @@ package src;
 import java.io.Serializable;
 import java.time.LocalDateTime;
 
-public class Event implements Serializable {
+public class Event implements Comparable<Event>,Serializable{
     private String description;
     private String location;
     private LocalDateTime starttime;
@@ -36,4 +36,13 @@ public class Event implements Serializable {
     public LocalDateTime getStartTime(){ return starttime; }
 
     public LocalDateTime getEndTime(){ return endtime; }
+
+    @Override
+    public int compareTo(Event e){
+        if (starttime.isAfter(e.starttime))
+            return 1;
+        else if (starttime.isEqual(e.starttime))
+            return 0;
+        else return -1;
+    }
 }

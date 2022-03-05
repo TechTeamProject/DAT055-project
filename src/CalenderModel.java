@@ -47,12 +47,12 @@ public class CalenderModel {
      */
     public void addEvent(LocalDateTime start, LocalDateTime end, String title, String location) {
         this.Eventlist.add(new Event(start, end, title, location));
-        support.firePropertyChange("NewEvent", start, end);
+        support.firePropertyChange("NewEvent", 0, 1);
     }
 
     public void removeEvent(int index) {
         Eventlist.remove(index);
-        support.firePropertyChange("RemoveEvent", 1, 0);
+        support.firePropertyChange("RemoveEvent", 0, 1);
     }
 
     public LinkedList<Event> getEvents() {
@@ -277,7 +277,7 @@ public class CalenderModel {
         catch (IOException | ClassNotFoundException e){
             JOptionPane.showMessageDialog(null, "Something went wrong", "Error", JOptionPane.ERROR_MESSAGE);
         }
-        support.firePropertyChange("LoadedEvents", 1, 0);
+        support.firePropertyChange("LoadedEvents", 0, 1);
     }
 
 }

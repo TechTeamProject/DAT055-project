@@ -9,9 +9,11 @@ import java.beans.PropertyChangeListener;
 import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.InputMismatchException;
 import java.util.LinkedList;
 
 import static java.awt.event.MouseEvent.BUTTON3;
+import static javax.swing.SwingUtilities.isRightMouseButton;
 
 public class  ChatControl implements PropertyChangeListener, Serializable {
     private static CalenderModel model;
@@ -214,7 +216,7 @@ public class  ChatControl implements PropertyChangeListener, Serializable {
         @Override
         public void mouseReleased(MouseEvent e) {
             //If mouse released and BUTTON3 = RightClick has been used
-            if (e.getButton() == BUTTON3) {
+            if (isRightMouseButton(e)) {
                 PopUpJPop menu = new PopUpJPop("week");
                 menu.show(e.getComponent(), e.getX(), e.getY());
 
@@ -240,6 +242,9 @@ public class  ChatControl implements PropertyChangeListener, Serializable {
                 }
                 String formatedtime = eventtime.format(formatter);
                 EventView.setEventTime(formatedtime);
+            }
+            else if (isRightMouseButton(e)) {
+
             }
         }
 
@@ -287,7 +292,7 @@ public class  ChatControl implements PropertyChangeListener, Serializable {
                         eventView.setStartTime("yyyy-MM-dd HH:mm");
                         eventView.setEndTime("yyyy-MM-dd HH:mm");
                         eventView.setLoc("");
-                    } catch (Exception ex) {
+                    } catch (InputMismatchException ex) {
                         JOptionPane.showMessageDialog(null, "Wrong date/time format", "Error", JOptionPane.ERROR_MESSAGE);
                     }
                 }
@@ -302,6 +307,10 @@ public class  ChatControl implements PropertyChangeListener, Serializable {
         }
     }
 
+    /**
+     * Simple getmethod to retrieve eventlist
+     * @return LinkedList</Event>
+     */
     public static LinkedList<Event> getCalenderEvents() {
             return Eventlist = model.getEvents();
     }

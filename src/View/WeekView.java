@@ -213,7 +213,7 @@ public class WeekView extends JPanel implements PropertyChangeListener, Serializ
                 }
             }
         }
-
+        //These forloops iterates through the seven dayboxes and check every event if anyone is on the same day, if so it loads them.
          for (int i=0; i<7; i++) {
              for (int y = 0; y < eventlist.size(); y++) {
 
@@ -238,8 +238,8 @@ public class WeekView extends JPanel implements PropertyChangeListener, Serializ
                      c.ipady = 0;
                      c.anchor = FIRST_LINE_START;
 
-                     dayBox.get(i).add(new JButton(eventlist.get(y).getDescription() + " " +
-                     getEventTime(eventlist.get(y))), c);
+                     dayBox.get(i).add(new JButton("<html>" + eventlist.get(y).getDescription() + " <br/>" + "\n" +
+                     getEventTime(eventlist.get(y)) + "</html>"), c);
 
                  }
              }

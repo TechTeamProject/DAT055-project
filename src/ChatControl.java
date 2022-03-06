@@ -29,11 +29,11 @@ public class  ChatControl implements PropertyChangeListener, Serializable {
     private static MonthView monthView;
     private static BookingView bookingView;
     private static EventView eventView;
-    private PopUp popup;
+  //  private PopUp popup;
     private DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
     private static LinkedList<Event> Eventlist = new LinkedList<Event>();
 
-    public ChatControl(CalenderModel m, ChatView c, YearView y, OptionView o, WeekView w, MonthView mv, BookingView b, EventView e, PopUp p){
+    public ChatControl(CalenderModel m, ChatView c, YearView y, OptionView o, WeekView w, MonthView mv, BookingView b, EventView e){
         model = m;
         sound = new Sound();
         chatView = c;
@@ -43,7 +43,7 @@ public class  ChatControl implements PropertyChangeListener, Serializable {
         monthView = mv;
         bookingView = b;
         eventView = e;
-        popup = p;
+      //  popup = p;
 
         chatView.addChatFieldListener(new chatListener());
         chatView.addTopButtonsListener(new topButtonsListener());
@@ -54,7 +54,7 @@ public class  ChatControl implements PropertyChangeListener, Serializable {
         monthView.addMonthViewListener(new monthViewListener());
         bookingView.addBookingViewListener(new bookingViewListener());
         eventView.addEventViewListener(new eventViewListener());
-        popup.addPopupListener(new popupListener());
+        //popup.addPopupListener(new popupListener());
 
 
         //Listeners added to Observable here
@@ -217,7 +217,7 @@ public class  ChatControl implements PropertyChangeListener, Serializable {
             //If mouse released and BUTTON3 = RightClick has been used
             if (isRightMouseButton(e)) {
                 //popup
-                popup.show(e.getComponent(), e.getX(), e.getY());
+               // popup.show(e.getComponent(), e.getX(), e.getY());
 
                 //A block to save x coordinates of rightclick in weekview to add to eventview the current time
                 LocalDateTime eventtime = model.getViewTime();
@@ -273,22 +273,56 @@ public class  ChatControl implements PropertyChangeListener, Serializable {
             }
         }
     }
+
+
     private class eventViewListener implements ActionListener{
         public void actionPerformed(ActionEvent e) {
             String str = e.getActionCommand();
             if(str.equals("Save")){
                 String title = eventView.getTitle();
-                String fromtime = eventView.getStartTime();
-                String untiltime = eventView.getEndTime();
+                String fromTime = eventView.getStartTime();
+                String untilTime = eventView.getEndTime();
                 String loc = eventView.getLoc();
+
+                String fromYearStr = fromTime.substring(0,4);
+                String fromMonthStr = fromTime.substring(5,7);
+                String fromDayStr = fromTime.substring(8,10);
+                String fromHourStr = fromTime.substring(11,13);
+                String fromMinuteStr = fromTime.substring(14,16);
+                String endYearStr = untilTime.substring(0,4);
+                String endMonthStr = untilTime.substring(5,7);
+                String endDayStr =  untilTime.substring(8,10);
+                String endHourStr = untilTime.substring(11,13);
+                String endMinuteStr = untilTime.substring(14,16);
+
+                int fromTimeYear = Integer.parseInt(fromYearStr);
+                int fromTimeMonth = Integer.parseInt(fromMonthStr);
+                int fromTimeDay = Integer.parseInt(fromDayStr);
+                int fromTimeHour = Integer.parseInt(fromHourStr);
+                int fromTimeMinute = Integer.parseInt(fromMinuteStr);
+                int endTimeYear = Integer.parseInt(endYearStr);
+                int endTimeMonth = Integer.parseInt(endMonthStr);
+                int untilTimeDay = Integer.parseInt(endDayStr);
+                int untilTimeHour = Integer.parseInt(endHourStr);
+                int untilTimeMinute = Integer.parseInt(endMinuteStr);
+
 
                 if (title.isBlank()) {
                     JOptionPane.showMessageDialog(null, "No title", "Error", JOptionPane.ERROR_MESSAGE);
-                } else {
+                }
+
+
+                else if(fromTimeYear != endTimeYear|| fromTimeMonth != endTimeMonth|| fromTimeDay != untilTimeDay || fromTimeHour > untilTimeHour ||
+                        (fromTimeHour == untilTimeHour && fromTimeMinute == untilTimeMinute) || (fromTimeHour == untilTimeHour && fromTimeMinute > untilTimeMinute)){
+                    JOptionPane.showMessageDialog(null, "Invalid time", "Error", JOptionPane.ERROR_MESSAGE);
+                }
+
+
+                else {
                     try {
                         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
-                        LocalDateTime fromdatetime = LocalDateTime.parse(fromtime, formatter);
-                        LocalDateTime untildatetime = LocalDateTime.parse(untiltime, formatter);
+                        LocalDateTime fromdatetime = LocalDateTime.parse(fromTime, formatter);
+                        LocalDateTime untildatetime = LocalDateTime.parse(untilTime, formatter);
                         model.addEvent(fromdatetime, untildatetime, title, loc);
                         eventView.setTitle("");
                         eventView.setStartTime("yyyy-MM-dd HH:mm");

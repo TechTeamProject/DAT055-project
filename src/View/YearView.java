@@ -113,7 +113,6 @@ public class YearView extends JPanel implements PropertyChangeListener {
         if (evt.getPropertyName().equals("currentTime") ) {
             String time = evt.getNewValue().toString();
             yeartime = LocalDateTime.parse(time);
-            System.out.println("Current time " + yeartime);
             header.setText(String.valueOf(yeartime.getYear()));
         }
         if(evt.getPropertyName().equals("YearChange")){

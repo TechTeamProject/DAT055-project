@@ -21,7 +21,7 @@ import java.time.LocalDateTime;
  */
 public class CalenderModel {
     private static LinkedList<Event> Eventlist = new LinkedList<>();
-    private LocalDateTime viewdate; //viewdate är det aktuella objektet man ser i View.
+    private LocalDateTime viewdate; //viewdate är det aktuella datum+tid användaren ser i views.
     private final PropertyChangeSupport support = new PropertyChangeSupport(this);
 
     public void addPropertyChangeListener(PropertyChangeListener listener) {

@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4b89b8c8-4e75-454b-8fad-b69ac190600f" name="Changes" comment="tagit bort några warnings + javadoc">
+    <list default="true" id="4b89b8c8-4e75-454b-8fad-b69ac190600f" name="Changes" comment="javadoc i calendermodel">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/CalenderModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/CalenderModel.java" afterDir="false" />
     </list>
@@ -315,7 +315,14 @@
       <option name="project" value="LOCAL" />
       <updated>1646584726013</updated>
     </task>
-    <option name="localTasksCounter" value="34" />
+    <task id="LOCAL-00034" summary="javadoc i calendermodel">
+      <created>1646588872648</created>
+      <option name="number" value="00034" />
+      <option name="presentableId" value="LOCAL-00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1646588872648</updated>
+    </task>
+    <option name="localTasksCounter" value="35" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -333,7 +340,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="create event knapp i windowframe" />
     <MESSAGE value="lite ändringar" />
     <MESSAGE value="Observer interface fungerar och är inlagt på alla views" />
     <MESSAGE value="addEvent tillagd till observable" />
@@ -358,7 +364,8 @@
     <MESSAGE value="&quot;event&quot; i changePanel" />
     <MESSAGE value="Fixat så JLabel har lyssnare samt så att event raderas efter titel" />
     <MESSAGE value="week helt klar" />
-    <option name="LAST_COMMIT_MESSAGE" value="week helt klar" />
+    <MESSAGE value="javadoc i calendermodel" />
+    <option name="LAST_COMMIT_MESSAGE" value="javadoc i calendermodel" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/DAT055_project$WindowFrame.ic" NAME="WindowFrame Coverage Results" MODIFIED="1645656862873" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">

@@ -24,6 +24,7 @@ public class OptionView extends JPanel implements PropertyChangeListener {
      * Constructor method for the OptionView class.
      */
     public OptionView() {
+        this.setBackground(Color.BLACK);
         JLabel label = new JLabel("Settings", SwingConstants.CENTER);
         label.setFont(new Font("Arial", Font.PLAIN, 30));
         JPanel p = new JPanel(new GridLayout(5, 1, 10, 10));

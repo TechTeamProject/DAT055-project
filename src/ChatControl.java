@@ -22,7 +22,7 @@ public class  ChatControl implements PropertyChangeListener, Serializable {
     //private static ClientThread clientThread;
     private static ClientThread clientThread;
     private ChatServer server;
-    private Sound sound;
+    //private Sound sound;
     private static YearView yearView;
     private static OptionView optionView;
     private static WeekView weekView;
@@ -36,7 +36,7 @@ public class  ChatControl implements PropertyChangeListener, Serializable {
 
     public ChatControl(CalenderModel m, ChatView c, YearView y, OptionView o, WeekView w, MonthView mv, BookingView b, EventView e, PopUp p){
         model = m;
-        sound = new Sound();
+        //sound = new Sound();
         chatView = c;
         yearView = y;
         optionView = o;
@@ -68,7 +68,7 @@ public class  ChatControl implements PropertyChangeListener, Serializable {
         model.addPropertyChangeListener(this);
 
         //Updates in Model to set all the views.
-        model.getViewTime();
+        m.getViewTime();
     }
     public ChatControl(boolean fake){
         //Fake initializer for static values
@@ -100,7 +100,7 @@ public class  ChatControl implements PropertyChangeListener, Serializable {
                     }
                     else{
                         chatView.printText("You are not connected to a server!");
-                        sound.playError();
+                        Sound.playError();
                     }
 
                 }
@@ -116,12 +116,12 @@ public class  ChatControl implements PropertyChangeListener, Serializable {
                     if(!clientThread.Alive()){
                         clientThread = new ClientThread("AddUserClass", chatView.getIpText(), 23476);
                         chatView.switchMiddlePanel("ChatArea");
-                        sound.playConnected();
+                        Sound.playConnected();
                     }
                     else{
                         chatView.switchMiddlePanel("ChatArea");
                         chatView.printText("Already connected");
-                        sound.playError();
+                        Sound.playError();
                     }
 
                 }
@@ -140,7 +140,7 @@ public class  ChatControl implements PropertyChangeListener, Serializable {
                     server = new ChatServer(23476);
                     Thread serverT = new Thread(server);
                     serverT.start();
-                    sound.playStartHost();
+                    Sound.playStartHost();
                     break;
                 case "Connect to server":
                     chatView.switchMiddlePanel("IpArea");
@@ -156,12 +156,12 @@ public class  ChatControl implements PropertyChangeListener, Serializable {
                             clientThread.addPropertyChangeListener(chatView);
 
                             chatView.switchMiddlePanel("ChatArea");
-                            sound.playConnected();
+                            Sound.playConnected();
                         }
                         else{
                             chatView.switchMiddlePanel("ChatArea");
                             chatView.printText("Already connected");
-                            sound.playError();
+                            Sound.playError();
                         }
 
                     }
@@ -175,15 +175,12 @@ public class  ChatControl implements PropertyChangeListener, Serializable {
             switch (str) {
                 case "prev":
                     model.setYear(-1);
-                    model.getViewTime();
                     break;
                 case "next":
                     model.setYear(1);
-                    model.getViewTime();
                     break;
                 case "1","2","3","4","5","6","7","8","9","10","11","12":
                     model.setMonth(Integer.parseInt(str)-model.getMonth().getValue());
-                    model.getViewTime();
                     WindowFrame.changePanel("month");
             }
         }
@@ -210,11 +207,9 @@ public class  ChatControl implements PropertyChangeListener, Serializable {
             switch (str) {
                 case "<":
                     model.setDay(-7);
-                    model.getViewTime();
                     break;
                 case ">":
                     model.setDay(7);
-                    model.getViewTime();
                     break;
             }
         }
@@ -232,11 +227,11 @@ public class  ChatControl implements PropertyChangeListener, Serializable {
         public void mouseReleased(MouseEvent e) {
             //If mouse released and BUTTON3 = RightClick has been used
             if (isRightMouseButton(e)) {
-
+                //popup
                 popup.show(e.getComponent(), e.getX(), e.getY());
 
                 //A block to save x coordinates of rightclick in weekview to add to eventview the current time
-                eventtime = model.getViewTime().minusDays(model.getViewTime().getDayOfWeek().getValue()-1);
+                eventtime = model.getViewTime();
                 if (e.getX() > 145 && e.getX() < 285)  {
                     eventtime = eventtime.plusDays(1);
                 }
@@ -280,17 +275,14 @@ public class  ChatControl implements PropertyChangeListener, Serializable {
                 switch (str) {
                     case "<":
                         model.setMonth(-1);
-                        model.getViewTime();
                         break;
                     case ">":
                         model.setMonth(+1);
-                        model.getViewTime();
                         break;
                 }
             }
             else {
                 model.setDay(Integer.parseInt(str)-model.getDay());
-                model.getViewTime();
                 WindowFrame.changePanel("week");
             }
         }
@@ -383,7 +375,7 @@ public class  ChatControl implements PropertyChangeListener, Serializable {
                             model.removeEvent(i);
                         }
                     }
-                  //  model.removeEvent(0);
+                    model.removeEvent(0);
                     System.out.println("Event should be removed");
                     break;
             }

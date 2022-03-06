@@ -11,7 +11,7 @@ import static java.lang.Thread.sleep;
  * @since   2022-03-02
  */
 public class Sound {
-    public float Sample = 8000f;
+    private static float Sample = 8000f;
 
     /**
      * Used to play a tone. The parameters are used to create different tones.
@@ -20,7 +20,7 @@ public class Sound {
      * @param vol The volume of the tone played.
      * @throws LineUnavailableException This error can be thrown if the line is already in used.
      */
-    public void playTone(int hz, int msecs, double vol)
+    private static void playTone(int hz, int msecs, double vol)
             throws LineUnavailableException
     {
         byte[] buf = new byte[1];
@@ -47,7 +47,7 @@ public class Sound {
     /**
      * A method with a pre-made set of tones. Used to simulate a hosting server sound.
      */
-    public void playStartHost(){
+    public static void playStartHost(){
         try{
             playTone(13000,100, 1);
             playTone(1000,100, 1);
@@ -61,7 +61,7 @@ public class Sound {
     /**
      * A method with a pre-made set of tones. Used to simulate a successful connection sound.
      */
-    public void playConnected(){
+    public static void playConnected(){
         try{
             playTone(200,100, 1);
             playTone(400,100, 1);
@@ -75,7 +75,7 @@ public class Sound {
     /**
      * A method with a pre-made set of tones. Used to simulate an error occurring.
      */
-    public void playError(){
+    public static void playError(){
         try{
             playTone(300,100, 1);
             playTone(300,100, 1);

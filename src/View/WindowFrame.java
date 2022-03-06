@@ -19,6 +19,7 @@ public class WindowFrame extends JFrame {
     private static OptionView optionView;
     private static EventView eventView;
     private static MonthView monthView;
+    //LoginView loginView;
     private static BookingView bookView;
     JScrollPane bookingView;
     private static ChatView chatView;
@@ -72,26 +73,23 @@ public class WindowFrame extends JFrame {
         JPanel event = new JPanel();
         JPanel chat = new JPanel();
 
-        week.add(weekView);
-        month.add(monthView);
-        year.add(yearView);
+        options.add(optionView);
         booking.add(bookingView);
+        week.add(weekView);
+        year.add(yearView);
+        month.add(monthView);
+        //login.add(loginView);
         event.add(eventView);
         chat.add(chatView);
-        options.add(optionView);
-        //login.add(loginView);
 
-
-        p.add(week, "week");
-        p.add(month, "month");
-        p.add(year, "year");
+        p.add(options, "options");
         p.add(booking, "bookings");
+        p.add(week, "week");
+        p.add(year, "year");
+        p.add(month, "month");
+        p.add(login, "login");
         p.add(event, "event");
         p.add(chat, "chat");
-        p.add(options, "options");
-        //p.add(login, "login");
-
-
 
         JPanel buttonPanel = new JPanel();
         buttonPanel.add(bOptions);
@@ -105,16 +103,15 @@ public class WindowFrame extends JFrame {
 
         JMenuBar menubar = new JMenuBar();
         this.setJMenuBar(menubar);
+
+        menubar.add(bOptions);
+        menubar.add(bBookings);
         menubar.add(bWeek);
         menubar.add(bMonth);
         menubar.add(bYear);
-        menubar.add(bBookings);
         menubar.add(bEvent);
-        menubar.add(bChat);
-        menubar.add(bOptions);
-
-
         //menubar.add(bLogin);
+        menubar.add(bChat);
 
 
 
@@ -183,5 +180,4 @@ public class WindowFrame extends JFrame {
     public static void changePanel(String panel) {
         c1.show(p,panel);
     }
-
 }

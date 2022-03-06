@@ -148,7 +148,7 @@ public class MonthView extends JPanel implements PropertyChangeListener {
             buttons[i].setForeground(Color.lightGray);
             i++;
         }
-        monthLabel.setText(monthtime.getMonth().getDisplayName(TextStyle.FULL,Locale.ENGLISH)+" "+ monthtime.getYear());
+        monthLabel.setText(monthtime.getMonth().getDisplayName(TextStyle.FULL,Locale.ENGLISH)+" "+String.valueOf(monthtime.getYear()));
     }
 
     /**

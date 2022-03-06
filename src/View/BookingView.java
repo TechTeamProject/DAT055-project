@@ -23,17 +23,14 @@ import java.util.LinkedList;
  * @since   2022-03-05
  */
 public class BookingView extends JPanel implements PropertyChangeListener {
-
-    private String temperature;
     private ArrayList<JButton> buttonArr = new ArrayList<>();
     JPanel panel = new JPanel();
     JLabel header = new JLabel();
     JLabel temp = new JLabel();
     public BookingView(){
         this.setLayout(new BorderLayout());
-        temperature = Weather.getWeather();
         header.setText("No bookings");
-        temp.setText(temperature+" in Gothenburg");
+        temp.setText(Weather.getTemperature()+" in Gothenburg");
         JPanel head = new JPanel(new BorderLayout());
         head.add(header,BorderLayout.LINE_START);
         head.add(temp,BorderLayout.LINE_END);
@@ -64,8 +61,7 @@ public class BookingView extends JPanel implements PropertyChangeListener {
         if(list.size()>0){
             header.setText("Bookings");
         } else{ header.setText("No bookings"); }
-        temperature = Weather.getWeather();
-        temp.setText(temperature+" in Gothenburg");
+        temp.setText(Weather.getTemperature()+" in Gothenburg");
 
         int i=0;
         for(Event e : list){//Lägger till en panel för varje event med tid+plats och edit knapp

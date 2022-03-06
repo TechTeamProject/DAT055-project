@@ -3,8 +3,6 @@ import src.Server.ChatServer;
 import src.View.*;
 
 import javax.swing.*;
-import javax.swing.event.PopupMenuEvent;
-import javax.swing.event.PopupMenuListener;
 import java.awt.event.*;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
@@ -29,7 +27,6 @@ public class  ChatControl implements PropertyChangeListener, Serializable {
     private static EventView eventView;
     private PopUp popup;
     private DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
-    private static LinkedList<Event> Eventlist = new LinkedList<Event>();
     private LocalDateTime eventtime;
     private weekViewListener weeklistener = new weekViewListener();
     private String eventname;
@@ -364,7 +361,7 @@ public class  ChatControl implements PropertyChangeListener, Serializable {
      * @return LinkedList</Event>
      */
     public static LinkedList<Event> getCalenderEvents() {
-            return Eventlist = model.getEvents();
+            return model.getEvents();
     }
 
     public static String getMessage(){

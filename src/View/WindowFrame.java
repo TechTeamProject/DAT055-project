@@ -16,7 +16,7 @@ public class WindowFrame extends JFrame {
     private static EventView eventView;
     private static MonthView monthView;
     private static BookingView bookView;
-    JScrollPane bookingView;
+    private JScrollPane bookingView;
     private static ChatView chatView;
     private static Control control;
     private static CardLayout c1;
@@ -52,9 +52,7 @@ public class WindowFrame extends JFrame {
         control = new Control(this, m, chatView, yearView, optionView, weekView, monthView, bookView, eventView, popUp);
 
         p = new JPanel();
-
         c1 = new CardLayout();
-
         p.setLayout(c1);
 
         JPanel options = new JPanel();

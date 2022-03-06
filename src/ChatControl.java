@@ -55,7 +55,7 @@ public class  ChatControl implements PropertyChangeListener, Serializable {
         monthView.addMonthViewListener(new monthViewListener());
         bookingView.addBookingViewListener(new bookingViewListener());
         eventView.addEventViewListener(new eventViewListener());
-        popup.addPopupListener(new popupListener());
+        //popup.addPopupListener(new popupListener());
 
 
         //Listeners added to Observable here

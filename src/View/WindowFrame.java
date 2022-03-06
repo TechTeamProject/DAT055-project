@@ -73,23 +73,26 @@ public class WindowFrame extends JFrame {
         JPanel event = new JPanel();
         JPanel chat = new JPanel();
 
-        options.add(optionView);
-        booking.add(bookingView);
         week.add(weekView);
-        year.add(yearView);
         month.add(monthView);
-        //login.add(loginView);
+        year.add(yearView);
+        booking.add(bookingView);
         event.add(eventView);
         chat.add(chatView);
+        options.add(optionView);
+        //login.add(loginView);
 
-        p.add(options, "options");
-        p.add(booking, "bookings");
+
         p.add(week, "week");
-        p.add(year, "year");
         p.add(month, "month");
-        p.add(login, "login");
+        p.add(year, "year");
+        p.add(booking, "bookings");
         p.add(event, "event");
         p.add(chat, "chat");
+        p.add(options, "options");
+        //p.add(login, "login");
+
+
 
         JPanel buttonPanel = new JPanel();
         buttonPanel.add(bOptions);
@@ -104,14 +107,14 @@ public class WindowFrame extends JFrame {
         JMenuBar menubar = new JMenuBar();
         this.setJMenuBar(menubar);
 
-        menubar.add(bOptions);
-        menubar.add(bBookings);
         menubar.add(bWeek);
         menubar.add(bMonth);
         menubar.add(bYear);
+        menubar.add(bBookings);
         menubar.add(bEvent);
-        //menubar.add(bLogin);
         menubar.add(bChat);
+        menubar.add(bOptions);
+        //menubar.add(bLogin);
 
 
 
@@ -180,4 +183,5 @@ public class WindowFrame extends JFrame {
     public static void changePanel(String panel) {
         c1.show(p,panel);
     }
+
 }

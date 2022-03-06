@@ -81,9 +81,9 @@ public class EventView extends JPanel {
         text4.setText(s);
     }
 
-    public static void setEventTime(String s) {
-        text2.setText(s);
-        text3.setText(s);
+    public static void setEventTime(String start, String end) {
+        text2.setText(start);
+        text3.setText(end);
     }
 }
 

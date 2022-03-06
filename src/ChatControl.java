@@ -84,6 +84,7 @@ public class  ChatControl implements PropertyChangeListener, Serializable {
     public void propertyChange(PropertyChangeEvent evt) {
         if(evt.getPropertyName().equals("NewEvent") | evt.getPropertyName().equals("LoadedEvents") | evt.getPropertyName().equals("RemoveEvent")){
             bookingView.addBookingViewListener(new bookingViewListener());
+
         }
         else if(evt.getPropertyName().equals("NewMessage")){
             System.out.println("Funkar");
@@ -209,15 +210,16 @@ public class  ChatControl implements PropertyChangeListener, Serializable {
 
         public void actionPerformed(ActionEvent e) {
             String str = e.getActionCommand();
-            System.out.println("This is in button " + str);
             switch (str) {
                 case "<":
                     model.setDay(-7);
                     model.getViewTime();
+                    updateWeeklisteners();
                     break;
                 case ">":
                     model.setDay(7);
                     model.getViewTime();
+                    updateWeeklisteners();
                     break;
             }
         }
@@ -263,10 +265,12 @@ public class  ChatControl implements PropertyChangeListener, Serializable {
                     else if (e.getX() > 854 && e.getX() < 1000) {
                         eventtime = eventtime.plusDays(6);
                     }
+                    LocalDateTime eventendtime = eventtime.plusHours(1);
 
                 String formatedtime = eventtime.format(formatter);
+                String formatedtimeEnd = eventendtime.format(formatter);
                 System.out.println("time after rightclick is : " + formatedtime);
-                EventView.setEventTime(formatedtime);
+                EventView.setEventTime(formatedtime, formatedtimeEnd);
             }
 
         }
@@ -387,7 +391,9 @@ public class  ChatControl implements PropertyChangeListener, Serializable {
                     System.out.println("Panel should be switched");
                     break;
                 case "Remove Event":
+
                     for (int i = 0; i < model.getEvents().size(); i++) {
+                        System.out.println("Detta tår i eventname: " + eventname + "Detta står i model.getEVent(i): " + model.getEvents().get(i).getDescription());
                         if (eventname.equals(model.getEvents().get(i).getDescription())) {
                             model.removeEvent(i);
                             updateWeeklisteners(); //Updaterar, tar bort gammal mouselistener

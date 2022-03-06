@@ -34,15 +34,17 @@ public class WeekView extends JPanel implements PropertyChangeListener, Serializ
     private LinkedList<JLabel> title = new LinkedList<>();
     private LinkedList<Event> eventlist = new LinkedList<>();
     private LinkedList<JPanel> dayBox = new LinkedList<>();
-    private int gridxcount = 0;
     private int gridycount = 4;
     private Color lightgreen = new Color(229,255,204);
     private static LinkedList<JLabel> eventlabel = new LinkedList<>();
 
     /**
-     * WeekView, hämtar eventlista från controller samt får aktuell tid genom observerinterface från model
-     * Constructor skapar panel med 7 st dagspaneler där event laddas in.
-     * @Authors David Behdadpoor, Erik Gustavsson
+     * The class that represents the weekly schedule which retrieves the event list from
+     * the controller and gets current time through the observer interface from the model
+     *
+     * @author  David Behdadpoor, Erik Gustavsson
+     * @version 1.1.0
+     * @since   2022-02-20
      */
     public WeekView() {
 
@@ -168,11 +170,12 @@ public class WeekView extends JPanel implements PropertyChangeListener, Serializ
 
 
 
+
     /**
-     * En metod som konverterar en events start respektive sluttid till en sträng
-     * @param e den aktuella eventet vars start samt sluttid ska beräknas
-     * @return returnerar start respektive sluttid i HH:mm eller H:mm format beroende på om timmarna är ensiffriga
-     * samt lägger till en 0 i slutet av start samt slutminuterna ifall de är ensiffriga så att de alltid skrivs i mm format
+     * A method that converts the start and end time of an event to a string
+     * @param e the current event whose start and end time are to be calculated
+     * @return returns start and end time in HH: mm or H: mm format depending on whether the hours are single digits and adds a 0 at
+     * the beginning of the start and the end minutes if they are single digits so that they are always written in mm format
      */
 
     private String getEventTime(Event e){
@@ -196,13 +199,14 @@ public class WeekView extends JPanel implements PropertyChangeListener, Serializ
 
         return eventStartHour + ":" + eventStartMinute + "-" + eventEndHour + ":" + eventEndMinute;
     }
+
     /**
-     * En metod som kollar igenom de 7 aktuella dagarna, kollar om något event ligger och lägger ut.
-     * Metoden raderar först allt innan det läggs ut på nytt så att man kan bläddra mellan veckorna.
-     * //TODO fixa så att det laddas in på nytt vid ny vecka
+     * A method that checks the current week and checks if any event is on and off.
+     * The method first deletes everything before it is re-posted so that you can scroll between the weeks.
      */
+
     private void loadEvent() {
-        //Collections.sort(eventlist);
+        Collections.sort(eventlist);
 
         //In all 7 dayBoxes, delete every component except first two (dateBox)
         for (int i=0; i < 7; i++) {
@@ -218,28 +222,15 @@ public class WeekView extends JPanel implements PropertyChangeListener, Serializ
             }
         }
         LocalDateTime monday = weektime.minusDays(weektime.getDayOfWeek().getValue()-1);
-        //These forloops iterates through the seven dayboxes and check every event if anyone is on the same day, if so it loads them.
+        //These for loops iterates through the seven-day boxes and check every event if anyone is on the same day, if so it loads them.
          for (int i=0; i<7; i++) {
              for (int y = 0; y < eventlist.size(); y++) {
 
                  LocalDateTime eventtime = eventlist.get(y).getStartTime();
 
                  if (monday.plusDays(i).getDayOfMonth() == eventtime.getDayOfMonth() && monday.plusDays(i).getMonth() == eventtime.getMonth() && monday.plusDays(i).getYear() == eventtime.getYear()) {
-                     System.out.println("How many times does this happen?");
                      GridBagConstraints c = new GridBagConstraints();
 
-
-                     if((y>0 && eventlist.get(y).getStartTime().isEqual(eventlist.get(y-1).getStartTime()))){
-                         gridxcount +=1;
-                         gridycount -=1;
-                     }
-
-                     else {
-                         gridxcount = 0;
-                     }
-
-
-                     //TODO Lägga in i vilken ordning events under samma dag hamnar mha c.gridy
                      c.gridx = 0;
                      c.gridy = gridycount;
                      gridycount++;
@@ -249,9 +240,9 @@ public class WeekView extends JPanel implements PropertyChangeListener, Serializ
                      c.ipady = 0;
                      c.anchor = CENTER;
 
-                     //Eventsblocks design
+                     //Events blocks design
                      eventlabel.add(new JLabel("<html>" + eventlist.get(y).getDescription() + " <br/>" +
-                             getEventTime(eventlist.get(y)) + "</html>", SwingConstants.CENTER));
+                             getEventTime(eventlist.get(y)) + " <br/>" + eventlist.get(y).getLocation() + "</html>", SwingConstants.CENTER));
                      eventlabel.getLast().setBackground(lightgreen);
                      eventlabel.getLast().setOpaque(true);
                      eventlabel.getLast().setBorder(BorderFactory.createLineBorder(Color.GRAY, 1));

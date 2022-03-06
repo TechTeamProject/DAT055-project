@@ -1,6 +1,5 @@
 package src;
 
-import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
 import java.io.*;
@@ -20,11 +19,20 @@ public class ClientThread implements Runnable {
     private boolean hasMessages = false;
     private Client client;
     private final PropertyChangeSupport support = new PropertyChangeSupport(this);
-    private static LinkedList<String> Test = new LinkedList<String>();
+    private static final LinkedList<String> messages = new LinkedList<>();
 
+    /**
+     * Getter method for the top element in messages.
+     * @return String The top element in messages.
+     */
     public String getMessage(){
-        return Test.pop();
+        return messages.pop();
     }
+
+    /**
+     * Adds a PropertyChangeListener to PropertyChangeSupport.
+     * @param listener The PropertyChangeListener that is added to the support.
+     */
     public void addPropertyChangeListener(PropertyChangeListener listener) {
         support.addPropertyChangeListener(listener);
     }
@@ -90,7 +98,7 @@ public class ClientThread implements Runnable {
             while(!socket.isClosed()){
                 if(serverInStream.available() > 0){
                     if(serverIn.hasNextLine()){
-                        Test.add(serverIn.nextLine());
+                        messages.add(serverIn.nextLine());
                         support.firePropertyChange("NewMessage", 1 ,0);
                     }
                 }
@@ -106,7 +114,7 @@ public class ClientThread implements Runnable {
             }
         }
         catch(IOException ex){
-            Test.add("Input/Output failed!");
+            messages.add("Input/Output failed!");
             support.firePropertyChange("NewMessage", 1 ,0);
         }
     }

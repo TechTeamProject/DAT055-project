@@ -19,7 +19,6 @@ public class WindowFrame extends JFrame {
     private static OptionView optionView;
     private static EventView eventView;
     private static MonthView monthView;
-    //LoginView loginView;
     private static BookingView bookView;
     JScrollPane bookingView;
     private static ChatView chatView;

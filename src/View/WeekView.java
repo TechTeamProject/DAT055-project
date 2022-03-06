@@ -42,6 +42,7 @@ public class WeekView extends JPanel implements PropertyChangeListener, Serializ
     private LinkedList<JLabel> title = new LinkedList<>();
     private LinkedList<Event> eventlist = new LinkedList<Event>();
     private LinkedList<JPanel> dayBox = new LinkedList<>();
+    private int gridxcount = 0;
     private int gridycount = 4;
     GridBagConstraints con = new GridBagConstraints();
     private LocalDateTime eventtime;
@@ -99,6 +100,7 @@ public class WeekView extends JPanel implements PropertyChangeListener, Serializ
             c.anchor = FIRST_LINE_START;
             c.weighty = 0.1;
             c.weightx = 0.5;
+            c.weighty = REMAINDER;
             Insets inset = new Insets(0, 0, 0, 0);
             Insets noinset = new Insets(0,0,0,0);
 
@@ -124,20 +126,6 @@ public class WeekView extends JPanel implements PropertyChangeListener, Serializ
             dayBox.getLast().add(titelBoxDown, c);
             contentPane.add(dayBox.getLast());
         }
-    }
-
-    public void addobjects(Component componente, Container yourcontainer, GridBagLayout layout, GridBagConstraints gbc, int gridx, int gridy, int gridwidth, int gridheigth, int ipady){
-
-        gbc.gridx = gridx;
-        gbc.gridy = gridy;
-
-        gbc.gridwidth = gridwidth;
-        gbc.gridheight = gridheigth;
-
-        gbc.ipady = ipady;
-
-        layout.setConstraints(componente, gbc);
-        yourcontainer.add(componente);
     }
 
     @Override
@@ -206,8 +194,19 @@ public class WeekView extends JPanel implements PropertyChangeListener, Serializ
         String eventStartMinute = String.valueOf(e.getStartTime().getMinute());
         String eventEndMinute = String.valueOf(e.getEndTime().getMinute());
 
-        return eventStartHour + ":" + eventStartMinute + "-" + eventEndHour + ":" + eventEndMinute;
+        if(Integer.parseInt(eventStartMinute)/10 == 0 && Integer.parseInt(eventEndMinute)/10 == 0){
+            return eventStartHour + ":0" + eventStartMinute + "-" + eventEndHour + ":0" + eventEndMinute;
+        }
 
+        if(Integer.parseInt(eventStartMinute)/10 == 0){
+            return eventStartHour + ":0" + eventStartMinute + "-" + eventEndHour + ":" + eventEndMinute;
+        }
+
+        if(Integer.parseInt(eventEndMinute)/10 == 0){
+            return eventStartHour + ":" + eventStartMinute + "-" + eventEndHour + ":0" + eventEndMinute;
+        }
+
+        return eventStartHour + ":" + eventStartMinute + "-" + eventEndHour + ":" + eventEndMinute;
     }
 
     /**
@@ -253,13 +252,18 @@ public class WeekView extends JPanel implements PropertyChangeListener, Serializ
                      System.out.println("How many times does this happen?");
                      GridBagConstraints c = new GridBagConstraints();
 
-                     if (hour < eventtime.getHour()) {
 
-                         // om senare starttid, lägg in med gridx lägre än tidigare
-                         hour = eventtime.getHour();
+                     if((y>0 && eventlist.get(y).getStartTime().isEqual(eventlist.get(y-1).getStartTime()))){
+                         gridxcount +=1;
+                         gridycount -=1;
                      }
 
-                        //TODO Lägga in i vilken ordning events under samma dag hamnar mha c.gridy
+                     else {
+                         gridxcount = 0;
+                     }
+
+
+                     //TODO Lägga in i vilken ordning events under samma dag hamnar mha c.gridy
                      c.gridx = 0;
                      c.gridy = gridycount;
                      gridycount++;

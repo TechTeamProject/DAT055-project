@@ -4,8 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4b89b8c8-4e75-454b-8fad-b69ac190600f" name="Changes" comment="Fixat så JLabel har lyssnare samt så att event raderas efter titel">
-      <change beforePath="$PROJECT_DIR$/src/ChatControl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ChatControl.java" afterDir="false" />
+    <list default="true" id="4b89b8c8-4e75-454b-8fad-b69ac190600f" name="Changes" comment="I WeekView kommer en 0 läggas till i början av start eller slutminuterna ifall de är ensiffriga.">
+      <change beforePath="$PROJECT_DIR$/src/Event.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Event.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/View/WeekView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/WeekView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/View/WindowFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/WindowFrame.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -344,6 +346,10 @@
     <MESSAGE value="&quot;event&quot; i changePanel" />
     <MESSAGE value="Fixat så JLabel har lyssnare samt så att event raderas efter titel" />
     <option name="LAST_COMMIT_MESSAGE" value="Fixat så JLabel har lyssnare samt så att event raderas efter titel" />
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/DAT055_project$WindowFrame.ic" NAME="WindowFrame Coverage Results" MODIFIED="1645656862873" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">

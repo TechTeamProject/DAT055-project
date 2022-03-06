@@ -189,6 +189,7 @@ public class WeekView extends JPanel implements PropertyChangeListener, Serializ
      */
 
     private String getEventTime(Event e){
+
         String eventStartHour = String.valueOf(e.getStartTime().getHour());
         String eventEndHour = String.valueOf(e.getEndTime().getHour());
         String eventStartMinute = String.valueOf(e.getStartTime().getMinute());

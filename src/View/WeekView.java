@@ -249,6 +249,7 @@ public class WeekView extends JPanel implements PropertyChangeListener, Serializ
              for (int y = 0; y < eventlist.size(); y++) {
 
                  LocalDateTime eventtime = eventlist.get(y).getStartTime();
+
                  if (weektime.plusDays(i).getDayOfMonth() == eventtime.getDayOfMonth() && weektime.plusDays(i).getMonth() == eventtime.getMonth() && weektime.plusDays(i).getYear() == eventtime.getYear()) {
                      System.out.println("How many times does this happen?");
                      GridBagConstraints c = new GridBagConstraints();

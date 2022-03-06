@@ -19,7 +19,7 @@ public class YearView extends JPanel implements PropertyChangeListener {
     private JLabel header = new JLabel();
     private JButton previous = new JButton("<");
     private JButton next = new JButton(">");
-    private LocalDateTime monthtime = LocalDateTime.now();
+    private LocalDateTime yeartime;
     private JButton button1 = new JButton("January");
     private JButton button2 = new JButton("February");
     private JButton button3 = new JButton("March");
@@ -110,8 +110,14 @@ public class YearView extends JPanel implements PropertyChangeListener {
 
     @Override
     public void propertyChange(PropertyChangeEvent evt) {
+        if (evt.getPropertyName().equals("currentTime") ) {
+            String time = evt.getNewValue().toString();
+            yeartime = LocalDateTime.parse(time);
+            System.out.println("Current time " + yeartime);
+            header.setText(String.valueOf(yeartime.getYear()));
+        }
         if(evt.getPropertyName().equals("YearChange")){
-            header.setText(String.valueOf(evt.getNewValue()));
+            header.setText(String.valueOf(yeartime.getYear()));
         }
     }
 }

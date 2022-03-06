@@ -12,9 +12,6 @@ import java.time.LocalDateTime;
 
 public class CalenderModel {
     private static LinkedList<Event> Eventlist = new LinkedList<Event>();
-    private LocalDateTime now = LocalDateTime.now();
-    private YearMonth yearMonthObject = YearMonth.of(2022, 2);
-    private int daysInMonth = yearMonthObject.lengthOfMonth(); //28
     private LocalDateTime viewdate; //viewdate är det aktuella objektet man ser i View.
     private final PropertyChangeSupport support = new PropertyChangeSupport(this);
 

@@ -55,7 +55,7 @@ public class  ChatControl implements PropertyChangeListener, Serializable {
         monthView.addMonthViewListener(new monthViewListener());
         bookingView.addBookingViewListener(new bookingViewListener());
         eventView.addEventViewListener(new eventViewListener());
-        //popup.addPopupListener(new popupListener());
+        popup.addPopupListener(new popupListener());
 
 
         //Listeners added to Observable here
@@ -236,7 +236,7 @@ public class  ChatControl implements PropertyChangeListener, Serializable {
                 popup.show(e.getComponent(), e.getX(), e.getY());
 
                 //A block to save x coordinates of rightclick in weekview to add to eventview the current time
-                eventtime = model.getViewTime();
+                eventtime = model.getViewTime().minusDays(model.getViewTime().getDayOfWeek().getValue()-1);
                 if (e.getX() > 145 && e.getX() < 285)  {
                     eventtime = eventtime.plusDays(1);
                 }

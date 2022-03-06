@@ -29,12 +29,12 @@ public class  ChatControl implements PropertyChangeListener, Serializable {
     private static MonthView monthView;
     private static BookingView bookingView;
     private static EventView eventView;
-  //  private PopUp popup;
+    private PopUp popup;
     private DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
     private static LinkedList<Event> Eventlist = new LinkedList<Event>();
     private LocalDateTime eventtime;
 
-    public ChatControl(CalenderModel m, ChatView c, YearView y, OptionView o, WeekView w, MonthView mv, BookingView b, EventView e){
+    public ChatControl(CalenderModel m, ChatView c, YearView y, OptionView o, WeekView w, MonthView mv, BookingView b, EventView e, PopUp p){
         model = m;
         sound = new Sound();
         chatView = c;
@@ -44,7 +44,7 @@ public class  ChatControl implements PropertyChangeListener, Serializable {
         monthView = mv;
         bookingView = b;
         eventView = e;
-      //  popup = p;
+        popup = p;
 
         chatView.addChatFieldListener(new chatListener());
         chatView.addTopButtonsListener(new topButtonsListener());
@@ -55,7 +55,7 @@ public class  ChatControl implements PropertyChangeListener, Serializable {
         monthView.addMonthViewListener(new monthViewListener());
         bookingView.addBookingViewListener(new bookingViewListener());
         eventView.addEventViewListener(new eventViewListener());
-        //popup.addPopupListener(new popupListener());
+        popup.addPopupListener(new popupListener());
 
 
         //Listeners added to Observable here
@@ -181,7 +181,6 @@ public class  ChatControl implements PropertyChangeListener, Serializable {
                     break;
                 case "1","2","3","4","5","6","7","8","9","10","11","12":
                     model.setMonth(Integer.parseInt(str)-model.getMonth().getValue());
-                    System.out.println(model.getViewTime());
                     WindowFrame.changePanel("month");
             }
         }
@@ -229,7 +228,7 @@ public class  ChatControl implements PropertyChangeListener, Serializable {
             //If mouse released and BUTTON3 = RightClick has been used
             if (isRightMouseButton(e)) {
                 //popup
-               // popup.show(e.getComponent(), e.getX(), e.getY());
+                popup.show(e.getComponent(), e.getX(), e.getY());
 
                 //A block to save x coordinates of rightclick in weekview to add to eventview the current time
                 eventtime = model.getViewTime();
@@ -365,7 +364,7 @@ public class  ChatControl implements PropertyChangeListener, Serializable {
             String str = e.getActionCommand();
             switch (str) {
                 case "Create Event":
-                    WindowFrame.changePanel();
+                    WindowFrame.changePanel("event");
                     System.out.println("Panel should be switched");
                     break;
                 case "Remove Event":
@@ -376,7 +375,7 @@ public class  ChatControl implements PropertyChangeListener, Serializable {
                             model.removeEvent(i);
                         }
                     }
-                  //  model.removeEvent(0);
+                    model.removeEvent(0);
                     System.out.println("Event should be removed");
                     break;
             }

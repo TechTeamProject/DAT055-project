@@ -1,6 +1,7 @@
 package src.View;
 import src.CalenderModel;
 import src.Event;
+import src.Weather;
 
 import javax.swing.*;
 import javax.swing.border.EtchedBorder;
@@ -21,6 +22,8 @@ import java.util.LinkedList;
  * @since   2022-03-05
  */
 public class BookingView extends JPanel implements PropertyChangeListener {
+
+    private String temperature = Weather.getWeather();
     private ArrayList<JButton> buttonArr = new ArrayList<>();
     CalenderModel model;
     public BookingView(CalenderModel m){
@@ -28,6 +31,8 @@ public class BookingView extends JPanel implements PropertyChangeListener {
         JLabel header = new JLabel();
         header.setText("No bookings");
         this.add(header);
+        JLabel temp = new JLabel(temperature + " In Gothenburg");
+        this.add(temp);
     }
 
     public void addBookingViewListener(ActionListener a){
@@ -55,6 +60,8 @@ public class BookingView extends JPanel implements PropertyChangeListener {
             header.setText("Bookings");
         } else{ header.setText("No bookings"); }
         this.add(header);
+        JLabel temp = new JLabel(temperature + " In Gothenburg");
+        this.add(temp);
 
         int i=0;
         for(Event e : list){//Lägger till en panel för varje event med tid+plats och edit knapp

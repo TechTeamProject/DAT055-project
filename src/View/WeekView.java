@@ -243,14 +243,14 @@ public class WeekView extends JPanel implements PropertyChangeListener, Serializ
                 }
             }
         }
-
+        LocalDateTime monday = weektime.minusDays(weektime.getDayOfWeek().getValue()-1);
         //These forloops iterates through the seven dayboxes and check every event if anyone is on the same day, if so it loads them.
          for (int i=0; i<7; i++) {
              for (int y = 0; y < eventlist.size(); y++) {
 
                  LocalDateTime eventtime = eventlist.get(y).getStartTime();
 
-                 if (weektime.plusDays(i).getDayOfMonth() == eventtime.getDayOfMonth() && weektime.plusDays(i).getMonth() == eventtime.getMonth() && weektime.plusDays(i).getYear() == eventtime.getYear()) {
+                 if (monday.plusDays(i).getDayOfMonth() == eventtime.getDayOfMonth() && monday.plusDays(i).getMonth() == eventtime.getMonth() && monday.plusDays(i).getYear() == eventtime.getYear()) {
                      System.out.println("How many times does this happen?");
                      GridBagConstraints c = new GridBagConstraints();
 

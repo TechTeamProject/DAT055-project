@@ -388,11 +388,11 @@ public class  ChatControl implements PropertyChangeListener, Serializable {
                     break;
                 case "Remove Event":
                     for (int i = 0; i < model.getEvents().size(); i++) {
-                                    if (eventname.equals(model.getEvents().get(i).getDescription())) {
-                                        model.removeEvent(i);
-                                        updateWeeklisteners(); //Updaterar, tar bort gammal mouselistener
-                                        System.out.println("Event should be removed");
-                                    }
+                        if (eventname.equals(model.getEvents().get(i).getDescription())) {
+                            model.removeEvent(i);
+                            updateWeeklisteners(); //Updaterar, tar bort gammal mouselistener
+                            System.out.println("Event should be removed");
+                        }
                     }
                     break;
             }

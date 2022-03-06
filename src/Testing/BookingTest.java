@@ -6,7 +6,7 @@ import src.Model.Booking;
 
 import java.time.LocalDateTime;
 
-import static org.testng.Assert.assertNotEquals;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
 class BookingTest {
     Booking booking1;

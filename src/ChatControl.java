@@ -269,7 +269,6 @@ public class  ChatControl implements PropertyChangeListener, Serializable {
 
                 String formatedtime = eventtime.format(formatter);
                 String formatedtimeEnd = eventendtime.format(formatter);
-                System.out.println("time after rightclick is : " + formatedtime);
                 EventView.setEventTime(formatedtime, formatedtimeEnd);
             }
 

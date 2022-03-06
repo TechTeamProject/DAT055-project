@@ -4,27 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4b89b8c8-4e75-454b-8fad-b69ac190600f" name="Changes" comment="Remove event klar - + lite kommentarer">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/DAT055-project/src/ChatControl$bookingViewListener.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/DAT055-project/src/ChatControl$bookingViewListener.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/DAT055-project/src/ChatControl$chatListener.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/DAT055-project/src/ChatControl$chatListener.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/DAT055-project/src/ChatControl$eventViewListener.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/DAT055-project/src/ChatControl$eventViewListener.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/DAT055-project/src/ChatControl$ipListener.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/DAT055-project/src/ChatControl$ipListener.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/DAT055-project/src/ChatControl$monthViewListener.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/DAT055-project/src/ChatControl$monthViewListener.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/DAT055-project/src/ChatControl$optionViewListener.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/DAT055-project/src/ChatControl$optionViewListener.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/DAT055-project/src/ChatControl$popupListener.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/DAT055-project/src/ChatControl$popupListener.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/DAT055-project/src/ChatControl$topButtonsListener.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/DAT055-project/src/ChatControl$topButtonsListener.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/DAT055-project/src/ChatControl$weekViewListener.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/DAT055-project/src/ChatControl$weekViewListener.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/DAT055-project/src/ChatControl$yearViewListener.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/DAT055-project/src/ChatControl$yearViewListener.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/DAT055-project/src/ChatControl.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/DAT055-project/src/ChatControl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/DAT055-project/src/View/EventView.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/DAT055-project/src/View/EventView.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/DAT055-project/src/View/MonthView.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/DAT055-project/src/View/MonthView.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/DAT055-project/src/View/WeekView.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/DAT055-project/src/View/WeekView.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/DAT055-project/src/View/YearView.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/DAT055-project/src/View/YearView.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ChatControl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ChatControl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/View/EventView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/EventView.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/View/WeekView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/WeekView.java" afterDir="false" />
-    </list>
+    <list default="true" id="4b89b8c8-4e75-454b-8fad-b69ac190600f" name="Changes" comment="week helt klar" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -318,7 +298,14 @@
       <option name="project" value="LOCAL" />
       <updated>1646579854036</updated>
     </task>
-    <option name="localTasksCounter" value="32" />
+    <task id="LOCAL-00032" summary="week helt klar">
+      <created>1646584656683</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1646584656683</updated>
+    </task>
+    <option name="localTasksCounter" value="33" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -336,7 +323,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="test" />
     <MESSAGE value="create event knapp i windowframe" />
     <MESSAGE value="lite ändringar" />
     <MESSAGE value="Observer interface fungerar och är inlagt på alla views" />
@@ -361,7 +347,8 @@
     <MESSAGE value="remove event uppdaterad, fungerar men kan ej se vilken man klickar på från samma dag." />
     <MESSAGE value="&quot;event&quot; i changePanel" />
     <MESSAGE value="Fixat så JLabel har lyssnare samt så att event raderas efter titel" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fixat så JLabel har lyssnare samt så att event raderas efter titel" />
+    <MESSAGE value="week helt klar" />
+    <option name="LAST_COMMIT_MESSAGE" value="week helt klar" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/DAT055_project$WindowFrame.ic" NAME="WindowFrame Coverage Results" MODIFIED="1645656862873" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">

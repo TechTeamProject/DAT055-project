@@ -12,12 +12,21 @@ import java.net.http.HttpResponse;
  * @since   2022-03-02
  */
 public class Weather {
+    private static String temperature = getWeather();
+
+    /**
+     * Getter method for the temperature variable.
+     * @return String The temperate in Gothenburg.
+     */
+    public static String getTemperature() {
+        return temperature;
+    }
 
     /**
      * A method used to request and return the current temperature in Gothenburg in Celsius.
      * @return String The temperature in Gothenburg.
      */
-    public static String getWeather() {
+    private static String getWeather() {
         HttpResponse<String> response;
         try {
             HttpRequest request = HttpRequest.newBuilder()

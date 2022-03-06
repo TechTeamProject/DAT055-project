@@ -22,8 +22,6 @@ import java.util.LinkedList;
  * @since   2022-03-05
  */
 public class BookingView extends JPanel implements PropertyChangeListener {
-
-    private String temperature = Weather.getWeather();
     private ArrayList<JButton> buttonArr = new ArrayList<>();
     CalenderModel model;
     public BookingView(CalenderModel m){
@@ -31,7 +29,7 @@ public class BookingView extends JPanel implements PropertyChangeListener {
         JLabel header = new JLabel();
         header.setText("No bookings");
         this.add(header);
-        JLabel temp = new JLabel(temperature + " In Gothenburg");
+        JLabel temp = new JLabel(Weather.getTemperature() + " In Gothenburg");
         this.add(temp);
     }
 
@@ -60,7 +58,7 @@ public class BookingView extends JPanel implements PropertyChangeListener {
             header.setText("Bookings");
         } else{ header.setText("No bookings"); }
         this.add(header);
-        JLabel temp = new JLabel(temperature + " In Gothenburg");
+        JLabel temp = new JLabel(Weather.getTemperature() + " In Gothenburg");
         this.add(temp);
 
         int i=0;

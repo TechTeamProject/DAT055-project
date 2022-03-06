@@ -11,7 +11,6 @@ import static java.lang.Thread.sleep;
  * @since   2022-03-02
  */
 public class Sound {
-    private static float Sample = 8000f;
 
     /**
      * Used to play a tone. The parameters are used to create different tones.
@@ -24,9 +23,10 @@ public class Sound {
             throws LineUnavailableException
     {
         byte[] buf = new byte[1];
+        float sample = 8000f;
         AudioFormat af =
                 new AudioFormat(
-                        Sample, // sampleRate
+                        sample, // sampleRate
                         8,           // sampleSizeInBits
                         1,           // channels
                         true,        // signed
@@ -35,7 +35,7 @@ public class Sound {
         sdl.open(af);
         sdl.start();
         for (int i=0; i < msecs*8; i++) {
-            double angle = i / (Sample / hz) * 2.0 * Math.PI;
+            double angle = i / (sample / hz) * 2.0 * Math.PI;
             buf[0] = (byte)(Math.sin(angle) * 127.0 * vol);
             sdl.write(buf,0,1);
         }

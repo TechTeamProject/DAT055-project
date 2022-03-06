@@ -238,7 +238,7 @@ public class  ChatControl implements PropertyChangeListener, Serializable {
                 System.out.println("Detta får vi från e.getComponent " + eventname);
 
                 //A block to save x coordinates of rightclick in weekview to add to eventview the current time
-                eventtime = model.getViewTime();
+                eventtime = model.getViewTime().minusDays(model.getViewTime().getDayOfWeek().getValue()-1);
 
                 //Vid högerclick på panel uppdateras in time.
                 // Sett name på panel och jämför

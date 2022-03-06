@@ -197,7 +197,7 @@ public class  ChatControl implements PropertyChangeListener, Serializable {
                     break;
                 case "Load":
                     model.load();
-                    updateWeeklisteners();
+                    updateWeeklisteners(); //update mouselisener for loaded events
                     break;
             }
         }
@@ -235,15 +235,10 @@ public class  ChatControl implements PropertyChangeListener, Serializable {
                 popup.show(e.getComponent(), e.getX(), e.getY());
                 //Saves name of event
                 eventname = e.getComponent().getName();
-                System.out.println("Detta får vi från e.getComponent " + eventname);
 
                 //A block to save x coordinates of rightclick in weekview to add to eventview the current time
                 eventtime = model.getViewTime().minusDays(model.getViewTime().getDayOfWeek().getValue()-1);
 
-                //Vid högerclick på panel uppdateras in time.
-                // Sett name på panel och jämför
-
-                //if (eventname.equals("contentpane")) {
 
                     if (e.getX() > 145 && e.getX() < 285)  {
                         eventtime = eventtime.plusDays(1);
@@ -263,7 +258,7 @@ public class  ChatControl implements PropertyChangeListener, Serializable {
                     else if (e.getX() > 854 && e.getX() < 1000) {
                         eventtime = eventtime.plusDays(6);
                     }
-                //}
+
                 String formatedtime = eventtime.format(formatter);
                 System.out.println("time after rightclick is : " + formatedtime);
                 EventView.setEventTime(formatedtime);
@@ -353,7 +348,7 @@ public class  ChatControl implements PropertyChangeListener, Serializable {
                         LocalDateTime fromdatetime = LocalDateTime.parse(fromTime, formatter);
                         LocalDateTime untildatetime = LocalDateTime.parse(untilTime, formatter);
                         model.addEvent(fromdatetime, untildatetime, title, loc);
-                        updateWeeklisteners();
+                        updateWeeklisteners();  //To update new event with a mouselistener
                         eventView.setTitle("");
                         eventView.setStartTime("yyyy-MM-dd HH:mm");
                         eventView.setEndTime("yyyy-MM-dd HH:mm");
@@ -384,25 +379,13 @@ public class  ChatControl implements PropertyChangeListener, Serializable {
                     System.out.println("Panel should be switched");
                     break;
                 case "Remove Event":
-
                     for (int i = 0; i < model.getEvents().size(); i++) {
-                        LocalDateTime event = model.getEvents().get(i).getStartTime();
-                        System.out.println("Detta är i EVENTNAME INNAN  " + eventname);
-                        System.out.println("Detta är i model.getevent INNAN " + model.getEvents().get(i).getDescription());
-
-                        System.out.println("Detta är i eventime.getDayOfMonth(): " + eventtime.getDayOfMonth());
-                        System.out.println("Detta är i event.getDayOfMonth innan: " + event.getDayOfMonth());
-
-                            System.out.println("Detta är i eventname " + eventname);
-                            System.out.println("Detta är i model.getevent " + model.getEvents().get(i).getDescription());
                                     if (eventname.equals(model.getEvents().get(i).getDescription())) {
                                         model.removeEvent(i);
-                                        updateWeeklisteners();
+                                        updateWeeklisteners(); //Updaterar, tar bort gammal mouselistener
                                         System.out.println("Event should be removed");
                                     }
-
                     }
-
                     break;
             }
         }

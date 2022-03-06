@@ -3,6 +3,7 @@ package src.View;
 import src.CalenderModel;
 import src.ChatControl;
 import src.PopUp;
+//import src.PopUp;
 
 import java.awt.*;
 import javax.swing.*;
@@ -30,6 +31,7 @@ public class WindowFrame extends JFrame {
     private PopUp popUp;
 
     public static void main(String [] args){
+
         WindowFrame windowFrame = new WindowFrame();
     }
 

@@ -2,6 +2,7 @@ package src;
 
 
 import java.io.Serializable;
+import java.time.DateTimeException;
 import java.time.LocalDateTime;
 
 public class Event implements Comparable<Event>,Serializable{
@@ -9,7 +10,6 @@ public class Event implements Comparable<Event>,Serializable{
     private String location;
     private LocalDateTime starttime;
     private LocalDateTime endtime;
-
 
     /**
      * Constructor
@@ -19,10 +19,12 @@ public class Event implements Comparable<Event>,Serializable{
      * formattedStart/End used to format to more convinient date
      */
     public Event(LocalDateTime start, LocalDateTime end, String title, String loc){
+
         this.starttime = start;
         this.endtime = end;
         this.description = title;
         this.location = loc;
+
     }
 
     public String getDescription(){
@@ -36,6 +38,12 @@ public class Event implements Comparable<Event>,Serializable{
     public LocalDateTime getStartTime(){ return starttime; }
 
     public LocalDateTime getEndTime(){ return endtime; }
+
+    public boolean isValid() throws DateTimeException{
+        if(starttime.isAfter(endtime) || starttime.isEqual(endtime))
+            return false;
+        return true;
+    }
 
     @Override
     public int compareTo(Event e){

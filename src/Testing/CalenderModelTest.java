@@ -91,16 +91,18 @@ class CalenderModelTest {
         d2 = test.getDay();
         assertNotEquals(d1,d2);
     }
-
-    @Test
-    void canSave() {
-        test.save("testfile.dat");
-        test.save("/fakedir/newfile.dat");
-    }
-
     @Test
     void canLoad() {
         test.load("testfile.dat");
         test.load("faketestfile.dat");
+        test.chooseLoadFilePath();
     }
+    @Test
+    void canSave() {
+        test.save("testfile.dat");
+        test.save("/fakedir/newfile.dat");
+        test.chooseSaveFilePath();
+    }
+
+
 }

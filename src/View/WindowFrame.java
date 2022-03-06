@@ -20,7 +20,6 @@ public class WindowFrame extends JFrame {
     private static ChatView chatView;
     private static Control control;
     private static CardLayout c1;
-    private int currentCard = 1;
     private static JPanel p = new JPanel();
     private PopUp popUp;
 

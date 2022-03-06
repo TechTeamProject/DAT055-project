@@ -7,7 +7,14 @@ import java.awt.*;
 import javax.swing.*;
 import java.awt.event.*;
 
-
+/**
+ * @author Hanna Pham
+ * @version 1.0
+ * @since 2022-03-06
+ * WindowFrame is a view class meant to create a frame and organize different panels/buttons.
+ * It intended usage is in a calenderprogram.
+ * Windowframe creates the main window and also different panels and buttons to enable navigation.
+ */
 public class WindowFrame extends JFrame {
 
     private static WeekView weekView;
@@ -30,10 +37,19 @@ public class WindowFrame extends JFrame {
     JButton bEvent = new JButton("Create Event");
     JButton bChat = new JButton("Chat");
 
+    /**
+     * Main - for creating the windowfram and start the program
+     * @param args
+     */
     public static void main(String [] args){
         WindowFrame windowFrame = new WindowFrame();
     }
 
+    /**
+     * Constructor
+     * Creates all needed viewpanels and also an instance of a controlclass.
+     * The constructor organizes were buttons/panels are and sizes/locations
+     */
     public WindowFrame() {
         CalenderModel m = new CalenderModel();
         weekView = new WeekView();
@@ -110,6 +126,10 @@ public class WindowFrame extends JFrame {
         c1.show(p, "week");
     }
 
+    /**
+     * Adds actionlisteners to buttons in WindowFrame
+     * @param a - Actionlistener object
+     */
     public void addWindowFrameListener(ActionListener a){
         bBookings.addActionListener(a);
         bChat.addActionListener(a);
@@ -126,7 +146,10 @@ public class WindowFrame extends JFrame {
         bWeek.setActionCommand("week");
         bYear.setActionCommand("year");
     }
-
+    /**
+     * Method to change panel in Windowframe
+     * @param panel String with name of desired panel
+     */
     public static void changePanel(String panel) {
         c1.show(p,panel);
     }

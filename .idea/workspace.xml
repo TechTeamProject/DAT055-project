@@ -4,9 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4b89b8c8-4e75-454b-8fad-b69ac190600f" name="Changes" comment="javadoc i calendermodel">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/CalenderModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/CalenderModel.java" afterDir="false" />
+    <list default="true" id="4b89b8c8-4e75-454b-8fad-b69ac190600f" name="Changes" comment="Javadoc windowframe">
+      <change beforePath="$PROJECT_DIR$/src/PopUp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/PopUp.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -322,7 +321,28 @@
       <option name="project" value="LOCAL" />
       <updated>1646588872648</updated>
     </task>
-    <option name="localTasksCounter" value="35" />
+    <task id="LOCAL-00035" summary="javadoc CalenderModel klar">
+      <created>1646589925944</created>
+      <option name="number" value="00035" />
+      <option name="presentableId" value="LOCAL-00035" />
+      <option name="project" value="LOCAL" />
+      <updated>1646589925944</updated>
+    </task>
+    <task id="LOCAL-00036" summary="javadoc CalenderModel klar">
+      <created>1646589936788</created>
+      <option name="number" value="00036" />
+      <option name="presentableId" value="LOCAL-00036" />
+      <option name="project" value="LOCAL" />
+      <updated>1646589936788</updated>
+    </task>
+    <task id="LOCAL-00037" summary="Javadoc windowframe">
+      <created>1646593494914</created>
+      <option name="number" value="00037" />
+      <option name="presentableId" value="LOCAL-00037" />
+      <option name="project" value="LOCAL" />
+      <updated>1646593494914</updated>
+    </task>
+    <option name="localTasksCounter" value="38" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -340,8 +360,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="lite ändringar" />
-    <MESSAGE value="Observer interface fungerar och är inlagt på alla views" />
     <MESSAGE value="addEvent tillagd till observable" />
     <MESSAGE value="save/load" />
     <MESSAGE value="save/load från vald directory" />
@@ -365,7 +383,9 @@
     <MESSAGE value="Fixat så JLabel har lyssnare samt så att event raderas efter titel" />
     <MESSAGE value="week helt klar" />
     <MESSAGE value="javadoc i calendermodel" />
-    <option name="LAST_COMMIT_MESSAGE" value="javadoc i calendermodel" />
+    <MESSAGE value="javadoc CalenderModel klar" />
+    <MESSAGE value="Javadoc windowframe" />
+    <option name="LAST_COMMIT_MESSAGE" value="Javadoc windowframe" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/DAT055_project$WindowFrame.ic" NAME="WindowFrame Coverage Results" MODIFIED="1645656862873" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">

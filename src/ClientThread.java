@@ -14,19 +14,17 @@ import java.util.Scanner;
  * @version 1.0
  * @since   2022-03-02
  */
-public class ClientThread implements Runnable, PropertyChangeListener {
+public class ClientThread implements Runnable {
     private static Socket socket;
     private LinkedList<String> messagesToSend;
     private boolean hasMessages = false;
     private Client client;
     private final PropertyChangeSupport support = new PropertyChangeSupport(this);
     private static LinkedList<String> Test = new LinkedList<String>();
-    //private static ChatControl chatControl;
 
     public String getMessage(){
         return Test.pop();
     }
-    public ClientThread(){}
     public void addPropertyChangeListener(PropertyChangeListener listener) {
         support.addPropertyChangeListener(listener);
     }
@@ -40,8 +38,6 @@ public class ClientThread implements Runnable, PropertyChangeListener {
     public ClientThread(String userName, String host, int portNumber){
         client = new Client(userName, host, portNumber);
         messagesToSend = new LinkedList<>();
-
-        //chatControl = new ChatControl(false);
         try{
             socket = new Socket(client.getServerHost(), client.getServerPort());
 
@@ -49,13 +45,9 @@ public class ClientThread implements Runnable, PropertyChangeListener {
 
             Thread serverAccessThread = new Thread(this);
             serverAccessThread.start();
-            //chatControl.printText("Successfully connected to host " + host + " port " + portNumber);
             //Test.add("Successfully connected to host " + host + " port " + portNumber);
             //support.firePropertyChange("NewMessage", 1 ,0);
-        }catch(IOException ex){
-            //chatControl.printText("Fatal Connection error!");
-        }catch(InterruptedException ex){
-            //chatControl.printText("Interrupted");
+        }catch(IOException | InterruptedException ex){
         }
     }
 
@@ -98,7 +90,6 @@ public class ClientThread implements Runnable, PropertyChangeListener {
             while(!socket.isClosed()){
                 if(serverInStream.available() > 0){
                     if(serverIn.hasNextLine()){
-                        //chatControl.printText(serverIn.nextLine());
                         Test.add(serverIn.nextLine());
                         support.firePropertyChange("NewMessage", 1 ,0);
                     }
@@ -117,12 +108,6 @@ public class ClientThread implements Runnable, PropertyChangeListener {
         catch(IOException ex){
             Test.add("Input/Output failed!");
             support.firePropertyChange("NewMessage", 1 ,0);
-            //chatControl.printText("Input/Output failed!");
         }
-    }
-
-    @Override
-    public void propertyChange(PropertyChangeEvent evt) {
-
     }
 }

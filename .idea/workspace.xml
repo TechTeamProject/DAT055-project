@@ -4,9 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4b89b8c8-4e75-454b-8fad-b69ac190600f" name="Changes" comment="Weekview can addera och remove via högerklick. Dock tar den bort det första i nuläget. Döpte om PopUpJPop till ett mindre irriterande namn samt lade till den som en view.">
+    <list default="true" id="4b89b8c8-4e75-454b-8fad-b69ac190600f" name="Changes" comment="remove event uppdaterad, fungerar men kan ej se vilken man klickar på från samma dag.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/ChatControl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ChatControl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/PopUpJPop.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/View/WindowFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/WindowFrame.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -281,7 +282,14 @@
       <option name="project" value="LOCAL" />
       <updated>1646533562856</updated>
     </task>
-    <option name="localTasksCounter" value="29" />
+    <task id="LOCAL-00029" summary="remove event uppdaterad, fungerar men kan ej se vilken man klickar på från samma dag.">
+      <created>1646534670187</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1646534670187</updated>
+    </task>
+    <option name="localTasksCounter" value="30" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -299,7 +307,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Ny eventklass" />
     <MESSAGE value="Calender - with LocalDateTime" />
     <MESSAGE value="bookingview, event upd" />
     <MESSAGE value="test" />
@@ -324,7 +331,8 @@
     <MESSAGE value="Laddafil + remove från bookview syns i weekview" />
     <MESSAGE value="bytte från JButtons till JLabels i weekview så att man kan högerklicka" />
     <MESSAGE value="Weekview can addera och remove via högerklick. Dock tar den bort det första i nuläget. Döpte om PopUpJPop till ett mindre irriterande namn samt lade till den som en view." />
-    <option name="LAST_COMMIT_MESSAGE" value="Weekview can addera och remove via högerklick. Dock tar den bort det första i nuläget. Döpte om PopUpJPop till ett mindre irriterande namn samt lade till den som en view." />
+    <MESSAGE value="remove event uppdaterad, fungerar men kan ej se vilken man klickar på från samma dag." />
+    <option name="LAST_COMMIT_MESSAGE" value="remove event uppdaterad, fungerar men kan ej se vilken man klickar på från samma dag." />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/DAT055_project$WindowFrame.ic" NAME="WindowFrame Coverage Results" MODIFIED="1645656862873" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">

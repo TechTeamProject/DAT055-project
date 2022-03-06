@@ -181,6 +181,7 @@ public class  ChatControl implements PropertyChangeListener, Serializable {
                     break;
                 case "1","2","3","4","5","6","7","8","9","10","11","12":
                     model.setMonth(Integer.parseInt(str)-model.getMonth().getValue());
+                    System.out.println(model.getViewTime());
                     WindowFrame.changePanel("month");
             }
         }
@@ -227,7 +228,7 @@ public class  ChatControl implements PropertyChangeListener, Serializable {
         public void mouseReleased(MouseEvent e) {
             //If mouse released and BUTTON3 = RightClick has been used
             if (isRightMouseButton(e)) {
-                //popup
+
                 popup.show(e.getComponent(), e.getX(), e.getY());
 
                 //A block to save x coordinates of rightclick in weekview to add to eventview the current time
@@ -375,7 +376,7 @@ public class  ChatControl implements PropertyChangeListener, Serializable {
                             model.removeEvent(i);
                         }
                     }
-                    model.removeEvent(0);
+                  //  model.removeEvent(0);
                     System.out.println("Event should be removed");
                     break;
             }

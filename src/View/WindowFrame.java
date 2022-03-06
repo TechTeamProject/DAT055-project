@@ -18,7 +18,6 @@ public class WindowFrame extends JFrame {
     private static BookingView bookView;
     private JScrollPane bookingView;
     private static ChatView chatView;
-    private static Control control;
     private static CardLayout c1;
     private static JPanel p = new JPanel();
     private PopUp popUp;
@@ -48,7 +47,7 @@ public class WindowFrame extends JFrame {
         chatView = new ChatView();
         popUp = new PopUp("week");
 
-        control = new Control(this, m, chatView, yearView, optionView, weekView, monthView, bookView, eventView, popUp);
+        Control control = new Control(this, m, chatView, yearView, optionView, weekView, monthView, bookView, eventView, popUp);
 
         p = new JPanel();
         c1 = new CardLayout();

@@ -1,9 +1,14 @@
 package src.View;
 
+import src.ChatControl;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyListener;
+import java.beans.PropertyChangeEvent;
+import java.beans.PropertyChangeListener;
+
 /**
  * This class is used as the view for the chat.
  *
@@ -11,7 +16,7 @@ import java.awt.event.KeyListener;
  * @version 1.0
  * @since   2022-03-02
  */
-public class ChatView extends JPanel{
+public class ChatView extends JPanel implements PropertyChangeListener {
     private final JPanel middlePanel;
     private final JButton goBackButton;
     private final JButton confirmButton;
@@ -130,6 +135,14 @@ public class ChatView extends JPanel{
         connectButton.addActionListener(a);
         goBackButton.addActionListener(a);
         confirmButton.addActionListener(a);
+    }
+
+    @Override
+    public void propertyChange(PropertyChangeEvent evt) {
+        if(evt.getPropertyName().equals("NewMessage")){
+            //System.out.println("Funkar");
+            printText(ChatControl.getMessage());
+        }
     }
 }
 

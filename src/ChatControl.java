@@ -19,7 +19,8 @@ import static javax.swing.SwingUtilities.isRightMouseButton;
 public class  ChatControl implements PropertyChangeListener, Serializable {
     private static CalenderModel model;
     private static ChatView chatView;
-    private ClientThread serverThread;
+    //private static ClientThread clientThread;
+    private static ClientThread clientThread;
     private ChatServer server;
     private Sound sound;
     private static YearView yearView;
@@ -63,6 +64,7 @@ public class  ChatControl implements PropertyChangeListener, Serializable {
         model.addPropertyChangeListener(monthView);
         model.addPropertyChangeListener(yearView);
         model.addPropertyChangeListener(bookingView);
+
         model.addPropertyChangeListener(this);
 
         //Updates in Model to set all the views.
@@ -82,6 +84,9 @@ public class  ChatControl implements PropertyChangeListener, Serializable {
         if(evt.getPropertyName().equals("NewEvent") | evt.getPropertyName().equals("LoadedEvents") | evt.getPropertyName().equals("RemoveEvent")){
             bookingView.addBookingViewListener(new bookingViewListener());
         }
+        else if(evt.getPropertyName().equals("NewMessage")){
+            System.out.println("Funkar");
+        }
     }
 
     private class chatListener implements KeyListener {
@@ -89,8 +94,8 @@ public class  ChatControl implements PropertyChangeListener, Serializable {
             if(ke.getKeyCode()==KeyEvent.VK_ENTER){
 
                 if (chatView.getFieldText().compareTo("") != 0) {
-                    if(serverThread.Alive()){
-                        serverThread.addNextMessage(chatView.getFieldText());
+                    if(clientThread.Alive()){
+                        clientThread.addNextMessage(chatView.getFieldText());
                         chatView.setFieldText("");
                     }
                     else{
@@ -108,8 +113,8 @@ public class  ChatControl implements PropertyChangeListener, Serializable {
         public void keyPressed(KeyEvent ke) {
             if (ke.getKeyCode() == KeyEvent.VK_ENTER) {
                 if (chatView.getIpText().compareTo("") != 0) {
-                    if(!serverThread.Alive()){
-                        serverThread = new ClientThread("AddUserClass", chatView.getIpText(), 23476);
+                    if(!clientThread.Alive()){
+                        clientThread = new ClientThread("AddUserClass", chatView.getIpText(), 23476);
                         chatView.switchMiddlePanel("ChatArea");
                         sound.playConnected();
                     }
@@ -145,8 +150,11 @@ public class  ChatControl implements PropertyChangeListener, Serializable {
                     break;
                 case "Confirm":
                     if (chatView.getIpText().compareTo("") != 0 && chatView.getNameText().compareTo("") != 0) {
-                        if(!serverThread.Alive()){
-                            serverThread = new ClientThread(chatView.getNameText(), chatView.getIpText(), 23476);
+                        if(!clientThread.Alive()){
+
+                            clientThread = new ClientThread(chatView.getNameText(), chatView.getIpText(), 23476);
+                            clientThread.addPropertyChangeListener(chatView);
+
                             chatView.switchMiddlePanel("ChatArea");
                             sound.playConnected();
                         }
@@ -342,6 +350,9 @@ public class  ChatControl implements PropertyChangeListener, Serializable {
             return Eventlist = model.getEvents();
     }
 
+    public static String getMessage(){
+        return clientThread.getMessage();
+    }
 
 
 

@@ -1,5 +1,8 @@
 package src;
 
+import java.beans.PropertyChangeEvent;
+import java.beans.PropertyChangeListener;
+import java.beans.PropertyChangeSupport;
 import java.io.*;
 import java.net.Socket;
 import java.util.LinkedList;
@@ -11,25 +14,34 @@ import java.util.Scanner;
  * @version 1.0
  * @since   2022-03-02
  */
-public class ClientThread implements Runnable {
+public class ClientThread implements Runnable, PropertyChangeListener {
     private static Socket socket;
     private LinkedList<String> messagesToSend;
     private boolean hasMessages = false;
     private Client client;
+    private final PropertyChangeSupport support = new PropertyChangeSupport(this);
+    private static LinkedList<String> Test = new LinkedList<String>();
+    //private static ChatControl chatControl;
 
-    private static ChatControl chatControl;
-
+    public String getMessage(){
+        return Test.pop();
+    }
+    public ClientThread(){}
+    public void addPropertyChangeListener(PropertyChangeListener listener) {
+        support.addPropertyChangeListener(listener);
+    }
     /**
      * Constructor for ServerThread. Tries to connect to the server using the parameters.
      * @param userName The name of the client.
      * @param host  The host adress of the server.
      * @param portNumber The port of the server.
      */
+
     public ClientThread(String userName, String host, int portNumber){
         client = new Client(userName, host, portNumber);
         messagesToSend = new LinkedList<>();
 
-        chatControl = new ChatControl(false);
+        //chatControl = new ChatControl(false);
         try{
             socket = new Socket(client.getServerHost(), client.getServerPort());
 
@@ -37,11 +49,13 @@ public class ClientThread implements Runnable {
 
             Thread serverAccessThread = new Thread(this);
             serverAccessThread.start();
-            chatControl.printText("Successfully connected to host " + host + " port " + portNumber);
+            //chatControl.printText("Successfully connected to host " + host + " port " + portNumber);
+            //Test.add("Successfully connected to host " + host + " port " + portNumber);
+            //support.firePropertyChange("NewMessage", 1 ,0);
         }catch(IOException ex){
-            chatControl.printText("Fatal Connection error!");
+            //chatControl.printText("Fatal Connection error!");
         }catch(InterruptedException ex){
-            chatControl.printText("Interrupted");
+            //chatControl.printText("Interrupted");
         }
     }
 
@@ -84,7 +98,9 @@ public class ClientThread implements Runnable {
             while(!socket.isClosed()){
                 if(serverInStream.available() > 0){
                     if(serverIn.hasNextLine()){
-                        chatControl.printText(serverIn.nextLine());
+                        //chatControl.printText(serverIn.nextLine());
+                        Test.add(serverIn.nextLine());
+                        support.firePropertyChange("NewMessage", 1 ,0);
                     }
                 }
                 if(hasMessages){
@@ -99,7 +115,14 @@ public class ClientThread implements Runnable {
             }
         }
         catch(IOException ex){
-            chatControl.printText("Input/Output failed!");
+            Test.add("Input/Output failed!");
+            support.firePropertyChange("NewMessage", 1 ,0);
+            //chatControl.printText("Input/Output failed!");
         }
+    }
+
+    @Override
+    public void propertyChange(PropertyChangeEvent evt) {
+
     }
 }

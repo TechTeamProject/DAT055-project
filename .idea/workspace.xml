@@ -4,7 +4,17 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4b89b8c8-4e75-454b-8fad-b69ac190600f" name="Changes" comment="week helt klar" />
+    <list default="true" id="4b89b8c8-4e75-454b-8fad-b69ac190600f" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/DAT055-project/src/CalenderModel.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/DAT055-project/src/CalenderModel.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/DAT055-project/src/ChatControl$bookingViewListener.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/DAT055-project/src/ChatControl$bookingViewListener.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/DAT055-project/src/ChatControl$eventViewListener.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/DAT055-project/src/ChatControl$eventViewListener.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/DAT055-project/src/ChatControl$monthViewListener.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/DAT055-project/src/ChatControl$monthViewListener.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/DAT055-project/src/ChatControl$popupListener.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/DAT055-project/src/ChatControl$popupListener.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/DAT055-project/src/ChatControl$weekViewListener.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/DAT055-project/src/ChatControl$weekViewListener.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/DAT055-project/src/ChatControl.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/DAT055-project/src/ChatControl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/CalenderModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/CalenderModel.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -305,7 +315,14 @@
       <option name="project" value="LOCAL" />
       <updated>1646584656683</updated>
     </task>
-    <option name="localTasksCounter" value="33" />
+    <task id="LOCAL-00033" summary="week helt klar">
+      <created>1646584726013</created>
+      <option name="number" value="00033" />
+      <option name="presentableId" value="LOCAL-00033" />
+      <option name="project" value="LOCAL" />
+      <updated>1646584726013</updated>
+    </task>
+    <option name="localTasksCounter" value="34" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

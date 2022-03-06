@@ -10,8 +10,17 @@ import java.time.*;
 import java.util.*;
 import java.time.LocalDateTime;
 
+/**
+ * @author Erik Gustavsson
+ * @version 1.0
+ * CalenderModel is a class that can be used to store data in a calendar.
+ * It creates a LocalDateTime object for the current time shown in the program and also
+ * a list of events that may happen in the schedule.
+ * The class is Observable using PropertyChangeSupport
+ *
+ */
 public class CalenderModel {
-    private static LinkedList<Event> Eventlist = new LinkedList<Event>();
+    private static LinkedList<Event> Eventlist = new LinkedList<>();
     private LocalDateTime viewdate; //viewdate är det aktuella objektet man ser i View.
     private final PropertyChangeSupport support = new PropertyChangeSupport(this);
 
@@ -30,7 +39,7 @@ public class CalenderModel {
      *              firePropertyChange alerts listener. It sends the starting time as oldvalue and endtime as newvalue
      */
     public void addEvent(LocalDateTime start, LocalDateTime end, String title, String location) {
-        this.Eventlist.add(new Event(start, end, title, location));
+        Eventlist.add(new Event(start, end, title, location));
         support.firePropertyChange("NewEvent", 0, 1);
     }
 
@@ -40,7 +49,7 @@ public class CalenderModel {
     }
 
     public LinkedList<Event> getEvents() {
-        return this.Eventlist;
+        return Eventlist;
     }
 
     /**
@@ -153,9 +162,10 @@ public class CalenderModel {
             filepath = file.getAbsolutePath();
         }
         try {
+            assert filepath != null;
             FileOutputStream output = new FileOutputStream(filepath);
             ObjectOutputStream objectOutputStream = new ObjectOutputStream(output);
-            objectOutputStream.writeObject(this.Eventlist);
+            objectOutputStream.writeObject(Eventlist);
             objectOutputStream.flush();
             objectOutputStream.close();
         } catch (FileNotFoundException e) {
@@ -176,6 +186,7 @@ public class CalenderModel {
             filepath = file.getAbsolutePath();
         }
         try {
+            assert filepath != null;
             FileInputStream input = new FileInputStream(filepath);
             ObjectInputStream objectInputStream = new ObjectInputStream(input);
             LinkedList<Event> list = (LinkedList<Event>) objectInputStream.readObject();

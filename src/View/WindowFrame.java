@@ -12,7 +12,7 @@ import java.awt.event.*;
  * @version 1.0
  * @since 2022-03-06
  * WindowFrame is a view class meant to create a frame and organize different panels/buttons.
- * It intended usage is in a calenderprogram.
+ * Its intended usage is in a calenderprogram.
  * Windowframe creates the main window and also different panels and buttons to enable navigation.
  */
 public class WindowFrame extends JFrame {

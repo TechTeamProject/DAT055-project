@@ -7,7 +7,7 @@ import java.awt.event.ActionListener;
  * @version 1.0
  * @since 2022-03-06
  *
- * Class used to create a small rightclickpopup with options.
+ * ViewClass used to create a small rightclickpopup with options.
  * Using JPopupMenu superclass
  */
 public class PopUp extends JPopupMenu{

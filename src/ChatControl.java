@@ -14,7 +14,6 @@ import java.time.format.DateTimeFormatter;
 import java.util.InputMismatchException;
 import java.util.LinkedList;
 
-import static java.awt.event.MouseEvent.BUTTON3;
 import static javax.swing.SwingUtilities.isRightMouseButton;
 
 public class  ChatControl implements PropertyChangeListener, Serializable {
@@ -32,6 +31,7 @@ public class  ChatControl implements PropertyChangeListener, Serializable {
     private PopUp popup;
     private DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
     private static LinkedList<Event> Eventlist = new LinkedList<Event>();
+    private LocalDateTime eventtime;
 
     public ChatControl(CalenderModel m, ChatView c, YearView y, OptionView o, WeekView w, MonthView mv, BookingView b, EventView e, PopUp p){
         model = m;
@@ -220,7 +220,7 @@ public class  ChatControl implements PropertyChangeListener, Serializable {
                 popup.show(e.getComponent(), e.getX(), e.getY());
 
                 //A block to save x coordinates of rightclick in weekview to add to eventview the current time
-                LocalDateTime eventtime = model.getViewTime();
+                eventtime = model.getViewTime();
                 if (e.getX() > 145 && e.getX() < 285)  {
                     eventtime = eventtime.plusDays(1);
                 }
@@ -320,8 +320,14 @@ public class  ChatControl implements PropertyChangeListener, Serializable {
                     System.out.println("Panel should be switched");
                     break;
                 case "Remove Event":
-                   // model.removeEvent(model.getEvents().getLast().hashCode());
-                    model.removeEvent(0);
+
+                    for (int i = 0; i < model.getEvents().size(); i++) {
+                        LocalDateTime event = model.getEvents().get(i).getStartTime();
+                        if (eventtime.getDayOfMonth() == event.getDayOfMonth()){
+                            model.removeEvent(i);
+                        }
+                    }
+                  //  model.removeEvent(0);
                     System.out.println("Event should be removed");
                     break;
             }

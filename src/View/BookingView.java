@@ -18,7 +18,7 @@ import java.util.LinkedList;
 /**
  * This class is a JPanel that displays all user booked events.
  *
- * @author  Elias Carlsson, Hanna Pham
+ * @author  Elias Carlsson
  * @version 1.0
  * @since   2022-03-05
  */

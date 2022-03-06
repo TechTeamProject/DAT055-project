@@ -4,8 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4b89b8c8-4e75-454b-8fad-b69ac190600f" name="Changes" comment="Javadoc controler klar, tog bort rightclick swing grej och lade till e.getButton()==BUTTON3 istället för lite snyggare">
-      <change beforePath="$PROJECT_DIR$/src/Control.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Control.java" afterDir="false" />
+    <list default="true" id="4b89b8c8-4e75-454b-8fad-b69ac190600f" name="Changes" comment="mer javadoc control">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/View/EventView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/EventView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/View/PopUp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/PopUp.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -356,7 +358,14 @@
       <option name="project" value="LOCAL" />
       <updated>1646599488816</updated>
     </task>
-    <option name="localTasksCounter" value="40" />
+    <task id="LOCAL-00040" summary="mer javadoc control">
+      <created>1646600182998</created>
+      <option name="number" value="00040" />
+      <option name="presentableId" value="LOCAL-00040" />
+      <option name="project" value="LOCAL" />
+      <updated>1646600182998</updated>
+    </task>
+    <option name="localTasksCounter" value="41" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -374,7 +383,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="save/load från vald directory" />
     <MESSAGE value="Lagt till dynamisk datetime i week" />
     <MESSAGE value="createevent changes panel to create event" />
     <MESSAGE value="time now saved to eventtime from where you rightclicked" />
@@ -399,7 +407,8 @@
     <MESSAGE value="Javadoc windowframe" />
     <MESSAGE value="Javadoc popup" />
     <MESSAGE value="Javadoc controler klar, tog bort rightclick swing grej och lade till e.getButton()==BUTTON3 istället för lite snyggare" />
-    <option name="LAST_COMMIT_MESSAGE" value="Javadoc controler klar, tog bort rightclick swing grej och lade till e.getButton()==BUTTON3 istället för lite snyggare" />
+    <MESSAGE value="mer javadoc control" />
+    <option name="LAST_COMMIT_MESSAGE" value="mer javadoc control" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/DAT055_project$WindowFrame.ic" NAME="WindowFrame Coverage Results" MODIFIED="1645656862873" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">

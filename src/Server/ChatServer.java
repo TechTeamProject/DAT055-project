@@ -14,11 +14,9 @@ import java.util.List;
  * @version 1.0
  * @since   2022-03-02
  */
-public class ChatServer implements  Runnable{
+public class ChatServer implements Runnable{
     private final int portNumber;
     private List<ClientServerInfo> ClientServerList;
-    private static ChatControl chatControl = new ChatControl(false);
-
     /**
      *  The constructor for ChatServer. Uses its parameter to choose the port number.
      * @param portNumber The port number for the server
@@ -64,11 +62,8 @@ public class ChatServer implements  Runnable{
         ServerSocket serverSocket;
         try {
             serverSocket = new ServerSocket(portNumber);
-            chatControl.printText("Server successfully started on port " + portNumber);
             acceptClients(serverSocket);
-        } catch (IOException e) {
-            chatControl.printText("Could not listen on port " + portNumber);
-
+        } catch (IOException ignored) {
         }
     }
 }

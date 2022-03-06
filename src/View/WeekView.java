@@ -56,19 +56,19 @@ public class WeekView extends JPanel implements PropertyChangeListener, Serializ
      */
     public WeekView() {
 
-        header = new JPanel(new BorderLayout());
+        header = new JPanel(new GridLayout(1,3));
         monthTitlePanel = new JPanel();
         weekLabel = new JLabel();
         monthTitle = new JLabel();
         yearLabel = new JLabel();
         previousButton = new JButton("<");
         nextButton = new JButton(">");
-        header.add(weekLabel,BorderLayout.LINE_START);
-        monthTitlePanel.add(previousButton);
         monthTitlePanel.add(monthTitle);
-        monthTitlePanel.add(nextButton);
-        header.add(monthTitlePanel,BorderLayout.CENTER);
-        header.add(yearLabel,BorderLayout.LINE_END);
+        monthTitlePanel.add(yearLabel);
+        monthTitlePanel.add(weekLabel);
+        header.add(previousButton);
+        header.add(monthTitlePanel);
+        header.add(nextButton);
 
         //The Weekdaysfield
         contentPane = new JPanel(new GridLayout(1, 7));
@@ -89,7 +89,6 @@ public class WeekView extends JPanel implements PropertyChangeListener, Serializ
             dayBox.getLast().setBorder(new EtchedBorder());
             dayBox.getLast().setBackground(Color.lightGray);
 
-
             //upper half of the titleBox
             JPanel dateBox = new JPanel();
             dateBox.add(new JLabel(weekDays[i]));
@@ -102,8 +101,6 @@ public class WeekView extends JPanel implements PropertyChangeListener, Serializ
             Insets inset = new Insets(10, 0, 0, 0);
             Insets noinset = new Insets(0,0,0,0);
 
-            dayBox.getLast().add(dateBox, c);
-
             //Panel with week dates.
             JPanel titelBoxDown = new JPanel();
             String stringdate = Integer.toString(weektime.getDayOfMonth() + i);
@@ -111,6 +108,8 @@ public class WeekView extends JPanel implements PropertyChangeListener, Serializ
             title.getLast().setVerticalAlignment(JLabel.TOP);
 
             titelBoxDown.add(title.getLast());
+
+            dayBox.getLast().add(dateBox, c);
 
             //Weekdatepanel added to each dayBox
             c.gridx = 0;
@@ -164,10 +163,10 @@ public class WeekView extends JPanel implements PropertyChangeListener, Serializ
         //Sets the weeklabel
         TemporalField woy = WeekFields.of(Locale.getDefault()).weekOfWeekBasedYear();
         int weekNumber = weektime.get(woy);
-        weekLabel.setText("  Week: " + weekNumber);
+        weekLabel.setText("   Week: " + weekNumber);
 
         //Sets the yearlabel
-        yearLabel.setText(weektime.getYear() + "  ");
+        yearLabel.setText(String.valueOf(weektime.getYear()));
 
         //Sets days
         int dayofweek = weektime.getDayOfWeek().getValue()-1;

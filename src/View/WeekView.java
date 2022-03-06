@@ -228,7 +228,7 @@ public class WeekView extends JPanel implements PropertyChangeListener, Serializ
      * //TODO fixa så att det laddas in på nytt vid ny vecka
      */
     private void loadEvent() {
-        Collections.sort(eventlist);
+        //Collections.sort(eventlist);
 
         //In all 7 dayBoxes, delete every component except first two (dateBox)
         for (int i=0; i < 7; i++) {
@@ -281,11 +281,7 @@ public class WeekView extends JPanel implements PropertyChangeListener, Serializ
                      eventlabel.getLast().setBackground(lightgreen);
                      eventlabel.getLast().setOpaque(true);
                      eventlabel.getLast().setBorder(BorderFactory.createLineBorder(Color.GRAY, 1));
-
                      eventlabel.getLast().setName(eventlist.get(y).getDescription());
-
-                     //ActionMap actionMap = eventlabel.getActionMap();
-                     //eventlabel.setActionMap(actionMap);
 
                      dayBox.get(i).add(eventlabel.getLast(), c);
 

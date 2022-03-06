@@ -7,7 +7,6 @@ import java.awt.*;
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
 import java.io.*;
-import java.security.PublicKey;
 import java.time.*;
 import java.time.temporal.TemporalField;
 import java.time.temporal.WeekFields;
@@ -22,9 +21,6 @@ public class CalenderModel {
     private YearMonth yearMonthObject = YearMonth.of(2022, 2);
     private int daysInMonth = yearMonthObject.lengthOfMonth(); //28
     private LocalDateTime viewdate; //viewdate är det aktuella objektet man ser i View.
-    private Calendar viewweek;
-    Locale swe;
-    Locale eng = new Locale("en");
     private final PropertyChangeSupport support = new PropertyChangeSupport(this);
 
     public void addPropertyChangeListener(PropertyChangeListener listener) {
@@ -59,11 +55,6 @@ public class CalenderModel {
         return this.Eventlist;
     }
 
-    //Tar in år och månad och returnerar antal dagar i den månaden.
-    public int getMaxDays(int year, int month) {
-        return YearMonth.of(year, month).lengthOfMonth();
-    }
-
     /**
      * Returnerar time som view tittar på just nu
      *
@@ -72,15 +63,6 @@ public class CalenderModel {
     public LocalDateTime getViewTime() {
         support.firePropertyChange("currentTime", null, viewdate);
         return viewdate;
-    }
-
-    /**
-     * Returnerar verklig tid just nu
-     *
-     * @return
-     */
-    public LocalDateTime getRealTime() {
-        return now;
     }
 
     /**
@@ -106,16 +88,6 @@ public class CalenderModel {
         Month month = viewdate.getMonth();
         yearMonthObject = YearMonth.of(year, month);
         return yearMonthObject.lengthOfMonth();
-    }
-
-
-    /**
-     * Metod för att returnera årtal
-     *
-     * @return int (årtal)
-     */
-    public int getViewdateYear() {
-        return viewdate.getYear();
     }
 
     /**
@@ -166,20 +138,18 @@ public class CalenderModel {
             int newValue = viewdate.getMonthValue();
             support.firePropertyChange("MonthChangeMin", oldValue, newValue);
         }
-       /* int newValue = viewdate.getMonthValue();
-        support.firePropertyChange("MonthChange", oldValue, newValue);*/
     }
 
 
-
+    /**
+     * Metod som ger veckonummer flr viewdate.
+     * @return - veckonummer
+     */
     public int getWeek(){
         TemporalField woy = WeekFields.of(Locale.getDefault()).weekOfWeekBasedYear();
         int weekNumber = viewdate.get(woy);
         return weekNumber;
     }
-
-
-
 
     /**
      * Metod för att returnera dag
@@ -189,18 +159,6 @@ public class CalenderModel {
     public int getDay() {
         return viewdate.getDayOfMonth();
     }
-
-    public int[] getWeekDays(){
-        int[] days = new int[7];
-        LocalDateTime monday = viewdate.minusDays(viewdate.getDayOfWeek().getValue()-1);
-        for(int i=0;i<7;i++){
-            int dayVal = monday.plusDays(i).getDayOfMonth();
-            days[i] = dayVal;
-        }
-        return days;
-    }
-
-
 
     /**
      * Setter för dagar. d>0 för framåt, d<0 för bakåt.

@@ -1,5 +1,6 @@
 package src.View;
 import src.CalenderModel;
+import src.ChatControl;
 import src.Event;
 import src.Weather;
 
@@ -25,12 +26,10 @@ public class BookingView extends JPanel implements PropertyChangeListener {
 
     private String temperature;
     private ArrayList<JButton> buttonArr = new ArrayList<>();
-    CalenderModel model;
     JPanel panel = new JPanel();
     JLabel header = new JLabel();
     JLabel temp = new JLabel();
-    public BookingView(CalenderModel m){
-        model=m;
+    public BookingView(){
         this.setLayout(new BorderLayout());
         temperature = Weather.getWeather();
         header.setText("No bookings");
@@ -59,7 +58,7 @@ public class BookingView extends JPanel implements PropertyChangeListener {
         panel.removeAll();
         buttonArr.clear();
 
-        LinkedList<Event> list = model.getEvents();
+        LinkedList<Event> list = ChatControl.getCalenderEvents();
         panel.setLayout(new GridLayout(list.size()+1, 1, 5, 5)); //Sätter antal rader till antal events + titel
 
         if(list.size()>0){

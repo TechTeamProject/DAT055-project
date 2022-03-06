@@ -40,7 +40,7 @@ public class WindowFrame extends JFrame {
         eventView = new EventView();
         monthView = new MonthView();
         //loginView = new LoginView();
-        bookView = new BookingView(m);
+        bookView = new BookingView();
         bookingView = new JScrollPane(bookView);
         bookingView.setPreferredSize(new Dimension(600, 400));
         chatView = new ChatView();

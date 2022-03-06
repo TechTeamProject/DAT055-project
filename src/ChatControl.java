@@ -401,7 +401,4 @@ public class  ChatControl implements PropertyChangeListener, Serializable {
     public static String getMessage(){
         return clientThread.getMessage();
     }
-
-
-
 }

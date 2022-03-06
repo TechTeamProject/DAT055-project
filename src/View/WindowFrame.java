@@ -24,8 +24,15 @@ public class WindowFrame extends JFrame {
     private static JPanel p = new JPanel();
     private PopUp popUp;
 
-    public static void main(String [] args){
+    JButton bOptions = new JButton("Options");
+    JButton bBookings = new JButton("Bookings");
+    JButton bWeek = new JButton("Week");
+    JButton bYear = new JButton("Year");
+    JButton bMonth = new JButton("Month");
+    JButton bEvent = new JButton("Create Event");
+    JButton bChat = new JButton("Chat");
 
+    public static void main(String [] args){
         WindowFrame windowFrame = new WindowFrame();
     }
 
@@ -42,17 +49,9 @@ public class WindowFrame extends JFrame {
         chatView = new ChatView();
         popUp = new PopUp("week");
 
-        control = new Control(m, chatView, yearView, optionView, weekView, monthView, bookView, eventView, popUp);
+        control = new Control(this, m, chatView, yearView, optionView, weekView, monthView, bookView, eventView, popUp);
 
         p = new JPanel();
-
-        JButton bOptions = new JButton("Options");
-        JButton bBookings = new JButton("Bookings");
-        JButton bWeek = new JButton("Week");
-        JButton bYear = new JButton("Year");
-        JButton bMonth = new JButton("Month");
-        JButton bEvent = new JButton("Create Event");
-        JButton bChat = new JButton("Chat");
 
         c1 = new CardLayout();
 
@@ -63,7 +62,6 @@ public class WindowFrame extends JFrame {
         JPanel week = new JPanel();
         JPanel year = new JPanel();
         JPanel month = new JPanel();
-        JPanel login = new JPanel();
         JPanel event = new JPanel();
         JPanel chat = new JPanel();
 
@@ -80,7 +78,6 @@ public class WindowFrame extends JFrame {
         p.add(week, "week");
         p.add(year, "year");
         p.add(month, "month");
-        p.add(login, "login");
         p.add(event, "event");
         p.add(chat, "chat");
 
@@ -104,52 +101,6 @@ public class WindowFrame extends JFrame {
         menubar.add(bEvent);
         menubar.add(bChat);
 
-
-
-
-        bOptions.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                c1.show(p, "options");
-            }
-        });
-        bBookings.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                c1.show(p, "bookings");
-            }
-        });
-        bWeek.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                c1.show(p, "week");
-            }
-        });
-        bMonth.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                c1.show(p, "month");
-            }
-        });
-        bYear.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                c1.show(p, "year");
-            }
-        });
-        bEvent.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                c1.show(p, "event");
-            }
-        });
-        bChat.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                c1.show(p, "chat");
-            }
-        });
-
         getContentPane().add(p, BorderLayout.CENTER);
         getContentPane().add(buttonPanel, BorderLayout.NORTH);
 
@@ -161,6 +112,23 @@ public class WindowFrame extends JFrame {
         this.setVisible(true);
         this.add(p);
         c1.show(p, "week");
+    }
+
+    public void addWindowFrameListener(ActionListener a){
+        bBookings.addActionListener(a);
+        bChat.addActionListener(a);
+        bEvent.addActionListener(a);
+        bMonth.addActionListener(a);
+        bOptions.addActionListener(a);
+        bWeek.addActionListener(a);
+        bYear.addActionListener(a);
+        bBookings.setActionCommand("bookings");
+        bChat.setActionCommand("chat");
+        bEvent.setActionCommand("event");
+        bMonth.setActionCommand("month");
+        bOptions.setActionCommand("options");
+        bWeek.setActionCommand("week");
+        bYear.setActionCommand("year");
     }
 
     public static void changePanel(String panel) {

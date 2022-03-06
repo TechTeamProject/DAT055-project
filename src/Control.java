@@ -15,6 +15,7 @@ import java.util.LinkedList;
 import static javax.swing.SwingUtilities.isRightMouseButton;
 
 public class Control implements PropertyChangeListener, Serializable {
+    private static WindowFrame windowFrame;
     private static CalenderModel model;
     private static ChatView chatView;
     private static ClientThread clientThread;
@@ -31,7 +32,8 @@ public class Control implements PropertyChangeListener, Serializable {
     private weekViewListener weeklistener = new weekViewListener();
     private String eventname;
 
-    public Control(CalenderModel m, ChatView c, YearView y, OptionView o, WeekView w, MonthView mv, BookingView b, EventView e, PopUp p){
+    public Control(WindowFrame wf, CalenderModel m, ChatView c, YearView y, OptionView o, WeekView w, MonthView mv, BookingView b, EventView e, PopUp p){
+        windowFrame = wf;
         model = m;
         chatView = c;
         yearView = y;
@@ -42,6 +44,7 @@ public class Control implements PropertyChangeListener, Serializable {
         eventView = e;
         popup = p;
 
+        windowFrame.addWindowFrameListener(new windowFrameListener());
         chatView.addChatFieldListener(new chatListener());
         chatView.addTopButtonsListener(new topButtonsListener());
         yearView.addYearViewListener(new yearViewListener());
@@ -353,6 +356,13 @@ public class Control implements PropertyChangeListener, Serializable {
                     }
                     break;
             }
+        }
+    }
+    public class windowFrameListener implements ActionListener {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            String str = e.getActionCommand();
+            WindowFrame.changePanel(str);
         }
     }
 

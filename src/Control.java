@@ -12,8 +12,14 @@ import java.time.format.DateTimeFormatter;
 import java.util.InputMismatchException;
 import java.util.LinkedList;
 
-import static javax.swing.SwingUtilities.isRightMouseButton;
-
+/**
+ * @author Erik Gustavsson
+ * @version 1.0
+ * @since   2022-03-06
+ * Control class used to handle user inputs and creating model instance.
+ * Intended usage is a calenderprogram.
+ *
+ */
 public class Control implements PropertyChangeListener, Serializable {
     private static WindowFrame windowFrame;
     private static CalenderModel model;
@@ -32,6 +38,21 @@ public class Control implements PropertyChangeListener, Serializable {
     private weekViewListener weeklistener = new weekViewListener();
     private String eventname;
 
+    /**
+     * Constructor, adding many classes as parameters to connect action/mouselisteners to all views
+     * and to connect observers with the Observable Modelclass
+     *
+     * @param wf WindowFrame class - structuring the window and panels
+     * @param m CalenderModel class - having all the data
+     * @param c ChatView class - a panel for a chat
+     * @param y YearView - Panel to have a year overview of a calender
+     * @param o OptionView - Panel with options
+     * @param w Weekview - Panel for week overview
+     * @param mv MonthView - Panel for month overview
+     * @param b bookingView - Panel to see events in a list
+     * @param e eventview - Panel to enter eventinformation
+     * @param p PopUp - JPopupMenu to get optionwindow when rightclicking
+     */
     public Control(WindowFrame wf, CalenderModel m, ChatView c, YearView y, OptionView o, WeekView w, MonthView mv, BookingView b, EventView e, PopUp p){
         windowFrame = wf;
         model = m;
@@ -64,10 +85,16 @@ public class Control implements PropertyChangeListener, Serializable {
 
         model.addPropertyChangeListener(this);
 
-        //Updates in Model to set all the views.
+        //Called to update observers and send out current time
         model.getViewTime();
     }
 
+    /**
+     * Propertychange implemented from PropertyChangeListener interface used to update bookingView with new listeners
+     * as buttons are added gradually
+     * @param evt PropertyChangeEvent - Listens to observable and updates when
+     * observable has added a new event, loaded event from file or removed an event.
+     */
     @Override
     public void propertyChange(PropertyChangeEvent evt) {
         if(evt.getPropertyName().equals("NewEvent") | evt.getPropertyName().equals("LoadedEvents") | evt.getPropertyName().equals("RemoveEvent")){
@@ -79,6 +106,9 @@ public class Control implements PropertyChangeListener, Serializable {
         }
     }
 
+    /**
+     * Innerclass used to configure keylisteners to the chatview
+     */
     private class chatListener implements KeyListener {
         public void keyPressed(KeyEvent ke){
             if(ke.getKeyCode()==KeyEvent.VK_ENTER){
@@ -100,6 +130,11 @@ public class Control implements PropertyChangeListener, Serializable {
         public void keyReleased(KeyEvent e) {}
     }
 
+    /**
+     * Innerclass used to configure actionlistener to buttons in the chattview
+     * Makes clientstread create a new thread based on userinput.
+     * It also starts a server and connects it to a portnumber... //TODO
+     */
     private class topButtonsListener implements ActionListener{
         public void actionPerformed(ActionEvent e) {
             String str = e.getActionCommand();
@@ -138,6 +173,11 @@ public class Control implements PropertyChangeListener, Serializable {
             }
         }
     }
+
+    /**
+     * Innerclass used to configure buttons in the yearviewpanel
+     * Makes model set current year based on user input
+     */
     private class yearViewListener implements ActionListener{
         public void actionPerformed(ActionEvent e) {
             String str = e.getActionCommand();
@@ -157,6 +197,11 @@ public class Control implements PropertyChangeListener, Serializable {
             }
         }
     }
+
+    /**
+     * Innerclass used to configure buttons in the optionview panel.
+     * Makes model run save or load functions based on input
+     */
     private class optionViewListener implements ActionListener {
         public void actionPerformed(ActionEvent e) {
             String str = e.getActionCommand();
@@ -173,8 +218,20 @@ public class Control implements PropertyChangeListener, Serializable {
             }
         }
     }
-    private class weekViewListener extends JPopupMenu implements MouseListener, ActionListener{
 
+    /**
+     * Innerclass used to configure weekview listeners.
+     * Extends JPopupMenu to enable popupwindow. Implements mouselistener and actionlistener
+     * Makes model set current day based on button inputs.
+     * Also listens to rightclick and determines which day you select for creating events to that day.
+     * Adds listeners to events that are added gradually
+     */
+    private class weekViewListener extends JPopupMenu implements MouseListener, ActionListener{
+        /**
+         * Based on input from buttons, sets days 7 days forward or 7 days backwards
+         * Runs an update on listeners for the next weeks events
+         * @param e ActionEvent
+         */
         public void actionPerformed(ActionEvent e) {
             String str = e.getActionCommand();
             switch (str) {
@@ -195,10 +252,17 @@ public class Control implements PropertyChangeListener, Serializable {
         @Override
         public void mousePressed(MouseEvent e) {}
 
+        /**
+         * Method to check if mouse has rightclicked within the weekpanel.
+         * Creates a popup panel if rightclick. Also sets date where you rightclicked to
+         * fill in dates in the create event form. When rightclicking on an event a String
+         * retrieve its name for use when removing events in popupmenu.
+         * @param e MouseEvent
+         */
         @Override
         public void mouseReleased(MouseEvent e) {
             //If mouse released and BUTTON3 = RightClick has been used
-            if (isRightMouseButton(e)) {
+            if (e.getButton()==MouseEvent.BUTTON3) {
 
                 //popup were mouse pressed
                 popup.show(e.getComponent(), e.getX(), e.getY());
@@ -241,8 +305,17 @@ public class Control implements PropertyChangeListener, Serializable {
         @Override
         public void mouseExited(MouseEvent e) {}
 
+        /**
+         * Innerclass to configure buttons in the monthview sets month date in model.
+         */
     }
     private class monthViewListener implements ActionListener{
+        /**
+         * Actionperfomed method
+         * Sets month date based on button input. Also updates observers
+         * on the new date. If a day-button are pressed windowframe changes panel to week.
+         * @param e Actioneven
+         */
         public void actionPerformed(ActionEvent e) {
             String str = e.getActionCommand();
             if(str.equals("<") | str.equals(">")){
@@ -265,8 +338,17 @@ public class Control implements PropertyChangeListener, Serializable {
         }
     }
 
-
+    /**
+     * Innerclass to configure listeners on buttons in the eventview panel.
+     * Sets up buttons and throws error on wrong user input in the create event form.
+     * Also adds new event to model if form is filled correctly.
+     * Adds listener to the new event for use in the weekview.
+     */
     private class eventViewListener implements ActionListener{
+        /**
+         * Saves event or throws errors based on rules on userinput
+         * @param e ActionEvent
+         */
         public void actionPerformed(ActionEvent e) {
 
             String str = e.getActionCommand();
@@ -328,14 +410,33 @@ public class Control implements PropertyChangeListener, Serializable {
             }
         }
     }
+
+    /**
+     * Innerclass used to configure button in bookingview panel
+     */
     private class bookingViewListener implements ActionListener{
+        /**
+         * Checks which event is clicked on and removes it from the model.
+         * @param e ActionEvent
+         */
         public void actionPerformed(ActionEvent e) {
             String str = e.getActionCommand();
             int index = Integer.parseInt(str);
             model.removeEvent(index);
         }
     }
+
+    /**
+     * Innerclass used to configure the listeners in popup window
+     * This is used when rightclicking in weekview.
+     */
     private class popupListener implements ActionListener {
+        /**
+         * Based on input this method makes event panel visible in windowfram or
+         * removes the event that you rightclicked when opening this popup.
+         * Also removes mouselistener connected to removed event.
+         * @param e ActionEvent
+         */
         @Override
         public void actionPerformed(ActionEvent e) {
             String str = e.getActionCommand();
@@ -347,18 +448,25 @@ public class Control implements PropertyChangeListener, Serializable {
                 case "Remove Event":
 
                     for (int i = 0; i < model.getEvents().size(); i++) {
-                        System.out.println("Detta tår i eventname: " + eventname + "Detta står i model.getEVent(i): " + model.getEvents().get(i).getDescription());
                         if (eventname.equals(model.getEvents().get(i).getDescription())) {
                             model.removeEvent(i);
-                            updateWeeklisteners(); //Updaterar, tar bort gammal mouselistener
-                            System.out.println("Event should be removed");
+                            updateWeeklisteners(); //Updaterar eventlisteners, tar bort gammal mouselistener
                         }
                     }
                     break;
             }
         }
     }
+
+    /**
+     * Innerclass to configure actionlisteners to windowFrame.
+     * Changes visible panel based on input
+     */
     public class windowFrameListener implements ActionListener {
+        /**
+         * Changes visible panel based on input
+         * @param e ActionEvent
+         */
         @Override
         public void actionPerformed(ActionEvent e) {
             String str = e.getActionCommand();
@@ -367,17 +475,25 @@ public class Control implements PropertyChangeListener, Serializable {
     }
 
     /**
-     * Simple getmethod to retrieve eventlist
+     * Simple getmethod to retrieve eventlist with events
      * @return LinkedList</Event>
      */
     public static LinkedList<Event> getCalenderEvents() {
             return model.getEvents();
     }
 
+    /**
+     * Class method to retrive message in chat
+     * @return - String message
+     */
     public static String getMessage(){
         return clientThread.getMessage();
     }
 
+    /**
+     * Method to update listeners to gradually added events in weekview.
+     * Since events can be removed the listener also has to be removed.
+     */
     public void updateWeeklisteners() {
         WeekView.UpdateViewEventListener(weeklistener);
     }

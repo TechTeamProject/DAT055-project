@@ -105,7 +105,6 @@ public class WindowFrame extends JFrame {
 
         JMenuBar menubar = new JMenuBar();
         this.setJMenuBar(menubar);
-
         menubar.add(bWeek);
         menubar.add(bMonth);
         menubar.add(bYear);
@@ -113,6 +112,8 @@ public class WindowFrame extends JFrame {
         menubar.add(bEvent);
         menubar.add(bChat);
         menubar.add(bOptions);
+
+
         //menubar.add(bLogin);
 
 

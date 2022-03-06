@@ -45,6 +45,7 @@ public class WeekView extends JPanel implements PropertyChangeListener, Serializ
     private LocalDateTime eventtime;
     private int hour;
     private Color lightgreen = new Color(229,255,204);
+    JLabel eventlabel = new JLabel();
 
     /**
      * WeekView, hämtar eventlista från controller samt får aktuell tid genom observerinterface från model
@@ -162,7 +163,11 @@ public class WeekView extends JPanel implements PropertyChangeListener, Serializ
         //Vid nytt event uppdateras weekview
         if ((evt.getPropertyName().equals("NewEvent")) || (evt.getPropertyName().equals("RemoveEvent")) || (evt.getPropertyName().equals("LoadedEvents"))) {
                 eventlist = ChatControl.getCalenderEvents();
+                System.out.println("propertychange remove from weekview");
                 loadEvent();
+                this.revalidate();
+                this.repaint();
+
         }
     }
 
@@ -218,6 +223,7 @@ public class WeekView extends JPanel implements PropertyChangeListener, Serializ
                 }
             }
         }
+
         //These forloops iterates through the seven dayboxes and check every event if anyone is on the same day, if so it loads them.
          for (int i=0; i<7; i++) {
              for (int y = 0; y < eventlist.size(); y++) {
@@ -243,8 +249,8 @@ public class WeekView extends JPanel implements PropertyChangeListener, Serializ
                      c.ipady = 0;
                      c.anchor = CENTER;
 
-
-                     JLabel eventlabel = new JLabel("<html>" + eventlist.get(y).getDescription() + " <br/>" +
+                     //Eventsblocks design
+                     eventlabel = new JLabel("<html>" + eventlist.get(y).getDescription() + " <br/>" +
                              getEventTime(eventlist.get(y)) + "</html>", SwingConstants.CENTER);
                      eventlabel.setBackground(lightgreen);
                      eventlabel.setOpaque(true);
@@ -264,6 +270,7 @@ public class WeekView extends JPanel implements PropertyChangeListener, Serializ
 
     public void addWeekViewListener(MouseListener a) {
         contentPane.addMouseListener(a);
+        eventlabel.addMouseListener(a);
     }
     public void  addWeekViewActionListener(ActionListener a) {
         previousButton.addActionListener(a);

@@ -3,6 +3,7 @@ import src.CalenderModel;
 
 import java.awt.*;
 import java.awt.event.ActionListener;
+import java.time.LocalDateTime;
 import javax.swing.*;
 
 public class EventView extends JPanel {
@@ -11,7 +12,7 @@ public class EventView extends JPanel {
 
     private static JTextField text2;
 
-   private static JTextField text3;
+    private static JTextField text3;
 
     private JTextField text4;
 

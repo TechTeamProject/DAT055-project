@@ -17,7 +17,7 @@ public class Weather {
      * A method used to request and return the current temperature in Gothenburg in Celsius.
      * @return String The temperature in Gothenburg.
      */
-    public String getWeather() {
+    public static String getWeather() {
         HttpResponse<String> response;
         try {
             HttpRequest request = HttpRequest.newBuilder()

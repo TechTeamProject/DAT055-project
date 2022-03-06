@@ -2,6 +2,7 @@
 package src.View;
 import src.CalenderModel;
 import src.ChatControl;
+import src.PopUp;
 
 import java.awt.*;
 import javax.swing.*;
@@ -26,6 +27,7 @@ public class WindowFrame extends JFrame {
     private static CardLayout c1;
     private int currentCard = 1;
     private static JPanel p = new JPanel();
+    private PopUp popUp;
 
     public static void main(String [] args){
         WindowFrame windowFrame = new WindowFrame();
@@ -43,7 +45,9 @@ public class WindowFrame extends JFrame {
         bookingView = new JScrollPane(bookView);
         bookingView.setPreferredSize(new Dimension(600, 400));
         chatView = new ChatView();
-        chatControl = new ChatControl(m, chatView, yearView, optionView, weekView, monthView, bookView, eventView);
+        popUp = new PopUp("week");
+
+        chatControl = new ChatControl(m, chatView, yearView, optionView, weekView, monthView, bookView, eventView, popUp);
 
         p = new JPanel();
 

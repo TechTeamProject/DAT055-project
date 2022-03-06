@@ -3,6 +3,8 @@ import src.Server.ChatServer;
 import src.View.*;
 
 import javax.swing.*;
+import javax.swing.event.PopupMenuEvent;
+import javax.swing.event.PopupMenuListener;
 import java.awt.event.*;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
@@ -12,13 +14,13 @@ import java.time.format.DateTimeFormatter;
 import java.util.InputMismatchException;
 import java.util.LinkedList;
 
-import static java.awt.event.MouseEvent.BUTTON3;
 import static javax.swing.SwingUtilities.isRightMouseButton;
 
 public class  ChatControl implements PropertyChangeListener, Serializable {
     private static CalenderModel model;
     private static ChatView chatView;
-    private ClientThread serverThread;
+    //private static ClientThread clientThread;
+    private static ClientThread clientThread;
     private ChatServer server;
     private Sound sound;
     private static YearView yearView;
@@ -27,10 +29,12 @@ public class  ChatControl implements PropertyChangeListener, Serializable {
     private static MonthView monthView;
     private static BookingView bookingView;
     private static EventView eventView;
+    private PopUp popup;
     private DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
     private static LinkedList<Event> Eventlist = new LinkedList<Event>();
+    private LocalDateTime eventtime;
 
-    public ChatControl(CalenderModel m, ChatView c, YearView y, OptionView o, WeekView w, MonthView mv, BookingView b, EventView e){
+    public ChatControl(CalenderModel m, ChatView c, YearView y, OptionView o, WeekView w, MonthView mv, BookingView b, EventView e, PopUp p){
         model = m;
         sound = new Sound();
         chatView = c;
@@ -40,6 +44,7 @@ public class  ChatControl implements PropertyChangeListener, Serializable {
         monthView = mv;
         bookingView = b;
         eventView = e;
+        popup = p;
 
         chatView.addChatFieldListener(new chatListener());
         chatView.addTopButtonsListener(new topButtonsListener());
@@ -50,6 +55,7 @@ public class  ChatControl implements PropertyChangeListener, Serializable {
         monthView.addMonthViewListener(new monthViewListener());
         bookingView.addBookingViewListener(new bookingViewListener());
         eventView.addEventViewListener(new eventViewListener());
+        popup.addPopupListener(new popupListener());
 
 
         //Listeners added to Observable here
@@ -58,6 +64,7 @@ public class  ChatControl implements PropertyChangeListener, Serializable {
         model.addPropertyChangeListener(monthView);
         model.addPropertyChangeListener(yearView);
         model.addPropertyChangeListener(bookingView);
+
         model.addPropertyChangeListener(this);
 
         //Updates in Model to set all the views.
@@ -77,6 +84,9 @@ public class  ChatControl implements PropertyChangeListener, Serializable {
         if(evt.getPropertyName().equals("NewEvent") | evt.getPropertyName().equals("LoadedEvents") | evt.getPropertyName().equals("RemoveEvent")){
             bookingView.addBookingViewListener(new bookingViewListener());
         }
+        else if(evt.getPropertyName().equals("NewMessage")){
+            System.out.println("Funkar");
+        }
     }
 
     private class chatListener implements KeyListener {
@@ -84,8 +94,8 @@ public class  ChatControl implements PropertyChangeListener, Serializable {
             if(ke.getKeyCode()==KeyEvent.VK_ENTER){
 
                 if (chatView.getFieldText().compareTo("") != 0) {
-                    if(serverThread.Alive()){
-                        serverThread.addNextMessage(chatView.getFieldText());
+                    if(clientThread.Alive()){
+                        clientThread.addNextMessage(chatView.getFieldText());
                         chatView.setFieldText("");
                     }
                     else{
@@ -103,8 +113,8 @@ public class  ChatControl implements PropertyChangeListener, Serializable {
         public void keyPressed(KeyEvent ke) {
             if (ke.getKeyCode() == KeyEvent.VK_ENTER) {
                 if (chatView.getIpText().compareTo("") != 0) {
-                    if(!serverThread.Alive()){
-                        serverThread = new ClientThread("AddUserClass", chatView.getIpText(), 23476);
+                    if(!clientThread.Alive()){
+                        clientThread = new ClientThread("AddUserClass", chatView.getIpText(), 23476);
                         chatView.switchMiddlePanel("ChatArea");
                         sound.playConnected();
                     }
@@ -140,8 +150,11 @@ public class  ChatControl implements PropertyChangeListener, Serializable {
                     break;
                 case "Confirm":
                     if (chatView.getIpText().compareTo("") != 0 && chatView.getNameText().compareTo("") != 0) {
-                        if(!serverThread.Alive()){
-                            serverThread = new ClientThread(chatView.getNameText(), chatView.getIpText(), 23476);
+                        if(!clientThread.Alive()){
+
+                            clientThread = new ClientThread(chatView.getNameText(), chatView.getIpText(), 23476);
+                            clientThread.addPropertyChangeListener(chatView);
+
                             chatView.switchMiddlePanel("ChatArea");
                             sound.playConnected();
                         }
@@ -215,11 +228,11 @@ public class  ChatControl implements PropertyChangeListener, Serializable {
         public void mouseReleased(MouseEvent e) {
             //If mouse released and BUTTON3 = RightClick has been used
             if (isRightMouseButton(e)) {
-                PopUpJPop menu = new PopUpJPop("week");
-                menu.show(e.getComponent(), e.getX(), e.getY());
+                //popup
+                popup.show(e.getComponent(), e.getX(), e.getY());
 
                 //A block to save x coordinates of rightclick in weekview to add to eventview the current time
-                LocalDateTime eventtime = model.getViewTime();
+                eventtime = model.getViewTime();
                 if (e.getX() > 145 && e.getX() < 285)  {
                     eventtime = eventtime.plusDays(1);
                 }
@@ -283,6 +296,7 @@ public class  ChatControl implements PropertyChangeListener, Serializable {
                 String fromtime = eventView.getStartTime();
                 String untiltime = eventView.getEndTime();
                 String loc = eventView.getLoc();
+
                 if (title.isBlank()) {
                     JOptionPane.showMessageDialog(null, "No title", "Error", JOptionPane.ERROR_MESSAGE);
                 } else {
@@ -310,12 +324,41 @@ public class  ChatControl implements PropertyChangeListener, Serializable {
         }
     }
 
+    private class popupListener implements ActionListener {
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            String str = e.getActionCommand();
+            switch (str) {
+                case "Create Event":
+                    WindowFrame.changePanel();
+                    System.out.println("Panel should be switched");
+                    break;
+                case "Remove Event":
+
+                    for (int i = 0; i < model.getEvents().size(); i++) {
+                        LocalDateTime event = model.getEvents().get(i).getStartTime();
+                        if (eventtime.getDayOfMonth() == event.getDayOfMonth()){
+                            model.removeEvent(i);
+                        }
+                    }
+                  //  model.removeEvent(0);
+                    System.out.println("Event should be removed");
+                    break;
+            }
+        }
+    }
+
     /**
      * Simple getmethod to retrieve eventlist
      * @return LinkedList</Event>
      */
     public static LinkedList<Event> getCalenderEvents() {
             return Eventlist = model.getEvents();
+    }
+
+    public static String getMessage(){
+        return clientThread.getMessage();
     }
 
 

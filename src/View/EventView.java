@@ -21,8 +21,13 @@ public class EventView extends JPanel {
 
     private JTextField text4;
 
-    JButton button = new JButton("Save");
+    private JButton button = new JButton("Save");
 
+    /**
+     * Constructor
+     * Organizes the eventview panel with label, buttons and
+     * sets all the layouts.
+     */
     public EventView(){
         JPanel p = new JPanel(); //Panel för event info
         p.setLayout(new GridLayout(6,2, 10,5));
@@ -57,10 +62,18 @@ public class EventView extends JPanel {
         this.add(p1);
     }
 
+    /**
+     * Adds actionlisteners to button in panel
+     * @param a ActionListener
+     */
     public void addEventViewListener(ActionListener a){
         button.addActionListener(a);
     }
 
+    /**
+     *Getters/Setters to set and retrieve JLabel text
+     *Used in controler
+     */
     public String getTitle(){
         return text1.getText();
     }
@@ -86,6 +99,11 @@ public class EventView extends JPanel {
         text4.setText(s);
     }
 
+    /**
+     * Class method to set eventtime
+     * @param start String - A date formatted to String
+     * @param end String - A date formatted to String
+     */
     public static void setEventTime(String start, String end) {
         text2.setText(start);
         text3.setText(end);

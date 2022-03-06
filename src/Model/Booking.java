@@ -1,4 +1,4 @@
-package src;
+package src.Model;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;
@@ -10,7 +10,7 @@ import java.time.LocalDateTime;
  * @version - 1.0
  * @since - 2022-03-06
  */
-public class Event implements Comparable<Event>,Serializable{
+public class Booking implements Comparable<Booking>,Serializable{
     private String description;
     private String location;
     private LocalDateTime starttime;
@@ -23,7 +23,7 @@ public class Event implements Comparable<Event>,Serializable{
      * @param title - name of event
      * formattedStart/End used to format to more convinient date
      */
-    public Event(LocalDateTime start, LocalDateTime end, String title, String loc){
+    public Booking(LocalDateTime start, LocalDateTime end, String title, String loc){
         this.starttime = start;
         this.endtime = end;
         this.description = title;
@@ -43,7 +43,7 @@ public class Event implements Comparable<Event>,Serializable{
     public LocalDateTime getEndTime(){ return endtime; }
 
     @Override
-    public int compareTo(Event e){
+    public int compareTo(Booking e){
         if (starttime.isAfter(e.starttime))
             return 1;
         else if (starttime.isEqual(e.starttime))

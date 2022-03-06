@@ -1,4 +1,4 @@
-package src;
+package src.View;
 
 import javax.swing.*;
 import java.awt.event.ActionListener;
@@ -28,6 +28,10 @@ public class PopUp extends JPopupMenu{
         }
     }
 
+    /**
+     * Adds actionlistener to the JMenuItems
+     * @param a Actionlistener
+     */
     public void  addPopupListener(ActionListener a) {
         popup.addActionListener(a);
         popupRemove.addActionListener(a);

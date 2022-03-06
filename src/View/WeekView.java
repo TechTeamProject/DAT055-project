@@ -1,7 +1,7 @@
 package src.View;
 
-import src.Control;
-import src.Event;
+import src.Control.Control;
+import src.Model.Booking;
 
 import javax.swing.*;
 import javax.swing.border.EtchedBorder;
@@ -32,7 +32,7 @@ public class WeekView extends JPanel implements PropertyChangeListener, Serializ
     private JButton nextButton;
     private LocalDateTime weektime = LocalDateTime.now();
     private LinkedList<JLabel> title = new LinkedList<>();
-    private LinkedList<Event> eventlist = new LinkedList<>();
+    private LinkedList<Booking> eventlist = new LinkedList<>();
     private LinkedList<JPanel> dayBox = new LinkedList<>();
     private int gridycount = 4;
     private Color lightgreen = new Color(229,255,204);
@@ -119,6 +119,12 @@ public class WeekView extends JPanel implements PropertyChangeListener, Serializ
         }
     }
 
+    /**
+     * Observermethod that listens to Calendermodel and updates when different data has been changed.
+     * Weekview retrieves current time from model.
+     * It uses this time to change what is displayed in the weekview.
+     * @param evt PropertyChangeEvent
+     */
     @Override
     public void propertyChange(PropertyChangeEvent evt) {
 
@@ -158,7 +164,7 @@ public class WeekView extends JPanel implements PropertyChangeListener, Serializ
             }
         }
 
-        //Vid nytt event uppdateras weekview
+        //If event is created, removed or loaded from file this triggers
         if ((evt.getPropertyName().equals("NewEvent")) || (evt.getPropertyName().equals("RemoveEvent")) || (evt.getPropertyName().equals("LoadedEvents"))) {
                 eventlist = Control.getCalenderEvents();
                 loadEvent();
@@ -178,7 +184,7 @@ public class WeekView extends JPanel implements PropertyChangeListener, Serializ
      * the beginning of the start and the end minutes if they are single digits so that they are always written in mm format
      */
 
-    private String getEventTime(Event e){
+    private String getEventTime(Booking e){
 
         String eventStartHour = String.valueOf(e.getStartTime().getHour());
         String eventEndHour = String.valueOf(e.getEndTime().getHour());
@@ -234,7 +240,7 @@ public class WeekView extends JPanel implements PropertyChangeListener, Serializ
                      c.gridx = 0;
                      c.gridy = gridycount;
                      gridycount++;
-                     c.fill = GridBagConstraints.BOTH;
+                     c.fill = BOTH;
                      c.weighty = 0.5;
                      c.weightx = 0.5;
                      c.ipady = 0;
@@ -255,10 +261,21 @@ public class WeekView extends JPanel implements PropertyChangeListener, Serializ
          }
     }
 
+    /**
+     * Adds mouselistenser to weekview
+     * @param a Mouselistener
+     */
     public void addWeekViewListener(MouseListener a) {
         contentPane.addMouseListener(a);
 
     }
+
+    /**
+     * This classmethod first removes all mouselisteners from all events,
+     * then adds new ones again to the current amount of events. This is so that you can add listeners both
+     * by loading a file or when just one event is removed.
+     * @param a MouseListener
+     */
     public static void UpdateViewEventListener(MouseListener a) {
         //Loop through an remove all listeners
         for (int i=0; i < eventlabel.size(); i++) {
@@ -268,6 +285,11 @@ public class WeekView extends JPanel implements PropertyChangeListener, Serializ
             eventlabel.get(i).addMouseListener(a);
         }
     }
+
+    /**
+     * Listeners added to buttons in weekview
+     * @param a Actionslistener
+     */
     public void  addWeekViewActionListener(ActionListener a) {
         previousButton.addActionListener(a);
         nextButton.addActionListener(a);

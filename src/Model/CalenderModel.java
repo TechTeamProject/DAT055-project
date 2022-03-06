@@ -1,4 +1,4 @@
-package src;
+package src.Model;
 
 
 import javax.swing.*;
@@ -21,7 +21,7 @@ import java.time.LocalDateTime;
 
  */
 public class CalenderModel {
-    private static LinkedList<Event> Eventlist = new LinkedList<>();
+    private static LinkedList<Booking> eventlist = new LinkedList<>();
     private LocalDateTime viewdate; //viewdate är det aktuella datum+tid användaren ser i views.
     private final PropertyChangeSupport support = new PropertyChangeSupport(this);
 
@@ -48,7 +48,7 @@ public class CalenderModel {
      * PropertyChangeEvent sends starting time as oldvalue and endtime as newvalue
      */
     public void addEvent(LocalDateTime start, LocalDateTime end, String title, String location) {
-        Eventlist.add(new Event(start, end, title, location));
+        eventlist.add(new Booking(start, end, title, location));
         support.firePropertyChange("NewEvent", null, null);
     }
 
@@ -57,15 +57,15 @@ public class CalenderModel {
      * @param index of which event in the eventlist to remove
      */
     public void removeEvent(int index) {
-        Eventlist.remove(index);
+        eventlist.remove(index);
         support.firePropertyChange("RemoveEvent", null, null);
     }
 
     /**
      * @return A list of Events
      */
-    public LinkedList<Event> getEvents() {
-        return Eventlist;
+    public LinkedList<Booking> getEvents() {
+        return eventlist;
     }
 
     /**
@@ -161,7 +161,7 @@ public class CalenderModel {
             assert filepath != null;
             FileOutputStream output = new FileOutputStream(filepath);
             ObjectOutputStream objectOutputStream = new ObjectOutputStream(output);
-            objectOutputStream.writeObject(Eventlist);
+            objectOutputStream.writeObject(eventlist);
             objectOutputStream.flush();
             objectOutputStream.close();
         } catch (FileNotFoundException e) {
@@ -179,9 +179,9 @@ public class CalenderModel {
             assert filepath != null;
             FileInputStream input = new FileInputStream(filepath);
             ObjectInputStream objectInputStream = new ObjectInputStream(input);
-            LinkedList<Event> list = (LinkedList<Event>) objectInputStream.readObject();
+            LinkedList<Booking> list = (LinkedList<Booking>) objectInputStream.readObject();
             objectInputStream.close();
-            Eventlist = list;
+            eventlist = list;
         } catch (FileNotFoundException e) {
             JOptionPane.showMessageDialog(null, "No such file or directory"+filepath, "Load failed", JOptionPane.ERROR_MESSAGE);
         }

@@ -1,4 +1,4 @@
-package src;
+package src.Server;
 /**
  * This class contains the information of a client.
  *

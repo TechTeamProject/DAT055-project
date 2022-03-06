@@ -61,7 +61,8 @@ public class ChatServer implements Runnable{
         try {
             serverSocket = new ServerSocket(portNumber);
             acceptClients(serverSocket);
-        } catch (IOException ignored) {
+        } catch (IOException ex) {
+            ex.printStackTrace();
         }
     }
 }

@@ -1,6 +1,6 @@
 package src.View;
 
-import src.Control;
+import src.Control.Control;
 
 import javax.swing.*;
 import java.awt.*;

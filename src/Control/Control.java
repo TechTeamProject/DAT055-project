@@ -1,5 +1,10 @@
-package src;
+package src.Control;
+import src.Model.CalenderModel;
+import src.Model.Booking;
+import src.Model.Sound;
+import src.View.PopUp;
 import src.Server.ChatServer;
+import src.Server.ClientThread;
 import src.View.*;
 
 import javax.swing.*;
@@ -107,9 +112,14 @@ public class Control implements PropertyChangeListener, Serializable {
     }
 
     /**
-     * Innerclass used to configure keylisteners to the chatview
+     * Innerclass used to configure keylisteners to the chatpanel
      */
     private class chatListener implements KeyListener {
+        /**
+         * Takes keyboard inputs and adds letters to a chat-panel.
+         * Also creates sounds if wrong user input
+         * @param ke
+         */
         public void keyPressed(KeyEvent ke){
             if(ke.getKeyCode()==KeyEvent.VK_ENTER){
 
@@ -132,10 +142,15 @@ public class Control implements PropertyChangeListener, Serializable {
 
     /**
      * Innerclass used to configure actionlistener to buttons in the chattview
-     * Makes clientstread create a new thread based on userinput.
-     * It also starts a server and connects it to a portnumber... //TODO
+     * Makes clientsthread create a new thread based on userinput.
+     * It starts a chatserver in the new thread and connects it to a portnumber.
      */
     private class topButtonsListener implements ActionListener{
+        /**
+         * Takes userinput from buttons to create a server, create a new thread
+         * and make user able to give input to chat
+         * @param e ActionEvent
+         */
         public void actionPerformed(ActionEvent e) {
             String str = e.getActionCommand();
             switch (str) {
@@ -179,6 +194,12 @@ public class Control implements PropertyChangeListener, Serializable {
      * Makes model set current year based on user input
      */
     private class yearViewListener implements ActionListener{
+        /**
+         * Based on user input by retrieving pressed button the date in
+         * calender is added or decreased by a year.
+         * Also updates observers on the changes
+         * @param e ActionEvent
+         */
         public void actionPerformed(ActionEvent e) {
             String str = e.getActionCommand();
             switch (str) {
@@ -203,6 +224,10 @@ public class Control implements PropertyChangeListener, Serializable {
      * Makes model run save or load functions based on input
      */
     private class optionViewListener implements ActionListener {
+        /**
+         * Makes model save or load file based on button input.
+         * @param e ActionEvent
+         */
         public void actionPerformed(ActionEvent e) {
             String str = e.getActionCommand();
             switch (str) {
@@ -423,6 +448,7 @@ public class Control implements PropertyChangeListener, Serializable {
             String str = e.getActionCommand();
             int index = Integer.parseInt(str);
             model.removeEvent(index);
+            updateWeeklisteners();
         }
     }
 
@@ -478,7 +504,7 @@ public class Control implements PropertyChangeListener, Serializable {
      * Simple getmethod to retrieve eventlist with events
      * @return LinkedList</Event>
      */
-    public static LinkedList<Event> getCalenderEvents() {
+    public static LinkedList<Booking> getCalenderEvents() {
             return model.getEvents();
     }
 

@@ -1,8 +1,8 @@
 
 package src.View;
-import src.CalenderModel;
-import src.Control;
-import src.PopUp;
+import src.Model.CalenderModel;
+import src.Control.Control;
+
 import java.awt.*;
 import javax.swing.*;
 import java.awt.event.*;

@@ -173,7 +173,7 @@ public class WindowFrame extends JFrame {
         c1.show(p, "week");
     }
 
-    public static void changePanel() {
-        c1.show(p,"event");
+    public static void changePanel(String panel) {
+        c1.show(p,panel);
     }
 }

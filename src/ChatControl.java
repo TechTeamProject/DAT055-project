@@ -166,6 +166,10 @@ public class  ChatControl implements PropertyChangeListener, Serializable {
                 case "next":
                     model.setYear(1);
                     break;
+                case "1","2","3","4","5","6","7","8","9","10","11","12":
+                    model.setMonth(Integer.parseInt(str)-model.getMonth().getValue());
+                    System.out.println(model.getViewTime());
+                    WindowFrame.changePanel("month");
             }
         }
     }
@@ -255,16 +259,19 @@ public class  ChatControl implements PropertyChangeListener, Serializable {
     private class monthViewListener implements ActionListener{
         public void actionPerformed(ActionEvent e) {
             String str = e.getActionCommand();
-            switch (str) {
-                case "<":
-                    model.setMonth(-1);
-                    break;
-                case ">":
-                    model.setMonth(+1);
-                    break;
-                case "day":
-                    //todo: switch to weekview
-                    break;
+            if(str.equals("<") | str.equals(">")){
+                switch (str) {
+                    case "<":
+                        model.setMonth(-1);
+                        break;
+                    case ">":
+                        model.setMonth(+1);
+                        break;
+                }
+            }
+            else {
+                model.setDay(Integer.parseInt(str)-model.getDay());
+                WindowFrame.changePanel("week");
             }
         }
     }

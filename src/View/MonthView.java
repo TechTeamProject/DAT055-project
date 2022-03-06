@@ -96,7 +96,6 @@ public class MonthView extends JPanel implements PropertyChangeListener {
         next.addActionListener(a);
         for(JButton b: buttons){
             b.addActionListener(a);
-            b.setActionCommand("day");
         }
     }
     /**
@@ -133,16 +132,19 @@ public class MonthView extends JPanel implements PropertyChangeListener {
         int i = 0;
         for (int p = 0; p < firstdayofmonth - 1; p++) {
             buttons[p].setText(String.valueOf(daysinprevmonth-(firstdayofmonth-2)+p));
+            buttons[p].setActionCommand(String.valueOf((firstdayofmonth-2)*-1));
             buttons[p].setForeground(Color.lightGray);
             i++;
         }
         for (int k = 1; k <= getMaximum(monthtime.getMonthValue()-1); k++) {
             buttons[i].setText(String.valueOf(k));
+            buttons[i].setActionCommand(buttons[i].getText());
             buttons[i].setForeground(Color.BLACK);
             i++;
         }
         for (int o = 1; i < 42; o++) {
             buttons[i].setText(String.valueOf(o));
+            buttons[i].setActionCommand(String.valueOf(Integer.parseInt(buttons[i].getText())+getMaximum(monthtime.getMonthValue()-1)));
             buttons[i].setForeground(Color.lightGray);
             i++;
         }

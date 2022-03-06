@@ -7,6 +7,8 @@ import src.Model.CalenderModel;
 import src.View.WeekView;
 
 
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.time.Month;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -91,10 +93,14 @@ class CalenderModelTest {
     }
 
     @Test
-    void save() {
+    void canSave() {
+        test.save("testfile.dat");
+        test.save("/fakedir/newfile.dat");
     }
 
     @Test
-    void load() {
+    void canLoad() {
+        test.load("testfile.dat");
+        test.load("faketestfile.dat");
     }
 }

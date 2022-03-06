@@ -8,7 +8,7 @@ import java.net.Socket;
  *
  * @author  Oliver Brottare
  * @version 1.0
- * @since   2022-03-02
+ * @since   2022-03-06
  */
 public class ClientServerInfo {
     private Socket socket;

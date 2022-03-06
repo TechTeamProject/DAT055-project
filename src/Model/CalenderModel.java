@@ -11,14 +11,14 @@ import java.util.*;
 import java.time.LocalDateTime;
 
 /**
- * @author Erik Gustavsson
- * @version 1.0
- * @since 2022-03-06
  * CalenderModel is a class that can be used to store data in a calendar.
  * It creates a LocalDateTime object for the current time shown in the program and also
  * a list of events that may happen in the schedule.
  * The class is Observable using PropertyChangeSupport
-
+ * @author Erik Gustavsson
+ * @version 1.0
+ * @since 2022-03-06
+ *
  */
 public class CalenderModel {
     private static LinkedList<Booking> eventlist = new LinkedList<>();

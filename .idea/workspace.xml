@@ -4,12 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4b89b8c8-4e75-454b-8fad-b69ac190600f" name="Changes" comment="?">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Testing/BookingTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/BookingTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Testing/CalenderModelTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/CalenderModelTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Testing/SoundTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/SoundTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Testing/WeatherTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/WeatherTest.java" afterDir="false" />
+    <list default="true" id="4b89b8c8-4e75-454b-8fad-b69ac190600f" name="Changes" comment="Testfixar">
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -36,14 +32,12 @@
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/.idea/workspace.xml" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/Model/SoundTest.java" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/Model/BookingTest.java" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/Testing/ClientTest.java" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/Testing/WindowFrameTest.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/Testing/SoundTest.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/Testing/BookingTest.java" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/.idea/modules.xml" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/.idea/misc.xml" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/Model/CalenderModel.java" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/Model/CalenderModelTest.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/Testing/CalenderModelTest.java" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -432,7 +426,13 @@
       <option name="presentableId" value="LOCAL−00040" />
       <updated>1646603689489</updated>
     </task>
-    <option name="localTasksCounter" value="41" />
+    <task id="LOCAL−00041" summary="Testfixar">
+      <created>1646605358032</created>
+      <option name="number" value="LOCAL−00041" />
+      <option name="presentableId" value="LOCAL−00041" />
+      <updated>1646605358032</updated>
+    </task>
+    <option name="localTasksCounter" value="42" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -446,11 +446,20 @@
             <State />
           </value>
         </entry>
+        <entry key="a4a7a6ff-7ae7-4d36-9d1d-9bcc23d486d8">
+          <value>
+            <State />
+          </value>
+        </entry>
+        <entry key="c912d8e1-198b-420c-a9f1-197a57390259">
+          <value>
+            <State />
+          </value>
+        </entry>
       </map>
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="save/load från vald directory" />
     <MESSAGE value="Lagt till dynamisk datetime i week" />
     <MESSAGE value="createevent changes panel to create event" />
     <MESSAGE value="time now saved to eventtime from where you rightclicked" />
@@ -475,7 +484,8 @@
     <MESSAGE value="Javadoc windowframe" />
     <MESSAGE value="Javadoc popup" />
     <MESSAGE value="?" />
-    <option name="LAST_COMMIT_MESSAGE" value="?" />
+    <MESSAGE value="Testfixar" />
+    <option name="LAST_COMMIT_MESSAGE" value="Testfixar" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/DAT055_project$ClientTest.ic" NAME="ClientTest Coverage Results" MODIFIED="1646602869699" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
@@ -493,7 +503,7 @@
     <SUITE FILE_PATH="coverage/DAT055_project$EventTest_compareTo.ic" NAME="EventTest.compareTo Coverage Results" MODIFIED="1646599111097" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>src.*</FILTER>
     </SUITE>
-    <SUITE FILE_PATH="coverage/DAT055_project$SoundTest.ic" NAME="SoundTest Coverage Results" MODIFIED="1646605040825" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+    <SUITE FILE_PATH="coverage/DAT055_project$SoundTest.ic" NAME="SoundTest Coverage Results" MODIFIED="1646605273687" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>src.Model.*</FILTER>
     </SUITE>
     <SUITE FILE_PATH="coverage/DAT055_project$CalenderModelTest.ic" NAME="CalenderModelTest Coverage Results" MODIFIED="1646605242948" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
@@ -508,7 +518,7 @@
     <SUITE FILE_PATH="coverage/DAT055_project$CalenderModelTest_setYear.ic" NAME="CalenderModelTest.setYear Coverage Results" MODIFIED="1646595880938" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>src.*</FILTER>
     </SUITE>
-    <SUITE FILE_PATH="coverage/DAT055_project$BookingTest.ic" NAME="BookingTest Coverage Results" MODIFIED="1646604990140" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+    <SUITE FILE_PATH="coverage/DAT055_project$BookingTest.ic" NAME="BookingTest Coverage Results" MODIFIED="1646605265419" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>src.Model.*</FILTER>
     </SUITE>
     <SUITE FILE_PATH="coverage/DAT055_project$UnitTesting.ic" NAME="UnitTesting Coverage Results" MODIFIED="1646584780117" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
@@ -541,7 +551,7 @@
     <SUITE FILE_PATH="coverage/DAT055_project$CalenderModelTest_getDay.ic" NAME="CalenderModelTest.getDay Coverage Results" MODIFIED="1646595948745" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>src.*</FILTER>
     </SUITE>
-    <SUITE FILE_PATH="coverage/DAT055_project$WeatherTest.ic" NAME="WeatherTest Coverage Results" MODIFIED="1646605114516" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+    <SUITE FILE_PATH="coverage/DAT055_project$WeatherTest.ic" NAME="WeatherTest Coverage Results" MODIFIED="1646605280701" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>src.Model.*</FILTER>
     </SUITE>
     <SUITE FILE_PATH="coverage/DAT055_project$CalenderModelTest_getEvents.ic" NAME="CalenderModelTest.getEvents Coverage Results" MODIFIED="1646595816042" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">

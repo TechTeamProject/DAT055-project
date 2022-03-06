@@ -9,7 +9,7 @@ import java.net.http.HttpResponse;
  *
  * @author  Oliver Brottare
  * @version 1.0
- * @since   2022-03-02
+ * @since   2022-03-06
  */
 public class Weather {
     private static String temperature = requestWeather();

@@ -153,7 +153,7 @@ public class WeekView extends JPanel implements PropertyChangeListener, Serializ
             loadEvent();
         }
         //Sets the monthtitle
-        monthTitle.setText(weektime.getMonth().toString());
+        monthTitle.setText(weektime.getMonth().toString()+" "+weektime.getYear());
 
         //Sets days
         int dayofweek = weektime.getDayOfWeek().getValue()-1;

@@ -68,7 +68,7 @@ public class  ChatControl implements PropertyChangeListener, Serializable {
         model.addPropertyChangeListener(this);
 
         //Updates in Model to set all the views.
-        m.getViewTime();
+        model.getViewTime();
     }
     public ChatControl(boolean fake){
         //Fake initializer for static values
@@ -175,13 +175,15 @@ public class  ChatControl implements PropertyChangeListener, Serializable {
             switch (str) {
                 case "prev":
                     model.setYear(-1);
+                    model.getViewTime();
                     break;
                 case "next":
                     model.setYear(1);
+                    model.getViewTime();
                     break;
                 case "1","2","3","4","5","6","7","8","9","10","11","12":
                     model.setMonth(Integer.parseInt(str)-model.getMonth().getValue());
-                    System.out.println(model.getViewTime());
+                    model.getViewTime();
                     WindowFrame.changePanel("month");
             }
         }
@@ -208,9 +210,11 @@ public class  ChatControl implements PropertyChangeListener, Serializable {
             switch (str) {
                 case "<":
                     model.setDay(-7);
+                    model.getViewTime();
                     break;
                 case ">":
                     model.setDay(7);
+                    model.getViewTime();
                     break;
             }
         }
@@ -276,14 +280,17 @@ public class  ChatControl implements PropertyChangeListener, Serializable {
                 switch (str) {
                     case "<":
                         model.setMonth(-1);
+                        model.getViewTime();
                         break;
                     case ">":
                         model.setMonth(+1);
+                        model.getViewTime();
                         break;
                 }
             }
             else {
                 model.setDay(Integer.parseInt(str)-model.getDay());
+                model.getViewTime();
                 WindowFrame.changePanel("week");
             }
         }

@@ -22,15 +22,24 @@ import java.util.LinkedList;
  * @since   2022-03-05
  */
 public class BookingView extends JPanel implements PropertyChangeListener {
+
+    private String temperature;
     private ArrayList<JButton> buttonArr = new ArrayList<>();
     CalenderModel model;
+    JPanel panel = new JPanel();
+    JLabel header = new JLabel();
+    JLabel temp = new JLabel();
     public BookingView(CalenderModel m){
         model=m;
-        JLabel header = new JLabel();
+        this.setLayout(new BorderLayout());
+        temperature = Weather.getWeather();
         header.setText("No bookings");
-        this.add(header);
-        JLabel temp = new JLabel(Weather.getTemperature() + " In Gothenburg");
-        this.add(temp);
+        temp.setText(temperature+" in Gothenburg");
+        JPanel head = new JPanel(new BorderLayout());
+        head.add(header,BorderLayout.LINE_START);
+        head.add(temp,BorderLayout.LINE_END);
+        this.add(head,BorderLayout.PAGE_START);
+        this.add(panel,BorderLayout.CENTER);
     }
 
     public void addBookingViewListener(ActionListener a){
@@ -47,19 +56,17 @@ public class BookingView extends JPanel implements PropertyChangeListener {
     @Override
     public void propertyChange(PropertyChangeEvent evt) {
         if(evt.getPropertyName().equals("NewEvent") | evt.getPropertyName().equals("LoadedEvents") | evt.getPropertyName().equals("RemoveEvent")){
-        this.removeAll();
+        panel.removeAll();
         buttonArr.clear();
 
         LinkedList<Event> list = model.getEvents();
-        this.setLayout(new GridLayout(list.size()+1, 1, 5, 5)); //Sätter antal rader till antal events + titel
+        panel.setLayout(new GridLayout(list.size()+1, 1, 5, 5)); //Sätter antal rader till antal events + titel
 
-        JLabel header = new JLabel();
         if(list.size()>0){
             header.setText("Bookings");
         } else{ header.setText("No bookings"); }
-        this.add(header);
-        JLabel temp = new JLabel(Weather.getTemperature() + " In Gothenburg");
-        this.add(temp);
+        temperature = Weather.getWeather();
+        temp.setText(temperature+" in Gothenburg");
 
         int i=0;
         for(Event e : list){//Lägger till en panel för varje event med tid+plats och edit knapp
@@ -86,7 +93,7 @@ public class BookingView extends JPanel implements PropertyChangeListener {
             p.add(time);
             p.add(location);
             p.add(remove);
-            this.add(p);
+            panel.add(p);
             i++;
         }
         this.revalidate();

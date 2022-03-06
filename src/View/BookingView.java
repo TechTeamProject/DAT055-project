@@ -1,7 +1,7 @@
 package src.View;
-import src.Control;
-import src.Event;
-import src.Weather;
+import src.Control.Control;
+import src.Model.Event;
+import src.Model.Weather;
 
 import javax.swing.*;
 import javax.swing.border.EtchedBorder;

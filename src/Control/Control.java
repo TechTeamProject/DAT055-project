@@ -1,5 +1,10 @@
-package src;
+package src.Control;
+import src.Model.Event;
+import src.Model.CalenderModel;
+import src.View.PopUp;
 import src.Server.ChatServer;
+import src.Server.ClientThread;
+import src.Model.Sound;
 import src.View.*;
 
 import javax.swing.*;

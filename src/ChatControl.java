@@ -22,7 +22,7 @@ public class  ChatControl implements PropertyChangeListener, Serializable {
     //private static ClientThread clientThread;
     private static ClientThread clientThread;
     private ChatServer server;
-    private Sound sound;
+    //private Sound sound;
     private static YearView yearView;
     private static OptionView optionView;
     private static WeekView weekView;
@@ -36,7 +36,7 @@ public class  ChatControl implements PropertyChangeListener, Serializable {
 
     public ChatControl(CalenderModel m, ChatView c, YearView y, OptionView o, WeekView w, MonthView mv, BookingView b, EventView e, PopUp p){
         model = m;
-        sound = new Sound();
+        //sound = new Sound();
         chatView = c;
         yearView = y;
         optionView = o;
@@ -100,7 +100,7 @@ public class  ChatControl implements PropertyChangeListener, Serializable {
                     }
                     else{
                         chatView.printText("You are not connected to a server!");
-                        sound.playError();
+                        Sound.playError();
                     }
 
                 }
@@ -116,12 +116,12 @@ public class  ChatControl implements PropertyChangeListener, Serializable {
                     if(!clientThread.Alive()){
                         clientThread = new ClientThread("AddUserClass", chatView.getIpText(), 23476);
                         chatView.switchMiddlePanel("ChatArea");
-                        sound.playConnected();
+                        Sound.playConnected();
                     }
                     else{
                         chatView.switchMiddlePanel("ChatArea");
                         chatView.printText("Already connected");
-                        sound.playError();
+                        Sound.playError();
                     }
 
                 }
@@ -140,7 +140,7 @@ public class  ChatControl implements PropertyChangeListener, Serializable {
                     server = new ChatServer(23476);
                     Thread serverT = new Thread(server);
                     serverT.start();
-                    sound.playStartHost();
+                    Sound.playStartHost();
                     break;
                 case "Connect to server":
                     chatView.switchMiddlePanel("IpArea");
@@ -156,12 +156,12 @@ public class  ChatControl implements PropertyChangeListener, Serializable {
                             clientThread.addPropertyChangeListener(chatView);
 
                             chatView.switchMiddlePanel("ChatArea");
-                            sound.playConnected();
+                            Sound.playConnected();
                         }
                         else{
                             chatView.switchMiddlePanel("ChatArea");
                             chatView.printText("Already connected");
-                            sound.playError();
+                            Sound.playError();
                         }
 
                     }

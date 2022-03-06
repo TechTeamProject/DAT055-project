@@ -47,7 +47,7 @@ public class WeekView extends JPanel implements PropertyChangeListener, Serializ
     private LocalDateTime eventtime;
     private int hour;
     private Color lightgreen = new Color(229,255,204);
-    JLabel eventlabel = new JLabel();
+    private static LinkedList<JLabel> eventlabel = new LinkedList<>();
 
     /**
      * WeekView, hämtar eventlista från controller samt får aktuell tid genom observerinterface från model
@@ -73,6 +73,7 @@ public class WeekView extends JPanel implements PropertyChangeListener, Serializ
         //The Weekdaysfield
         contentPane = new JPanel(new GridLayout(1, 7));
         contentPane.setPreferredSize(new Dimension(1000, 400));
+        contentPane.setName("contentpane");
 
         //Both put together
         body = new JPanel(new BorderLayout());
@@ -98,7 +99,7 @@ public class WeekView extends JPanel implements PropertyChangeListener, Serializ
             c.anchor = FIRST_LINE_START;
             c.weighty = 0.1;
             c.weightx = 0.5;
-            Insets inset = new Insets(10, 0, 0, 0);
+            Insets inset = new Insets(0, 0, 0, 0);
             Insets noinset = new Insets(0,0,0,0);
 
             //Panel with week dates.
@@ -118,6 +119,7 @@ public class WeekView extends JPanel implements PropertyChangeListener, Serializ
             c.weightx = 0.5;
             c.fill = GridBagConstraints.BOTH;
             c.anchor = FIRST_LINE_END;
+            c.insets = inset;
 
             dayBox.getLast().add(titelBoxDown, c);
             contentPane.add(dayBox.getLast());
@@ -268,13 +270,18 @@ public class WeekView extends JPanel implements PropertyChangeListener, Serializ
                      c.anchor = CENTER;
 
                      //Eventsblocks design
-                     eventlabel = new JLabel("<html>" + eventlist.get(y).getDescription() + " <br/>" +
-                             getEventTime(eventlist.get(y)) + "</html>", SwingConstants.CENTER);
-                     eventlabel.setBackground(lightgreen);
-                     eventlabel.setOpaque(true);
-                     eventlabel.setBorder(BorderFactory.createLineBorder(Color.GRAY, 1));
+                     eventlabel.add(new JLabel("<html>" + eventlist.get(y).getDescription() + " <br/>" +
+                             getEventTime(eventlist.get(y)) + "</html>", SwingConstants.CENTER));
+                     eventlabel.getLast().setBackground(lightgreen);
+                     eventlabel.getLast().setOpaque(true);
+                     eventlabel.getLast().setBorder(BorderFactory.createLineBorder(Color.GRAY, 1));
 
-                     dayBox.get(i).add(eventlabel, c);
+                     eventlabel.getLast().setName(eventlist.get(y).getDescription());
+
+                     //ActionMap actionMap = eventlabel.getActionMap();
+                     //eventlabel.setActionMap(actionMap);
+
+                     dayBox.get(i).add(eventlabel.getLast(), c);
 
                  }
              }
@@ -288,7 +295,16 @@ public class WeekView extends JPanel implements PropertyChangeListener, Serializ
 
     public void addWeekViewListener(MouseListener a) {
         contentPane.addMouseListener(a);
-        eventlabel.addMouseListener(a);
+
+    }
+    public static void UpdateViewEventListener(MouseListener a) {
+        //Loop through an remove all listeners
+        for (int i=0; i < eventlabel.size(); i++) {
+            eventlabel.get(i).removeMouseListener(a);
+        }
+        for (int i=0; i< eventlabel.size(); i++) {
+            eventlabel.get(i).addMouseListener(a);
+        }
     }
     public void  addWeekViewActionListener(ActionListener a) {
         previousButton.addActionListener(a);

@@ -140,17 +140,6 @@ public class CalenderModel {
         }
     }
 
-
-    /**
-     * Metod som ger veckonummer flr viewdate.
-     * @return - veckonummer
-     */
-    public int getWeek(){
-        TemporalField woy = WeekFields.of(Locale.getDefault()).weekOfWeekBasedYear();
-        int weekNumber = viewdate.get(woy);
-        return weekNumber;
-    }
-
     /**
      * Metod för att returnera dag
      *

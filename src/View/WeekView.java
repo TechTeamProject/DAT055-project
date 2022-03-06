@@ -1,6 +1,7 @@
 package src.View;
 
 
+import src.CalenderModel;
 import src.ChatControl;
 import src.Event;
 
@@ -18,10 +19,9 @@ import java.beans.PropertyChangeListener;
 import java.io.Serializable;
 import java.time.Duration;
 import java.time.LocalDateTime;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.LinkedList;
+import java.time.temporal.TemporalField;
+import java.time.temporal.WeekFields;
+import java.util.*;
 
 import static java.awt.GridBagConstraints.*;
 
@@ -32,7 +32,9 @@ public class WeekView extends JPanel implements PropertyChangeListener, Serializ
     private LinkedList<JButton> eventButton = new LinkedList<>();
     private JPanel header;
     private JPanel monthTitlePanel;
+    private JLabel weekLabel;
     private JLabel monthTitle;
+    private JLabel yearLabel;
     private JPanel body;
     private JButton previousButton;
     private JButton nextButton;
@@ -54,15 +56,19 @@ public class WeekView extends JPanel implements PropertyChangeListener, Serializ
      */
     public WeekView() {
 
-        header = new JPanel(new GridLayout(1,3));
+        header = new JPanel(new BorderLayout());
         monthTitlePanel = new JPanel();
+        weekLabel = new JLabel();
         monthTitle = new JLabel();
+        yearLabel = new JLabel();
         previousButton = new JButton("<");
         nextButton = new JButton(">");
+        header.add(weekLabel,BorderLayout.LINE_START);
         monthTitlePanel.add(previousButton);
         monthTitlePanel.add(monthTitle);
         monthTitlePanel.add(nextButton);
-        header.add(monthTitlePanel);
+        header.add(monthTitlePanel,BorderLayout.CENTER);
+        header.add(yearLabel,BorderLayout.LINE_END);
 
         //The Weekdaysfield
         contentPane = new JPanel(new GridLayout(1, 7));
@@ -155,9 +161,22 @@ public class WeekView extends JPanel implements PropertyChangeListener, Serializ
         //Sets the monthtitle
         monthTitle.setText(weektime.getMonth().toString());
 
+        //Sets the weeklabel
+        TemporalField woy = WeekFields.of(Locale.getDefault()).weekOfWeekBasedYear();
+        int weekNumber = weektime.get(woy);
+        weekLabel.setText("  Week: " + weekNumber);
+
+        //Sets the yearlabel
+        yearLabel.setText(weektime.getYear() + "  ");
+
         //Sets days
+        int dayofweek = weektime.getDayOfWeek().getValue()-1;
         for (int i=0; i<7; i++) {
-            title.get(i).setText(Integer.toString(weektime.plusDays(i).getDayOfMonth()));
+            if(i<=dayofweek){
+                title.get(i).setText(Integer.toString(weektime.minusDays(dayofweek-i).getDayOfMonth()));
+            } else {
+                title.get(i).setText(Integer.toString(weektime.plusDays(i-dayofweek).getDayOfMonth()));
+            }
         }
 
         //Vid nytt event uppdateras weekview

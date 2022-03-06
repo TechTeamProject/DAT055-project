@@ -157,8 +157,8 @@ public class CalenderModel {
     /**
      * Saves eventlist with all existing events to file
      */
-    public void save() {
-        JFileChooser fc = new JFileChooser();
+    public void save(String filepath) {
+        /*JFileChooser fc = new JFileChooser();
         FileNameExtensionFilter filter = new FileNameExtensionFilter("DAT files", "dat");
         fc.setFileFilter(filter);
         int returnVal = fc.showSaveDialog(null);
@@ -174,7 +174,7 @@ public class CalenderModel {
                 ex.printStackTrace();
             }
             filepath = file.getAbsolutePath();
-        }
+        }*/
         try {
             assert filepath != null;
             FileOutputStream output = new FileOutputStream(filepath);
@@ -192,8 +192,8 @@ public class CalenderModel {
     /**
      * Loads file and inserts into a file
      */
-    public void load() {
-        JFileChooser fc = new JFileChooser();
+    public void load(String filepath) {
+        /*JFileChooser fc = new JFileChooser();
         FileNameExtensionFilter filter = new FileNameExtensionFilter("DAT files", "dat");
         fc.setFileFilter(filter);
         int returnVal = fc.showOpenDialog(null);
@@ -201,7 +201,7 @@ public class CalenderModel {
         if (returnVal == JFileChooser.APPROVE_OPTION) {
             File file = fc.getSelectedFile();
             filepath = file.getAbsolutePath();
-        }
+        }*/
         try {
             assert filepath != null;
             FileInputStream input = new FileInputStream(filepath);
@@ -216,5 +216,38 @@ public class CalenderModel {
             JOptionPane.showMessageDialog(null, "Something went wrong", "Error", JOptionPane.ERROR_MESSAGE);
         }
         support.firePropertyChange("LoadedEvents", null, null);
+    }
+
+    public String chooseSaveFilePath(){
+        JFileChooser fc = new JFileChooser();
+        FileNameExtensionFilter filter = new FileNameExtensionFilter("DAT files", "dat");
+        fc.setFileFilter(filter);
+        int returnVal = fc.showSaveDialog(null);
+        String filepath = null;
+        if (returnVal == JFileChooser.APPROVE_OPTION) {
+            File file = fc.getSelectedFile();
+            try {
+                String filename = file.getCanonicalPath();
+                if (!file.getName().endsWith(".dat")) {
+                    file = new File(filename + ".dat");
+                }
+            } catch (IOException ex) {
+                ex.printStackTrace();
+            }
+            filepath = file.getAbsolutePath();
+        }
+        return filepath;
+    }
+    public String chooseLoadFilePath(){
+        JFileChooser fc = new JFileChooser();
+        FileNameExtensionFilter filter = new FileNameExtensionFilter("DAT files", "dat");
+        fc.setFileFilter(filter);
+        int returnVal = fc.showOpenDialog(null);
+        String filepath = null;
+        if (returnVal == JFileChooser.APPROVE_OPTION) {
+            File file = fc.getSelectedFile();
+            filepath = file.getAbsolutePath();
+        }
+        return filepath;
     }
 }

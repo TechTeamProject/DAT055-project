@@ -164,10 +164,10 @@ public class Control implements PropertyChangeListener, Serializable {
                 case "Appearance":
                     break;
                 case "Save":
-                    model.save();
+                    model.save(model.chooseSaveFilePath());
                     break;
                 case "Load":
-                    model.load();
+                    model.load(model.chooseLoadFilePath());
                     updateWeeklisteners(); //update mouselisener for loaded events
                     break;
             }

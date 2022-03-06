@@ -3,6 +3,13 @@ package src;
 import java.io.Serializable;
 import java.time.LocalDateTime;
 
+/**
+ * This class represents an Event.
+ *
+ * @author - Elias Carlsson
+ * @version - 1.0
+ * @since - 2022-03-06
+ */
 public class Event implements Comparable<Event>,Serializable{
     private String description;
     private String location;

@@ -4,6 +4,13 @@ import java.awt.*;
 import java.awt.event.ActionListener;
 import javax.swing.*;
 
+/**
+ * This class is a JPanel that is used for creating an event.
+ *
+ * @author - Elias Carlsson
+ * @version 1.0
+ * @since   2022-03-06
+ */
 public class EventView extends JPanel {
 
     private JTextField text1;

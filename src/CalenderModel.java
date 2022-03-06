@@ -14,48 +14,66 @@ import java.time.LocalDateTime;
  * @author Erik Gustavsson
  * @version 1.0
  * CalenderModel is a class that can be used to store data in a calendar.
+ * @since 2022-03-06
+ * CalenderModel is used to store data in a calendar.
  * It creates a LocalDateTime object for the current time shown in the program and also
  * a list of events that may happen in the schedule.
  * The class is Observable using PropertyChangeSupport
- *
+
  */
 public class CalenderModel {
     private static LinkedList<Event> Eventlist = new LinkedList<>();
     private LocalDateTime viewdate; //viewdate är det aktuella datum+tid användaren ser i views.
     private final PropertyChangeSupport support = new PropertyChangeSupport(this);
 
+    /**
+     * Adds Observers that listens for changes in this class
+     * @param listener - An object implementing propertychangelistener
+     */
     public void addPropertyChangeListener(PropertyChangeListener listener) {
         support.addPropertyChangeListener(listener);
     }
 
+    /**
+     * Constructor - setting current time to irl time
+     */
     public CalenderModel() {
         viewdate = LocalDateTime.now();
     }
 
     /**
+     * Method to create event and add to eventlist. It also notifies observers since data has been altered.
      * @param start - Where the event starts
      * @param end   - Where the event ends
      * @param title - The title of the event
-     *              firePropertyChange alerts listener. It sends the starting time as oldvalue and endtime as newvalue
+     * PropertyChangeEvent sends starting time as oldvalue and endtime as newvalue
      */
     public void addEvent(LocalDateTime start, LocalDateTime end, String title, String location) {
         Eventlist.add(new Event(start, end, title, location));
         support.firePropertyChange("NewEvent", null, null);
     }
 
+    /**
+     * Method to remove Event
+     * @param index of which event in the eventlist to remove
+     */
     public void removeEvent(int index) {
         Eventlist.remove(index);
         support.firePropertyChange("RemoveEvent", null, null);
     }
 
+    /**
+     * @return A list of Events
+     */
     public LinkedList<Event> getEvents() {
         return Eventlist;
     }
 
     /**
-     * Returnerar time som view tittar på just nu
-     *
      * @return LocalDateTime objekt
+     * Returns current time and notifies observers
+     * @return LocalDateTime Object - the current time in Calender
+     * PropertyChangeEvent sends "propertyname" and current time as newvalue
      */
     public LocalDateTime getViewTime() {
         support.firePropertyChange("currentTime", null, viewdate);
@@ -63,10 +81,10 @@ public class CalenderModel {
     }
 
     /**
-     * Setter för årtal. positivt tal för frammåt och minustal för bakåt.
-     * support.firePropertyChange triggar propertyChange i aktuell view
-     *
-     * @param y (antal år framåt)
+     * Setter to alter year. Also notifies observers
+     * @param y +- int of years to increase/decrease
+     * PropertyChangeEvent sends int oldvalue as year before change and
+     * int newValue as year after change
      */
     public void setYear(int y) {
         int oldValue = viewdate.getYear();
@@ -81,21 +99,17 @@ public class CalenderModel {
         support.firePropertyChange("YearChange", oldValue, newValue);
     }
 
-
     /**
-     * Metod för att returnera månad
-     *
-     * @return Month (månader)
+     * Getter method to retrieve current month
+     * @return Month - Month Object from java.time
      */
     public Month getMonth() {
         return viewdate.getMonth();
     }
 
     /**
-     * Setter för månad
-     * support.firePropertyChange triggar propertyChange i aktuell view
-     *
-     * @param y (antal månader framåt)
+     * Setter to set current month. Also notifies observers.
+     * @param y int months to increase/decrease month
      */
     public void setMonth(int y) {
         int oldValue = viewdate.getMonthValue();
@@ -113,20 +127,17 @@ public class CalenderModel {
     }
 
     /**
-     * Metod för att returnera dag
-     *
-     * @return int (dag)
+     * Getter for retrieving current day.
+     * @return int day
      */
     public int getDay() {
         return viewdate.getDayOfMonth();
     }
 
     /**
-     * Setter för dagar. d>0 för framåt, d<0 för bakåt.
-     * support.firePropertyChange triggar propertyChange i aktuell view
-     * Den första uppdaterar view om aktuell tid. Den andra uppdaterar vilken förändring som skett.
-     *
-     * @param d (dagar)
+     * Setter to set day
+     * Increases or decreases the current date. Also notifies observers.
+     * @param d int (number of days)
      */
     public void setDay(int d) {
         int oldValue = viewdate.getDayOfMonth();
@@ -143,6 +154,9 @@ public class CalenderModel {
 
     }
 
+    /**
+     * Saves eventlist with all existing events to file
+     */
     public void save() {
         JFileChooser fc = new JFileChooser();
         FileNameExtensionFilter filter = new FileNameExtensionFilter("DAT files", "dat");
@@ -175,6 +189,9 @@ public class CalenderModel {
         }
     }
 
+    /**
+     * Loads file and inserts into a file
+     */
     public void load() {
         JFileChooser fc = new JFileChooser();
         FileNameExtensionFilter filter = new FileNameExtensionFilter("DAT files", "dat");

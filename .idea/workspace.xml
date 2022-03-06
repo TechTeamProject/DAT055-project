@@ -4,16 +4,64 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4b89b8c8-4e75-454b-8fad-b69ac190600f" name="Changes" comment="">
+    <list default="true" id="4b89b8c8-4e75-454b-8fad-b69ac190600f" name="Changes" comment="bytt namn till control + oanvänd kod">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/DAT055-project/src/CalenderModel.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/DAT055-project/src/CalenderModel.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/DAT055-project/src/ChatControl$bookingViewListener.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/DAT055-project/src/ChatControl$bookingViewListener.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/DAT055-project/src/ChatControl$eventViewListener.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/DAT055-project/src/ChatControl$eventViewListener.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/DAT055-project/src/ChatControl$monthViewListener.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/DAT055-project/src/ChatControl$monthViewListener.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/DAT055-project/src/ChatControl$popupListener.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/DAT055-project/src/ChatControl$popupListener.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/DAT055-project/src/ChatControl$weekViewListener.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/DAT055-project/src/ChatControl$weekViewListener.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/DAT055-project/src/ChatControl.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/DAT055-project/src/ChatControl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/CalenderModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/CalenderModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/DAT055-project/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/DAT055-project/.idea/DAT055-project.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/DAT055-project/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/DAT055-project/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/DAT055-project/.idea/uiDesigner.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/DAT055-project/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/DAT055-project/PGrurotokoll.docx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/DAT055-project/Protokoll_v7.pdf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/DAT055-project/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/DAT055-project/src/CalenderModel.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/DAT055-project/src/ChatControl$bookingViewListener.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/DAT055-project/src/ChatControl$chatListener.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/DAT055-project/src/ChatControl$eventViewListener.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/DAT055-project/src/ChatControl$ipListener.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/DAT055-project/src/ChatControl$monthViewListener.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/DAT055-project/src/ChatControl$optionViewListener.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/DAT055-project/src/ChatControl$popupListener.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/DAT055-project/src/ChatControl$topButtonsListener.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/DAT055-project/src/ChatControl$weekViewListener.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/DAT055-project/src/ChatControl$yearViewListener.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/DAT055-project/src/ChatControl.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/DAT055-project/src/Client.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/DAT055-project/src/ClientThread.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/DAT055-project/src/Event.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/DAT055-project/src/Language.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/DAT055-project/src/PopUp.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/DAT055-project/src/Server/ChatServer.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/DAT055-project/src/Server/ClientServerInfo.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/DAT055-project/src/Server/ServerThread.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/DAT055-project/src/Sound.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/DAT055-project/src/ToDo$task.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/DAT055-project/src/ToDo.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/DAT055-project/src/ToDoView$Listener.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/DAT055-project/src/ToDoView$M_ButtonListener.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/DAT055-project/src/ToDoView$abc.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/DAT055-project/src/ToDoView.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/DAT055-project/src/View/BookingView.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/DAT055-project/src/View/ChatView.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/DAT055-project/src/View/EventView.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/DAT055-project/src/View/LoginView.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/DAT055-project/src/View/MonthView.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/DAT055-project/src/View/OptionView.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/DAT055-project/src/View/StartView$Listener.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/DAT055-project/src/View/StartView.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/DAT055-project/src/View/WeekVieDemo.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/DAT055-project/src/View/WeekView.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/DAT055-project/src/View/WindowFrame$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/DAT055-project/src/View/WindowFrame$2.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/DAT055-project/src/View/WindowFrame$3.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/DAT055-project/src/View/WindowFrame$4.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/DAT055-project/src/View/WindowFrame$5.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/DAT055-project/src/View/WindowFrame$6.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/DAT055-project/src/View/WindowFrame$7.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/DAT055-project/src/View/WindowFrame.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/DAT055-project/src/View/YearView.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/DAT055-project/src/Weather.class" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -315,12 +363,11 @@
       <option name="project" value="LOCAL" />
       <updated>1646584656683</updated>
     </task>
-    <task id="LOCAL-00033" summary="week helt klar">
-      <created>1646584726013</created>
-      <option name="number" value="00033" />
-      <option name="presentableId" value="LOCAL-00033" />
-      <option name="project" value="LOCAL" />
-      <updated>1646584726013</updated>
+    <task id="LOCAL−00033" summary="bytt namn till control + oanvänd kod">
+      <created>1646587281251</created>
+      <option name="number" value="LOCAL−00033" />
+      <option name="presentableId" value="LOCAL−00033" />
+      <updated>1646587281251</updated>
     </task>
     <option name="localTasksCounter" value="34" />
     <servers />
@@ -340,7 +387,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="create event knapp i windowframe" />
     <MESSAGE value="lite ändringar" />
     <MESSAGE value="Observer interface fungerar och är inlagt på alla views" />
     <MESSAGE value="addEvent tillagd till observable" />
@@ -365,7 +411,8 @@
     <MESSAGE value="&quot;event&quot; i changePanel" />
     <MESSAGE value="Fixat så JLabel har lyssnare samt så att event raderas efter titel" />
     <MESSAGE value="week helt klar" />
-    <option name="LAST_COMMIT_MESSAGE" value="week helt klar" />
+    <MESSAGE value="bytt namn till control + oanvänd kod" />
+    <option name="LAST_COMMIT_MESSAGE" value="bytt namn till control + oanvänd kod" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/DAT055_project$WindowFrame.ic" NAME="WindowFrame Coverage Results" MODIFIED="1645656862873" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">

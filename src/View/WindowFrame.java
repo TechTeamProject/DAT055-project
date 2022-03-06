@@ -1,7 +1,7 @@
 
 package src.View;
 import src.CalenderModel;
-import src.ChatControl;
+import src.Control;
 import src.PopUp;
 import java.awt.*;
 import javax.swing.*;
@@ -18,7 +18,7 @@ public class WindowFrame extends JFrame {
     private static BookingView bookView;
     JScrollPane bookingView;
     private static ChatView chatView;
-    private static ChatControl chatControl;
+    private static Control control;
     private static CardLayout c1;
     private int currentCard = 1;
     private static JPanel p = new JPanel();
@@ -42,7 +42,7 @@ public class WindowFrame extends JFrame {
         chatView = new ChatView();
         popUp = new PopUp("week");
 
-        chatControl = new ChatControl(m, chatView, yearView, optionView, weekView, monthView, bookView, eventView, popUp);
+        control = new Control(m, chatView, yearView, optionView, weekView, monthView, bookView, eventView, popUp);
 
         p = new JPanel();
 

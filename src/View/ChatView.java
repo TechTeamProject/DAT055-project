@@ -1,6 +1,6 @@
 package src.View;
 
-import src.ChatControl;
+import src.Control;
 
 import javax.swing.*;
 import java.awt.*;
@@ -140,7 +140,7 @@ public class ChatView extends JPanel implements PropertyChangeListener {
     @Override
     public void propertyChange(PropertyChangeEvent evt) {
         if(evt.getPropertyName().equals("NewMessage")){
-            printText(ChatControl.getMessage());
+            printText(Control.getMessage());
         }
     }
 }

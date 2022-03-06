@@ -1,23 +1,16 @@
 package src.View;
 
-
-import src.CalenderModel;
-import src.ChatControl;
+import src.Control;
 import src.Event;
 
 import javax.swing.*;
-import javax.swing.border.EmptyBorder;
 import javax.swing.border.EtchedBorder;
-import javax.swing.text.StyledEditorKit;
 import java.awt.*;
 import java.awt.event.ActionListener;
-import java.awt.event.ItemListener;
-import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import java.io.Serializable;
-import java.time.Duration;
 import java.time.LocalDateTime;
 import java.time.temporal.TemporalField;
 import java.time.temporal.WeekFields;
@@ -29,7 +22,6 @@ public class WeekView extends JPanel implements PropertyChangeListener, Serializ
 
     private JPanel contentPane;
     private String [] weekDays =  new String[]{"MON" , "TUE", "WED", "THU", "FRI", "SAT", "SUN"};
-    private LinkedList<JButton> eventButton = new LinkedList<>();
     private JPanel header;
     private JPanel monthTitlePanel;
     private JLabel weekLabel;
@@ -40,13 +32,10 @@ public class WeekView extends JPanel implements PropertyChangeListener, Serializ
     private JButton nextButton;
     private LocalDateTime weektime = LocalDateTime.now();
     private LinkedList<JLabel> title = new LinkedList<>();
-    private LinkedList<Event> eventlist = new LinkedList<Event>();
+    private LinkedList<Event> eventlist = new LinkedList<>();
     private LinkedList<JPanel> dayBox = new LinkedList<>();
     private int gridxcount = 0;
     private int gridycount = 4;
-    GridBagConstraints con = new GridBagConstraints();
-    private LocalDateTime eventtime;
-    private int hour;
     private Color lightgreen = new Color(229,255,204);
     private static LinkedList<JLabel> eventlabel = new LinkedList<>();
 
@@ -170,7 +159,7 @@ public class WeekView extends JPanel implements PropertyChangeListener, Serializ
 
         //Vid nytt event uppdateras weekview
         if ((evt.getPropertyName().equals("NewEvent")) || (evt.getPropertyName().equals("RemoveEvent")) || (evt.getPropertyName().equals("LoadedEvents"))) {
-                eventlist = ChatControl.getCalenderEvents();
+                eventlist = Control.getCalenderEvents();
                 System.out.println("propertychange remove from weekview");
                 loadEvent();
                 this.revalidate();
@@ -209,19 +198,6 @@ public class WeekView extends JPanel implements PropertyChangeListener, Serializ
 
         return eventStartHour + ":" + eventStartMinute + "-" + eventEndHour + ":" + eventEndMinute;
     }
-
-    /**
-     * En hjälpmedtod som beräknar hur lång en event är, som sedan ska användas för att bestämma längden på eventen.
-     * @param e
-     * @return
-     */
-
-    private long timeDiff(Event e){
-        Duration diffDuration = Duration.between(e.getEndTime(), e.getStartTime());
-        return diffDuration.toMinutes();
-    }
-
-
     /**
      * En metod som kollar igenom de 7 aktuella dagarna, kollar om något event ligger och lägger ut.
      * Metoden raderar först allt innan det läggs ut på nytt så att man kan bläddra mellan veckorna.
@@ -288,11 +264,6 @@ public class WeekView extends JPanel implements PropertyChangeListener, Serializ
                  }
              }
          }
-    }
-
-
-    private void setConstraint(LocalDateTime time) {
-            //How many events that day
     }
 
     public void addWeekViewListener(MouseListener a) {

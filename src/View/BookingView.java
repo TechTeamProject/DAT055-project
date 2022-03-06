@@ -1,5 +1,5 @@
 package src.View;
-import src.ChatControl;
+import src.Control;
 import src.Event;
 import src.Weather;
 
@@ -53,7 +53,7 @@ public class BookingView extends JPanel implements PropertyChangeListener {
         panel.removeAll();
         buttonArr.clear();
 
-        LinkedList<Event> list = ChatControl.getCalenderEvents();
+        LinkedList<Event> list = Control.getCalenderEvents();
         panel.setLayout(new GridLayout(list.size()+1, 1, 5, 5)); //Sätter antal rader till antal events + titel
 
         if(list.size()>0){

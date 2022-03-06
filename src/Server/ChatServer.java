@@ -1,7 +1,5 @@
 package src.Server;
 
-import src.ChatControl;
-
 import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;

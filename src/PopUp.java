@@ -26,7 +26,4 @@ public class PopUp extends JPopupMenu{
         popup.addActionListener(a);
         popupRemove.addActionListener(a);
     }
-
-
-
 }

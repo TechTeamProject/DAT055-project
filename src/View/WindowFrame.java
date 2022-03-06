@@ -3,14 +3,9 @@ package src.View;
 import src.CalenderModel;
 import src.ChatControl;
 import src.PopUp;
-//import src.PopUp;
-
 import java.awt.*;
 import javax.swing.*;
 import java.awt.event.*;
-import java.beans.PropertyChangeEvent;
-import java.beans.PropertyChangeListener;
-import java.time.LocalDateTime;
 
 
 public class WindowFrame extends JFrame {
@@ -20,7 +15,6 @@ public class WindowFrame extends JFrame {
     private static OptionView optionView;
     private static EventView eventView;
     private static MonthView monthView;
-    //LoginView loginView;
     private static BookingView bookView;
     JScrollPane bookingView;
     private static ChatView chatView;
@@ -42,7 +36,6 @@ public class WindowFrame extends JFrame {
         yearView = new YearView();
         eventView = new EventView();
         monthView = new MonthView();
-        //loginView = new LoginView();
         bookView = new BookingView();
         bookingView = new JScrollPane(bookView);
         bookingView.setPreferredSize(new Dimension(600, 400));
@@ -58,7 +51,6 @@ public class WindowFrame extends JFrame {
         JButton bWeek = new JButton("Week");
         JButton bYear = new JButton("Year");
         JButton bMonth = new JButton("Month");
-        //JButton bLogin = new JButton("Login");
         JButton bEvent = new JButton("Create Event");
         JButton bChat = new JButton("Chat");
 
@@ -80,7 +72,6 @@ public class WindowFrame extends JFrame {
         week.add(weekView);
         year.add(yearView);
         month.add(monthView);
-        //login.add(loginView);
         event.add(eventView);
         chat.add(chatView);
 
@@ -100,7 +91,6 @@ public class WindowFrame extends JFrame {
         buttonPanel.add(bMonth);
         buttonPanel.add(bYear);
         buttonPanel.add(bEvent);
-        //buttonPanel.add(bLogin);
         buttonPanel.add(bChat);
 
         JMenuBar menubar = new JMenuBar();
@@ -112,7 +102,6 @@ public class WindowFrame extends JFrame {
         menubar.add(bMonth);
         menubar.add(bYear);
         menubar.add(bEvent);
-        //menubar.add(bLogin);
         menubar.add(bChat);
 
 
@@ -154,11 +143,6 @@ public class WindowFrame extends JFrame {
                 c1.show(p, "event");
             }
         });
-        /*bLogin.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                c1.show(p, "login"); }
-        });*/
         bChat.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {

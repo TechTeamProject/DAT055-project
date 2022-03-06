@@ -140,7 +140,6 @@ public class ChatView extends JPanel implements PropertyChangeListener {
     @Override
     public void propertyChange(PropertyChangeEvent evt) {
         if(evt.getPropertyName().equals("NewMessage")){
-            //System.out.println("Funkar");
             printText(ChatControl.getMessage());
         }
     }

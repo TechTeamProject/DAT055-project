@@ -11,7 +11,7 @@ import java.time.Year;
 /**
  * This class is used as the view for all months of the year.
  *
- * @author  Hanna Pham, Elias Carlsson
+ * @author  Hanna Pham
  * @version 1.0
  * @since   2022-03-05
  */

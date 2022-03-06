@@ -53,8 +53,6 @@ public class ClientThread implements Runnable {
 
             Thread serverAccessThread = new Thread(this);
             serverAccessThread.start();
-            //Test.add("Successfully connected to host " + host + " port " + portNumber);
-            //support.firePropertyChange("NewMessage", 1 ,0);
         }catch(IOException | InterruptedException ex){
         }
     }

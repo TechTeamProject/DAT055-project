@@ -19,10 +19,8 @@ import static javax.swing.SwingUtilities.isRightMouseButton;
 public class  ChatControl implements PropertyChangeListener, Serializable {
     private static CalenderModel model;
     private static ChatView chatView;
-    //private static ClientThread clientThread;
     private static ClientThread clientThread;
     private ChatServer server;
-    //private Sound sound;
     private static YearView yearView;
     private static OptionView optionView;
     private static WeekView weekView;
@@ -38,7 +36,6 @@ public class  ChatControl implements PropertyChangeListener, Serializable {
 
     public ChatControl(CalenderModel m, ChatView c, YearView y, OptionView o, WeekView w, MonthView mv, BookingView b, EventView e, PopUp p){
         model = m;
-        //sound = new Sound();
         chatView = c;
         yearView = y;
         optionView = o;
@@ -60,7 +57,6 @@ public class  ChatControl implements PropertyChangeListener, Serializable {
         popup.addPopupListener(new popupListener());
 
         //Listeners added to Observable here
-        model.addPropertyChangeListener(optionView);
         model.addPropertyChangeListener(weekView);
         model.addPropertyChangeListener(monthView);
         model.addPropertyChangeListener(yearView);
@@ -71,14 +67,6 @@ public class  ChatControl implements PropertyChangeListener, Serializable {
         //Updates in Model to set all the views.
         model.getViewTime();
     }
-    public ChatControl(boolean fake){
-        //Fake initializer for static values
-    }
-
-    public void printText(String text){
-        chatView.printText(text);
-    }
-
 
     @Override
     public void propertyChange(PropertyChangeEvent evt) {
@@ -109,27 +97,6 @@ public class  ChatControl implements PropertyChangeListener, Serializable {
         }
         public void keyTyped(KeyEvent e) {}
         public void keyReleased(KeyEvent e) {}
-    }
-    private class ipListener implements KeyListener{
-        public void keyPressed(KeyEvent ke) {
-            if (ke.getKeyCode() == KeyEvent.VK_ENTER) {
-                if (chatView.getIpText().compareTo("") != 0) {
-                    if(!clientThread.Alive()){
-                        clientThread = new ClientThread("AddUserClass", chatView.getIpText(), 23476);
-                        chatView.switchMiddlePanel("ChatArea");
-                        Sound.playConnected();
-                    }
-                    else{
-                        chatView.switchMiddlePanel("ChatArea");
-                        chatView.printText("Already connected");
-                        Sound.playError();
-                    }
-
-                }
-            }
-        }
-        @Override public void keyReleased (KeyEvent ke){}
-        @Override public void keyTyped (KeyEvent ke){}
     }
 
     private class topButtonsListener implements ActionListener{
@@ -222,14 +189,9 @@ public class  ChatControl implements PropertyChangeListener, Serializable {
             }
         }
         @Override
-        public void mouseClicked(MouseEvent e) {
-
-        }
-
+        public void mouseClicked(MouseEvent e) {}
         @Override
-        public void mousePressed(MouseEvent e) {
-
-        }
+        public void mousePressed(MouseEvent e) {}
 
         @Override
         public void mouseReleased(MouseEvent e) {
@@ -272,14 +234,9 @@ public class  ChatControl implements PropertyChangeListener, Serializable {
         }
 
         @Override
-        public void mouseEntered(MouseEvent e) {
-
-        }
-
+        public void mouseEntered(MouseEvent e) {}
         @Override
-        public void mouseExited(MouseEvent e) {
-
-        }
+        public void mouseExited(MouseEvent e) {}
 
     }
     private class monthViewListener implements ActionListener{
@@ -375,9 +332,7 @@ public class  ChatControl implements PropertyChangeListener, Serializable {
             model.removeEvent(index);
         }
     }
-
     private class popupListener implements ActionListener {
-
         @Override
         public void actionPerformed(ActionEvent e) {
             String str = e.getActionCommand();

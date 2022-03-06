@@ -8,15 +8,11 @@ import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
 import java.io.*;
 import java.time.*;
-import java.time.temporal.TemporalField;
-import java.time.temporal.WeekFields;
 import java.util.*;
 import java.time.LocalDateTime;
 
 public class CalenderModel {
     private static LinkedList<Event> Eventlist = new LinkedList<Event>();
-    private String language = "SWE"; //Programmet startar med svenska.
-    private Color color = Color.WHITE; //Programmet startar med vit färg.
     private LocalDateTime now = LocalDateTime.now();
     private YearMonth yearMonthObject = YearMonth.of(2022, 2);
     private int daysInMonth = yearMonthObject.lengthOfMonth(); //28
@@ -29,10 +25,6 @@ public class CalenderModel {
 
     public CalenderModel() {
         viewdate = LocalDateTime.now();
-    }
-
-    public void removePropertyChangeListener(PropertyChangeListener listener) {
-        support.removePropertyChangeListener(listener);
     }
 
     /**
@@ -63,31 +55,6 @@ public class CalenderModel {
     public LocalDateTime getViewTime() {
         support.firePropertyChange("currentTime", null, viewdate);
         return viewdate;
-    }
-
-    /**
-     * Skriv in ett LocalDateTime objekt och returnera en int.
-     *
-     * @param date object
-     * @return an int
-     */
-    public int getDaysInMonth2(LocalDateTime date) {
-        int year = date.getYear();
-        Month month = date.getMonth();
-        yearMonthObject = YearMonth.of(year, month);
-        return yearMonthObject.lengthOfMonth();
-    }
-
-    /**
-     * Metod för att få antal dagar i månaden
-     *
-     * @return int (antal dagar)
-     */
-    public int getDaysInMonth() {
-        int year = viewdate.getYear();
-        Month month = viewdate.getMonth();
-        yearMonthObject = YearMonth.of(year, month);
-        return yearMonthObject.lengthOfMonth();
     }
 
     /**
@@ -226,5 +193,4 @@ public class CalenderModel {
         }
         support.firePropertyChange("LoadedEvents", 0, 1);
     }
-
 }

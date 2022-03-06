@@ -1,5 +1,4 @@
 package src.View;
-import src.CalenderModel;
 import src.ChatControl;
 import src.Event;
 import src.Weather;
@@ -7,7 +6,6 @@ import src.Weather;
 import javax.swing.*;
 import javax.swing.border.EtchedBorder;
 import java.awt.*;
-import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;

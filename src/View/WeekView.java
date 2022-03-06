@@ -1,7 +1,7 @@
 package src.View;
 
 import src.Control.Control;
-import src.Model.Event;
+import src.Model.Booking;
 
 import javax.swing.*;
 import javax.swing.border.EtchedBorder;
@@ -32,7 +32,7 @@ public class WeekView extends JPanel implements PropertyChangeListener, Serializ
     private JButton nextButton;
     private LocalDateTime weektime = LocalDateTime.now();
     private LinkedList<JLabel> title = new LinkedList<>();
-    private LinkedList<Event> eventlist = new LinkedList<>();
+    private LinkedList<Booking> eventlist = new LinkedList<>();
     private LinkedList<JPanel> dayBox = new LinkedList<>();
     private int gridycount = 4;
     private Color lightgreen = new Color(229,255,204);
@@ -178,7 +178,7 @@ public class WeekView extends JPanel implements PropertyChangeListener, Serializ
      * the beginning of the start and the end minutes if they are single digits so that they are always written in mm format
      */
 
-    private String getEventTime(Event e){
+    private String getEventTime(Booking e){
 
         String eventStartHour = String.valueOf(e.getStartTime().getHour());
         String eventEndHour = String.valueOf(e.getEndTime().getHour());
@@ -234,7 +234,7 @@ public class WeekView extends JPanel implements PropertyChangeListener, Serializ
                      c.gridx = 0;
                      c.gridy = gridycount;
                      gridycount++;
-                     c.fill = GridBagConstraints.BOTH;
+                     c.fill = BOTH;
                      c.weighty = 0.5;
                      c.weightx = 0.5;
                      c.ipady = 0;

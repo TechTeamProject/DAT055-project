@@ -1,10 +1,10 @@
 package src.Control;
-import src.Model.Event;
 import src.Model.CalenderModel;
+import src.Model.Booking;
+import src.Model.Sound;
 import src.View.PopUp;
 import src.Server.ChatServer;
 import src.Server.ClientThread;
-import src.Model.Sound;
 import src.View.*;
 
 import javax.swing.*;
@@ -503,7 +503,7 @@ public class Control implements PropertyChangeListener, Serializable {
      * Simple getmethod to retrieve eventlist with events
      * @return LinkedList</Event>
      */
-    public static LinkedList<Event> getCalenderEvents() {
+    public static LinkedList<Booking> getCalenderEvents() {
             return model.getEvents();
     }
 

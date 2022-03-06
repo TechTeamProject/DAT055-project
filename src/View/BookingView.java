@@ -1,6 +1,6 @@
 package src.View;
 import src.Control.Control;
-import src.Model.Event;
+import src.Model.Booking;
 import src.Model.Weather;
 
 import javax.swing.*;
@@ -53,7 +53,7 @@ public class BookingView extends JPanel implements PropertyChangeListener {
         panel.removeAll();
         buttonArr.clear();
 
-        LinkedList<Event> list = Control.getCalenderEvents();
+        LinkedList<Booking> list = Control.getCalenderEvents();
         panel.setLayout(new GridLayout(list.size()+1, 1, 5, 5)); //Sätter antal rader till antal events + titel
 
         if(list.size()>0){
@@ -62,7 +62,7 @@ public class BookingView extends JPanel implements PropertyChangeListener {
         temp.setText(Weather.getTemperature()+" in Gothenburg");
 
         int i=0;
-        for(Event e : list){//Lägger till en panel för varje event med tid+plats och edit knapp
+        for(Booking e : list){//Lägger till en panel för varje event med tid+plats och edit knapp
             JPanel p = new JPanel(new GridLayout(2,2,10,10));
             p.setBorder(new EtchedBorder());
             String title_ = e.getDescription();

@@ -4,10 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4b89b8c8-4e75-454b-8fad-b69ac190600f" name="Changes" comment="mer javadoc control">
+    <list default="true" id="4b89b8c8-4e75-454b-8fad-b69ac190600f" name="Changes" comment="Flyttade jättemånga klasser">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/View/EventView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/EventView.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/View/PopUp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/PopUp.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Control/Control.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Control/Control.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Model/CalenderModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/CalenderModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Model/Event.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/Booking.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Server/ClientThread.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Server/ClientThread.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/View/BookingView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/BookingView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/View/WeekView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/View/WeekView.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -32,6 +36,18 @@
       <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
     </file-type-list>
   </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/src/ChatServerTest.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/.idea/workspace.xml" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/SoundTest.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/BookingTest.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/ClientTest.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/WindowFrameTest.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/.idea/modules.xml" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/.idea/misc.xml" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/Model/CalenderModel.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/CalenderModelTest.java" root0="FORCE_HIGHLIGHTING" />
+  </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
@@ -45,6 +61,9 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="settings.editor.selected.configurable" value="advanced.settings" />
+  </component>
+  <component name="ReaderModeSettings">
+    <option name="enabled" value="false" />
   </component>
   <component name="RunManager" selected="Application.WindowFrame">
     <configuration name="WindowFrame" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
@@ -65,7 +84,7 @@
       <module name="DAT055-project" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="src.*" />
+          <option name="PATTERN" value="src.BookingTest" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -411,8 +430,71 @@
     <option name="LAST_COMMIT_MESSAGE" value="mer javadoc control" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/DAT055_project$WindowFrame.ic" NAME="WindowFrame Coverage Results" MODIFIED="1645656862873" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+    <SUITE FILE_PATH="coverage/DAT055_project$ClientTest.ic" NAME="ClientTest Coverage Results" MODIFIED="1646600039736" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>src.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/DAT055_project$WindowFrame.ic" NAME="WindowFrame Coverage Results" MODIFIED="1646586517658" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>src.View.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/DAT055_project$CalenderModelTest_getViewTime.ic" NAME="CalenderModelTest.getViewTime Coverage Results" MODIFIED="1646595811892" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>src.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/DAT055_project$CalenderModelTest_addEvent.ic" NAME="CalenderModelTest.addEvent Coverage Results" MODIFIED="1646595661477" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>src.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/DAT055_project$WindowFrameTest_main.ic" NAME="WindowFrameTest.main Coverage Results" MODIFIED="1646589515138" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>src.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/DAT055_project$EventTest.ic" NAME="EventTest Coverage Results" MODIFIED="1646599224774" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>src.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/DAT055_project$EventTest_compareTo.ic" NAME="EventTest.compareTo Coverage Results" MODIFIED="1646599111097" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>src.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/DAT055_project$WindowFrameTest.ic" NAME="WindowFrameTest Coverage Results" MODIFIED="1646599343663" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>src.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/DAT055_project$TestCase2.ic" NAME="TestCase2 Coverage Results" MODIFIED="1646583653578" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>src.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/DAT055_project$SoundTest.ic" NAME="SoundTest Coverage Results" MODIFIED="1646599326477" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>src.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/DAT055_project$CalenderModelTest.ic" NAME="CalenderModelTest Coverage Results" MODIFIED="1646599236762" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>src.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/DAT055_project$CalenderModelTest_removeEvent.ic" NAME="CalenderModelTest.removeEvent Coverage Results" MODIFIED="1646595820114" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>src.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/DAT055_project$WindowFrameTest_changePanel.ic" NAME="WindowFrameTest.changePanel Coverage Results" MODIFIED="1646597583911" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>src.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/DAT055_project$TestLogic_testFindMax.ic" NAME="TestLogic.testFindMax Coverage Results" MODIFIED="1646583547491" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>src.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/DAT055_project$CalenderModelTest_setYear.ic" NAME="CalenderModelTest.setYear Coverage Results" MODIFIED="1646595880938" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>src.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/DAT055_project$CalenderModelTest_save.ic" NAME="CalenderModelTest.save Coverage Results" MODIFIED="1646595709396" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>src.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/DAT055_project$CalenderModelTest_getDay.ic" NAME="CalenderModelTest.getDay Coverage Results" MODIFIED="1646595948745" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>src.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/DAT055_project$UnitTesting.ic" NAME="UnitTesting Coverage Results" MODIFIED="1646584780117" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>src.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/DAT055_project$CalenderModelTest_getEvents.ic" NAME="CalenderModelTest.getEvents Coverage Results" MODIFIED="1646595816042" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>src.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/DAT055_project$CalenderModelTest_addPropertyChangeListener.ic" NAME="CalenderModelTest.addPropertyChangeListener Coverage Results" MODIFIED="1646595593233" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>src.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/DAT055_project$CalenderModelTest_getMonth.ic" NAME="CalenderModelTest.getMonth Coverage Results" MODIFIED="1646595943046" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>src.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/DAT055_project$ChatServerTest.ic" NAME="ChatServerTest Coverage Results" MODIFIED="1646596736972" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>src.Server.*</FILTER>
     </SUITE>
   </component>
 </project>

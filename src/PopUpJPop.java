@@ -24,7 +24,7 @@ public class PopUpJPop extends JPopupMenu{
             popup.addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
-                    WindowFrame.changePanel();
+                    WindowFrame.changePanel("event");
                 }
             });
 

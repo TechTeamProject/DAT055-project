@@ -5,22 +5,16 @@ import src.ChatControl;
 import src.Event;
 
 import javax.swing.*;
-import javax.swing.border.EmptyBorder;
 import javax.swing.border.EtchedBorder;
-import javax.swing.text.StyledEditorKit;
 import java.awt.*;
 import java.awt.event.ActionListener;
-import java.awt.event.ItemListener;
-import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import java.io.Serializable;
 import java.time.Duration;
 import java.time.LocalDateTime;
-import java.util.Collection;
 import java.util.Collections;
-import java.util.Comparator;
 import java.util.LinkedList;
 
 import static java.awt.GridBagConstraints.*;
@@ -44,6 +38,10 @@ public class WeekView extends JPanel implements PropertyChangeListener, Serializ
     GridBagConstraints con = new GridBagConstraints();
     private LocalDateTime eventtime;
     private int hour;
+    private int gridxcount = 0;
+    private int gridY = 4;
+
+
     private Color lightgreen = new Color(229,255,204);
     JLabel eventlabel = new JLabel();
 
@@ -156,8 +154,13 @@ public class WeekView extends JPanel implements PropertyChangeListener, Serializ
         monthTitle.setText(weektime.getMonth().toString());
 
         //Sets days
+        int dayofweek = weektime.getDayOfWeek().getValue()-1;
         for (int i=0; i<7; i++) {
-            title.get(i).setText(Integer.toString(weektime.plusDays(i).getDayOfMonth()));
+            if(i<=dayofweek){
+                title.get(i).setText(Integer.toString(weektime.minusDays(dayofweek-i).getDayOfMonth()));
+            } else {
+                title.get(i).setText(Integer.toString(weektime.plusDays(i-dayofweek).getDayOfMonth()));
+            }
         }
 
         //Vid nytt event uppdateras weekview
@@ -185,6 +188,18 @@ public class WeekView extends JPanel implements PropertyChangeListener, Serializ
         String eventEndHour = String.valueOf(e.getEndTime().getHour());
         String eventStartMinute = String.valueOf(e.getStartTime().getMinute());
         String eventEndMinute = String.valueOf(e.getEndTime().getMinute());
+
+        if(Integer.parseInt(eventStartMinute)/10 == 0 && Integer.parseInt(eventEndMinute)/10 == 0){
+            return eventStartHour + ":0" + eventStartMinute + "-" + eventEndHour + ":0" + eventEndMinute;
+        }
+
+        if(Integer.parseInt(eventStartMinute)/10 == 0){
+            return eventStartHour + ":0" + eventStartMinute + "-" + eventEndHour + ":" + eventEndMinute;
+        }
+
+        if(Integer.parseInt(eventEndMinute)/10 == 0){
+            return eventStartHour + ":" + eventStartMinute + "-" + eventEndHour + ":0" + eventEndMinute;
+        }
 
         return eventStartHour + ":" + eventStartMinute + "-" + eventEndHour + ":" + eventEndMinute;
 
@@ -224,6 +239,7 @@ public class WeekView extends JPanel implements PropertyChangeListener, Serializ
             }
         }
 
+
         //These forloops iterates through the seven dayboxes and check every event if anyone is on the same day, if so it loads them.
          for (int i=0; i<7; i++) {
              for (int y = 0; y < eventlist.size(); y++) {
@@ -233,16 +249,18 @@ public class WeekView extends JPanel implements PropertyChangeListener, Serializ
                      System.out.println("How many times does this happen?");
                      GridBagConstraints c = new GridBagConstraints();
 
-                     if (hour < eventtime.getHour()) {
-
-                         // om senare starttid, lägg in med gridx lägre än tidigare
-                         hour = eventtime.getHour();
-                     }
 
                         //TODO Lägga in i vilken ordning events under samma dag hamnar mha c.gridy
-                     c.gridx = 0;
+                     if((y>0 && eventlist.get(y).getStartTime().isEqual(eventlist.get(y-1).getStartTime()))){
+                         gridxcount +=1;
+                         gridycount -=1;
+                     }
+
+
+                     c.gridx = gridxcount;
+                     gridxcount = 0;
                      c.gridy = gridycount;
-                     gridycount++;
+                     gridycount+=1;
                      c.fill = GridBagConstraints.BOTH;
                      c.weighty = 0.5;
                      c.weightx = 0.5;

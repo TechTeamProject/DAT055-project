@@ -448,6 +448,7 @@ public class Control implements PropertyChangeListener, Serializable {
             String str = e.getActionCommand();
             int index = Integer.parseInt(str);
             model.removeEvent(index);
+            updateWeeklisteners();
         }
     }
 

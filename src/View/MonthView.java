@@ -44,6 +44,9 @@ public class MonthView extends JPanel implements PropertyChangeListener {
             b30,b31,b32,b33,b34,b35,b36,b37,b38,b39,
             b40,b41,b42};
 
+    /**
+     * Creates panel for monthview and organizes all buttons e.g.
+     */
     MonthView() {
         monthpanel = new JPanel(new GridLayout( 6,7,0,0));
         topbar = new JPanel();
